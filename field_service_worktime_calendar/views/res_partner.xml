@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+
+    <record id="action_fsm_calendar" model="ir.actions.act_window">
+      <field name="name">employee.timesheets.action</field>
+      <field name="res_model">account.analytic.line</field>
+      <field name="view_mode">calendar,tree,form</field>
+      <field name="domain">[('fsm_order_id', '!=', False)]</field>
+      <field name="context">{'search_default_customer': 1, 'default_customer_rank': 1}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+                Keep track of your working hours by fieldservice every day and bill your customers for that time.
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="menu_fsm_calendar" name="Employee Timesheets" action="action_fsm_calendar" parent="fieldservice.data" sequence="95" />
+
+  </data>
+</odoo>
