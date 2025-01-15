@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fieldservice_order_user,fieldservice.order.user,model_fieldservice_order,fieldservice_group_user,1,1,1,0
+access_fieldservice_order_manager,fieldservice.order.manager,model_fieldservice_order,fieldservice_group_manager,1,1,1,1
+access_fieldservice_order_line_user,fieldservice.order.line.user,model_fieldservice_order_line,fieldservice_group_user,1,1,1,0
+access_fieldservice_order_line_manager,fieldservice.order.line.manager,model_fieldservice_order_line,fieldservice_group_manager,1,1,1,1
+access_fieldservice_stage_user,fieldservice.stage.user,model_fieldservice_stage,fieldservice_group_user,1,0,0,0
+access_fieldservice_stage_manager,fieldservice.stage.manager,model_fieldservice_stage,fieldservice_group_manager,1,1,1,1
