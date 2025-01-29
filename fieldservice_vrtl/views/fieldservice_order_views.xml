@@ -45,12 +45,14 @@
                                 <field name="stage_id"/>
                                 <field name="date_start"/>
                                 <field name="date_end"/>
-                                <field name="image_ids" widget="many2many_tags"/>
+                                <!--<field name="image_ids" widget="many2many_tags"/>-->
+                                <button name="open_form_view" string="Open" type="object" class="btn-secondary"/>
                             </list>
                         </field>
                     </page>
+                  </notebook>
                 </sheet>
-                <chatter />
+               <chatter/>
         </form>
     </field>
 </record>

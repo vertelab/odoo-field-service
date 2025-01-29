@@ -55,6 +55,16 @@ class FieldServiceOrderLine(models.Model):
     date_end = fields.Datetime(string='End Date')
     image_ids = fields.Many2many('ir.attachment', string='Images')
 
+    def open_form_view(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'fieldservice.order.line',
+            'res_id': self.id,
+            'view_mode': 'form',
+            'target': 'new',
+        }
+
 class FieldServiceStage(models.Model):
     _name = 'fieldservice.stage'
     _description = 'Field Service Stage'
