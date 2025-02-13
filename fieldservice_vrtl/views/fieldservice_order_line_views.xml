@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_fieldservice_order_line_form" model="ir.ui.view">
+        <field name="name">fieldservice.order.form</field>
+        <field name="model">fieldservice.order.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet class="oe_form_sheet_width">
+                    <group name="group_top">
+                        <group>
+                            <field name="order_id"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                        <group>
+                            <field name="image_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="fieldservice_order_management_view_calendar" model="ir.ui.view">
+        <field name="name">fieldservice.order.view.calendar</field>
+        <field name="model">fieldservice.order</field>
+        <field name="arch" type="xml">
+            <calendar date_start="planned_start_datetime" date_stop="deadline_datetime">
+                <field name="name"/>
+                <field name="priority"/>
+                <field name="stage_id"/>
+                <field name="requested_employee_ids" widget="many2many_tags"/>
+            </calendar>
+        </field>
+    </record>
+
+
+    <record id="action_fieldservice_order_line" model="ir.actions.act_window">
+        <field name="name">Field Service Kalender</field>
+        <field name="res_model">fieldservice.order</field>
+        <field name="view_mode">list,kanban,calendar,form</field>
+    </record>
+
+
+    <record id="view_fieldservice_order_line_tree" model="ir.ui.view">
+        <field name="name">fieldservice.order.line.tree</field>
+        <field name="model">fieldservice.order.line</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="order_id"/>
+                <!-- <field name="name"/> -->
+                <field name="stage_id"/>
+                <!-- Add other fields you want to see in the list view -->
+            </list>
+        </field>
+    </record>
+
+    <menuitem id="menu_fieldservice_order_line" 
+              name="Order Lines" 
+              parent="menu_fieldservice_root" 
+              action="action_fieldservice_order_line" 
+              sequence="20"/>
+
+
+
+</odoo>

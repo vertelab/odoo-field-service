@@ -11,6 +11,8 @@
         'security/fieldservice_security.xml',
         'security/ir.model.access.csv',
         'views/fieldservice_order_views.xml',
+        'views/fieldservice_order_line_views.xml',
+
         'data/fieldservice_stage_data.xml',
     ],
 }

@@ -44,36 +44,10 @@ class FieldServiceOrder(models.Model):
     def _read_group_stage_ids(self, stages = False, domain = False, order = False):
         stage_ids = self.env['fieldservice.stage'].search([])
         return stage_ids
-
-class FieldServiceOrderLine(models.Model):
-    _name = 'fieldservice.order.line'
-    _description = 'Field Service Order Line'
-
-    order_id = fields.Many2one('fieldservice.order', string='Service Order', required=True)
-    stage_id = fields.Many2one('fieldservice.stage', string='Stage', tracking=True)
-    date_start = fields.Datetime(string='Start Date')
-    date_end = fields.Datetime(string='End Date')
-    image_ids = fields.Many2many('ir.attachment', string='Images')
-
-    def open_form_view(self):
-        self.ensure_one()
-        return {
-            'type': 'ir.actions.act_window',
-            'res_model': 'fieldservice.order.line',
-            'res_id': self.id,
-            'view_mode': 'form',
-            'target': 'new',
-        }
-
-class FieldServiceStage(models.Model):
-    _name = 'fieldservice.stage'
-    _description = 'Field Service Stage'
-    _order = 'sequence, id'
-
-    name = fields.Char(string='Stage Name', required=True, translate=True)
-    sequence = fields.Integer(string='Sequence', default=10)
-    fold = fields.Boolean(string='Folded in Kanban')
-    is_closed = fields.Boolean(string='Closed Stage')
-    description = fields.Text(translate=True)
-    mail_template_id = fields.Many2one('mail.template', string='Email Template')
-    sms_template_id = fields.Many2one('sms.template', string='SMS Template')
+    
+    @api.onchange("order_line_ids")
+    def set_start_date(self):
+        pass
+        #Gå igenom dina order lines
+        #Kolla ifall dem inte har ett Start Data satt
+        #Ifall det inte är satt kopiera från planned_start_datetime
