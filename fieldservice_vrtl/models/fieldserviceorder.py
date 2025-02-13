@@ -61,3 +61,4 @@ class FieldServiceOrder(models.Model):
     #         'view_mode': 'list',
     #         'target': 'new',
     #     }
+    # mdnsnsk
