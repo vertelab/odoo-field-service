@@ -51,3 +51,13 @@ class FieldServiceOrder(models.Model):
         #Gå igenom dina order lines
         #Kolla ifall dem inte har ett Start Data satt
         #Ifall det inte är satt kopiera från planned_start_datetime
+
+    # def open_list_view(self):
+    #     self.ensure_one()
+    #     return {
+    #         'type': 'ir.actions.act_window',
+    #         'res_model': 'fieldservice.order.line',
+    #         'res_id': self.id,
+    #         'view_mode': 'list',
+    #         'target': 'new',
+    #     }
