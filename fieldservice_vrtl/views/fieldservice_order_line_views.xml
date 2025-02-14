@@ -1,30 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
-    <record id="view_fieldservice_order_line_form" model="ir.ui.view">
-        <field name="name">fieldservice.order.form</field>
-        <field name="model">fieldservice.order.line</field>
-        <field name="arch" type="xml">
-            <form>
-                <header>
-                    <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
-                </header>
-                <sheet class="oe_form_sheet_width">
-                    <group name="group_top">
-                        <group>
-                            <field name="order_id"/>
-                            <field name="date_start"/>
-                            <field name="date_end"/>
+<record id="view_fieldservice_order_line_form" model="ir.ui.view">
+    <field name="name">fieldservice.order.form</field>
+    <field name="model">fieldservice.order.line</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+                <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
+            </header>
+            <sheet>
+                <notebook>
+                    <page string="Order Details">
+                        <group name="group_top">
+                            <group>
+                                <field name="order_id"/>
+                                <field name="date_start"/>
+                                <field name="date_end"/>
+                            </group>
+                            <group>
+                                <field name="image_ids" widget="many2many_tags"/>
+                            </group>
                         </group>
-                        <group>
-                            <field name="image_ids" widget="many2many_tags"/>
-                        </group>
-                    </group>
-                </sheet>
-                <chatter/>
-            </form>
-        </field>
-    </record>
+                    </page>
+                </notebook>
+            </sheet>
+            <chatter/>
+
+
+        </form>
+    </field>
+</record>
+
 
 
 
@@ -55,8 +62,8 @@
         <field name="arch" type="xml">
             <list>
                 <field name="order_id"/>
-                <!-- <field name="name"/> -->
                 <field name="stage_id"/>
+                <field name="date_start"/>
             </list>
         </field>
     </record>

@@ -1,4 +1,5 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from datetime import date as date_type
 
 class FieldServiceOrder(models.Model):
     _name = 'fieldservice.order'
@@ -47,7 +48,14 @@ class FieldServiceOrder(models.Model):
     
     @api.onchange("order_line_ids")
     def set_start_date(self):
-        pass
+        for line in self.order_line_ids:
+            if not line.date_start:
+                line.date_start = fields.Datetime.now()
+            if not self.date_start:
+                earliest_date = min((line.date_start.date() for line in 
+                                     self.order_line_ids if line.date_start), default=None)
+                if earliest_date:
+                    self.date_start = earliest_date
         #Gå igenom dina order lines
         #Kolla ifall dem inte har ett Start Data satt
         #Ifall det inte är satt kopiera från planned_start_datetime

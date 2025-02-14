@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 
 class FieldServiceOrderLine(models.Model):
     _name = 'fieldservice.order.line'
@@ -9,6 +9,7 @@ class FieldServiceOrderLine(models.Model):
     date_start = fields.Datetime(string='Start Date')
     date_end = fields.Datetime(string='End Date')
     image_ids = fields.Many2many('ir.attachment', string='Images')
+    # _inherit = ['mail.thread', 'mail.activity.mixin']
 
     def open_form_view(self):
         self.ensure_one()
