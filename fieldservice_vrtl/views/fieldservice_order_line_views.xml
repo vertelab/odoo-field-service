@@ -10,8 +10,8 @@
                 <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
             </header>
             <sheet>
-                <notebook>
-                    <page string="Order Details">
+                <notebook name="main_notebook" >
+                    <page string="Order Details" name="base_page">
                         <group name="group_top">
                             <group>
                                 <field name="order_id"/>
@@ -26,8 +26,6 @@
                 </notebook>
             </sheet>
             <chatter/>
-
-
         </form>
     </field>
 </record>

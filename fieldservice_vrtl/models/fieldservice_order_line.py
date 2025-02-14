@@ -3,13 +3,13 @@ from odoo import api, fields, models, _
 class FieldServiceOrderLine(models.Model):
     _name = 'fieldservice.order.line'
     _description = 'Field Service Order Line'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     order_id = fields.Many2one('fieldservice.order', string='Service Order', required=True)
     stage_id = fields.Many2one('fieldservice.stage', string='Stage', tracking=True)
     date_start = fields.Datetime(string='Start Date')
     date_end = fields.Datetime(string='End Date')
     image_ids = fields.Many2many('ir.attachment', string='Images')
-    # _inherit = ['mail.thread', 'mail.activity.mixin']
 
     def open_form_view(self):
         self.ensure_one()

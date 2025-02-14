@@ -56,17 +56,18 @@ class FieldServiceOrder(models.Model):
                                      self.order_line_ids if line.date_start), default=None)
                 if earliest_date:
                     self.date_start = earliest_date
-        #Gå igenom dina order lines
-        #Kolla ifall dem inte har ett Start Data satt
-        #Ifall det inte är satt kopiera från planned_start_datetime
 
-    # def open_list_view(self):
-    #     self.ensure_one()
-    #     return {
-    #         'type': 'ir.actions.act_window',
-    #         'res_model': 'fieldservice.order.line',
-    #         'res_id': self.id,
-    #         'view_mode': 'list',
-    #         'target': 'new',
-    #     }
+
+    def open_order_lines(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name' : 'Field Service Order Lines',
+            'res_model': 'fieldservice.order.line',
+            #'res_id': self.id,
+            'view_mode': 'list,form',
+            'domain': [('order_id', '=', self.id)],
+            'context': {'default_order_id': self.id},
+            'target': 'current',
+        }
 

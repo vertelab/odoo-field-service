@@ -5,8 +5,7 @@
         <field name="model">fieldservice.order.line</field>
         <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_line_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//form//sheet" position="inside">
-                <notebook>
+            <xpath expr="//notebook[@name='main_notebook']" position="inside">
                     <page string = "Materials">
                         <group>
                             <field name="used_material_ids">
@@ -23,7 +22,6 @@
                             </field>
                         </group>
                     </page>
-                </notebook>
             </xpath>
         </field>
     </record>
