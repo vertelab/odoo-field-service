@@ -1,5 +1,6 @@
 from odoo import api, fields, models, _
 from datetime import date as date_type
+from datetime import datetime, timedelta
 
 class FieldServiceOrder(models.Model):
     _name = 'fieldservice.order'
@@ -30,7 +31,12 @@ class FieldServiceOrder(models.Model):
     date_end = fields.Datetime(string='Actual End')
     duration = fields.Float(string='Duration', compute='_compute_duration', store=True)
 
+    partner_id = fields.Many2one('res.partner', string="Partner",)
+    # partner_status = fields.Selection([('legal_owner', 'Legal Owner'),
+    #                                    ], string="Status", default='legal_owner')
+
     order_line_ids = fields.One2many('fieldservice.order.line', 'order_id', string='Order Lines')
+    stakeholder_ids = fields.One2many('fieldservice.stakeholder', 'order_id', string='Stakeholders')
 
     @api.depends('date_start', 'date_end')
     def _compute_duration(self):
@@ -40,6 +46,7 @@ class FieldServiceOrder(models.Model):
                 order.duration = round(duration, 2)
             else:
                 order.duration = 0.0
+
 
     @api.model
     def _read_group_stage_ids(self, stages = False, domain = False, order = False):
@@ -58,16 +65,30 @@ class FieldServiceOrder(models.Model):
                     self.date_start = earliest_date
 
 
-    def open_order_lines(self):
+    def open_order_lines_calendar(self):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
             'name' : 'Field Service Order Lines',
             'res_model': 'fieldservice.order.line',
             #'res_id': self.id,
-            'view_mode': 'list,form',
+            'view_mode': 'calendar,list,form,kanban',
             'domain': [('order_id', '=', self.id)],
             'context': {'default_order_id': self.id},
             'target': 'current',
         }
 
+    def open_order_lines_kanban(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Field Service Order Lines',
+            'res_model': 'fieldservice.order.line',
+            'view_mode': 'kanban,list,form,calendar',
+            'domain': [('order_id', '=', self.id)],
+            'context': {
+                'default_order_id': self.id,
+                'group_by': 'date_start:day'
+            },
+            'target': 'current',
+        }
