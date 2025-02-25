@@ -9,13 +9,13 @@
                     <page string = "Materials">
                         <group>
                             <field name="used_material_ids">
-                                <list>
+                                <list editable="bottom">
                                     <field name="product_id" optional="show"/>
                                     <field name="product_uom_qty" optional="hide"/>
                                 </list>
                             </field>
                             <field name="requested_material_ids">
-                                <list>
+                                <list editable="bottom">
                                     <field name="product_id" optional="show"/>
                                     <field name="product_uom_qty" optional="hide"/>
                                 </list>

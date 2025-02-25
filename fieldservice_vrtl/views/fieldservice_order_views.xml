@@ -17,11 +17,11 @@
                             </button>
                             <button name="open_order_lines_kanban" type="object" class="oe_stat_button" icon="fa-th-large">
                                 <span class="o_stat_text">Kanban</span>
-                            </button>                            
+                            </button>
                         </div>
                         <div class="oe_title">
                             <h1>
-                                <field name="name" readonly="1"/>
+                                <field name="name"/>
                             </h1>
                         </div>
                         <group name="group_top">
@@ -54,13 +54,12 @@
                                         <field name="stage_id"/>
                                         <field name="date_start"/>
                                         <field name="date_end"/>
-                                        <!-- <field name="image_ids" widget="many2many_tags"/> -->
                                         <button name="open_form_view" string="Open" type="object" class="btn-secondary"/>
                                     </list>
                                 </field>
                             </page>
                             <page string="Stakeholder">
-                                <field name="stakeholder_ids" >
+                                <field name="stakeholder_ids">
                                     <list editable="bottom">
                                         <field name="partner_id"/>
                                         <field name="partner_status"/>
@@ -120,8 +119,8 @@
                 </kanban>
             </field>
         </record>
-        
-        
+
+
 
         <record id="view_fieldservice_order_search" model="ir.ui.view">
             <field name="name">fieldservice.order.search</field>
@@ -155,7 +154,5 @@
 
         <menuitem id="menu_fieldservice_root" name="Field Service" sequence="40"/>
         <menuitem id="menu_fieldservice_order" name="Orders" parent="menu_fieldservice_root" action="action_fieldservice_order" sequence="10"/>
-        <!-- <menuitem id="menu_fieldservice_order_line" name="Order Lines" parent="menu_fieldservice_root" action="action_fieldservice_order_line" sequence="20"/> -->
     </data>
-
 </odoo>

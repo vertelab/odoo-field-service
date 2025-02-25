@@ -7,7 +7,7 @@ class FieldServiceOrder(models.Model):
     _description = 'Field Service Order'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string='Name', required=True, copy=False, readonly=True, default=lambda self: self.env['ir.sequence'].next_by_code('fieldservice.order'))
+    name = fields.Char(string='Name', required=True, copy=False, readonly=False)
     description = fields.Text(string='Problem Description')
     resolution = fields.Text(string='Resolution')
     priority = fields.Selection([

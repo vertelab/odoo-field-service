@@ -16,8 +16,32 @@ class FieldServiceOrderLine(models.Model):
     date_start = fields.Datetime(string='Start Date')
     date_end = fields.Datetime(string='End Date')
     image_ids = fields.Many2many('ir.attachment', string='Images')
-    fieldservice_order_line_employee_ids = fields.One2many('fieldservice.order.line.employee', 'fieldservice_order_line_id', string='Employees')
-    
+
+    date_day_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False, inverse="date_from_char_day")
+    date_week_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False, inverse="date_from_char_week")
+    # date_month_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False)
+    # date_year_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False)
+
+    @api.depends('date_start')
+    def compute_from_start(self):
+        num_to_month = ["januari", "februari", "mars", "april", "maj", "juni","juli", "augusti", "september", "oktober", "november", "december"]
+        for record in self:
+            record.date_day_start_char = f"{record.date_start.day} {num_to_month[record.date_start.month-1]} {record.date_start.year}"
+            record.date_week_start_char = f"W{str(record.date_start.isocalendar().week).zfill(2)} {record.date_start.year}" 
+
+    def date_from_char_day(self):
+        num_to_month = ["januari", "februari", "mars", "april", "maj", "juni","juli", "augusti", "september", "oktober", "november", "december"]
+        for record in self:
+            day, month, year = record.date_day_start_char.split(" ")
+            date_string = f"{year}-{str(num_to_month.index(month)+1).zfill(2)}-{str(day).zfill(2)}"
+            record.date_start = date_string
+
+    def date_from_char_week(self):
+        for record in self:
+            week, year = record.date_week_start_char.split()
+            jan_1 = datetime(int(year), 1, 1)
+            record.date_start = (jan_1 + timedelta(days=(7 - jan_1.weekday()) % 7) + timedelta(weeks=int(week[1:]) - 1)).date()
+
 
     @api.model
     def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
@@ -64,36 +88,3 @@ class FieldServiceOrderLine(models.Model):
             'target': 'new',
         }
 
-    # date_start = fields.Datetime(string='Start Date', group_expand='_read_group_date_start_day')
-
-
-        # logging.warning(f"{domain=}")
-        # logging.warning(f"{fields=}")
-        # logging.warning(f"{groupby=}")
-        # logging.warning(f"{offset=}")
-        # logging.warning(f"{limit=}")
-        # logging.warning(f"{orderby=}")
-        # logging.warning(f"{lazy=}")
-    
-    # @api.model
-    # def _read_group_date_start_day(self, dates, domain, order):
-    #     today = fields.Date.today()
-    #     result = []
-    #     for i in range(365):
-    #         current_date = today + timedelta(days=i)
-    #         result.append({
-    #             'id': i,  # Add a unique identifier
-    #             'date_start': current_date.strftime('%Y-%m-%d'),
-    #             'date_start_count': 0,
-    #             '__domain': [('date_start', '>=', current_date.strftime('%Y-%m-%d 00:00:00')),
-    #                         ('date_start', '<', (current_date + timedelta(days=1)).strftime('%Y-%m-%d 00:00:00'))]
-    #         })
-    #     return result
-
-
-    # @api.model
-    # def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
-    #     if groupby and groupby[0] == 'date_start:day':
-    #         return self._read_group_date_start_day(None, domain, orderby)
-    #     return super(FieldServiceOrderLine, self).read_group(domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy)
-    

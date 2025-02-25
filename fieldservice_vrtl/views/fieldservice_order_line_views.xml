@@ -47,20 +47,20 @@
         <field name="name">fieldservice.order.line.kanban</field>
         <field name="model">fieldservice.order</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="date_start:day" class="o_kanban_small_column o_kanban_project_tasks">
+            <kanban default_group_by="date_day_start_char" class="o_kanban_small_column o_kanban_project_tasks">
                 <field name="date_start"/>
-                <!-- Lägg till andra fält som du vill visa i Kanban-korten -->
                 <templates>
                     <t t-name="kanban-box" class="o_kanban_small_column" on_create="quick_create">
                         <div class="oe_kanban_global_click">
                             <div class="oe_kanban_details">
                                 <strong class="o_kanban_record_title">
+                                    <!-- <field name ="order_id"/> -->
                                     <field name="name"/>
+                                    <field name="date_start"/>
                                 </strong>
                                 <div class="o_kanban_record_subtitle">
                                     <field name="date_start"/>
                                 </div>
-                                <!-- Lägg till mer innehåll för Kanban-korten här -->
                             </div>
                         </div>
                     </t>
@@ -68,7 +68,6 @@
             </kanban>
         </field>
     </record>
-
 
     <record id="view_fieldservice_order_line_search" model="ir.ui.view">
         <field name="name">fieldservice.order.line.search</field>
@@ -83,32 +82,11 @@
         </field>
     </record>
 
-
-    <record id="fieldservice_order_line_form_view_inherit" model="ir.ui.view">
-        <field name="name">fieldservice.order.line.form.inherit</field>
-        <field name="model">fieldservice.order.line</field>
-        <field name="inherit_id" ref="fieldservice.fieldservice_order_line_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='product_id']" position="after">
-                <field name="fieldservice_order_line_employee_ids">
-                    <tree editable="bottom">
-                        <field name="employee_id"/>
-                        <field name="start_time"/>
-                        <field name="end_time"/>
-                    </tree>
-                </field>
-            </xpath>
-        </field>
-    </record>
-
-
-
     <record id="action_fieldservice_order_line" model="ir.actions.act_window">
         <field name="name">Field Service Kalender</field>
-        <field name="res_model">fieldservice.order</field>
+        <field name="res_model">fieldservice.order.line</field>
         <field name="view_mode">list,kanban,calendar,form</field>
     </record>
-
 
     <record id="view_fieldservice_order_line_tree" model="ir.ui.view">
         <field name="name">fieldservice.order.line.tree</field>
@@ -124,6 +102,8 @@
 
     <menuitem id="menu_fieldservice_order_line" name="Order Lines" parent="menu_fieldservice_root" action="action_fieldservice_order_line" sequence="20"/>
 
-
-
 </odoo>
+<!-- o_kanban_record d-flex o_draggable cursor-pointer o_legacy_kanban_record
+o_kanban_record d-flex o_draggable cursor-pointer
+o_kanban_record d-flex o_draggable cursor-pointer o_legacy_kanban_record
+oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record -->

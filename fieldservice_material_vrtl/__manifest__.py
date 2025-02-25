@@ -2,6 +2,7 @@
     'name': 'Field Service Stock Picking',
     'version': '1.0',
     'depends': ['fieldservice_vrtl', 'stock'],
+    'license': 'LGPL-3',
     'data': [
         'security/ir.model.access.csv',
         'views/fieldservice_stock_picking_views.xml',

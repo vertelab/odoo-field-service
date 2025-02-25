@@ -14,17 +14,23 @@
                                     <field name="readonly_timesheet" column_invisible="True"/>
                                     <field name="date" readonly="readonly_timesheet"/>
                                     <field name="user_id" column_invisible="True"/>
-                                    <field name="employee_id" widget="many2one_avatar_employee" context="{'active_test': True}"
-                                    required="1"
-                                    readonly="readonly_timesheet"/>
+                                    <field name="employee_id" widget="many2one_avatar_employee" context="{'active_test': True}" required="1" readonly="readonly_timesheet"/>
                                     <field name="name" required="0" readonly="readonly_timesheet"/>
-                                    <field name="unit_amount" string="Time Spent" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24 or unit_amount &lt; 0"
-                                    readonly="readonly_timesheet"/>
+                                    <field name="unit_amount" string="Time Spent" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24 or unit_amount &lt; 0" readonly="readonly_timesheet"/>
                                     <field name="company_id" column_invisible="True"/>
                                 </list>
                             </field>
                         </group>
                     </page>
+                    <page string="Employee">
+                    <group>
+                        <field name="fieldservice_order_line_employee_ids" mode="list">
+                            <list editable="bottom">
+                            <field name = "employee_id"/>
+                            </list>
+                        </field>                    
+                    </group>
+                </page>
                 
             </xpath>
         </field>
