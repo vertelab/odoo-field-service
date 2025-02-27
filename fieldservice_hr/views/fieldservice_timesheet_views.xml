@@ -1,40 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_fieldservice_order_line_form_inherit_hr" model="ir.ui.view">
+    <record id="view_fieldservice_order_line_form_reporting_inherit_hr" model="ir.ui.view">
         <field name="name">fieldservice.order.line.form.inherit.hr</field>
         <field name="model">fieldservice.order.line</field>
-        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_line_form"/>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_line_form_reporting"/>
         <field name="arch" type="xml">
-            <xpath expr="//notebook[@name='main_notebook']" position="inside">
-                
-                    <page string="Timesheet">
-                        <group>
-                            <field name="timesheet_ids" mode="list,kanban">
-                                <list editable="bottom" string="Timesheet Activities" default_order="date" decoration-muted="readonly_timesheet == True">
-                                    <field name="readonly_timesheet" column_invisible="True"/>
-                                    <field name="date" readonly="readonly_timesheet"/>
-                                    <field name="user_id" column_invisible="True"/>
-                                    <field name="employee_id" widget="many2one_avatar_employee" context="{'active_test': True}" required="1" readonly="readonly_timesheet"/>
-                                    <field name="name" required="0" readonly="readonly_timesheet"/>
-                                    <field name="unit_amount" string="Time Spent" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24 or unit_amount &lt; 0" readonly="readonly_timesheet"/>
-                                    <field name="company_id" column_invisible="True"/>
-                                </list>
-                            </field>
-                        </group>
-                    </page>
+            <xpath expr="//notebook[@name='reporting_notebook']" position="inside">
+                <page string="Timesheet">
+                    <group>
+                        <field name="timesheet_ids" mode="list,kanban">
+                            <list editable="bottom" string="Timesheet Activities" default_order="date" decoration-muted="readonly_timesheet == True">
+                                <field name="readonly_timesheet" column_invisible="True"/>
+                                <field name="date" readonly="readonly_timesheet"/>
+                                <field name="user_id" column_invisible="True"/>
+                                <field name="employee_id" widget="many2one_avatar_employee" context="{'active_test': True}" required="1" readonly="readonly_timesheet"/>
+                                <field name="name" required="1" readonly="readonly_timesheet"/>
+                                <field name="unit_amount" string="Time Spent" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24 or unit_amount &lt; 0" readonly="readonly_timesheet"/>
+                                <field name="company_id" column_invisible="True"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+
+            </xpath>
+        </field>
+    </record>
+
+        <record id="view_fieldservice_order_line_form_planning_inherit_hr" model="ir.ui.view">
+        <field name="name">fieldservice.order.line.form.inherit.hr</field>
+        <field name="model">fieldservice.order.line</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_line_form_planning"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[@name='planning_notebook']" position="inside">
                     <page string="Employee">
                     <group>
                         <field name="fieldservice_order_line_employee_ids" mode="list">
                             <list editable="bottom">
-                            <field name = "employee_id"/>
+                                <field name = "employee_id"/>
                             </list>
-                        </field>                    
+                        </field>
                     </group>
                 </page>
-                
+
             </xpath>
         </field>
     </record>
+
+
 
     <record id="hr_timesheet.act_hr_timesheet_line" model="ir.actions.act_window">
         <field name="domain">['&amp;', ('user_id', '=', uid), '|', ('project_id', '!=', False), ('fieldservice_order_line_id', '!=', False)]</field>

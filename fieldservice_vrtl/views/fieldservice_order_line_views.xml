@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
-    <record id="view_fieldservice_order_line_form" model="ir.ui.view">
-        <field name="name">fieldservice.order.form</field>
+    <!-- Planering Vy -->
+    <record id="view_fieldservice_order_line_form_planning" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.planning</field>
         <field name="model">fieldservice.order.line</field>
         <field name="arch" type="xml">
             <form>
@@ -10,8 +11,8 @@
                     <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
                 </header>
                 <sheet>
-                    <notebook name="main_notebook">
-                        <page string="Order Details" name="base_page">
+                    <notebook name="planning_notebook">
+                        <page string="Planning Details" name="planning_page">
                             <group name="group_top">
                                 <group>
                                     <field name="order_id"/>
@@ -22,6 +23,7 @@
                                     <field name="image_ids" widget="many2many_tags"/>
                                 </group>
                             </group>
+                            <!-- Lägg till planeringspecifika fält här -->
                         </page>
                     </notebook>
                 </sheet>
@@ -29,6 +31,38 @@
             </form>
         </field>
     </record>
+
+    <!-- Rapportering Vy -->
+    <record id="view_fieldservice_order_line_form_reporting" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.reporting</field>
+        <field name="model">fieldservice.order.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <notebook name="reporting_notebook">
+                        <page string="Reporting Details" name="reporting_page">
+                            <group name="group_top">
+                                <group>
+                                    <field name="order_id"/>
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                </group>
+                                <group>
+                                    <field name="image_ids" widget="many2many_tags"/>
+                                </group>
+                            </group>
+                            <!-- Lägg till rapportspecifika fält här -->
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
 
     <record id="fieldservice_order_management_view_calendar" model="ir.ui.view">
         <field name="name">fieldservice.order.view.calendar</field>

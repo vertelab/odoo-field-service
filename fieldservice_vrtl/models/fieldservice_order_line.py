@@ -78,13 +78,29 @@ class FieldServiceOrderLine(models.Model):
             domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy
         )
 
-    def open_form_view(self):
+
+    def open_planning_view(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'fieldservice.order.line',  # or a different model for planning
+            'res_id': self.id,
+            'view_mode': 'form',
+            'view_id': self.env.ref('fieldservice_vrtl.view_fieldservice_order_line_form_planning').id,
+            'target': 'new',
+            'name': 'Planning',
+        }
+
+    def open_reporting_view(self):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'fieldservice.order.line',
             'res_id': self.id,
             'view_mode': 'form',
+            'view_id': self.env.ref('fieldservice_vrtl.view_fieldservice_order_line_form_reporting').id,
             'target': 'new',
+            'name': 'Reporting',
         }
+
 

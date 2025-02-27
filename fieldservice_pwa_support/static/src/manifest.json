@@ -1,0 +1,8 @@
+{
+  "name": "Field Service PWA",
+  "short_name": "FS PWA",
+  "start_url": "/web",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#875A7B"
+}
