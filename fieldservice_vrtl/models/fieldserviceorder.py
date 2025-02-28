@@ -29,29 +29,24 @@ class FieldServiceOrder(models.Model):
 
     date_start = fields.Datetime(string='Actual Start')
     date_end = fields.Datetime(string='Actual End')
-    duration = fields.Float(string='Duration', compute='_compute_duration', store=True)
 
     partner_id = fields.Many2one('res.partner', string="Partner",)
     # partner_status = fields.Selection([('legal_owner', 'Legal Owner'),
     #                                    ], string="Status", default='legal_owner')
 
+
     order_line_ids = fields.One2many('fieldservice.order.line', 'order_id', string='Order Lines')
     stakeholder_ids = fields.One2many('fieldservice.stakeholder', 'order_id', string='Stakeholders')
 
-    @api.depends('date_start', 'date_end')
-    def _compute_duration(self):
-        for order in self:
-            if order.date_start and order.date_end:
-                duration = (order.date_end - order.date_start).total_seconds() / 3600
-                order.duration = round(duration, 2)
-            else:
-                order.duration = 0.0
+    # @api.depends('date_start', 'date_end')
+    # def _compute_duration(self):
+    #     for order in self:
+    #         if order.date_start and order.date_end:
+    #             duration = (order.date_end - order.date_start).total_seconds() / 3600
+    #             order.duration = round(duration, 2)
+    #         else:
+    #             order.duration = 0.0
 
-
-    @api.model
-    def _read_group_stage_ids(self, stages = False, domain = False, order = False):
-        stage_ids = self.env['fieldservice.stage'].search([])
-        return stage_ids
     
     @api.onchange("order_line_ids")
     def set_start_date(self):
@@ -63,6 +58,14 @@ class FieldServiceOrder(models.Model):
                                      self.order_line_ids if line.date_start), default=None)
                 if earliest_date:
                     self.date_start = earliest_date
+
+   
+
+
+    @api.model
+    def _read_group_stage_ids(self, stages = False, domain = False, order = False):
+        stage_ids = self.env['fieldservice.stage'].search([])
+        return stage_ids
 
 
     def open_order_lines_calendar(self):
@@ -79,6 +82,7 @@ class FieldServiceOrder(models.Model):
         }
 
     def open_order_lines_kanban(self):
+
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
@@ -92,3 +96,29 @@ class FieldServiceOrder(models.Model):
             },
             'target': 'current',
         }
+    
+
+
+
+
+    # @api.depends('date_end')
+    # def _compute_custom_state(self):
+    #     today = fields.Date.today()
+    #     for record in self:
+    #         if record.date_end:
+    #             days_until_due = (record.date_end.date() - today).days
+    #             if days_until_due < 0:
+    #                 record.custom_state = 'overdue'
+    #             elif 0 <= days_until_due <= 5:
+    #                 record.custom_state = 'due_soon'
+    #             else:
+    #                 record.custom_state = 'planned'
+    #         else:
+    #             record.custom_state = 'planned'       
+    # 
+    # @api.depends('date_end')
+    # def _compute_custom_state(self):
+    #     _logger.warning(f"{self.env.context=}")
+    #     max_duration = 40
+    #     for record in self:
+    #         duration_for_day = self.env[]

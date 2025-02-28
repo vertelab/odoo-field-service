@@ -35,7 +35,6 @@
                                 <field name="requested_employee_ids" widget="many2many_tags"/>
                                 <field name="date_start"/>
                                 <field name="date_end"/>
-                                <field name="duration" widget="float_time"/>
                             </group>
                         </group>
                         <notebook name="Main_order_notebook">
@@ -84,7 +83,6 @@
                     <field name="priority" widget="priority"/>
                     <field name="planned_start_datetime"/>
                     <field name="deadline_datetime"/>
-                    <field name="duration" widget="float_time" sum="Total Duration"/>
                 </list>
             </field>
         </record>

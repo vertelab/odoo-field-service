@@ -2,8 +2,10 @@ from odoo import api, fields, models, _
 from datetime import date as date_type
 from datetime import datetime, timedelta
 from odoo.tools import date_utils
-import logging
 from datetime import date, timedelta
+from dateutil.relativedelta import relativedelta
+
+
 
 
 class FieldServiceOrderLine(models.Model):
@@ -17,31 +19,105 @@ class FieldServiceOrderLine(models.Model):
     date_end = fields.Datetime(string='End Date')
     image_ids = fields.Many2many('ir.attachment', string='Images')
 
-    date_day_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False, inverse="date_from_char_day")
-    date_week_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False, inverse="date_from_char_week")
+    date_day_start_char = fields.Char(compute="_compute_date_chars",store=True, readonly=False, inverse="_inverse_date_day_start_char")
+    date_week_start_char = fields.Char(compute="_compute_date_chars",store=True, readonly=False, inverse="_inverse_date_week_start_char")
     # date_month_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False)
     # date_year_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False)
+    duration = fields.Float(string='Duration', compute='_compute_duration', store=True, help='Duration in hours')
+
+    custom_state = fields.Selection([
+        ('green', 'Green'),
+        ('yellow', 'Yellow'),
+        ('red', 'Red')
+    ], string='Custom State', compute='_compute_custom_state', store=True)
+
+    
 
     @api.depends('date_start')
-    def compute_from_start(self):
-        num_to_month = ["januari", "februari", "mars", "april", "maj", "juni","juli", "augusti", "september", "oktober", "november", "december"]
+    def _compute_date_chars(self):
+        num_to_month = ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"]
         for record in self:
-            record.date_day_start_char = f"{record.date_start.day} {num_to_month[record.date_start.month-1]} {record.date_start.year}"
-            record.date_week_start_char = f"W{str(record.date_start.isocalendar().week).zfill(2)} {record.date_start.year}" 
+            if record.date_start:
+                record.date_day_start_char = f"{record.date_start.day} {num_to_month[record.date_start.month-1]} {record.date_start.year}"
+                record.date_week_start_char = f"W{str(record.date_start.isocalendar().week).zfill(2)} {record.date_start.year}"
+            else:
+                record.date_day_start_char = False
+                record.date_week_start_char = False
 
-    def date_from_char_day(self):
-        num_to_month = ["januari", "februari", "mars", "april", "maj", "juni","juli", "augusti", "september", "oktober", "november", "december"]
+    def _inverse_date_day_start_char(self):
+        num_to_month = ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"]
         for record in self:
-            day, month, year = record.date_day_start_char.split(" ")
-            date_string = f"{year}-{str(num_to_month.index(month)+1).zfill(2)}-{str(day).zfill(2)}"
-            record.date_start = date_string
+            if record.date_day_start_char:
+                day, month, year = record.date_day_start_char.split(" ")
+                new_date = datetime(int(year), num_to_month.index(month) + 1, int(day))
+                if record.date_start:
+                    new_date = new_date.replace(hour=record.date_start.hour, minute=record.date_start.minute, second=record.date_start.second)
+                record.date_start = new_date
 
-    def date_from_char_week(self):
+    def _inverse_date_week_start_char(self):
         for record in self:
-            week, year = record.date_week_start_char.split()
-            jan_1 = datetime(int(year), 1, 1)
-            record.date_start = (jan_1 + timedelta(days=(7 - jan_1.weekday()) % 7) + timedelta(weeks=int(week[1:]) - 1)).date()
+            if record.date_week_start_char:
+                week, year = record.date_week_start_char.split()
+                jan_1 = datetime(int(year), 1, 1)
+                new_date = jan_1 + relativedelta(weeks=int(week[1:]) - 1, weekday=0)
+                if record.date_start:
+                    new_date = new_date.replace(hour=record.date_start.hour, minute=record.date_start.minute, second=record.date_start.second)
+                record.date_start = new_date
 
+    @api.onchange('date_start', 'duration')
+    def _onchange_date_start_duration(self):
+        if self.date_start:
+            if self.duration:
+                self.date_end = self.date_start + timedelta(hours=self.duration)
+            elif self.date_end:
+                time_diff = self.date_end - self.date_start
+                self.date_end = self.date_start + time_diff
+
+    @api.onchange('date_end')
+    def _onchange_date_end(self):
+        if self.date_start and self.date_end:
+            self.duration = (self.date_end - self.date_start).total_seconds() / 3600
+
+    @api.depends('date_start', 'date_end')
+    def _compute_duration(self):
+        for line in self:
+            if line.date_start and line.date_end:
+                line.duration = (line.date_end - line.date_start).total_seconds() / 3600
+            else:
+                line.duration = 0.0
+        self._compute_custom_state()
+
+    def write(self, vals):
+        if 'date_start' in vals and 'date_end' not in vals and 'duration' not in vals:
+            for record in self:
+                new_start = fields.Datetime.to_datetime(vals['date_start'])
+                if record.duration:
+                    vals['date_end'] = new_start + timedelta(hours=record.duration)
+        return super(FieldServiceOrderLine, self).write(vals)
+
+    @api.depends('duration')
+    def _compute_custom_state(self):
+        MAX_HOURS = 40
+        # Beräkna total duration för varje kolumn
+        groups = self.read_group([], ['custom_state', 'duration:sum'], ['custom_state'])
+        state_totals = {group['custom_state']: group['duration'] for group in groups}
+        
+        for record in self:
+            total_duration = state_totals.get(record.custom_state, 0)
+            usage_percentage = (total_duration / MAX_HOURS) * 100
+            if usage_percentage <= 40:
+                record.custom_state = 'green'
+            elif 40 < usage_percentage <= 80:
+                record.custom_state = 'yellow'
+            else:
+                record.custom_state = 'red'
+
+
+
+    # @api.depends('activity_ids.state')
+    # def _compute_activity_state(self):
+    #     for record in self:
+    #         record.activity_state = record.activity_ids.state    
 
     @api.model
     def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
@@ -50,7 +126,6 @@ class FieldServiceOrderLine(models.Model):
         if 'date_start' in groupby:
             date_start_field = self._fields['date_start']
             is_datetime = date_start_field.type == 'datetime'
-            logging.warning("read_group if case")
             # Find the minimum and maximum dates in the current domain
             min_record = self.search(domain + [('date_start', '!=', False)], order='date_start asc', limit=1)
             max_record = self.search(domain + [('date_end', '!=', False)], order='date_end desc', limit=1)
@@ -103,4 +178,16 @@ class FieldServiceOrderLine(models.Model):
             'name': 'Reporting',
         }
 
+
+#  göra date start behålla tiden även när man har ändrat datum på den i kanban [fixat] 1111111111111111111111
+ 
+#  kunna ändra duration manuellt utan att man ska ändra på end_date field   [fixat] 1111111111111111111111
+
+#  om date_start har slut datum samma dag så ändrar vi dagen på båda 2 men duration behålls  (så date start ändras men i med att dutaion är tex 3 timmar eller 2 dagar så ska end_date ändras till den)
+ 
+#  i duration field så ska man ha en label som ska autiomatisk planera den hela dagen.
+
+#  räkna ut 40 h per dag och 40 x 5 per vecka i stunden
+
+#  kolla om man bejöver göra en context för att få det och funka? --
 
