@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
-    <!-- Planering Vy -->
     <record id="view_fieldservice_order_line_form_planning" model="ir.ui.view">
         <field name="name">fieldservice.order.form.planning</field>
         <field name="model">fieldservice.order.line</field>
@@ -34,7 +33,6 @@
         </field>
     </record>
 
-    <!-- Rapportering Vy -->
     <record id="view_fieldservice_order_line_form_reporting" model="ir.ui.view">
         <field name="name">fieldservice.order.form.reporting</field>
         <field name="model">fieldservice.order.line</field>
@@ -119,7 +117,9 @@
                 <field name="date_day_start_char"/>
                 <field name="date_week_start_char"/>
                 <group expand="1" string="Group By">
-                    <filter string="Date" name="group_by_date" context="{'group_by': 'date_start:day'}"/>
+                    <!-- <filter string="Date" name="group_by_date" context="{'group_by': 'date_start:day'}"/> -->
+                    <filter string="Days" name="date_day_start_char" context="{'group_by': 'date_day_start_char'}"/>
+                    <filter string="Week" name="date_week_start_char" context="{'group_by': 'date_week_start_char'}"/>
                 </group>
             </search>
         </field>

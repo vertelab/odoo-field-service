@@ -19,8 +19,8 @@ class FieldServiceOrderLine(models.Model):
     date_end = fields.Datetime(string='End Date')
     image_ids = fields.Many2many('ir.attachment', string='Images')
 
-    date_day_start_char = fields.Char(compute="_compute_date_chars",store=True, readonly=False, inverse="_inverse_date_day_start_char")
-    date_week_start_char = fields.Char(compute="_compute_date_chars",store=True, readonly=False, inverse="_inverse_date_week_start_char")
+    date_day_start_char = fields.Char(compute="_compute_date_chars",store=True, readonly=False, inverse="_inverse_date_day_start_char", group_expand='_read_group_days')
+    date_week_start_char = fields.Char(compute="_compute_date_chars",store=True, readonly=False, inverse="_inverse_date_week_start_char", group_expand='_read_group_weeks')
     # date_month_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False)
     # date_year_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False)
     duration = fields.Float(string='Duration', compute='_compute_duration', store=True, help='Duration in hours')
@@ -31,7 +31,20 @@ class FieldServiceOrderLine(models.Model):
         ('red', 'Red')
     ], string='Custom State', compute='_compute_custom_state', store=True)
 
-    
+    @api.model
+    def _read_group_days(self, groupby, domain, limit=None, offset=None):
+        today = date.today()
+        num_to_month = ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"]
+        days = [f"{(today + timedelta(days=i)).day} {num_to_month[(today + timedelta(days=i)).month-1]} {(today + timedelta(days=i)).year}" for i in range(5)]
+        return days[:5] 
+
+    @api.model
+    def _read_group_weeks(self, groupby, domain, limit=None, offset=None):
+        today = date.today()
+        weeks = [f"W{str((today + timedelta(weeks=i)).isocalendar().week).zfill(2)} {(today + timedelta(weeks=i)).year}" for i in range(5)]
+        return weeks[:5] 
+
+
 
     @api.depends('date_start')
     def _compute_date_chars(self):
@@ -43,6 +56,7 @@ class FieldServiceOrderLine(models.Model):
             else:
                 record.date_day_start_char = False
                 record.date_week_start_char = False
+
 
     def _inverse_date_day_start_char(self):
         num_to_month = ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"]
@@ -57,9 +71,9 @@ class FieldServiceOrderLine(models.Model):
     def _inverse_date_week_start_char(self):
         for record in self:
             if record.date_week_start_char:
-                week, year = record.date_week_start_char.split()
+                week, year = record.date_week_start_char[1:].split()
                 jan_1 = datetime(int(year), 1, 1)
-                new_date = jan_1 + relativedelta(weeks=int(week[1:]) - 1, weekday=0)
+                new_date = jan_1 + relativedelta(weeks=int(week) - 1, weekday=0)
                 if record.date_start:
                     new_date = new_date.replace(hour=record.date_start.hour, minute=record.date_start.minute, second=record.date_start.second)
                 record.date_start = new_date
@@ -98,7 +112,6 @@ class FieldServiceOrderLine(models.Model):
     @api.depends('duration')
     def _compute_custom_state(self):
         MAX_HOURS = 40
-        # Beräkna total duration för varje kolumn
         groups = self.read_group([], ['custom_state', 'duration:sum'], ['custom_state'])
         state_totals = {group['custom_state']: group['duration'] for group in groups}
         
@@ -113,20 +126,11 @@ class FieldServiceOrderLine(models.Model):
                 record.custom_state = 'red'
 
 
-
-    # @api.depends('activity_ids.state')
-    # def _compute_activity_state(self):
-    #     for record in self:
-    #         record.activity_state = record.activity_ids.state    
-
     @api.model
     def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
-
-
         if 'date_start' in groupby:
             date_start_field = self._fields['date_start']
             is_datetime = date_start_field.type == 'datetime'
-            # Find the minimum and maximum dates in the current domain
             min_record = self.search(domain + [('date_start', '!=', False)], order='date_start asc', limit=1)
             max_record = self.search(domain + [('date_end', '!=', False)], order='date_end desc', limit=1)
 
@@ -138,16 +142,24 @@ class FieldServiceOrderLine(models.Model):
                     min_date = min_date.date()
                     max_date = max_date.date()
 
-                # Generate a list of dates, limiting to a reasonable range (e.g., 366 days)
                 date_range = list(date_utils.date_range(min_date, max_date, step=timedelta(days=1)))
-                date_range = [d.strftime('%Y-%m-%d') for d in date_range[:366]]
+                date_range = [d.strftime('%Y-%m-%d') for d in date_range[:5]] 
 
-
-                # Use the expand parameter to include all dates
-                return super(FieldServiceOrderLine, self).read_group(
+                result = super(FieldServiceOrderLine, self).read_group(
                     domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy,
                     expand='date_start', expand_dates=True, expand_values=date_range
                 )
+                return result[:5]
+
+        elif 'date_day_start_char' in groupby:
+            allowed_days = self._read_group_days(groupby, domain)
+            result = super(FieldServiceOrderLine, self).read_group(domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy)
+            return [r for r in result if r.get('date_day_start_char') in allowed_days][:5]
+
+        elif 'date_week_start_char' in groupby:
+            allowed_weeks = self._read_group_weeks(groupby, domain)
+            result = super(FieldServiceOrderLine, self).read_group(domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy)
+            return [r for r in result if r.get('date_week_start_char') in allowed_weeks][:5]
 
         return super(FieldServiceOrderLine, self).read_group(
             domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy
@@ -158,7 +170,7 @@ class FieldServiceOrderLine(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'res_model': 'fieldservice.order.line',  # or a different model for planning
+            'res_model': 'fieldservice.order.line',
             'res_id': self.id,
             'view_mode': 'form',
             'view_id': self.env.ref('fieldservice_vrtl.view_fieldservice_order_line_form_planning').id,
@@ -177,17 +189,4 @@ class FieldServiceOrderLine(models.Model):
             'target': 'new',
             'name': 'Reporting',
         }
-
-
-#  göra date start behålla tiden även när man har ändrat datum på den i kanban [fixat] 1111111111111111111111
- 
-#  kunna ändra duration manuellt utan att man ska ändra på end_date field   [fixat] 1111111111111111111111
-
-#  om date_start har slut datum samma dag så ändrar vi dagen på båda 2 men duration behålls  (så date start ändras men i med att dutaion är tex 3 timmar eller 2 dagar så ska end_date ändras till den)
- 
-#  i duration field så ska man ha en label som ska autiomatisk planera den hela dagen.
-
-#  räkna ut 40 h per dag och 40 x 5 per vecka i stunden
-
-#  kolla om man bejöver göra en context för att få det och funka? --
 
