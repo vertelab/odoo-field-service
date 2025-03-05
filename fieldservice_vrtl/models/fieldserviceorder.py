@@ -1,12 +1,13 @@
 from odoo import api, fields, models, _
 from datetime import date as date_type
+from datetime import datetime, timedelta
 
 class FieldServiceOrder(models.Model):
     _name = 'fieldservice.order'
     _description = 'Field Service Order'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string='Name', required=True, copy=False, readonly=True, default=lambda self: self.env['ir.sequence'].next_by_code('fieldservice.order'))
+    name = fields.Char(string='Name', required=True, copy=False, readonly=False)
     description = fields.Text(string='Problem Description')
     resolution = fields.Text(string='Resolution')
     priority = fields.Selection([
@@ -28,9 +29,14 @@ class FieldServiceOrder(models.Model):
 
     date_start = fields.Datetime(string='Actual Start')
     date_end = fields.Datetime(string='Actual End')
-    duration = fields.Float(string='Duration', compute='_compute_duration', store=True)
+
+    partner_id = fields.Many2one('res.partner', string="Partner",)
+    # partner_status = fields.Selection([('legal_owner', 'Legal Owner'),
+    #                                    ], string="Status", default='legal_owner')
+
 
     order_line_ids = fields.One2many('fieldservice.order.line', 'order_id', string='Order Lines')
+    stakeholder_ids = fields.One2many('fieldservice.stakeholder', 'order_id', string='Stakeholders')
 
     @api.depends('date_start', 'date_end')
     def _compute_duration(self):
@@ -41,10 +47,6 @@ class FieldServiceOrder(models.Model):
             else:
                 order.duration = 0.0
 
-    @api.model
-    def _read_group_stage_ids(self, stages = False, domain = False, order = False):
-        stage_ids = self.env['fieldservice.stage'].search([])
-        return stage_ids
     
     @api.onchange("order_line_ids")
     def set_start_date(self):
@@ -57,17 +59,66 @@ class FieldServiceOrder(models.Model):
                 if earliest_date:
                     self.date_start = earliest_date
 
+   
 
-    def open_order_lines(self):
+
+    @api.model
+    def _read_group_stage_ids(self, stages = False, domain = False, order = False):
+        stage_ids = self.env['fieldservice.stage'].search([])
+        return stage_ids
+
+
+    def open_order_lines_calendar(self):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
             'name' : 'Field Service Order Lines',
             'res_model': 'fieldservice.order.line',
             #'res_id': self.id,
-            'view_mode': 'list,form',
+            'view_mode': 'calendar,list,form,kanban',
             'domain': [('order_id', '=', self.id)],
             'context': {'default_order_id': self.id},
             'target': 'current',
         }
 
+    def open_order_lines_kanban(self):
+
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Field Service Order Lines',
+            'res_model': 'fieldservice.order.line',
+            'view_mode': 'kanban,list,form,calendar',
+            'domain': [('order_id', '=', self.id)],
+            'context': {
+                'default_order_id': self.id,
+                'group_by': 'date_start:day'
+            },
+            'target': 'current',
+        }
+    
+
+
+
+
+    # @api.depends('date_end')
+    # def _compute_custom_state(self):
+    #     today = fields.Date.today()
+    #     for record in self:
+    #         if record.date_end:
+    #             days_until_due = (record.date_end.date() - today).days
+    #             if days_until_due < 0:
+    #                 record.custom_state = 'overdue'
+    #             elif 0 <= days_until_due <= 5:
+    #                 record.custom_state = 'due_soon'
+    #             else:
+    #                 record.custom_state = 'planned'
+    #         else:
+    #             record.custom_state = 'planned'       
+    # 
+    # @api.depends('date_end')
+    # def _compute_custom_state(self):
+    #     _logger.warning(f"{self.env.context=}")
+    #     max_duration = 40
+    #     for record in self:
+    #         duration_for_day = self.env[]
