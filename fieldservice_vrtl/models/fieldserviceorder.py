@@ -38,14 +38,14 @@ class FieldServiceOrder(models.Model):
     order_line_ids = fields.One2many('fieldservice.order.line', 'order_id', string='Order Lines')
     stakeholder_ids = fields.One2many('fieldservice.stakeholder', 'order_id', string='Stakeholders')
 
-    # @api.depends('date_start', 'date_end')
-    # def _compute_duration(self):
-    #     for order in self:
-    #         if order.date_start and order.date_end:
-    #             duration = (order.date_end - order.date_start).total_seconds() / 3600
-    #             order.duration = round(duration, 2)
-    #         else:
-    #             order.duration = 0.0
+    @api.depends('date_start', 'date_end')
+    def _compute_duration(self):
+        for order in self:
+            if order.date_start and order.date_end:
+                duration = (order.date_end - order.date_start).total_seconds() / 3600
+                order.duration = round(duration, 2)
+            else:
+                order.duration = 0.0
 
     
     @api.onchange("order_line_ids")
