@@ -27,6 +27,7 @@
                         <group name="group_top">
                             <group>
                                 <field name="priority" widget="priority"/>
+                                <field name="company_id"/>
                                 <field name="planned_start_datetime"/>
                                 <field name="deadline_datetime"/>
                                 <field name="planned_duration" widget="float_time"/>

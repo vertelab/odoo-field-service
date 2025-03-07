@@ -18,7 +18,12 @@ class FieldServiceOrder(models.Model):
     ], string='Priority', default='1')
     stage_id = fields.Many2one('fieldservice.stage', string='Stage', tracking=True,
                                group_expand='_read_group_stage_ids', default=lambda self: self.env['fieldservice.stage'].search([], limit=1))
-    
+    company_id = fields.Many2one(
+        'res.company', 
+        string="Company", 
+        required=True, 
+        default=lambda self: self.env.company
+    )
     planned_start_datetime = fields.Datetime(string='Planned Start')
     deadline_datetime = fields.Datetime(string='Deadline')
     planned_duration = fields.Float(string='Planned Duration', help='Duration in hours')

@@ -24,7 +24,11 @@ class FieldServiceOrderLine(models.Model):
     # date_month_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False)
     # date_year_start_char = fields.Char(compute="compute_from_start",store=True, readonly=False)
     duration = fields.Float(string='Duration', compute='_compute_duration', store=True, help='Duration in hours')
-
+    company_id = fields.Many2one(
+        'res.company', 
+        string="Company", 
+        related="order_id.company_id"
+    )
     custom_state = fields.Selection([
         ('green', 'Green'),
         ('yellow', 'Yellow'),
