@@ -26,11 +26,13 @@
                         </div>
                         <group name="group_top">
                             <group>
+                                <field name="order_number"/>
                                 <field name="priority" widget="priority"/>
                                 <field name="company_id"/>
                                 <field name="planned_start_datetime"/>
                                 <field name="deadline_datetime"/>
                                 <field name="planned_duration" widget="float_time"/>
+                                
                             </group>
                             <group>
                                 <field name="requested_employee_ids" widget="many2many_tags"/>

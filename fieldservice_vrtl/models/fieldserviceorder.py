@@ -8,6 +8,7 @@ class FieldServiceOrder(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Name', required=True, copy=False, readonly=False)
+    order_number = fields.Char(string="Reference Number", default=lambda self: _('New'), readonly=True, copy=False, required = True)
     description = fields.Text(string='Problem Description')
     resolution = fields.Text(string='Resolution')
     priority = fields.Selection([
@@ -38,6 +39,7 @@ class FieldServiceOrder(models.Model):
     partner_id = fields.Many2one('res.partner', string="Partner",)
     # partner_status = fields.Selection([('legal_owner', 'Legal Owner'),
     #                                    ], string="Status", default='legal_owner')
+    
 
 
     order_line_ids = fields.One2many('fieldservice.order.line', 'order_id', string='Order Lines')
@@ -50,6 +52,13 @@ class FieldServiceOrder(models.Model):
     product_number = fields.Char(string='Product Number', help="The product number or part number")
     marking = fields.Char(string='Marking', help="Any specific marking or label on the product")
     purchase_date = fields.Date(string='Purchase Date', help="The date when the product was purchased")
+
+    @api.model
+    def create(self, vals):
+       """Automatically generate a reference number for new orders."""
+       if vals.get('order_number', _('New')) == _('New'):
+           vals['order_number'] = self.env['ir.sequence'].next_by_code('fieldservice.order') or _('New')
+       return super(FieldServiceOrder, self).create(vals)
 
     @api.depends('date_start', 'date_end')
     def _compute_duration(self):
@@ -73,8 +82,6 @@ class FieldServiceOrder(models.Model):
                     self.date_start = earliest_date
 
    
-
-
     @api.model
     def _read_group_stage_ids(self, stages = False, domain = False, order = False):
         stage_ids = self.env['fieldservice.stage'].search([])
