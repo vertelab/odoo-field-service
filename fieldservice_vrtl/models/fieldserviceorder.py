@@ -1,6 +1,8 @@
 from odoo import api, fields, models, _
 from datetime import date as date_type
 from datetime import datetime, timedelta
+import logging
+_logger = logging.getLogger(__name__)
 
 class FieldServiceOrder(models.Model):
     _name = 'fieldservice.order'
@@ -45,12 +47,16 @@ class FieldServiceOrder(models.Model):
     order_line_ids = fields.One2many('fieldservice.order.line', 'order_id', string='Order Lines')
     stakeholder_ids = fields.One2many('fieldservice.stakeholder', 'order_id', string='Stakeholders')
 
-    @api.model
-    def create(self, vals):
-       """Automatically generate a reference number for new orders."""
-       if vals.get('order_number', _('New')) == _('New'):
-           vals['order_number'] = self.env['ir.sequence'].next_by_code('fieldservice.order') or _('New')
-       return super(FieldServiceOrder, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            _logger.info(f"Creating order with initial vals: {vals}")
+            if vals.get('order_number', _('New')) == _('New'):
+                new_number = self.env['ir.sequence'].next_by_code('fieldservice.order')
+                _logger.info(f"Generated new number: {new_number}")
+                vals['order_number'] = new_number or _('New')
+            _logger.info(f"Final vals for creation: {vals}")
+        return super(FieldServiceOrder, self).create(vals_list)
 
     @api.depends('date_start', 'date_end')
     def _compute_duration(self):
