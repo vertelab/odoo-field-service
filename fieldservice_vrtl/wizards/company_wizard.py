@@ -22,15 +22,12 @@ class ChangeCompanyWizard(models.TransientModel):
             record = self.env[self.model].sudo().browse(self.res_id)
             if record.exists() and 'company_id' in record._fields:
                 try:
-                    # Ändra företaget direkt utan att använda with_company eller with_context
                     record.company_id = self.company_id.id
                 except Exception as e:
                     raise UserError(f"Could not change company: {str(e)}")
 
-        # Hämta bas-URL:en
         base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         
-        # Konstruera URL:en för Field Service-vyn
         url = f"{base_url}/web#model=fieldservice.order&view_type=kanban"
 
         return {
