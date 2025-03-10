@@ -1,5 +1,5 @@
 {
-    'name': 'Field Service PWA Support',
+    'name': 'Field Service: PWA Support',
     'version': '1.0',
     'category': 'Technical',
     'depends': ['base', 'web'],

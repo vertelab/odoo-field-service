@@ -1,6 +1,6 @@
 {
-    'name': 'Field Service Sale',
-    'version': '18.0.1.0.0',
+    'name': 'Field Service: Sale',
+    'version': '1.0',
     'summary': 'Integrate Field Service with Sales',
     'category': 'Services/Field Service',
 
