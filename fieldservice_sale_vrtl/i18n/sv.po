@@ -1,0 +1,70 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fieldservice_sale_vrtl
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20250303\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-10 14:48+0000\n"
+"PO-Revision-Date: 2025-03-10 14:48+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fieldservice_sale_vrtl
+#: model:ir.model.fields,field_description:fieldservice_sale_vrtl.field_product_product__service_tracking
+#: model:ir.model.fields,field_description:fieldservice_sale_vrtl.field_product_template__service_tracking
+msgid "Create on Order"
+msgstr "Skapa på order"
+
+#. module: fieldservice_sale_vrtl
+#: model:ir.model,name:fieldservice_sale_vrtl.model_fieldservice_order
+msgid "Field Service Order"
+msgstr "Beställning av fältservice"
+
+#. module: fieldservice_sale_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_sale_vrtl.selection__product_template__service_tracking__fieldservice_only
+#: model_terms:ir.ui.view,arch_db:fieldservice_sale_vrtl.view_order_form_inherit_fieldservice
+msgid "Fieldservice"
+msgstr "Fältservice"
+
+#. module: fieldservice_sale_vrtl
+#: model:ir.model.fields,field_description:fieldservice_sale_vrtl.field_sale_order_line__fieldservice_order_id
+msgid "Fieldservice Order"
+msgstr "Fieldservice Beställning"
+
+#. module: fieldservice_sale_vrtl
+#: model:ir.model.fields,field_description:fieldservice_sale_vrtl.field_sale_order__fieldservice_count
+msgid "Fieldservice Orders"
+msgstr "Beställningar Fieldservice"
+
+#. module: fieldservice_sale_vrtl
+#: model:ir.model.fields,field_description:fieldservice_sale_vrtl.field_fieldservice_order__my_sale_orders_filter
+msgid "My Sale Orders Filter"
+msgstr "Filter för mina försäljningsorder"
+
+#. module: fieldservice_sale_vrtl
+#: model:ir.model,name:fieldservice_sale_vrtl.model_product_template
+msgid "Product"
+msgstr "Produkt"
+
+#. module: fieldservice_sale_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_sale_vrtl.view_fieldservice_order_form_inherit_sale
+msgid "Sale Order"
+msgstr "Försäljningsorder"
+
+#. module: fieldservice_sale_vrtl
+#: model:ir.model,name:fieldservice_sale_vrtl.model_sale_order
+#: model:ir.model.fields,field_description:fieldservice_sale_vrtl.field_fieldservice_order__sale_order_id
+msgid "Sales Order"
+msgstr "Order"
+
+#. module: fieldservice_sale_vrtl
+#: model:ir.model,name:fieldservice_sale_vrtl.model_sale_order_line
+#: model:ir.model.fields,field_description:fieldservice_sale_vrtl.field_fieldservice_order__sale_order_line_id
+msgid "Sales Order Line"
+msgstr "Orderrad"
