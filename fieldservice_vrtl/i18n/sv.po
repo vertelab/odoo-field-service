@@ -1,0 +1,756 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fieldservice_vrtl
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20250303\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-10 12:51+0000\n"
+"PO-Revision-Date: 2025-03-10 14:16+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
+msgid "<span class=\"o_stat_text\">Calendar</span>"
+msgstr "<span class=\"o_stat_text\">Kalender</span>"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
+msgid "<span class=\"o_stat_text\">Kanban</span>"
+msgstr "<span class=\"o_stat_text\">Kanban</span>"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_needaction
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__message_needaction
+msgid "Action Needed"
+msgstr "Åtgärder krävs"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__activity_ids
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__activity_ids
+msgid "Activities"
+msgstr "Aktiviteter"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__activity_exception_decoration
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Aktivitet Undantag Dekoration"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__activity_state
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__activity_state
+msgid "Activity State"
+msgstr "Aktivitet Stat"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__activity_type_icon
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Aktivitetstyp Ikon"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__date_end
+msgid "Actual End"
+msgstr "Nuvarande slut"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__date_start
+msgid "Actual Start"
+msgstr "Faktisk start"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__marking
+msgid "Any specific marking or label on the product"
+msgstr "Eventuell särskild märkning eller etikett på produkten"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_attachment_count
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__message_attachment_count
+msgid "Attachment Count"
+msgstr "Antal bifogade filer"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__brand
+msgid "Brand"
+msgstr "Varumärke"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_change_company_wizard_form
+msgid "Cancel"
+msgstr "Avbryt"
+
+#. module: fieldservice_vrtl
+#: model:fieldservice.stage,name:fieldservice_vrtl.fieldservice_stage_cancelled
+msgid "Cancelled"
+msgstr "Avbruten"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_change_company_wizard_form
+msgid "Change"
+msgstr "Förändring"
+
+#. module: fieldservice_vrtl
+#: model:ir.actions.act_window,name:fieldservice_vrtl.action_change_company_wizard
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_change_company_wizard_form
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
+msgid "Change Company"
+msgstr "Förändra företaget"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__is_closed
+msgid "Closed Stage"
+msgstr "Stängd scen"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__company_id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__company_id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__company_id
+msgid "Company"
+msgstr "Företag"
+
+#. module: fieldservice_vrtl
+#: model:fieldservice.stage,name:fieldservice_vrtl.fieldservice_stage_completed
+msgid "Completed"
+msgstr "Färdigställd"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.actions.act_window,help:fieldservice_vrtl.action_fieldservice_order
+msgid "Create a new field service order"
+msgstr "Skapa en ny order för fältservice"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__create_uid
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__create_uid
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__create_uid
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__create_uid
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stakeholder__create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__create_date
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__create_date
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__create_date
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__create_date
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stakeholder__create_date
+msgid "Created on"
+msgstr "Skapad på"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__custom_state
+msgid "Custom State"
+msgstr "Anpassad stat"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__date_day_start_char
+msgid "Date Day Start Char"
+msgstr "Datum Dag Start Char"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__date_week_start_char
+msgid "Date Week Start Char"
+msgstr "Datum Veckostart Char"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_line_search
+msgid "Days"
+msgstr "Dagar"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__deadline_datetime
+msgid "Deadline"
+msgstr "Tidsfrist"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__description
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
+msgid "Description"
+msgstr "Beskrivning"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__display_name
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__display_name
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__display_name
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__display_name
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stakeholder__display_name
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__duration
+msgid "Duration"
+msgstr "Varaktighet"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__planned_duration
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order_line__duration
+msgid "Duration in hours"
+msgstr "Varaktighet i timmar"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__mail_template_id
+msgid "Email Template"
+msgstr "Mall för e-post"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__date_end
+msgid "End Date"
+msgstr "Slutdatum"
+
+#. module: fieldservice_vrtl
+#: model:ir.ui.menu,name:fieldservice_vrtl.menu_fieldservice_root
+msgid "Field Service"
+msgstr "Fältservice"
+
+#. module: fieldservice_vrtl
+#: model:ir.actions.act_window,name:fieldservice_vrtl.action_fieldservice_order_line
+msgid "Field Service Kalender"
+msgstr "Fältservice Kalender"
+
+#. module: fieldservice_vrtl
+#: model:res.groups,name:fieldservice_vrtl.fieldservice_group_manager
+msgid "Field Service Manager"
+msgstr "Chef för fältservice"
+
+#. module: fieldservice_vrtl
+#: model:ir.model,name:fieldservice_vrtl.model_fieldservice_order
+msgid "Field Service Order"
+msgstr "Beställning av fältservice"
+
+#. module: fieldservice_vrtl
+#: model:ir.model,name:fieldservice_vrtl.model_fieldservice_order_line
+msgid "Field Service Order Line"
+msgstr "Beställningslinje för fältservice"
+
+#. module: fieldservice_vrtl
+#: model:ir.actions.act_window,name:fieldservice_vrtl.action_fieldservice_order
+msgid "Field Service Orders"
+msgstr "Beställningar av fältservice"
+
+#. module: fieldservice_vrtl
+#: model:ir.model,name:fieldservice_vrtl.model_fieldservice_stage
+msgid "Field Service Stage"
+msgstr "Fälttjänst Stage"
+
+#. module: fieldservice_vrtl
+#: model:ir.model,name:fieldservice_vrtl.model_fieldservice_stakeholder
+msgid "Field Service Stakholder"
+msgstr "Fältservice Stakholder"
+
+#. module: fieldservice_vrtl
+#: model:res.groups,name:fieldservice_vrtl.fieldservice_group_user
+msgid "Field Service User"
+msgstr "Användare av fältservice"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__fold
+msgid "Folded in Kanban"
+msgstr "Fälld i Kanban"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_follower_ids
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__message_follower_ids
+msgid "Followers"
+msgstr "Följare"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_partner_ids
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Följare (Partners)"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__activity_type_icon
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order_line__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font awesome-ikon, t.ex. fa-tasks"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_vrtl.selection__fieldservice_order_line__custom_state__green
+msgid "Green"
+msgstr "Grön"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_line_search
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
+msgid "Group By"
+msgstr "Grupp av"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__has_message
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__has_message
+msgid "Has Message"
+msgstr "Har meddelande"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_vrtl.selection__fieldservice_order__priority__2
+msgid "High"
+msgstr "Hög"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stakeholder__id
+msgid "ID"
+msgstr "ID"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__activity_exception_icon
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__activity_exception_icon
+msgid "Icon"
+msgstr "Ikon"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__activity_exception_icon
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order_line__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Ikon för att indikera en undantagsaktivitet."
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__message_needaction
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order_line__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Om den är markerad kräver nya meddelanden din uppmärksamhet."
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__message_has_error
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__message_has_sms_error
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order_line__message_has_error
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order_line__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Om kryssrutan är markerad får vissa meddelanden ett leveransfel."
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__image_ids
+msgid "Images"
+msgstr "Bilder"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
+msgid "Instructions"
+msgstr "Instruktioner"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_is_follower
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__message_is_follower
+msgid "Is Follower"
+msgstr "Är följare"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__write_uid
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__write_uid
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__write_uid
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__write_uid
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stakeholder__write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__write_date
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__write_date
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__write_date
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__write_date
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stakeholder__write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad den"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
+msgid "Late Orders"
+msgstr "Sena beställningar"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_vrtl.selection__fieldservice_stakeholder__partner_status__legal_owner
+msgid "Legal Owner"
+msgstr "Juridisk ägare"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__location_instructions
+msgid "Location Instructions"
+msgstr "Instruktioner för placering"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_vrtl.selection__fieldservice_order__priority__0
+msgid "Low"
+msgstr "Låg"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__marking
+msgid "Marking"
+msgstr "Märkning"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_vrtl.selection__fieldservice_order__priority__1
+msgid "Medium"
+msgstr "Medium"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_has_error
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__message_has_error
+msgid "Message Delivery error"
+msgstr "Fel vid leverans av meddelande"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_ids
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__message_ids
+msgid "Messages"
+msgstr "Meddelanden"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__model
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__model
+msgid "Model"
+msgstr "Modell"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__my_activity_date_deadline
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Min aktivitet Deadline"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
+msgid "My Orders"
+msgstr "Mina beställningar"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__name
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stakeholder__name
+msgid "Name"
+msgstr "Namn"
+
+#. module: fieldservice_vrtl
+#. odoo-python
+#: code:addons/fieldservice_vrtl/models/fieldserviceorder.py:0
+#: model:fieldservice.stage,name:fieldservice_vrtl.fieldservice_stage_new
+msgid "New"
+msgstr "Ny"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__activity_calendar_event_id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Nästa aktivitet i aktivitetskalendern"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__activity_date_deadline
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Deadline för nästa aktivitet"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__activity_summary
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__activity_summary
+msgid "Next Activity Summary"
+msgstr "Nästa aktivitetsöversikt"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__activity_type_id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__activity_type_id
+msgid "Next Activity Type"
+msgstr "Nästa aktivitetstyp"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_needaction_counter
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Antal åtgärder"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_has_error_counter
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__message_has_error_counter
+msgid "Number of errors"
+msgstr "Antal fel"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__message_needaction_counter
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order_line__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Antal meddelanden som kräver åtgärder"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__message_has_error_counter
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order_line__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Antal meddelanden med leveransfel"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
+msgid "Object Description"
+msgstr "Objektbeskrivning"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
+msgid "Ocassions"
+msgstr "Tillfällen"
+
+#. module: fieldservice_vrtl
+#: model:ir.ui.menu,name:fieldservice_vrtl.menu_fieldservice_order_line
+msgid "Occasions"
+msgstr "Tillfälligheter"
+
+#. module: fieldservice_vrtl
+#: model:fieldservice.stage,name:fieldservice_vrtl.fieldservice_stage_ongoing
+msgid "Ongoing"
+msgstr "Pågående"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__order_line_ids
+msgid "Order Lines"
+msgstr "Beställningslinjer"
+
+#. module: fieldservice_vrtl
+#: model:ir.ui.menu,name:fieldservice_vrtl.menu_fieldservice_order
+msgid "Orders"
+msgstr "Beställningar"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__partner_id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stakeholder__partner_id
+msgid "Partner"
+msgstr "Partner"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__planned_duration
+msgid "Planned Duration"
+msgstr "Planerad löptid"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__planned_start_datetime
+msgid "Planned Start"
+msgstr "Planerad start"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
+msgid "Planning"
+msgstr "Planering"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_line_form_planning
+msgid "Planning Details"
+msgstr "Planering av detaljer"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__priority
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
+msgid "Priority"
+msgstr "Prioritet"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__description
+msgid "Problem Description"
+msgstr "Beskrivning av problemet"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__product_number
+msgid "Product Number"
+msgstr "Produktnummer"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__purchase_date
+msgid "Purchase Date"
+msgstr "Köpdatum"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__rating_ids
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__rating_ids
+msgid "Ratings"
+msgstr "Betyg"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_vrtl.selection__fieldservice_order_line__custom_state__red
+msgid "Red"
+msgstr "Röd"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__order_number
+msgid "Reference Number"
+msgstr "Referensnummer"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
+msgid "Reporting"
+msgstr "Rapportering"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_line_form_reporting
+msgid "Reporting Details"
+msgstr "Rapporteringsdetaljer"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__requested_employee_ids
+msgid "Requested Employees"
+msgstr "Önskade medarbetare"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__resolution
+msgid "Resolution"
+msgstr "Upplösning"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__res_id
+msgid "Resource ID"
+msgstr "Resurs-ID"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__activity_user_id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__activity_user_id
+msgid "Responsible User"
+msgstr "Ansvarig användare"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_has_sms_error
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Fel vid leverans av SMS"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__sms_template_id
+msgid "SMS Template"
+msgstr "SMS mall"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__sequence
+msgid "Sequence"
+msgstr "Sekvens"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__serial_number
+msgid "Serial Number"
+msgstr "Serienummer"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__order_id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stakeholder__order_id
+msgid "Service Order"
+msgstr "Beställning av tjänster"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__stage_id
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__stage_id
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
+msgid "Stage"
+msgstr "Läge"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__name
+msgid "Stage Name"
+msgstr "Scenens namn"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
+msgid "Stakeholder"
+msgstr "Intressent"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__stakeholder_ids
+msgid "Stakeholders"
+msgstr "Intressenter"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__date_start
+msgid "Start Date"
+msgstr "Startdatum"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stakeholder__partner_status
+msgid "Status"
+msgstr "Status"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__activity_state
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order_line__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Status baserad på aktiviteter\n"
+"Försenad: Förfallodatumet har redan passerats\n"
+"Idag: Aktivitetsdatumet är idag\n"
+"Planerad: Framtida aktiviteter."
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__purchase_date
+msgid "The date when the product was purchased"
+msgstr "Datum då produkten köptes"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__brand
+msgid "The manufacturer or brand of the product"
+msgstr "Produktens tillverkare eller varumärke"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__model
+msgid "The model name or number of the product"
+msgstr "Produktens modellnamn eller nummer"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__product_number
+msgid "The product number or part number"
+msgstr "Produktnummer eller artikelnummer"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__serial_number
+msgid "The unique serial number of the product"
+msgstr "Produktens unika serienummer"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_line_kanban
+msgid "Total Duration"
+msgstr "Total varaktighet"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__activity_exception_decoration
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order_line__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Typ av undantagsaktivitet som registreras."
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_vrtl.selection__fieldservice_order__priority__3
+msgid "Urgent"
+msgstr "Brådskande"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__website_message_ids
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__website_message_ids
+msgid "Website Messages"
+msgstr "Webbplatsmeddelanden"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__website_message_ids
+#: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order_line__website_message_ids
+msgid "Website communication history"
+msgstr "Webbplatsens kommunikationshistorik"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_line_search
+msgid "Week"
+msgstr "Veckan"
+
+#. module: fieldservice_vrtl
+#: model:ir.model,name:fieldservice_vrtl.model_change_company_wizard
+msgid "Wizard to change company on Field Service Order"
+msgstr "Wizard för att ändra företag på Field Service Order"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__work_instructions
+msgid "Work Instructions"
+msgstr "Arbetsinstruktioner"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_vrtl.selection__fieldservice_order_line__custom_state__yellow
+msgid "Yellow"
+msgstr "Gul"

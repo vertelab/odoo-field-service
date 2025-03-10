@@ -10,6 +10,7 @@ class FieldServiceOrderLineEmployee(models.Model):
     # order_ids = fields.One2many('fieldservice.order.line','order_id', string='Service Order', required=True)
     description = fields.Text(string='Description')
     name = fields.Char(compute="compute_name", store=True, readonly=False)
+
     
 
     @api.depends('employee_id', 'employee_id.name')

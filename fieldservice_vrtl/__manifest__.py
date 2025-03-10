@@ -1,5 +1,5 @@
 {
-    'name': "Fieldservice Vertel",
+    'name': "Field service: Vertel",
     'version': '1.0',
     'depends': ['mail','base','hr'],
     'author': "Vertel AB",

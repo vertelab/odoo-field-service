@@ -46,6 +46,14 @@ class FieldServiceOrder(models.Model):
 
     order_line_ids = fields.One2many('fieldservice.order.line', 'order_id', string='Order Lines')
     stakeholder_ids = fields.One2many('fieldservice.stakeholder', 'order_id', string='Stakeholders')
+    
+    ##Object description
+    brand = fields.Char(string='Brand', help="The manufacturer or brand of the product")
+    model = fields.Char(string='Model', help="The model name or number of the product")
+    serial_number = fields.Char(string='Serial Number', help="The unique serial number of the product")
+    product_number = fields.Char(string='Product Number', help="The product number or part number")
+    marking = fields.Char(string='Marking', help="Any specific marking or label on the product")
+    purchase_date = fields.Date(string='Purchase Date', help="The date when the product was purchased")
 
     @api.model_create_multi
     def create(self, vals_list):

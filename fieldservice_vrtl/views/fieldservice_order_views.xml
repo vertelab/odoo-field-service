@@ -7,15 +7,14 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-
                         <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
+                        <button name="%(action_change_company_wizard)d" string="Change Company" type="action" class="btn-primary"/>
                     </header>
                     <sheet class="oe_form_sheet_width">
                         <div class="oe_button_box" name="button_box" groups="base.group_user">
                             <button name="open_order_lines_calendar" type="object" class="oe_stat_button" icon="fa-list-alt">
                                 <span class="o_stat_text">Calendar</span>
                             </button>
-                            <button name="%(action_change_company_wizard)d" string="Change Company" type="action" class="btn-primary"/>
                             <button name="open_order_lines_kanban" type="object" class="oe_stat_button" icon="fa-th-large">
                                 <span class="o_stat_text">Kanban</span>
                             </button>
@@ -43,8 +42,19 @@
                         </group>
                         <notebook name="Main_order_notebook">
                             <page string="Description">
-                                <field name="description"/>
+                                 <field name="description"/>
                             </page>
+                            <page string="Object Description">
+                                  <group>
+                                    <field name="brand"/>
+                                    <field name="model"/>
+                                    <field name="serial_number"/>
+                                    <field name="product_number"/>
+                                    <field name="marking"/>
+                                    <field name="purchase_date"/>
+                                 </group>
+                            </page>
+
                             <page string="Instructions">
                                 <group>
                                     <field name="work_instructions"/>

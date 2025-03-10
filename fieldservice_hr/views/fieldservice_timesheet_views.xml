@@ -34,7 +34,7 @@
             <xpath expr="//notebook[@name='planning_notebook']" position="inside">
                     <page string="Employee">
                     <group>
-                        <field name="fieldservice_order_line_employee_ids" mode="list">
+                        <field name="fieldservice_order_line_employee_ids" nolabel="1" mode="list">
                             <list editable="bottom">
                                 <field name = "employee_id"/>
                             </list>
