@@ -20,7 +20,7 @@
     ],
 
      "demo": [
-         'demo/demo_employees.xml'
+         'demo/demo_employees.xml',
          'demo/demo_work_orders.xml'
      ],
 }

@@ -101,38 +101,4 @@ class FieldServiceOrder(models.Model):
             },
             'target': 'current',
         }
-    # def action_change_company(self):
-    #     self.ensure_one()
-    #     return {
-    #         'name': 'Change Company',
-    #         'type': 'ir.actions.act_window',
-    #         'res_model': 'res.company',
-    #         'view_mode': 'form',
-    #         'target': 'new',
-    #         'context': {'default_id': self.company_id.id},
-    #     }
 
-
-
-
-    # @api.depends('date_end')
-    # def _compute_custom_state(self):
-    #     today = fields.Date.today()
-    #     for record in self:
-    #         if record.date_end:
-    #             days_until_due = (record.date_end.date() - today).days
-    #             if days_until_due < 0:
-    #                 record.custom_state = 'overdue'
-    #             elif 0 <= days_until_due <= 5:
-    #                 record.custom_state = 'due_soon'
-    #             else:
-    #                 record.custom_state = 'planned'
-    #         else:
-    #             record.custom_state = 'planned'       
-    # 
-    # @api.depends('date_end')
-    # def _compute_custom_state(self):
-    #     _logger.warning(f"{self.env.context=}")
-    #     max_duration = 40
-    #     for record in self:
-    #         duration_for_day = self.env[]

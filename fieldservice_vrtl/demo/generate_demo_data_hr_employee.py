@@ -39,7 +39,7 @@ def generate_demo_data(file_name, num_records):
     # Create the root <odoo> element
     root = ET.Element("odoo")
 
-    job_refs = ["hr.job_developer", "hr.job_consultant", "hr.job_hrm", "hr.job_cto", "hr.job_ceo", "hr.	hr.job_marketing", "hr.job_trainee"]
+    job_refs = ["hr.job_developer", "hr.job_consultant", "hr.job_hrm", "hr.job_cto", "hr.job_ceo", "hr.	hr.job_marketing", "hr.job_trainer"]
 
     # Generate unique names
     unique_names = generate_unique_names(num_records)

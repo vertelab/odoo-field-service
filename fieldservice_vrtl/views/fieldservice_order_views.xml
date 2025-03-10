@@ -15,10 +15,10 @@
                             <button name="open_order_lines_calendar" type="object" class="oe_stat_button" icon="fa-list-alt">
                                 <span class="o_stat_text">Calendar</span>
                             </button>
+                            <button name="%(action_change_company_wizard)d" string="Change Company" type="action" class="btn-primary"/>
                             <button name="open_order_lines_kanban" type="object" class="oe_stat_button" icon="fa-th-large">
                                 <span class="o_stat_text">Kanban</span>
                             </button>
-                            <button name="%(action_change_company_wizard)d" string="Change Company" type="action" class="btn-primary" groups="base.group_multi_company"/>
                         </div>
                         <div class="oe_title">
                             <h1>
@@ -120,6 +120,8 @@
                 </kanban>
             </field>
         </record>
+
+
 
         <record id="view_fieldservice_order_search" model="ir.ui.view">
             <field name="name">fieldservice.order.search</field>
