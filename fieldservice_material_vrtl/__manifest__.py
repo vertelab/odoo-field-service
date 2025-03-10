@@ -1,5 +1,5 @@
 {
-    'name': 'Field Service Stock Picking',
+    'name': 'Field Service: Stock Picking',
     'version': '1.0',
     'depends': ['fieldservice_vrtl', 'stock'],
     'license': 'LGPL-3',

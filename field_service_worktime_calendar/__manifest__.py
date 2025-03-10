@@ -22,8 +22,8 @@
 # https://www.odoo.com/documentation/14.0/reference/module.html
 #
 {
-    'name': 'Field Service Worktime Calendar',
-    'version': '18.0.0.0.0',
+    'name': 'Field Service: Worktime Calendar',
+    'version': '1.0',
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
         subtitle on modules listing or apps.odoo.com""",
