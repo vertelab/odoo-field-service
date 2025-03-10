@@ -1,0 +1,604 @@
+<?xml version="1.0" ?>
+<odoo>
+  <record id="test_001" model="hr.employee">
+    <field name="name">William Wright</field>
+    <field name="private_phone">+1 577-113-8660</field>
+    <field name="private_email">william.wright@example.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_002" model="hr.employee">
+    <field name="name">David Smith</field>
+    <field name="work_phone">+1 808-308-6400</field>
+    <field name="work_email">david.smith@example.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+
+  <record id="test_003" model="hr.employee">
+    <field name="name">Michael Walker</field>
+    <field name="private_phone">+1 360-845-5130</field>
+    <field name="private_email">michael.walker@example.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_004" model="hr.employee">
+    <field name="name">Emily Anderson</field>
+    <field name="private_phone">+1 658-200-6596</field>
+    <field name="private_email">emily.anderson@example.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_005" model="hr.employee">
+    <field name="name">Robert Brown</field>
+    <field name="private_phone">+1 231-185-1469</field>
+    <field name="private_email">robert.brown@testmail.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_006" model="hr.employee">
+    <field name="name">Emily Wilson</field>
+    <field name="private_phone">+1 521-579-9403</field>
+    <field name="private_email">emily.wilson@example.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_007" model="hr.employee">
+    <field name="name">David Walker</field>
+    <field name="work_phone">+1 804-530-1908</field>
+    <field name="work_phone">david.walker@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_008" model="hr.employee">
+    <field name="name">David Anderson</field>
+    <field name="private_phone">+1 759-421-2007</field>
+    <field name="private_email">david.anderson@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_009" model="hr.employee">
+    <field name="name">Michael Johnson</field>
+    <field name="private_phone">+1 804-105-5133</field>
+    <field name="private_email">michael.johnson@testmail.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_010" model="hr.employee">
+    <field name="name">William Clark</field>
+    <field name="private_phone">+1 744-965-2345</field>
+    <field name="private_email">william.clark@demomail.net</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_011" model="hr.employee">
+    <field name="name">John Wilson</field>
+    <field name="private_phone">+1 225-507-7109</field>
+    <field name="private_email">john.wilson@example.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_012" model="hr.employee">
+    <field name="name">Lisa Brown</field>
+    <field name="private_phone">+1 299-707-6482</field>
+    <field name="private_email">lisa.brown@example.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_013" model="hr.employee">
+    <field name="name">Lisa Anderson</field>
+    <field name="private_phone">+1 948-574-9629</field>
+    <field name="private_email">lisa.anderson@example.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_014" model="hr.employee">
+    <field name="name">Emma Smith</field>
+    <field name="private_phone">+1 783-851-2234</field>
+    <field name="private_email">emma.smith@demomail.net</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_015" model="hr.employee">
+    <field name="name">John Brown</field>
+    <field name="private_phone">+1 150-438-7955</field>
+    <field name="private_email">john.brown@testmail.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_016" model="hr.employee">
+    <field name="name">Jane Smith</field>
+    <field name="private_phone">+1 429-122-3191</field>
+    <field name="private_email">jane.smith@demomail.net</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_017" model="hr.employee">
+    <field name="name">Lisa Wright</field>
+    <field name="private_phone">+1 916-114-3395</field>
+    <field name="private_email">lisa.wright@demomail.net</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_018" model="hr.employee">
+    <field name="name">Jane Taylor</field>
+    <field name="private_phone">+1 755-349-5762</field>
+    <field name="private_email">jane.taylor@example.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_019" model="hr.employee">
+    <field name="name">Emily Taylor</field>
+    <field name="private_phone">+1 598-122-6383</field>
+    <field name="private_email">emily.taylor@testmail.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_020" model="hr.employee">
+    <field name="name">Sarah Brown</field>
+    <field name="private_phone">+1 909-342-4704</field>
+    <field name="private_email">sarah.brown@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_021" model="hr.employee">
+    <field name="name">Michael Clark</field>
+    <field name="private_phone">+1 546-855-5256</field>
+    <field name="private_email">michael.clark@example.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_022" model="hr.employee">
+    <field name="name">Jane Evans</field>
+    <field name="private_phone">+1 629-949-1112</field>
+    <field name="private_email">jane.evans@testmail.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_023" model="hr.employee">
+    <field name="name">John Clark</field>
+    <field name="private_phone">+1 411-790-2682</field>
+    <field name="private_email">john.clark@testmail.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_024" model="hr.employee">
+    <field name="name">Lisa Clark</field>
+    <field name="private_phone">+1 828-988-5674</field>
+    <field name="private_email">lisa.clark@testmail.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_025" model="hr.employee">
+    <field name="name">William Johnson</field>
+    <field name="private_phone">+1 265-152-6740</field>
+    <field name="private_email">william.johnson@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_026" model="hr.employee">
+    <field name="name">William Smith</field>
+    <field name="private_phone">+1 354-168-1377</field>
+    <field name="private_email">william.smith@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_027" model="hr.employee">
+    <field name="name">Lisa Johnson</field>
+    <field name="private_phone">+1 798-907-1449</field>
+    <field name="private_email">lisa.johnson@testmail.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_028" model="hr.employee">
+    <field name="name">Emma Clark</field>
+    <field name="private_phone">+1 864-803-1456</field>
+    <field name="private_email">emma.clark@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_029" model="hr.employee">
+    <field name="name">Sarah Evans</field>
+    <field name="private_phone">+1 576-621-3274</field>
+    <field name="private_email">sarah.evans@testmail.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_030" model="hr.employee">
+    <field name="name">Emily Evans</field>
+    <field name="private_phone">+1 842-656-9566</field>
+    <field name="private_email">emily.evans@demomail.net</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_031" model="hr.employee">
+    <field name="name">Emily Walker</field>
+    <field name="private_phone">+1 977-107-1379</field>
+    <field name="private_email">emily.walker@demomail.net</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_032" model="hr.employee">
+    <field name="name">Michael Anderson</field>
+    <field name="private_phone">+1 450-607-1134</field>
+    <field name="private_email">michael.anderson@demomail.net</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_033" model="hr.employee">
+    <field name="name">William Wilson</field>
+    <field name="private_phone">+1 484-635-5596</field>
+    <field name="private_email">william.wilson@example.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_034" model="hr.employee">
+    <field name="name">Sarah Wright</field>
+    <field name="private_phone">+1 591-105-5600</field>
+    <field name="private_email">sarah.wright@demomail.net</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_035" model="hr.employee">
+    <field name="name">Michael Taylor</field>
+    <field name="private_phone">+1 264-129-1029</field>
+    <field name="private_email">michael.taylor@testmail.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_036" model="hr.employee">
+    <field name="name">Lisa Evans</field>
+    <field name="private_phone">+1 511-253-3148</field>
+    <field name="private_email">lisa.evans@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_037" model="hr.employee">
+    <field name="name">Emily Brown</field>
+    <field name="private_phone">+1 260-271-9824</field>
+    <field name="private_email">emily.brown@testmail.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_038" model="hr.employee">
+    <field name="name">Emily Smith</field>
+    <field name="private_phone">+1 723-367-8783</field>
+    <field name="private_email">emily.smith@testmail.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_039" model="hr.employee">
+    <field name="name">Jane Brown</field>
+    <field name="private_phone">+1 413-705-8353</field>
+    <field name="private_email">jane.brown@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_040" model="hr.employee">
+    <field name="name">William Taylor</field>
+    <field name="private_phone">+1 490-840-4466</field>
+    <field name="private_email">william.taylor@demomail.net</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_041" model="hr.employee">
+    <field name="name">David Brown</field>
+    <field name="private_phone">+1 616-192-9303</field>
+    <field name="private_email">david.brown@example.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_042" model="hr.employee">
+    <field name="name">William Brown</field>
+    <field name="private_phone">+1 726-225-3523</field>
+    <field name="private_email">william.brown@testmail.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_043" model="hr.employee">
+    <field name="name">Emily Wright</field>
+    <field name="private_phone">+1 947-197-8305</field>
+    <field name="private_email">emily.wright@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_044" model="hr.employee">
+    <field name="name">John Taylor</field>
+    <field name="private_phone">+1 791-912-5715</field>
+    <field name="private_email">john.taylor@demomail.net</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_045" model="hr.employee">
+    <field name="name">David Wright</field>
+    <field name="private_phone">+1 963-812-4978</field>
+    <field name="private_email">david.wright@demomail.net</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_046" model="hr.employee">
+    <field name="name">David Taylor</field>
+    <field name="private_phone">+1 406-404-2793</field>
+    <field name="private_email">david.taylor@testmail.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_047" model="hr.employee">
+    <field name="name">Robert Wilson</field>
+    <field name="private_phone">+1 265-283-3872</field>
+    <field name="private_email">robert.wilson@testmail.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_048" model="hr.employee">
+    <field name="name">John Johnson</field>
+    <field name="private_phone">+1 876-883-9828</field>
+    <field name="private_email">john.johnson@example.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_049" model="hr.employee">
+    <field name="name">Sarah Clark</field>
+    <field name="private_phone">+1 919-753-1223</field>
+    <field name="private_email">sarah.clark@testmail.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_050" model="hr.employee">
+    <field name="name">Sarah Anderson</field>
+    <field name="private_phone">+1 991-722-5298</field>
+    <field name="private_email">sarah.anderson@testmail.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_051" model="hr.employee">
+    <field name="name">Sarah Johnson</field>
+    <field name="private_phone">+1 161-716-1247</field>
+    <field name="private_email">sarah.johnson@example.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_052" model="hr.employee">
+    <field name="name">Sarah Taylor</field>
+    <field name="private_phone">+1 645-901-2297</field>
+    <field name="private_email">sarah.taylor@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_053" model="hr.employee">
+    <field name="name">Robert Walker</field>
+    <field name="private_phone">+1 169-334-6287</field>
+    <field name="private_email">robert.walker@demomail.net</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_054" model="hr.employee">
+    <field name="name">David Evans</field>
+    <field name="private_phone">+1 457-943-1470</field>
+    <field name="private_email">david.evans@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_055" model="hr.employee">
+    <field name="name">Lisa Walker</field>
+    <field name="private_phone">+1 370-837-7699</field>
+    <field name="private_email">lisa.walker@example.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_056" model="hr.employee">
+    <field name="name">Emma Johnson</field>
+    <field name="private_phone">+1 465-331-7176</field>
+    <field name="private_email">emma.johnson@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_057" model="hr.employee">
+    <field name="name">David Clark</field>
+    <field name="private_phone">+1 622-243-5507</field>
+    <field name="private_email">david.clark@testmail.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_058" model="hr.employee">
+    <field name="name">Jane Johnson</field>
+    <field name="private_phone">+1 529-326-3169</field>
+    <field name="private_email">jane.johnson@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_059" model="hr.employee">
+    <field name="name">Sarah Wilson</field>
+    <field name="private_phone">+1 191-950-3299</field>
+    <field name="private_email">sarah.wilson@example.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_060" model="hr.employee">
+    <field name="name">Emma Wright</field>
+    <field name="private_phone">+1 806-141-7748</field>
+    <field name="private_email">emma.wright@testmail.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_061" model="hr.employee">
+    <field name="name">Lisa Taylor</field>
+    <field name="private_phone">+1 780-971-8493</field>
+    <field name="private_email">lisa.taylor@testmail.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_062" model="hr.employee">
+    <field name="name">William Evans</field>
+    <field name="private_phone">+1 625-545-6517</field>
+    <field name="private_email">william.evans@demomail.net</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_063" model="hr.employee">
+    <field name="name">John Evans</field>
+    <field name="private_phone">+1 553-508-5157</field>
+    <field name="private_email">john.evans@testmail.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_064" model="hr.employee">
+    <field name="name">Emma Walker</field>
+    <field name="private_phone">+1 440-765-8384</field>
+    <field name="private_email">emma.walker@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_065" model="hr.employee">
+    <field name="name">Robert Smith</field>
+    <field name="private_phone">+1 346-648-2866</field>
+    <field name="private_email">robert.smith@demomail.net</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_066" model="hr.employee">
+    <field name="name">Emma Brown</field>
+    <field name="private_phone">+1 719-946-5933</field>
+    <field name="private_email">emma.brown@example.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_067" model="hr.employee">
+    <field name="name">Emma Anderson</field>
+    <field name="private_phone">+1 444-960-1310</field>
+    <field name="private_email">emma.anderson@testmail.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_068" model="hr.employee">
+    <field name="name">Michael Evans</field>
+    <field name="private_phone">+1 930-110-5350</field>
+    <field name="private_email">michael.evans@demomail.net</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_069" model="hr.employee">
+    <field name="name">Jane Clark</field>
+    <field name="private_phone">+1 492-250-3238</field>
+    <field name="private_email">jane.clark@testmail.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_070" model="hr.employee">
+    <field name="name">Michael Wright</field>
+    <field name="private_phone">+1 176-218-8966</field>
+    <field name="private_email">michael.wright@example.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_071" model="hr.employee">
+    <field name="name">Robert Johnson</field>
+    <field name="private_phone">+1 797-764-7149</field>
+    <field name="private_email">robert.johnson@demomail.net</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_072" model="hr.employee">
+    <field name="name">Robert Evans</field>
+    <field name="private_phone">+1 256-190-8503</field>
+    <field name="private_email">robert.evans@example.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_073" model="hr.employee">
+    <field name="name">John Smith</field>
+    <field name="private_phone">+1 659-220-4946</field>
+    <field name="private_email">john.smith@testmail.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_074" model="hr.employee">
+    <field name="name">David Wilson</field>
+    <field name="private_phone">+1 544-293-5980</field>
+    <field name="private_email">david.wilson@example.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_075" model="hr.employee">
+    <field name="name">Robert Taylor</field>
+    <field name="private_phone">+1 535-587-7808</field>
+    <field name="private_email">robert.taylor@demomail.net</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_076" model="hr.employee">
+    <field name="name">Lisa Smith</field>
+    <field name="private_phone">+1 727-478-7081</field>
+    <field name="private_email">lisa.smith@example.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_077" model="hr.employee">
+    <field name="name">Robert Wright</field>
+    <field name="private_phone">+1 292-959-5400</field>
+    <field name="private_email">robert.wright@example.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_078" model="hr.employee">
+    <field name="name">Jane Wilson</field>
+    <field name="private_phone">+1 812-795-6228</field>
+    <field name="private_email">jane.wilson@example.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_079" model="hr.employee">
+    <field name="name">John Wright</field>
+    <field name="private_phone">+1 739-245-5935</field>
+    <field name="private_email">john.wright@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_080" model="hr.employee">
+    <field name="name">Robert Clark</field>
+    <field name="private_phone">+1 555-913-9179</field>
+    <field name="private_email">robert.clark@demomail.net</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_081" model="hr.employee">
+    <field name="name">Emily Johnson</field>
+    <field name="private_phone">+1 480-200-5260</field>
+    <field name="private_email">emily.johnson@demomail.net</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_082" model="hr.employee">
+    <field name="name">Robert Anderson</field>
+    <field name="private_phone">+1 266-185-4781</field>
+    <field name="private_email">robert.anderson@example.com</field>
+    <field name="job_id" ref="hr.job_cto"/>
+  </record>
+  <record id="test_083" model="hr.employee">
+    <field name="name">Emma Wilson</field>
+    <field name="private_phone">+1 597-351-6169</field>
+    <field name="private_email">emma.wilson@demomail.net</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_084" model="hr.employee">
+    <field name="name">Emily Clark</field>
+    <field name="private_phone">+1 801-185-9917</field>
+    <field name="private_email">emily.clark@demomail.net</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_085" model="hr.employee">
+    <field name="name">William Anderson</field>
+    <field name="private_phone">+1 344-665-4995</field>
+    <field name="private_email">william.anderson@testmail.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_086" model="hr.employee">
+    <field name="name">Emma Evans</field>
+    <field name="private_phone">+1 732-231-8925</field>
+    <field name="private_email">emma.evans@testmail.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_087" model="hr.employee">
+    <field name="name">William Walker</field>
+    <field name="private_phone">+1 755-118-5168</field>
+    <field name="private_email">william.walker@testmail.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_088" model="hr.employee">
+    <field name="name">Emma Taylor</field>
+    <field name="private_phone">+1 963-973-5895</field>
+    <field name="private_email">emma.taylor@example.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_089" model="hr.employee">
+    <field name="name">John Walker</field>
+    <field name="private_phone">+1 407-613-6851</field>
+    <field name="private_email">john.walker@example.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_090" model="hr.employee">
+    <field name="name">Jane Anderson</field>
+    <field name="private_phone">+1 149-351-2307</field>
+    <field name="private_email">jane.anderson@testmail.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_091" model="hr.employee">
+    <field name="name">Michael Wilson</field>
+    <field name="private_phone">+1 332-413-8448</field>
+    <field name="private_email">michael.wilson@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_092" model="hr.employee">
+    <field name="name">Sarah Smith</field>
+    <field name="private_phone">+1 891-415-8078</field>
+    <field name="private_email">sarah.smith@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_093" model="hr.employee">
+    <field name="name">John Anderson</field>
+    <field name="private_phone">+1 102-560-5576</field>
+    <field name="private_email">john.anderson@samplecorp.org</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_094" model="hr.employee">
+    <field name="name">David Johnson</field>
+    <field name="private_phone">+1 896-930-8217</field>
+    <field name="private_email">david.johnson@demomail.net</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+  <record id="test_095" model="hr.employee">
+    <field name="name">Michael Brown</field>
+    <field name="private_phone">+1 514-572-7921</field>
+    <field name="private_email">michael.brown@example.com</field>
+    <field name="job_id" ref="hr.job_ceo"/>
+  </record>
+  <record id="test_096" model="hr.employee">
+    <field name="name">Jane Walker</field>
+    <field name="private_phone">+1 273-577-6775</field>
+    <field name="private_email">jane.walker@example.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_097" model="hr.employee">
+    <field name="name">Sarah Walker</field>
+    <field name="private_phone">+1 890-542-9154</field>
+    <field name="private_email">sarah.walker@demomail.net</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_098" model="hr.employee">
+    <field name="name">Lisa Wilson</field>
+    <field name="private_phone">+1 430-461-1750</field>
+    <field name="private_email">lisa.wilson@example.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_099" model="hr.employee">
+    <field name="name">Michael Smith</field>
+    <field name="private_phone">+1 161-156-9124</field>
+    <field name="private_email">michael.smith@example.com</field>
+    <field name="job_id" ref="hr.job_developer"/>
+  </record>
+  <record id="test_100" model="hr.employee">
+    <field name="name">Jane Wright</field>
+    <field name="private_phone">+1 601-113-1146</field>
+    <field name="private_email">jane.wright@example.com</field>
+    <field name="job_id" ref="hr.job_consultant"/>
+  </record>
+</odoo>

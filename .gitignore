@@ -1,0 +1,66 @@
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+__pycache__/
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs and databases
+*.log
+*.db
+*.sqlite3
+
+# Odoo specific
+*.zip
+addons/*/migrations/
+addons/*/__pycache__/
+addons/*/*.pyc
+addons/*/*.pyo
+addons/*/static/lib/
+
+# Ignore Odoo configuration files (if not meant to be shared)
+odoo.conf
+openerp-server.conf
+
+# Ignore IDE and editor-specific files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore test artifacts
+coverage.xml
+nosetests.xml
+test-results/
+
+# Ignore Docker-specific files (if using Docker)
+docker-compose.override.yml
+.env
+
+# Ignore Node.js and frontend build artifacts (if using frontend assets)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Ignore custom addons folder if it's not part of the repository
+custom_addons/
+
+# Ignore backup files or temporary files created during development
+*.bak
+*.tmp
+
+# Ignore Git-related temporary files
+.git/

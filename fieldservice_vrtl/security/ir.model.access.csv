@@ -5,3 +5,5 @@ access_fieldservice_order_line_user,fieldservice.order.line.user,model_fieldserv
 access_fieldservice_order_line_manager,fieldservice.order.line.manager,model_fieldservice_order_line,fieldservice_group_manager,1,1,1,1
 access_fieldservice_stage_user,fieldservice.stage.user,model_fieldservice_stage,fieldservice_group_user,1,0,0,0
 access_fieldservice_stage_manager,fieldservice.stage.manager,model_fieldservice_stage,fieldservice_group_manager,1,1,1,1
+fieldservice_vrtl.access_fieldservice_stakeholder,access_fieldservice_stakeholder,fieldservice_vrtl.model_fieldservice_stakeholder,base.group_user,1,1,1,1
+access_change_company_wizard,access.change.company.wizard,model_change_company_wizard,base.group_user,1,1,1,1
