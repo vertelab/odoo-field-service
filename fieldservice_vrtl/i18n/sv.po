@@ -108,7 +108,7 @@ msgstr "Förändra företaget"
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__is_closed
 msgid "Closed Stage"
-msgstr "Stängd scen"
+msgstr "Stängt stadie"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__company_id
@@ -378,7 +378,7 @@ msgstr "Juridisk ägare"
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__location_instructions
 msgid "Location Instructions"
-msgstr "Instruktioner för placering"
+msgstr "Platsbeskrivning"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields.selection,name:fieldservice_vrtl.selection__fieldservice_order__priority__0
@@ -498,7 +498,7 @@ msgstr "Tillfällen"
 #. module: fieldservice_vrtl
 #: model:ir.ui.menu,name:fieldservice_vrtl.menu_fieldservice_order_line
 msgid "Occasions"
-msgstr "Tillfälligheter"
+msgstr "Tillfällen"
 
 #. module: fieldservice_vrtl
 #: model:fieldservice.stage,name:fieldservice_vrtl.fieldservice_stage_ongoing
@@ -641,17 +641,17 @@ msgstr "Beställning av tjänster"
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__stage_id
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
 msgid "Stage"
-msgstr "Läge"
+msgstr "Stadie"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__name
 msgid "Stage Name"
-msgstr "Scenens namn"
+msgstr "Stadienamn"
 
 #. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
 msgid "Stakeholder"
-msgstr "Intressent"
+msgstr "Intressenter"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__stakeholder_ids
@@ -666,7 +666,7 @@ msgstr "Startdatum"
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stakeholder__partner_status
 msgid "Status"
-msgstr "Status"
+msgstr "Stadie"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__activity_state

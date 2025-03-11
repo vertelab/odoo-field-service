@@ -1,10 +1,18 @@
 from odoo import models, fields, api
-
+import logging
 class ChangeCompanyWizard(models.TransientModel):
     _name = 'change.company.wizard'
     _description = 'Wizard to change company on Field Service Order'
+    #partner_id = fields.Many2one('res.partner', string='Company', required=True,
+    #                         domain=[('id', 'in', [])])#
+    def _get_company_partners_domain(self):
+       company_partners = self.env['res.company'].sudo().search([]).mapped('partner_id')
+       return [('id', 'in', company_partners.ids)]
 
-    company_id = fields.Many2one('res.company', string='Company', required=True)
+    partner_id = fields.Many2one('res.partner', string='Company', required=True,
+                             domain=lambda self: self._get_company_partners_domain())
+
+    #company_id = fields.Many2one('res.company', string='Company', required=True)
     model = fields.Char(string='Model')
     res_id = fields.Integer(string='Resource ID')
 
@@ -18,11 +26,15 @@ class ChangeCompanyWizard(models.TransientModel):
 
     def change_company(self):
         self.ensure_one()
-        if self.model and self.res_id and self.company_id:
+        self = self.sudo()
+        if self.model and self.res_id and self.partner_id:
             record = self.env[self.model].sudo().browse(self.res_id)
             if record.exists() and 'company_id' in record._fields:
                 try:
-                    record.company_id = self.company_id.id
+                    company_id = self.env['res.company'].search([('partner_id','=',self.partner_id.id)])
+                    logging.warning(f"{self.partner_id=}")
+                    logging.warning(f"{company_id=}")
+                    record.company_id = company_id.id
                 except Exception as e:
                     raise UserError(f"Could not change company: {str(e)}")
 

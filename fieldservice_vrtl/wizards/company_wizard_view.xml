@@ -6,7 +6,8 @@
         <field name="arch" type="xml">
             <form string="Change Company">
                 <group>
-                    <field name="company_id" />
+                    <field name="partner_id" />
+                    <!--<field name="company_id" />-->
                 </group>
                 <footer>
                     <button name="change_company" string="Change" type="object" class="btn-primary"/>
