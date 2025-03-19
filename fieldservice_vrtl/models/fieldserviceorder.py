@@ -119,6 +119,9 @@ class FieldServiceOrder(models.Model):
             'context': {'default_order_id': self.id},
             'target': 'current',
         }
+    def create_occasion(self):
+        record = self.env['fieldservice.order.line'].create([{'order_id':self.id,'date_start':self.planned_start_datetime}])
+        return record.open_planning_view()
 
     def open_order_lines_kanban(self):
 

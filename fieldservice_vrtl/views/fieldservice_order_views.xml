@@ -63,6 +63,7 @@
                                 </group>
                             </page>
                             <page string="Ocassions">
+                                <button name="create_occasion" string="Create Occasion" type="object"/>
                                 <field name="order_line_ids">
                                     <list editable="bottom"  create="0">
                                         <field name="stage_id"/>
