@@ -5,7 +5,9 @@ from odoo.tools import date_utils
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
 
+import logging
 
+_logger = logging.getLogger(__name__)
 
 
 class FieldServiceOrderLine(models.Model):
@@ -18,6 +20,8 @@ class FieldServiceOrderLine(models.Model):
     date_start = fields.Datetime(string='Start Date')
     date_end = fields.Datetime(string='End Date')
     image_ids = fields.Many2many('ir.attachment', string='Images')
+    priority = fields.Selection(related="order_id.priority")
+    address = fields.Char(related="order_id.address")
 
     date_day_start_char = fields.Char(compute="_compute_date_chars",store=True, readonly=False, inverse="_inverse_date_day_start_char", group_expand='_read_group_days')
     date_week_start_char = fields.Char(compute="_compute_date_chars",store=True, readonly=False, inverse="_inverse_date_week_start_char", group_expand='_read_group_weeks')
@@ -171,14 +175,13 @@ class FieldServiceOrderLine(models.Model):
 
 
     def open_planning_view(self):
-        self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'fieldservice.order.line',
             'res_id': self.id,
             'view_mode': 'form',
             'view_id': self.env.ref('fieldservice_vrtl.view_fieldservice_order_line_form_planning').id,
-            'target': 'new',
+            'target': 'current',
             'name': 'Planning',
         }
 

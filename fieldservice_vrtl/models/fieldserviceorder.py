@@ -13,6 +13,8 @@ class FieldServiceOrder(models.Model):
     order_number = fields.Char(string="Reference Number", default=lambda self: _('New'), readonly=True, copy=False, required = True)
     description = fields.Text(string='Problem Description')
     resolution = fields.Text(string='Resolution')
+    reporter = fields.Many2one(comodel_name="res.partner", compute="_compute_reporter", store=True)
+    address = fields.Char(related="reporter.street", store=True)
     priority = fields.Selection([
         ('0', 'Low'),
         ('1', 'Medium'),
@@ -75,7 +77,17 @@ class FieldServiceOrder(models.Model):
             else:
                 order.duration = 0.0
 
-    
+    @api.depends("stakeholder_ids")
+    def _compute_reporter(self):
+        for record in self:
+            stakeholder_ids = list(filter(lambda stakeholder_id: stakeholder_id.partner_status == "reporter",record.stakeholder_ids))
+            _logger.error(f"{stakeholder_ids=}")
+            if stakeholder_ids:
+                record.reporter = stakeholder_ids[0].partner_id
+            else:
+                record.reporter = False
+
+
     @api.onchange("order_line_ids")
     def set_start_date(self):
         for line in self.order_line_ids:
@@ -92,6 +104,7 @@ class FieldServiceOrder(models.Model):
     def _read_group_stage_ids(self, stages = False, domain = False, order = False):
         stage_ids = self.env['fieldservice.stage'].search([])
         return stage_ids
+        
 
 
     def open_order_lines_calendar(self):
