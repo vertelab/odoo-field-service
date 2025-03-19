@@ -181,7 +181,7 @@ class FieldServiceOrderLine(models.Model):
             'res_id': self.id,
             'view_mode': 'form',
             'view_id': self.env.ref('fieldservice_vrtl.view_fieldservice_order_line_form_planning').id,
-            'target': 'current',
+            'target': 'new',
             'name': 'Planning',
         }
 
