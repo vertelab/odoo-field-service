@@ -12,3 +12,15 @@ class FieldServiceOrderLine(models.Model):
     def compute_name(self):
         for record in self:
             record.name = f"{record.order_id.name} - {record.date_start}"
+
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        res = super(FieldServiceOrderLine, self).create(vals_list)
+        for record in res:
+            self.env['fieldservice.order.line.employee'].create({
+                    'fieldservice_order_line_id': record.id,
+                    'employee_id': False,  
+                    'description': 'Empty Slot',
+                })
+        return res
