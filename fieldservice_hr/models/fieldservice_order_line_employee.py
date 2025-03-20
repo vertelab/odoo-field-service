@@ -4,9 +4,30 @@ class FieldServiceOrderLineEmployee(models.Model):
     _name = 'fieldservice.order.line.employee'
     _description = 'Field Service Order Line Employee'
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        for val in vals_list:
+            val['hr_department_id'] = self.env['hr.employee'].browse(int(val.get('employee_id'))).exists().id
+        return super().create(vals_list)
+
+    def write(self, values):
+        res = super().write(values)
+        if values.get('employee_id'):
+            self.hr_department_id = self.employee_id.department_id.id
+        return res
+
 
     fieldservice_order_line_id = fields.Many2one('fieldservice.order.line', required=True)
-    employee_id = fields.Many2one('hr.employee', required=False, domain="[('company_id', '=', company_id)]")
+    employee_id = fields.Many2one(
+        'hr.employee', required=False, domain="[('company_id', '=', company_id)]",
+        group_expand='_read_group_employee_id'
+    )
+
+    hr_department_id = fields.Many2one(
+        'hr.department', required=False, domain="[('company_id', '=', company_id)]",
+         group_expand='_read_group_hr_department_id', readonly=False
+    )
+
     # order_ids = fields.One2many('fieldservice.order.line','order_id', string='Service Order', required=True)
     address = fields.Char(related="employee_id.user_partner_id.street", store=True)
     priority = fields.Selection(related="fieldservice_order_line_id.priority")
@@ -32,3 +53,11 @@ class FieldServiceOrderLineEmployee(models.Model):
                 record.name = record.employee_id.name
             else:
                 record.name = _("Unassigned Slot")
+
+    def _read_group_employee_id(self, employee_id, domain):
+        employee_ids = employee_id.sudo()._search(domain)
+        return employee_id.browse(employee_ids)
+
+    def _read_group_hr_department_id(self, hr_department_id, domain):
+        hr_department_ids = hr_department_id.sudo()._search(domain)
+        return hr_department_id.browse(hr_department_ids)

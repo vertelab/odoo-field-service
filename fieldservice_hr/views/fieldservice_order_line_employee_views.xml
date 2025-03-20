@@ -90,6 +90,23 @@
         </field>
     </record>
 
+    <record id="view_fieldservice_order_line_employee_search" model="ir.ui.view">
+            <field name="name">fieldservice.order.line.employee.search</field>
+            <field name="model">fieldservice.order.line.employee</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="hr_department_id"/>
+                    <field name="employee_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Employee" name="group_by_employee" context="{'group_by': 'employee_id'}"/>
+                        <filter string="Department" name="group_by_department" context="{'group_by': 'hr_department_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
     <record id="action_fieldservice_employees" model="ir.actions.act_window">
         <field name="name">Field Service Employees</field>
         <field name="res_model">fieldservice.order.line.employee</field>
