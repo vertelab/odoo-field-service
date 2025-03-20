@@ -87,25 +87,59 @@
                 <field name="duration" sum="Total Duration"/>
                 <progressbar field="custom_state" colors='{"green": "success", "yellow": "warning", "red": "danger"}' sum_field="duration"/>
                 <templates>
-                    <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <div class="oe_kanban_details">
-                                <strong class="o_kanban_record_title">
-                                    <field name="order_id"/>
-                                </strong>
-                                <div class="o_kanban_record_subtitle">
-                                    <field name="date_start"/>
-                                    <field name="activity_ids" widget="kanban_activity"/>
-                                    <field name="duration" readonly="True"/>
-                                </div>
-
-                            </div>
+                    <t t-name="menu">
+                        <t t-if="widget.editable">
+                            <a role="menuitem" type="open" class="dropdown-item">Edit</a>
+                        </t>
+                        <t t-if="widget.deletable">
+                            <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                        </t>
+                    </t>
+                    <t t-name="card">
+                        <field class="fw-bold fs-5" name="order_id"/>
+                        <div class="pt-2">
+                            <span>Address: </span>
+                            <field name="address" />
                         </div>
+                        <footer class="mt-auto pt-2">
+                            <div class="d-lg-contents">
+                                <div>
+                                    <field name="priority" widget="priority"/>
+                                </div>
+                                <div class="ms-auto">
+                                    <field name="date_start" widget="date"/>
+                                    <field name="date_end" widget="date"/>
+                                    <field name="duration" widget="float_time"/>
+                                </div>
+                            </div>
+                        </footer>
                     </t>
                 </templates>
             </kanban>
         </field>
     </record>
+
+
+    <!-- <div>
+                                <t t-if="record.expected_revenue.raw_value">
+                                    <field name="expected_revenue" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                                    <span t-if="record.recurring_revenue and record.recurring_revenue.raw_value" groups="crm.group_use_recurring_revenues"> + </span>
+                                </t>
+                                <t t-if="record.recurring_revenue and record.recurring_revenue.raw_value">
+                                    <field class="me-1" name="recurring_revenue" widget="monetary" options="{'currency_field': 'company_currency'}" groups="crm.group_use_recurring_revenues"/>
+                                    <field name="recurring_plan" groups="crm.group_use_recurring_revenues"/>
+                                </t>
+                            </div>
+                            <field name="partner_id" class="text-truncate"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <field name="lead_properties" widget="properties"/>
+                            <footer class="pt-1">
+                                <div class="d-flex mt-auto align-items-center">
+                                    <field name="priority" widget="priority" groups="base.group_user" class="me-2"/>
+                                    <field name="activity_ids" widget="kanban_activity"/>
+                                </div>
+                                <field name="user_id" widget="many2one_avatar_user" domain="[('share', '=', False)]" class="ms-auto"/>
+                            </footer> -->
 
 
     <record id="view_fieldservice_order_line_search" model="ir.ui.view">
