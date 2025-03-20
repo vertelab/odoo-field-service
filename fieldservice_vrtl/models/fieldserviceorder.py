@@ -34,7 +34,7 @@ class FieldServiceOrder(models.Model):
     planned_duration = fields.Float(string='Planned Duration', help='Duration in hours')
     requested_employee_ids = fields.Many2many('hr.employee', string='Requested Employees')
 
-    work_instructions = fields.Text(string='Work Instructions')
+    work_instructions = fields.Html(string='Work Instructions')
     location_instructions = fields.Text(string='Location Instructions')
 
     date_start = fields.Datetime(string='Actual Start')
