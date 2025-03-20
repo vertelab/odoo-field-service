@@ -57,14 +57,8 @@ class FieldServiceOrder(models.Model):
     marking = fields.Char(string='Marking', help="Any specific marking or label on the product")
     purchase_date = fields.Date(string='Purchase Date', help="The date when the product was purchased")
 
-    def create_occasion(self, include_empty_slot=False):
+    def create_occasion(self):
         record = self.env['fieldservice.order.line'].create([{'order_id':self.id,'date_start':self.planned_start_datetime}])
-        if include_empty_slot:
-                self.env['fieldservice.order.line.employee'].create({
-                    'fieldservice_order_line_id': record.id,
-                    'employee_id': False,  
-                    'description': 'Empty Slot',
-                })
         return record.open_planning_view()
 
     @api.model_create_multi
@@ -77,7 +71,7 @@ class FieldServiceOrder(models.Model):
                 vals['order_number'] = new_number or _('New')
             _logger.info(f"Final vals for creation: {vals}")
         res = super(FieldServiceOrder, self).create(vals_list)
-        res.create_occasion(include_empty_slot=True)
+        res.create_occasion()
         return res
 
     @api.depends('date_start', 'date_end')
