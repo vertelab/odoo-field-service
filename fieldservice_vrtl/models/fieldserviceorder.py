@@ -57,6 +57,10 @@ class FieldServiceOrder(models.Model):
     marking = fields.Char(string='Marking', help="Any specific marking or label on the product")
     purchase_date = fields.Date(string='Purchase Date', help="The date when the product was purchased")
 
+    def create_occasion(self):
+        record = self.env['fieldservice.order.line'].create([{'order_id':self.id,'date_start':self.planned_start_datetime}])
+        return record.open_planning_view()
+
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
@@ -66,7 +70,9 @@ class FieldServiceOrder(models.Model):
                 _logger.info(f"Generated new number: {new_number}")
                 vals['order_number'] = new_number or _('New')
             _logger.info(f"Final vals for creation: {vals}")
-        return super(FieldServiceOrder, self).create(vals_list)
+        res = super(FieldServiceOrder, self).create(vals_list)
+        res.create_occasion()
+        return res
 
     @api.depends('date_start', 'date_end')
     def _compute_duration(self):
