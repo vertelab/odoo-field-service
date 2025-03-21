@@ -15,7 +15,7 @@ class FieldServiceOrderLine(models.Model):
     _description = 'Field Service Order Line'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    order_id = fields.Many2one('fieldservice.order', string='Service Order', required=True)
+    order_id = fields.Many2one('fieldservice.order', string='Service Order', ondelete='cascade', required=True)
     stage_id = fields.Many2one('fieldservice.stage', string='Stage', tracking=True)
     date_start = fields.Datetime(string='Start Date')
     date_end = fields.Datetime(string='End Date')
