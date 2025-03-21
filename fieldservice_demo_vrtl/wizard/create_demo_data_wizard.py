@@ -57,8 +57,8 @@ class CreateDemoDataWizard(models.TransientModel):
 
             
             created_orders = 0
-            for employee in employees:
-                for i in range(self.number_of_records):  # Create 5 records per employee
+            #for employee in employees:
+            for i in range(self.number_of_records):  # Create 5 records per employee
                     
                     planned_start = datetime(2025, 8, 11, 12, 0) + timedelta(days=created_orders)
                     planned_end = planned_start + timedelta(hours=2)
