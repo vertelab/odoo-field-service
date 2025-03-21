@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+fieldservice_demo_vrtl.access_create_demo_data_wizard,access_create_demo_data_wizard,fieldservice_demo_vrtl.model_create_demo_data_wizard,base.group_user,1,1,1,1

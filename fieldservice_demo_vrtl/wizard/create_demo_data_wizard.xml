@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_create_demo_data_wizard_form" model="ir.ui.view">
+        <field name="name">create.demo.data.wizard.form</field>
+        <field name="model">create.demo.data.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create Demo Data">
+                <group>
+                    <field name="number_of_records"/>
+                </group>
+                <footer>
+                    <button name="action_create_demo_data" string="Create Demo Data" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_create_demo_data_wizard" model="ir.actions.act_window">
+        <field name="name">Create Demo Data</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.demo.data.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_create_demo_data" name="Create Demo Data" action="action_create_demo_data_wizard" parent="fieldservice_vrtl.menu_fieldservice_root" sequence="100"/>
+
+</odoo>
