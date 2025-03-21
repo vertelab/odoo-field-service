@@ -177,6 +177,7 @@
         </field>
     </record>
 
-    <menuitem id="menu_fieldservice_order_line" name="Occasions" parent="menu_fieldservice_root" action="action_fieldservice_order_line" sequence="20"/>
+    <menuitem id="menu_fieldservice_order_line_root" name="Occasions" parent="menu_fieldservice_root"  sequence="10"/>
+    <menuitem id="menu_fieldservice_order_line" name="Occasions" parent="menu_fieldservice_order_line_root" action="action_fieldservice_order_line" sequence="20"/>
 
 </odoo>
