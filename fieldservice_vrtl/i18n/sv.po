@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0-20250313\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24 08:24+0000\n"
-"PO-Revision-Date: 2025-03-24 09:30+0100\n"
+"POT-Creation-Date: 2025-03-24 09:36+0000\n"
+"PO-Revision-Date: 2025-03-24 10:38+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -78,6 +78,11 @@ msgid "Address:"
 msgstr ""
 
 #. module: fieldservice_vrtl
+#: model:ir.actions.act_window,name:fieldservice_vrtl.action_fieldservice_stages
+msgid "All Stages"
+msgstr ""
+
+#. module: fieldservice_vrtl
 #: model:ir.model.fields,help:fieldservice_vrtl.field_fieldservice_order__marking
 msgid "Any specific marking or label on the product"
 msgstr "Eventuell särskild märkning eller etikett på produkten"
@@ -133,14 +138,19 @@ msgid "Completed"
 msgstr "Färdigställd"
 
 #. module: fieldservice_vrtl
+#: model:ir.ui.menu,name:fieldservice_vrtl.configurations
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
 msgid "Create Occasion"
-msgstr ""
+msgstr "Skapa tillfälle"
 
 #. module: fieldservice_vrtl
 #: model_terms:ir.actions.act_window,help:fieldservice_vrtl.action_fieldservice_order
 msgid "Create a new field service order"
-msgstr "Skapa ett nytt ärende"
+msgstr "Skapa en ny order för fältservice"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__create_uid
@@ -241,22 +251,22 @@ msgstr "Fältservice"
 #. module: fieldservice_vrtl
 #: model:ir.actions.act_window,name:fieldservice_vrtl.action_fieldservice_order_line
 msgid "Field Service Kalender"
-msgstr "Ärende Kalender"
+msgstr "Fältservice Kalender"
 
 #. module: fieldservice_vrtl
 #: model:res.groups,name:fieldservice_vrtl.fieldservice_group_manager
 msgid "Field Service Manager"
-msgstr "Fältservice Chef"
+msgstr "Chef för fältservice"
 
 #. module: fieldservice_vrtl
 #: model:ir.model,name:fieldservice_vrtl.model_fieldservice_order
 msgid "Field Service Order"
-msgstr "Ärenden"
+msgstr "Ärende"
 
 #. module: fieldservice_vrtl
 #: model:ir.model,name:fieldservice_vrtl.model_fieldservice_order_line
 msgid "Field Service Order Line"
-msgstr "Tillfällen"
+msgstr "Tillfälle"
 
 #. module: fieldservice_vrtl
 #: model:ir.actions.act_window,name:fieldservice_vrtl.action_fieldservice_order
@@ -265,21 +275,29 @@ msgstr "Ärenden"
 
 #. module: fieldservice_vrtl
 #: model:ir.model,name:fieldservice_vrtl.model_fieldservice_stage
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.fieldservice_stage_view_search
 msgid "Field Service Stage"
-msgstr "Stadier"
+msgstr "Ärende Stadie"
+
+#. module: fieldservice_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.fieldservice_stage_view_search
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_stage_list
+msgid "Field Service Stages"
+msgstr "Ärende Stadie"
 
 #. module: fieldservice_vrtl
 #: model:ir.model,name:fieldservice_vrtl.model_fieldservice_stakeholder
 msgid "Field Service Stakholder"
-msgstr "Ärende Intressenter"
+msgstr "Intressent"
 
 #. module: fieldservice_vrtl
 #: model:res.groups,name:fieldservice_vrtl.fieldservice_group_user
 msgid "Field Service User"
-msgstr "Fältservice Användare"
+msgstr "Användare av fältservice"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__fold
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.fieldservice_stage_view_search
 msgid "Folded in Kanban"
 msgstr "Fälld i Kanban"
 
@@ -534,14 +552,24 @@ msgid "Ongoing"
 msgstr "Pågående"
 
 #. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__order_line_ids
+msgid "Order"
+msgstr ""
+
+#. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__order_line_ids
 msgid "Order Lines"
-msgstr "Tillfällen"
+msgstr "Beställningslinjer"
+
+#. module: fieldservice_vrtl
+#: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__order_id
+msgid "Order line"
+msgstr ""
 
 #. module: fieldservice_vrtl
 #: model:ir.ui.menu,name:fieldservice_vrtl.menu_fieldservice_order
 msgid "Orders"
-msgstr "Ärenden"
+msgstr "Beställningar"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__partner_id
@@ -681,6 +709,11 @@ msgstr "Läge"
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__name
 msgid "Stage Name"
 msgstr "Scenens namn"
+
+#. module: fieldservice_vrtl
+#: model:ir.ui.menu,name:fieldservice_vrtl.menu_fieldservice_stage
+msgid "Stages"
+msgstr ""
 
 #. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
