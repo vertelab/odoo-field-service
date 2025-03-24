@@ -1,0 +1,88 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fieldservice_vrtl_ai
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20250313\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-24 08:49+0000\n"
+"PO-Revision-Date: 2025-03-24 09:53+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_ai_agent
+msgid "AI Agent"
+msgstr "AI-agent"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_ai_quest
+msgid "AI Quest"
+msgstr "AI-quest"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_ai_quest_session
+msgid "AI Quest Session"
+msgstr "AI Quest-session"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_fieldservice_order__ai_quest_id
+msgid "Ai Quest"
+msgstr "AI-quest"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_ai_agent__ai_type
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_ai_quest__ai_type
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_ai_quest_session__ai_type
+msgid "Ai Type"
+msgstr "Ai Typ"
+
+#. module: fieldservice_vrtl_ai
+#. odoo-python
+#: code:addons/fieldservice_vrtl_ai/models/fieldserviceorder.py:0
+msgid "Chat with fieldserviceorders"
+msgstr "Chatta med ärenden"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields.selection,name:fieldservice_vrtl_ai.selection__ai_agent__ai_type__fieldservice-order
+#: model:ir.model.fields.selection,name:fieldservice_vrtl_ai.selection__ai_quest__ai_type__fieldservice-order
+msgid "Chat with serviceorder"
+msgstr "Chatta med ärende"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields.selection,name:fieldservice_vrtl_ai.selection__ai_quest_session__ai_type__fieldservice-order
+msgid "Chat with servicorder"
+msgstr "Chatta med ärende"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_fieldservice_order
+msgid "Field Service Order"
+msgstr "Ärende"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_fieldservice_order_line_employee
+msgid "Field Service Order Line Employee"
+msgstr "Fältservice Order Line Anställd"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_fieldservice_stage
+msgid "Field Service Stage"
+msgstr "Fälttjänst Stage"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_fieldservice_stage__start_quest
+msgid "Start Quest"
+msgstr ""
+
+#. module: fieldservice_vrtl_ai
+#. odoo-javascript
+#: code:addons/fieldservice_vrtl_ai/static/src/js/thread_action.js:0
+msgid "View Field Service"
+msgstr "Gå till ärende"
