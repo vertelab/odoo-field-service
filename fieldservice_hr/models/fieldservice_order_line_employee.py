@@ -55,7 +55,7 @@ class FieldServiceOrderLineEmployee(models.Model):
                 record.name = _("Unassigned Slot")
 
     def _read_group_employee_id(self, employee_id, domain):
-        employee_ids = employee_id.sudo()._search(domain)
+        employee_ids = employee_id._search(domain)
         return employee_id.browse(employee_ids)
 
     def _read_group_hr_department_id(self, hr_department_id, domain):

@@ -47,7 +47,7 @@ class FieldServiceOrder(models.Model):
 
 
     order_line_ids = fields.One2many('fieldservice.order.line', 'order_id', string='Order Lines')
-    stakeholder_ids = fields.One2many('fieldservice.stakeholder', 'order_id', string='Stakeholders')
+    stakeholder_ids = fields.One2many('fieldservice.stakeholder', 'order_id', string='Stakeholders', ondelete='cascade')
     
     ##Object description
     brand = fields.Char(string='Brand', help="The manufacturer or brand of the product")
