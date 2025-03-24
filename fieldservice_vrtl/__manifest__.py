@@ -10,6 +10,7 @@
     """,
     'data': [
         'wizards/company_wizard_view.xml',
+        'views/fieldservice_stage_views.xml',
         'security/fieldservice_security.xml',
         'security/ir.model.access.csv',
         'views/fieldservice_order_views.xml',

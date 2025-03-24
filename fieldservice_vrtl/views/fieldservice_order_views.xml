@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        
+
         <record id="view_fieldservice_order_form" model="ir.ui.view">
             <field name="name">fieldservice.order.form</field>
             <field name="model">fieldservice.order</field>
@@ -33,7 +33,7 @@
                                 <field name="planned_start_datetime"/>
                                 <field name="deadline_datetime"/>
                                 <field name="planned_duration" widget="float_time"/>
-                                
+
                             </group>
                             <group>
                                 <field name="requested_employee_ids" widget="many2many_tags"/>
@@ -43,17 +43,17 @@
                         </group>
                         <notebook name="Main_order_notebook">
                             <page string="Description">
-                                 <field name="description"/>
+                                <field name="description"/>
                             </page>
                             <page string="Object Description">
-                                  <group>
+                                <group>
                                     <field name="brand"/>
                                     <field name="model"/>
                                     <field name="serial_number"/>
                                     <field name="product_number"/>
                                     <field name="marking"/>
                                     <field name="purchase_date"/>
-                                 </group>
+                                </group>
                             </page>
 
                             <page string="Instructions">
@@ -65,7 +65,7 @@
                             <page string="Ocassions">
                                 <button name="create_occasion" string="Create Occasion" type="object"/>
                                 <field name="order_line_ids">
-                                    <list editable="bottom"  create="0">
+                                    <list editable="bottom" create="0">
                                         <field name="stage_id"/>
                                         <field name="date_start"/>
                                         <field name="date_end"/>
