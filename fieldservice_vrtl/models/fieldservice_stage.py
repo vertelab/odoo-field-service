@@ -12,3 +12,10 @@ class FieldServiceStage(models.Model):
     description = fields.Text(translate=True)
     mail_template_id = fields.Many2one('mail.template', string='Email Template')
     sms_template_id = fields.Many2one('sms.template', string='SMS Template')
+
+    order_line_ids = fields.Many2one('fieldservice.order', string='Order', store=True)
+    order_id = fields.Many2one('fieldservice.order.line', string='Order line', store=True)
+
+
+
+    

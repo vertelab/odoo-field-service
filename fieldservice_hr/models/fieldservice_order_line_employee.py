@@ -17,10 +17,10 @@ class FieldServiceOrderLineEmployee(models.Model):
         return res
 
 
-    fieldservice_order_line_id = fields.Many2one('fieldservice.order.line', required=True)
+    fieldservice_order_line_id = fields.Many2one('fieldservice.order.line', ondelete='cascade', required=True)
     employee_id = fields.Many2one(
         'hr.employee', required=False, domain="[('company_id', '=', company_id)]",
-        group_expand='_read_group_employee_id'
+        group_expand='_read_group_employee_id', ondelete='cascade'
     )
 
     hr_department_id = fields.Many2one(
@@ -55,7 +55,7 @@ class FieldServiceOrderLineEmployee(models.Model):
                 record.name = _("Unassigned Slot")
 
     def _read_group_employee_id(self, employee_id, domain):
-        employee_ids = employee_id.sudo()._search(domain)
+        employee_ids = employee_id._search(domain)
         return employee_id.browse(employee_ids)
 
     def _read_group_hr_department_id(self, hr_department_id, domain):
