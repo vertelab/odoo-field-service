@@ -45,3 +45,42 @@ class AIQuest(models.Model):
 
     ai_type = fields.Selection(
         selection_add=[('fieldservice-order', 'Chat with serviceorder')], ondelete={'fieldservice-order': 'cascade'})
+
+
+    def format_followup_response(self,result):
+        _logger.warning("format_followup_response"*100)
+        #ai_message = result['messages'][-1]  # Assuming AIMessage is always the last message
+        # Access its content
+        #ai_message_content = ai_message.content
+        msg_list = result['messages'][-1].content.split("{")
+        _logger.warning(f"{msg_list=}")
+        clear_text = msg_list[0]
+        _logger.warning(f"{clear_text=}")
+        _logger.warning(f"{len(msg_list)=}")
+        if len(msg_list) == 1:
+           result['messages'][-1].content = clear_text
+           _logger.warning(f"1{clear_text=}")
+        else:
+            #result['messages'][-1].content = clear_text
+            json_result = "{" + msg_list[1]
+            suggestion_html = self.create_suggestion_html(json_result)
+            clear_text = clear_text + suggestion_html
+            _logger.warning(f"2{clear_text=}")
+            result['messages'][-1].content = clear_text
+            
+        return result
+        
+
+        
+        
+    def create_suggestion_html(self,json_result):
+        suggestion_dict = eval(json_result)
+        html_body = "<p></p><p></p><p></p><p></p>"
+        for key in suggestion_dict:
+            html_body += f"<p><a class='btn btn-primary' href='/follow_suggestion?channel={self.channel_id.id}&msg={suggestion_dict[key]}'>{suggestion_dict[key]}</a> </p>"
+        return html_body
+
+
+        
+        
+        
