@@ -75,7 +75,9 @@ threadActionsRegistry
                 views: [[false, "form"]],
             });
 
-            component.props.chatWindow.close();
+            if (component.props.chatWindow) {
+                component.props.chatWindow.close();
+            }
         },
         sequence: 50,
         sequenceQuick: 10,
