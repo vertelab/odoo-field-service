@@ -1,0 +1,91 @@
+// Variables
+$border-radius: 50px;
+$transition-speed: 0.3s;
+$default-bg: rgba(240, 240, 240, 0.7);
+$default-border: #e0e0e0;
+$default-text: #333;
+
+// Question type colors
+$color-general: #0d6efd;  // Blue
+$color-info: #0dcaf0;     // Light blue
+$color-help: #6c757d;     // Gray
+$color-feature: #198754;  // Green
+
+.suggested-question {
+    background-color: $default-bg;
+    border: 1px solid $default-border;
+    border-radius: $border-radius;
+    padding: 8px 16px;
+    color: $default-text;
+    font-weight: 500;
+    transition: all $transition-speed ease;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    // Icon styling
+    .question-icon {
+        font-size: 0.9em;
+    }
+}
+
+// Hover effects for different question types
+.question-general {
+    &:hover {
+        background-color: $color-general;
+        color: white;
+        border-color: $color-general;
+    }
+}
+
+.question-info {
+    &:hover {
+        background-color: $color-info;
+        color: white;
+        border-color: $color-info;
+    }
+}
+
+.question-help {
+    &:hover {
+        background-color: $color-help;
+        color: white;
+        border-color: $color-help;
+    }
+}
+
+.question-feature {
+    &:hover {
+        background-color: $color-feature;
+        color: white;
+        border-color: $color-feature;
+    }
+}
+
+// Container for the suggested questions
+.suggested-questions-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+    .suggested-questions-container {
+        padding: 10px;
+    }
+
+    .suggested-question {
+        margin-right: 8px;
+        margin-bottom: 8px;
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+}

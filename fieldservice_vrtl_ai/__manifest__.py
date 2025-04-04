@@ -45,11 +45,17 @@
         'fieldservice_hr',
     ],
     'data': [
+        'security/ir.model.access.csv',
         'data/ai_agent_data.xml',
+        'views/mail_message_view.xml',
     ],
     'assets': {
         'web.assets_backend': [
             'fieldservice_vrtl_ai/static/src/js/thread_action.js',
+
+            'fieldservice_vrtl_ai/static/src/xml/mail_message_followup_questions.xml',
+            'fieldservice_vrtl_ai/static/src/js/mail_message_followup_questions.js',
+            'fieldservice_vrtl_ai/static/src/scss/style.scss',
         ]
     },
     'installable': True,
