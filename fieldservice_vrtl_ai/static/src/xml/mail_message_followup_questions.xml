@@ -4,7 +4,7 @@
     <t t-name="fieldservice_vrtl_ai.MailMessageFollowupQuestions">
         <!-- Only display if this is the last message and we have questions -->
         <t t-if="state.isLastMessage and state.followupQuestions.length">
-            <div class="suggested-questions-container">
+            <div class="suggested-questions-container" t-ref="questionsContainer">
                 <!-- Show loading indicator -->
                 <t t-if="state.loading">
                     <div class="o_loading_indicator">

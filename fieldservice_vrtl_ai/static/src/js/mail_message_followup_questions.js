@@ -34,6 +34,9 @@ patch(Message.prototype, {
             hasInitialized: false // Flag to track initialization status
         });
 
+        // Get reference to the questions container for scrolling
+        this.questionsRef = useRef("questionsContainer");
+
         // Use onWillStart to ensure async operations before first render
         onWillStart(async () => {
             if (!this.state.hasInitialized) {
@@ -123,31 +126,57 @@ patch(Message.prototype, {
         }
     },
 
+    scrollToQuestions() {
+        // Scroll to the questions container with a small delay to ensure rendering is complete
+        setTimeout(() => {
+            if (this.questionsRef.el) {
+                this.questionsRef.el.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            } else {
+                // Fallback: try to scroll to the message itself
+                const messageElement = this.el || document.querySelector(`[data-message-id="${this.message.id}"]`);
+                if (messageElement) {
+                    messageElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
+                }
+            }
+        }, 100);
+    },
+
 
     onFollowupAction(ev, question) {
-        try {
-            if (this.props.message.thread) {
-                const threadId = this.props.message.thread.id;
-                const content = question.question;
+        ev.preventDefault();
 
-                // Post the question as a new message
-                rpc("/mail/message/post", {
-                    thread_model: "discuss.channel",
-                    thread_id: threadId,
-                    post_data: {
-                        body: content,
-                        message_type: "comment",
-                    },
-                }).then(() => {
-                    console.log("Question posted successfully");
-                }).catch(error => {
-                    console.error("Error posting question:", error);
-                });
-            }
+        // Post the question as a new message
+        const channelId = this.state.currentThreadId;
+        if (channelId && question) {
+            console.log(`Posting question "${question.question}" to channel ${channelId}`);
 
-            ev.preventDefault();
-        } catch (error) {
-            console.error("Error in followup action:", error);
+            rpc("/mail/message/post", {
+                thread_model: "discuss.channel",
+                thread_id: channelId,
+                post_data: {
+                    body: question.question,
+                    message_type: "comment",
+                },
+            }).then(() => {
+                console.log("Question posted successfully");
+
+                // Force scroll to the bottom of the thread after a small delay
+                setTimeout(() => {
+                    // Try to get the thread container and scroll to bottom
+                    const threadContainer = document.querySelector('.o_ThreadView_bottomPanel');
+                    if (threadContainer) {
+                        threadContainer.scrollTop = threadContainer.scrollHeight;
+                    }
+                }, 300);
+            }).catch(error => {
+                console.error("Error posting question:", error);
+            });
         }
     }
 });
