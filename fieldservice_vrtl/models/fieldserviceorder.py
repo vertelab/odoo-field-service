@@ -89,9 +89,6 @@ class FieldServiceOrder(models.Model):
             record.line_count = len(record.order_line_ids)
             record.line_count_avg = record.line_count
 
-
-
-
     api.depends()          
     def create_occasion(self):
         record = self.env['fieldservice.order.line'].create([{'order_id':self.id,'date_start':self.planned_start_datetime}])
@@ -197,6 +194,3 @@ class FieldServiceOrder(models.Model):
             },
             'target': 'current',
         }
-
-
-
