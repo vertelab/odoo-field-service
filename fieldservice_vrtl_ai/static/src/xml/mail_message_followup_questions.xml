@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="fieldservice_vrtl_ai.MailMessageFollowupQuestions">
+        <!-- Only display if this is the last message and we have questions -->
+        <t t-if="state.isLastMessage and state.followupQuestions.length">
+            <div class="suggested-questions-container" t-ref="questionsContainer">
+                <!-- Show loading indicator -->
+                <t t-if="state.loading">
+                    <div class="o_loading_indicator">
+                        <i class="fa fa-circle-o-notch fa-spin me-2"/>Loading questions...
+                    </div>
+                </t>
+
+                <!-- Display the actual follow-up questions -->
+                <t t-else="">
+                    <t t-foreach="state.followupQuestions" t-as="question" t-key="question.id">
+                        <button class="btn suggested-question question-help"
+                                t-on-click="(ev) => this.onFollowupAction(ev, question)">
+                            <t t-esc="question.question"/>
+                        </button>
+                    </t>
+                </t>
+            </div>
+        </t>
+    </t>
+
+    <t t-inherit="mail.Message" t-inherit-mode="extension">
+        <xpath expr="//ActionSwiper/div[@t-if='message.exists()']/div[hasclass('o-mail-Message-core')]/div[@t-ref='messageContent']/MessageReactions[1]" position="after">
+            <!-- No need to pass message as a parameter since we're extending Message itself -->
+            <t t-call="fieldservice_vrtl_ai.MailMessageFollowupQuestions"/>
+        </xpath>
+    </t>
+</templates>

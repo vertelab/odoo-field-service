@@ -75,10 +75,12 @@ threadActionsRegistry
                 views: [[false, "form"]],
             });
 
-
+            if (component.props.chatWindow) {
+                component.props.chatWindow.close();
+            }
         },
         sequence: 50,
-        sequenceQuick: 50,
+        sequenceQuick: 10,
         setup() {
             const component = useComponent();
         },
