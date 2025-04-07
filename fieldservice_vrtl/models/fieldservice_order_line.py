@@ -39,6 +39,17 @@ class FieldServiceOrderLine(models.Model):
         ('red', 'Red')
     ], string='Custom State', compute='_compute_custom_state', store=True)
 
+    brand = fields.Char(related='order_id.brand', string='Brand', readonly=True)
+    model = fields.Char(related='order_id.model', string='Model', readonly=True)
+    serial_number = fields.Char(related='order_id.serial_number', string='Serial Number', readonly=True)
+    product_number = fields.Char(related='order_id.product_number', string='Product Number', readonly=True)
+    marking = fields.Char(related='order_id.marking', string='Marking', readonly=True)
+    purchase_date = fields.Date(related='order_id.purchase_date', string='Purchase Date', readonly=True)
+    
+    description = fields.Text(related='order_id.description', string='Problem Description', readonly=True)
+    work_instructions = fields.Html(related='order_id.work_instructions', string='Work Instructions', readonly=True)
+
+
     @api.model
     def _read_group_days(self, groupby, domain, limit=None, offset=None):
         today = date.today()

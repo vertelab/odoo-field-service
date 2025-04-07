@@ -19,7 +19,7 @@
         <field name="name">fieldservice.order.line.employee.kanban</field>
         <field name="model">fieldservice.order.line.employee</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="fieldservice_order_line_id" class="o_kanban_mobile" on_create="quick_create">
+            <kanban default_group_by="employee_id" class="o_kanban_mobile" on_create="quick_create">
                 <templates>
                     <t t-name="menu">
                         <t t-if="widget.editable">
@@ -90,27 +90,37 @@
         </field>
     </record>
 
+    <record id="view_fieldservice_order_line_employee_pivot" model="ir.ui.view">
+        <field name="name">fieldservice.order.line.employee.view.pivot</field>
+        <field name="model">fieldservice.order.line.employee</field>
+        <field name="arch" type="xml">
+            <pivot string="Service Request">
+
+            </pivot>
+        </field>
+    </record>
+
     <record id="view_fieldservice_order_line_employee_search" model="ir.ui.view">
-            <field name="name">fieldservice.order.line.employee.search</field>
-            <field name="model">fieldservice.order.line.employee</field>
-            <field name="arch" type="xml">
-                <search>
-                    <field name="name"/>
-                    <field name="hr_department_id"/>
-                    <field name="employee_id"/>
-                    <group expand="0" string="Group By">
-                        <filter string="Employee" name="group_by_employee" context="{'group_by': 'employee_id'}"/>
-                        <filter string="Department" name="group_by_department" context="{'group_by': 'hr_department_id'}"/>
-                    </group>
-                </search>
-            </field>
-        </record>
+        <field name="name">fieldservice.order.line.employee.search</field>
+        <field name="model">fieldservice.order.line.employee</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="hr_department_id"/>
+                <field name="employee_id"/>
+                <group expand="0" string="Group By">
+                    <filter string="Employee" name="group_by_employee" context="{'group_by': 'employee_id'}"/>
+                    <filter string="Department" name="group_by_department" context="{'group_by': 'hr_department_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 
 
     <record id="action_fieldservice_employees" model="ir.actions.act_window">
         <field name="name">Field Service Employees</field>
         <field name="res_model">fieldservice.order.line.employee</field>
-        <field name="view_mode">kanban,form,list</field>
+        <field name="view_mode">kanban,form,list,pivot</field>
     </record>
 
     <menuitem id="menu_fieldservice_employees" name="Field Service Employees" parent="fieldservice_vrtl.menu_fieldservice_root" action="action_fieldservice_employees" sequence="20"/>

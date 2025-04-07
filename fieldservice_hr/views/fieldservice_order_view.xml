@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_fieldservice_order_form_inherit" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.inherit</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/> 
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_top_left']" position="inside">
+                <field name="total_time_duration" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

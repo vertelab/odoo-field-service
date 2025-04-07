@@ -9,8 +9,11 @@
     Fieldservice
     """,
     'data': [
+        'security/ir.model.access.csv',
+        'security/fieldservice_hr_security.xml',
         'views/fieldservice_order_line_employee_views.xml',
-        'views/fieldservice_order_line_views.xml',
-        'security/ir.model.access.csv'
+        'views/fieldservice_order_view.xml',
+        'views/fieldservice_order_line_views.xml'
+
     ],
 }

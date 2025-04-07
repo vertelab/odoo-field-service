@@ -15,7 +15,22 @@ class FieldServiceStage(models.Model):
 
     order_line_ids = fields.Many2one('fieldservice.order', string='Order', store=True)
     order_id = fields.Many2one('fieldservice.order.line', string='Order line', store=True)
-
+    type = fields.Selection([
+        ('none', 'None'),
+        ('start', 'Start'),
+        ('end', 'End')
+    ], string="State", default='none')
 
 
     
+    @api.model
+    def create_fakturerad_stage(self):
+        existing_stage = self.search([('name', '=', 'Fakturerad')], limit=1)
+        if not existing_stage:
+            self.create({
+                'name': 'Fakturerad',
+                'sequence': 20,  
+                'fold': True,  
+                'is_closed': False, 
+                'description': _('This is the Fakturerad stage.'),
+            })

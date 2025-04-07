@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="view_fieldservice_order_type_list" model="ir.ui.view">
+            <field name="name">fieldservice.order.type.list</field>
+            <field name="model">fieldservice.order.type</field>
+            <field name="arch" type="xml">
+                <list string="Field Service Order Types">
+                    <field name="name"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="action_fieldservice_order_type" model="ir.actions.act_window">
+            <field name="name">Field Service Order Types</field>
+            <field name="res_model">fieldservice.order.type</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+
+        <menuitem id="menu_fieldservice_order_type" name="Field Service Order Types" parent="fieldservice_vrtl.menu_fieldservice_root" action="action_fieldservice_order_type"/>
+    </data>
+</odoo>

@@ -119,6 +119,16 @@
         </field>
     </record>
 
+    <record id="view_fieldservice_order_line_pivot" model="ir.ui.view">
+        <field name="name">fieldservice.order.line.view.pivot</field>
+        <field name="model">fieldservice.order.line</field>
+        <field name="arch" type="xml">
+            <pivot string="Service Request">
+
+            </pivot>
+        </field>
+    </record>
+
 
     <!-- <div>
                                 <t t-if="record.expected_revenue.raw_value">
@@ -162,7 +172,7 @@
     <record id="action_fieldservice_order_line" model="ir.actions.act_window">
         <field name="name">Field Service Kalender</field>
         <field name="res_model">fieldservice.order.line</field>
-        <field name="view_mode">list,kanban,calendar,form</field>
+        <field name="view_mode">list,kanban,calendar,form,pivot</field>
     </record>
 
     <record id="view_fieldservice_order_line_tree" model="ir.ui.view">
@@ -177,7 +187,7 @@
         </field>
     </record>
 
-    <menuitem id="menu_fieldservice_order_line_root" name="Occasions" parent="menu_fieldservice_root"  sequence="10"/>
+    <menuitem id="menu_fieldservice_order_line_root" name="Occasions" parent="menu_fieldservice_root" sequence="10"/>
     <menuitem id="menu_fieldservice_order_line" name="Occasions" parent="menu_fieldservice_order_line_root" action="action_fieldservice_order_line" sequence="20"/>
 
 </odoo>

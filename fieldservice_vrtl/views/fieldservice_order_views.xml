@@ -26,19 +26,25 @@
                             </h1>
                         </div>
                         <group name="group_top">
-                            <group>
+                            <group name="group_top_left" >
                                 <field name="order_number"/>
                                 <field name="priority" widget="priority"/>
                                 <field name="company_id"/>
                                 <field name="planned_start_datetime"/>
                                 <field name="deadline_datetime"/>
                                 <field name="planned_duration" widget="float_time"/>
-
+                                <field name="line_count"/>
+                                
                             </group>
                             <group>
                                 <field name="requested_employee_ids" widget="many2many_tags"/>
+                                <field name="create_date" string="Order recieved"/>
                                 <field name="date_start"/>
+                                <field name= "time_until_work_start" widget="float_time"/>
                                 <field name="date_end"/>
+                                <field name= "time_until_work_done" widget="float_time"/>
+                                <field name="total_duration"/>
+
                             </group>
                         </group>
                         <notebook name="Main_order_notebook">
@@ -47,6 +53,8 @@
                             </page>
                             <page string="Object Description">
                                 <group>
+
+                                    <field name="product_type" widget="many2one"/>
                                     <field name="brand"/>
                                     <field name="model"/>
                                     <field name="serial_number"/>
@@ -64,8 +72,10 @@
                             </page>
                             <page string="Ocassions">
                                 <button name="create_occasion" string="Create Occasion" type="object"/>
+
                                 <field name="order_line_ids">
                                     <list editable="bottom" create="0">
+                                        
                                         <field name="stage_id"/>
                                         <field name="date_start"/>
                                         <field name="date_end"/>
@@ -145,6 +155,26 @@
         </record>
 
 
+        <!-- Define the Pivot View -->
+        <record id="view_fieldservice_order_pivot" model="ir.ui.view">
+            <field name="name">fieldservice.order.view.pivot</field>
+            <field name="model">fieldservice.order</field>
+            <field name="arch" type="xml">
+                <pivot string="Service Request">
+                    <field name="planned_duration" type="measure" widget="float_time"/>
+                    <field name="time_until_work_start" type="measure" widget="float_time"/>
+                    <field name="time_until_work_start_avg" type="measure" widget="float_time"/>
+                    <field name="time_until_work_start_max" type="measure" widget="float_time"/>
+                    <field name="time_until_work_done" type="measure" widget="float_time"/>
+                    <field name="line_count_avg" type="measure" />
+                    <field name="line_count" type="measure"/>
+                    <field name="time_until_work_done_avg" type="measure" widget="float_time"/>
+                </pivot>
+            </field>
+        </record>
+
+
+
 
         <record id="view_fieldservice_order_search" model="ir.ui.view">
             <field name="name">fieldservice.order.search</field>
@@ -156,9 +186,25 @@
                     <field name="requested_employee_ids"/>
                     <filter string="My Orders" name="my_orders" domain="[('requested_employee_ids', 'in', uid)]"/>
                     <filter string="Late Orders" name="late_orders" domain="[('deadline_datetime', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
+                    <filter string="Ongoing" name="ongoing" domain="[('stage_id', '=', 'Ongoing')]"/>
+                    <filter string="Not done" name="not_done" domain="[('stage_id', '!=', 'Completed')]"/>
+                    <filter string="Completed" name="done" domain="[('stage_id', '=', 'Completed')]"/>
+                    <filter string="Högprioriterade" name="priority" domain="[('priority', '=', '3')]"/>
+
                     <group expand="0" string="Group By">
                         <filter string="Stage" name="group_by_stage" context="{'group_by': 'stage_id'}"/>
                         <filter string="Priority" name="group_by_priority" context="{'group_by': 'priority'}"/>
+                        <filter string="Model" name="group_by_model" context="{'group_by': 'model'}"/>
+                        <filter string="Name" name="group_by_name" context="{'group_by': 'name'}"/>
+                        <filter string="Actuall start" name="group_by_date_start" context="{'group_by': 'date_start'}"/>
+                        <filter string="Actuall end" name="group_by_date_end" context="{'group_by': 'date_end'}"/>
+
+                        <filter string="Brand" name="group_by_brand" context="{'group_by': 'brand'}"/>
+                        <filter string="Marking" name="group_by_marking" context="{'group_by': 'marking'}"/>
+                        <filter string="Planned date" name="group_by_planned_start_datetime" context="{'group_by': 'planned_start_datetime'}"/>
+                        <!-- <filter string="Stage" name="group_by_stage" context="{'group_by': 'date_end'}"/>
+                        <filter string="Stage" name="group_by_stage" context="{'group_by': 'date_end'}"/> -->
+
                     </group>
                 </search>
             </field>
@@ -167,7 +213,7 @@
         <record id="action_fieldservice_order" model="ir.actions.act_window">
             <field name="name">Field Service Orders</field>
             <field name="res_model">fieldservice.order</field>
-            <field name="view_mode">kanban,list,form,calendar</field>
+            <field name="view_mode">kanban,list,form,calendar,pivot</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Create a new field service order
