@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <template id="fieldservice_pwa_assets" name="Field Service PWA Assets" inherit_id="web.assets_backend">
-        <xpath expr="." position="inside">
-            <link rel="manifest" href="/field_service_pwa_support/static/src/manifest.json"/>
-            <script type="text/javascript" src="/field_service_pwa_support/static/src/js/pwa.js"/>
-        </xpath>
-    </template>
-</odoo>

@@ -40,9 +40,9 @@
                                 <field name="requested_employee_ids" widget="many2many_tags"/>
                                 <field name="create_date" string="Order recieved"/>
                                 <field name="date_start"/>
-                                <field name= "time_until_work_start" widget="float_time"/>
+                                <!-- <field name= "time_until_work_start" widget="float_time"/> -->
                                 <field name="date_end"/>
-                                <field name= "time_until_work_done" widget="float_time"/>
+                                <!-- <field name= "time_until_work_done" widget="float_time"/> -->
                                 <field name="total_duration"/>
 
                             </group>
@@ -162,13 +162,13 @@
             <field name="arch" type="xml">
                 <pivot string="Service Request">
                     <field name="planned_duration" type="measure" widget="float_time"/>
-                    <field name="time_until_work_start" type="measure" widget="float_time"/>
+                    <!-- <field name="time_until_work_start" type="measure" widget="float_time"/>
                     <field name="time_until_work_start_avg" type="measure" widget="float_time"/>
                     <field name="time_until_work_start_max" type="measure" widget="float_time"/>
-                    <field name="time_until_work_done" type="measure" widget="float_time"/>
+                    <field name="time_until_work_done" type="measure" widget="float_time"/> -->
                     <field name="line_count_avg" type="measure" />
                     <field name="line_count" type="measure"/>
-                    <field name="time_until_work_done_avg" type="measure" widget="float_time"/>
+                    <!-- <field name="time_until_work_done_avg" type="measure" widget="float_time"/> -->
                 </pivot>
             </field>
         </record>
@@ -191,7 +191,7 @@
                     <filter string="Completed" name="done" domain="[('stage_id', '=', 'Completed')]"/>
                     <filter string="Högprioriterade" name="priority" domain="[('priority', '=', '3')]"/>
 
-                    <group expand="0" string="Group By">
+                    <group name="super_group" expand="0" string="Group By">
                         <filter string="Stage" name="group_by_stage" context="{'group_by': 'stage_id'}"/>
                         <filter string="Priority" name="group_by_priority" context="{'group_by': 'priority'}"/>
                         <filter string="Model" name="group_by_model" context="{'group_by': 'model'}"/>
@@ -204,7 +204,6 @@
                         <filter string="Planned date" name="group_by_planned_start_datetime" context="{'group_by': 'planned_start_datetime'}"/>
                         <!-- <filter string="Stage" name="group_by_stage" context="{'group_by': 'date_end'}"/>
                         <filter string="Stage" name="group_by_stage" context="{'group_by': 'date_end'}"/> -->
-
                     </group>
                 </search>
             </field>

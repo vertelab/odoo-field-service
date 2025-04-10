@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="view_fieldservice_order_form_inherit_sla" model="ir.ui.view">
+            <field name="name">fieldservice.order.form.inherit.sla</field>
+            <field name="model">fieldservice.order</field>
+            <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/>
+
+            <field name="arch" type="xml">
+
+                <xpath expr="//group[@name='group_top_left']" position="inside">
+                    <field name="severity_level"/>
+
+                </xpath>
+
+                <xpath expr="//notebook[@name='Main_order_notebook']" position="inside">
+                    <page string ="SLA">
+                        <group>
+                            <field name="time_until_work_start" />
+                            <field name="reaction_time"/>
+                            <field name="time_until_work_done" />
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+        <record id="view_fieldservice_order_search_inherit_sla" model="ir.ui.view">
+            <field name="name">fieldservice.order.search.inherit.sla</field>
+            <field name="model">fieldservice.order</field>
+            <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_search"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//group[@name='super_group']" position="after">
+                        <filter string="Severity Level" name="group_by_severity_level" context="{'group_by': 'severity_level'}"/>
+                    </xpath>
+            </field>
+        </record>
+
+
+    </data>
+
+</odoo>

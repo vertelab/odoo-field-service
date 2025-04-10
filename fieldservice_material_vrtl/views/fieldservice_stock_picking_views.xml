@@ -9,7 +9,7 @@
             <xpath expr="//notebook[@name='planning_notebook']" position="inside">
                 <page string="Requested materials">
                     <group>
-                        <field name="requested_material_ids">
+                        <field name="requested_material_ids" string=" ">
                             <list editable="bottom">
                                 <field name="product_id"/>
                                 <field name="product_uom_qty"/>
@@ -30,7 +30,7 @@
             <xpath expr="//notebook[@name='reporting_notebook']" position="inside">
                 <page string="Used Materials">
                     <group>
-                        <field name="requested_material_ids">
+                        <field name="requested_material_ids" string=" ">
                             <list editable="bottom">
                                 <field name="product_id"/>
                                 <field name="product_uom_qty"/>

@@ -4,23 +4,11 @@ class FieldServiceOrderLineEmployee(models.Model):
     _name = 'fieldservice.order.line.employee'
     _description = 'Field Service Order Line Employee'
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        for val in vals_list:
-            val['hr_department_id'] = self.env['hr.employee'].browse(int(val.get('employee_id'))).exists().id
-        return super().create(vals_list)
-
-    def write(self, values):
-        res = super().write(values)
-        if values.get('employee_id'):
-            self.hr_department_id = self.employee_id.department_id.id
-        return res
-
 
     fieldservice_order_line_id = fields.Many2one('fieldservice.order.line', ondelete='cascade', required=True)
     employee_id = fields.Many2one(
         'hr.employee', required=False, domain="[('company_id', '=', company_id)]",
-        group_expand='_read_group_employee_id', ondelete='cascade'
+        group_expand='_read_group_employee_id',
     )
 
     hr_department_id = fields.Many2one(
@@ -45,6 +33,29 @@ class FieldServiceOrderLineEmployee(models.Model):
         string="Company", 
         related="fieldservice_order_line_id.company_id"
     )
+    @api.model_create_multi
+    def create(self, vals_list):
+        for val in vals_list:
+            if val.get('employee_id'):
+                employee = self.env['hr.employee'].browse(int(val['employee_id']))
+                if employee.exists() and employee.department_id:
+                    val['hr_department_id'] = employee.department_id.id
+                else:
+                    val['hr_department_id'] = None 
+        return super(FieldServiceOrderLineEmployee, self).create(vals_list)
+
+    def write(self, values):
+        res = super(FieldServiceOrderLineEmployee, self).write(values)
+        if values.get('employee_id'):
+            for record in self:
+                if record.employee_id and record.employee_id.department_id:
+                    record.hr_department_id = record.employee_id.department_id.id
+                else:
+                    record.hr_department_id = None
+        return res
+
+
+
 
     @api.depends('employee_id', 'employee_id.name')
     def compute_name(self):

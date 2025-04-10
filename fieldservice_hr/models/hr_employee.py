@@ -13,7 +13,7 @@ class HrEmployee(models.Model):
             'type': 'ir.actions.act_window',
             'name': 'Field Service Order Employees',
             'res_model': 'fieldservice.order.line.employee',
-            'view_mode': 'list,kanban',
+            'view_mode': 'list,kanban,pivot,calendar',
             'target': 'new',
             'context': {'default_order_line_id': self.id},
         }

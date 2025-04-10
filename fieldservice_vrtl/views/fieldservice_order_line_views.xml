@@ -64,6 +64,18 @@
         </field>
     </record>
 
+    <!-- <record id="view_fieldservice_order_line_form" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.main</field>
+        <field name="model">fieldservice.order.line</field>
+        <field name="arch" type="xml">
+            <form>
+
+            </form>
+        </field>
+    </record> -->
+
+
+
 
     <record id="fieldservice_order_management_view_calendar" model="ir.ui.view">
         <field name="name">fieldservice.order.view.calendar</field>
@@ -129,29 +141,6 @@
         </field>
     </record>
 
-
-    <!-- <div>
-                                <t t-if="record.expected_revenue.raw_value">
-                                    <field name="expected_revenue" widget="monetary" options="{'currency_field': 'company_currency'}"/>
-                                    <span t-if="record.recurring_revenue and record.recurring_revenue.raw_value" groups="crm.group_use_recurring_revenues"> + </span>
-                                </t>
-                                <t t-if="record.recurring_revenue and record.recurring_revenue.raw_value">
-                                    <field class="me-1" name="recurring_revenue" widget="monetary" options="{'currency_field': 'company_currency'}" groups="crm.group_use_recurring_revenues"/>
-                                    <field name="recurring_plan" groups="crm.group_use_recurring_revenues"/>
-                                </t>
-                            </div>
-                            <field name="partner_id" class="text-truncate"/>
-                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                            <field name="lead_properties" widget="properties"/>
-                            <footer class="pt-1">
-                                <div class="d-flex mt-auto align-items-center">
-                                    <field name="priority" widget="priority" groups="base.group_user" class="me-2"/>
-                                    <field name="activity_ids" widget="kanban_activity"/>
-                                </div>
-                                <field name="user_id" widget="many2one_avatar_user" domain="[('share', '=', False)]" class="ms-auto"/>
-                            </footer> -->
-
-
     <record id="view_fieldservice_order_line_search" model="ir.ui.view">
         <field name="name">fieldservice.order.line.search</field>
         <field name="model">fieldservice.order.line</field>
@@ -161,7 +150,6 @@
                 <field name="date_day_start_char"/>
                 <field name="date_week_start_char"/>
                 <group expand="1" string="Group By">
-                    <!-- <filter string="Date" name="group_by_date" context="{'group_by': 'date_start:day'}"/> -->
                     <filter string="Days" name="date_day_start_char" context="{'group_by': 'date_day_start_char'}"/>
                     <filter string="Week" name="date_week_start_char" context="{'group_by': 'date_week_start_char'}"/>
                 </group>
@@ -183,6 +171,7 @@
                 <field name="order_id"/>
                 <field name="stage_id"/>
                 <field name="date_start"/>
+                <field name="duration"/>
             </list>
         </field>
     </record>

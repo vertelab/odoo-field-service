@@ -71,13 +71,19 @@
                 </templates>
             </kanban>
         </field>
-        <!-- 
-        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
-            <field name="employee_id" invisible="1"/>
-            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image: url(#{kanban_image('hr.employee', 'image_128', record.employee_id.raw_value)})" role="img"/>
-        </div> -->
-
     </record>
+    <!-- 
+    <record id="view_fieldservice_employee_calendar" model="ir.ui.view">
+        <field name="name">fieldservice.employee.calendar</field>
+        <field name="model">fieldservice.order.line.employee</field>
+        <field name="arch" type="xml">
+            <calendar string="Employee Schedule" date_start="date_start" date_stop="date_end" color="employee_id">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record> -->
+
+
     <record id="view_fieldservice_order_line_employee_list" model="ir.ui.view">
         <field name="name">fieldservice.order.line.employee.list</field>
         <field name="model">fieldservice.order.line.employee</field>
@@ -120,10 +126,10 @@
     <record id="action_fieldservice_employees" model="ir.actions.act_window">
         <field name="name">Field Service Employees</field>
         <field name="res_model">fieldservice.order.line.employee</field>
-        <field name="view_mode">kanban,form,list,pivot</field>
+        <field name="view_mode">kanban,form,list,pivot,calendar</field>
     </record>
 
-    <menuitem id="menu_fieldservice_employees" name="Field Service Employees" parent="fieldservice_vrtl.menu_fieldservice_root" action="action_fieldservice_employees" sequence="20"/>
+    <menuitem id="menu_fieldservice_employees" name="Employees" parent="fieldservice_vrtl.menu_fieldservice_root" action="action_fieldservice_employees" sequence="20"/>
 
 </odoo>
 

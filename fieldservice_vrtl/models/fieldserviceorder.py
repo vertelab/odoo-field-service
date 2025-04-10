@@ -41,14 +41,13 @@ class FieldServiceOrder(models.Model):
     date_start = fields.Datetime(string='Actual Start',compute="compute_date_start_end",store=True,readonly=False)
     date_end = fields.Datetime(string='Actual End',compute="co mpute_date_start_end",store=True,readonly=False)
    
-    time_until_work_start = fields.Float(string='Time until work start', compute='_compute_time_until_work_start', store=True, help='Time in hours')
-    time_until_work_start_avg = fields.Float(group_operator='avg', string='Time until work start (AVG)', compute='_compute_time_until_work_start', store=True, help='Time in hours')
-    time_until_work_done = fields.Float(string='Time until work done', compute='_compute_time_until_work_done', store=True, help='Time in hours')
-    time_until_work_start_max = fields.Float(group_operator="max", string='Time until work start (MAX)', compute='_compute_time_until_work_start', store=True, help='Time in hours')
-    time_until_work_done_avg = fields.Float(group_operator='avg', string='Time until work done (AVG)', compute='_compute_time_until_work_done', store=True, help='Time in hours')
+    # time_until_work_start = fields.Float(string='Time until work start', compute='_compute_time_until_work_start', store=True, help='Time in hours')
+    # time_until_work_start_avg = fields.Float(group_operator='avg', string='Time until work start (AVG)', compute='_compute_time_until_work_start', store=True, help='Time in hours')
+    # time_until_work_done = fields.Float(string='Time until work done', compute='_compute_time_until_work_done', store=True, help='Time in hours')
+    # time_until_work_start_max = fields.Float(group_operator="max", string='Time until work start (MAX)', compute='_compute_time_until_work_start', store=True, help='Time in hours')
+    # time_until_work_done_avg = fields.Float(group_operator='avg', string='Time until work done (AVG)', compute='_compute_time_until_work_done', store=True, help='Time in hours')
     partner_id = fields.Many2one('res.partner', string="Partner",)
-    # partner_status = fields.Selection([('legal_owner', 'Legal Owner'),
-    #                                    ], string="Status", default='legal_owner')
+
     @api.depends('stage_id')
     def compute_date_start_end(self):
         
@@ -94,25 +93,15 @@ class FieldServiceOrder(models.Model):
         record = self.env['fieldservice.order.line'].create([{'order_id':self.id,'date_start':self.planned_start_datetime}])
         return record.open_planning_view()
     
-    @api.depends('create_date', 'date_start')
-    def _compute_time_until_work_start(self):
-        for record in self:
-            if record.create_date and record.date_start:
-                record.time_until_work_start = (record.date_start - record.create_date).total_seconds() / 3600
-            else:
-                record.time_until_work_start = 0.0
-            record.time_until_work_start_avg = record.time_until_work_start
-            record.time_until_work_start_max = record.time_until_work_start
-
-
-    @api.depends('date_start', 'date_end')
-    def _compute_time_until_work_done(self):
-        for record in self:
-            if record.date_start and record.date_end:
-                record.time_until_work_done = (record.date_end - record.date_start).total_seconds() / 3600
-            else:
-                record.time_until_work_done = 0.0
-            record.time_until_work_done_avg = record.time_until_work_done
+    # @api.depends('create_date', 'date_start')
+    # def _compute_time_until_work_start(self):
+    #     for record in self:
+    #         if record.create_date and record.date_start:
+    #             record.time_until_work_start = (record.date_start - record.create_date).total_seconds() / 3600
+    #         else:
+    #             record.time_until_work_start = 0.0
+    #         record.time_until_work_start_avg = record.time_until_work_start
+    #         record.time_until_work_start_max = record.time_until_work_start
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -175,6 +164,7 @@ class FieldServiceOrder(models.Model):
             'context': {'default_order_id': self.id},
             'target': 'current',
         }
+    
     def create_occasion(self):
         record = self.env['fieldservice.order.line'].create([{'order_id':self.id,'date_start':self.planned_start_datetime, 'date_end': self.planned_start_datetime}])
         return record.open_planning_view()

@@ -5,5 +5,3 @@ class FieldsOrderType(models.Model):
     _description = 'Field Service Order Type'
 
     name = fields.Char(string = 'Name', required = True)
-
-

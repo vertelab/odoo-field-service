@@ -19,6 +19,6 @@
         </record>
 
 
-        <menuitem id="menu_fieldservice_order_type" name="Field Service Order Types" parent="fieldservice_vrtl.menu_fieldservice_root" action="action_fieldservice_order_type"/>
+        <!-- <menuitem id="menu_fieldservice_order_type" name="Field Service Order Types" parent="fieldservice_vrtl.menu_fieldservice_root" action="action_fieldservice_order_type"/> -->
     </data>
 </odoo>
