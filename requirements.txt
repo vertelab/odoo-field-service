@@ -12,7 +12,7 @@ markdownify
 beautifulsoup4
 typing_extensions
 duckduckgo_search
-IPython
+ipython
 lxml_html_clean
 lxml
 tiktoken
