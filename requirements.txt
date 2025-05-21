@@ -17,3 +17,6 @@ lxml_html_clean
 lxml
 tiktoken
 httpx
+ics
+ast
+requests
