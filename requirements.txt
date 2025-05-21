@@ -18,5 +18,4 @@ lxml
 tiktoken
 httpx
 ics
-ast
 requests
