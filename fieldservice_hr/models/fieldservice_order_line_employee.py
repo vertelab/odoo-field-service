@@ -1,4 +1,7 @@
 from odoo import fields, models, _, api
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class FieldServiceOrderLineEmployee(models.Model):
     _name = 'fieldservice.order.line.employee'
@@ -33,16 +36,37 @@ class FieldServiceOrderLineEmployee(models.Model):
         string="Company", 
         related="fieldservice_order_line_id.company_id"
     )
+
+    # resource_calendar_id = fields.Many2one('resource.calendar', compute='_compute_resource_calendar_id', store=True, readonly=False, copy=False)
+
+    # @api.depends('employee_id')
+    # def _compute_resource_calendar_id(self):
+    #     employees_by_dates = defaultdict(lambda: self.env['hr.employee'])
+    #     for leave in self:
+    #         if leave.employee_id and leave.request_date_from:
+    #             employees_by_dates[leave.request_date_from] += leave.employee_id
+    #             calendar_by_dates = {date_from: employees._get_calendars(date_from) for date_from, employees in employees_by_dates.items()}
+    #     for leave in self:
+    #         calendar = False
+    #         if leave.employee_id and leave.request_date_from:
+    #             calendar = calendar_by_dates[leave.request_date_from][leave.employee_id.id]
+    #             leave.resource_calendar_id = calendar or self.env.company.resource_calendar_id
+
     @api.model_create_multi
     def create(self, vals_list):
         for val in vals_list:
             if val.get('employee_id'):
+                _logger.warning(f"har inget arbetsschema."*20)
                 employee = self.env['hr.employee'].browse(int(val['employee_id']))
                 if employee.exists() and employee.department_id:
                     val['hr_department_id'] = employee.department_id.id
                 else:
                     val['hr_department_id'] = None 
-        return super(FieldServiceOrderLineEmployee, self).create(vals_list)
+                
+        field_service_line_ids = super(FieldServiceOrderLineEmployee, self).create(vals_list)
+        #for field_service in field_service_line_ids:
+        field_service_line_ids._create_fieldservice_resource()
+        return field_service_line_ids
 
     def write(self, values):
         res = super(FieldServiceOrderLineEmployee, self).write(values)
@@ -72,3 +96,42 @@ class FieldServiceOrderLineEmployee(models.Model):
     def _read_group_hr_department_id(self, hr_department_id, domain):
         hr_department_ids = hr_department_id.sudo()._search(domain)
         return hr_department_id.browse(hr_department_ids)
+    
+
+    def _prepare_fieldservice_resource_vals(self):
+        """Hook method for others to inject data
+        """
+        self.ensure_one()
+        return {
+            'name': _("%s: Field Service", self.employee_id.name),
+            'date_from': self.date_start,
+            'field_service_employee_line_id': self.id,
+            'date_to': self.date_end,
+            'resource_id': self.employee_id.resource_id.id,
+            'calendar_id': self.employee_id.resource_calendar_id.id,
+            'time_type': 'leave',
+        }
+    
+
+
+
+    def _create_fieldservice_resource(self):
+        """ This method will create entry in resource calendar time off object at the time of holidays validated
+        :returns: created `resource.calendar.leaves`
+        """
+        _logger.warning(f"works bad.{self}")
+        _logger.warning(f"works bad.{self._prepare_fieldservice_resource_vals()}")
+        vals_list = [leave._prepare_fieldservice_resource_vals() for leave in self]
+        
+        _logger.warning(f"works good."*20)
+        _logger.warning(f"works good.{vals_list}")
+        # if not vals_list.get('date_from'):
+        #     return
+        vals_list = list(filter(lambda _: _.get('date_from'), vals_list))
+        _logger.warning(f"final works good.{vals_list}")
+        if vals_list:
+            return self.env['resource.calendar.leaves'].sudo().create(vals_list)
+
+    def _remove_fieldservice_resource(self):
+        """ This method will create entry in resource calendar time off object at the time of holidays cancel/removed """
+        return self.env['resource.calendar.leaves'].search([('holiday_id', 'in', self.ids)]).unlink()

@@ -1,8 +1,7 @@
 from odoo import api, fields, models, _
 from datetime import date as date_type
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from odoo.tools import date_utils
-from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
 
 import logging

@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-fieldservice_sla.access_fieldservice_sla,access_fieldservice_sla,fieldservice_sla.model_fieldservice_sla,base.group_user,1,1,1,1
+access_fieldservice_order_sla_user,access.fieldservice.order.sla.user,model_fieldservice_order_sla,,1,1,1,1
+access_fieldservice_sla_user,access.fieldservice.sla.user,model_fieldservice_sla,,1,1,1,1

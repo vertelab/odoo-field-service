@@ -1,4 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- SLA Form View -->
+    <record id="view_fieldservice_sla_form" model="ir.ui.view">
+        <field name="name">fieldservice.sla.form</field>
+        <field name="model">fieldservice.sla</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_view_linked_orders" type="object" class="oe_stat_button" icon="fa-list">
+                        <span class="o_stat_text">Linked Orders</span>
+                    </button>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+
+
+                    <field name="description" placeholder="Description of the policy..."/>
+                    <group>
+                        <group string="Criteria">
+                            <p>
+                                This SLA Policy will apply to tickets matching ALL of the following criteria:
+                            </p>
+                            <field name="severity_level"/>
+                            <field name="company_id"/>
+
+                        </group>
+
+                    </group>
+                    <group>
+                        <group string="Target">
+                            <field name="stage_id"/>
+                            <field name="sla_time_type"/>
+                            <field name="calendar_id"/>
+                            <label for="time_within"/>
+                            <div class="o_row">
+                                <field name="time_within" widget="float_time" class="oe_inline"/>
+                                <span class="o_field_widget o_readonly_modifier">Reaction Hours</span>
+                            </div>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- SLA List View -->
+    <record id="view_fieldservice_sla_list" model="ir.ui.view">
+        <field name="name">fieldservice.sla.list</field>
+        <field name="model">fieldservice.sla</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="severity_level"/>
+                <field name="company_id"/>
+                <field name="stage_id"/>
+                <field name="allowed_hours"/>
+                <field name="breached"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Cron to notify SLA breach -->
+    <record id="ir_cron_notify_fieldservice_sla" model="ir.cron">
+        <field name="name">Notify SLA Breach</field>
+        <field name="model_id" ref="model_fieldservice_sla"/>
+        <field name="state">code</field>
+        <field name="code">model.notify_sla_breach()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">hours</field>
+    </record>
+
+    <!-- Window Action -->
+    <record id="action_fieldservice_sla" model="ir.actions.act_window">
+        <field name="name">Field Service SLA</field>
+        <field name="res_model">fieldservice.sla</field>
+        <field name="view_mode">list,form,kanban</field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_fieldservice_sla" name="Field service SLA" action="action_fieldservice_sla" parent="fieldservice_vrtl.configurations" sequence="10"/>
+</odoo>
+
+
+<!-- <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
     <record id="view_fieldservice_sla_form" model="ir.ui.view">
@@ -18,22 +106,27 @@
                             <p>This SLA Policy will apply to tickets matching ALL of the following criteria:</p>
 
                             <field name="severity_level"/>
-                            <!-- <field name =""/> -->
                             <field name ="company_id"/>
-
-
+                            <field name ="duration_to_sla"/>
+                            <field name ="breached"/>
+                            <field name ="create_date"/>
+                            
+                            <field name="order_sla_ids">
                         </group>
+                        </field>
 
 
                     </group>
                     <group>
                         <group string ="Target">
                             <field name ="stage_id"/>
+
                             <label for="time_within"/>
                             <div class="o_row" string ="Time Within">
                                 <field name="time_within" widget="float_time" class="oe_inline"/>
-                                <span class="o_field_widget o_readonly_modifier">Working Hours</span>
+                                <span class="o_field_widget o_readonly_modifier">Reaction Hours</span>
                             </div>
+
                         </group>
                     </group>
                 </sheet>
@@ -47,14 +140,22 @@
         <field name="arch" type="xml">
             <list>
 
-                <field name="name"/>
-                <field name="severity_level"/>
-                <!-- <field name =""/> -->
 
+                <field name="name"/>
 
             </list>
         </field>
     </record>
+
+    <record id="ir_cron_notify_fieldservice_sla" model="ir.cron">
+        <field name="name">Notify SLA Breach</field>
+        <field name="model_id" ref="model_fieldservice_sla"/>
+        <field name="state">code</field>
+        <field name="code">model.notify_sla_breach()</field>
+        <field name="interval_number">1</field>       
+        <field name="interval_type">hours</field>
+    </record>
+
 
     <record id="action_fieldservice_sla" model="ir.actions.act_window">
         <field name="name"> Field Service SLA</field>
@@ -64,4 +165,5 @@
 
     <menuitem id="menu_fieldservice_sla" name="Field service SLA" action="action_fieldservice_sla" parent="fieldservice_vrtl.configurations" sequence="10" />
 
-</odoo>
+</odoo> -->
+

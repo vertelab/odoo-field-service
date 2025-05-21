@@ -13,7 +13,8 @@
         'security/fieldservice_hr_security.xml',
         'views/fieldservice_order_line_employee_views.xml',
         'views/fieldservice_order_view.xml',
-        'views/fieldservice_order_line_views.xml'
+        'views/fieldservice_order_line_views.xml',
+        'views/resource_view.xml'
 
     ],
 }
