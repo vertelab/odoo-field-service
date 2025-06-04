@@ -1,15 +1,182 @@
 <odoo>
     <data noupdate="1">
-        <record id="ai_agent_helpdesk_chat" model="ai.agent">
-            <field name="name">Chat with fieldservice</field>
-            <field name="ai_role">You are an expert chatbot who can answer questions about around serviceorders</field>
-            <field name="ai_goal">Your goal is to help the service technicians via answering questions.</field>
+
+        <record id="ai_quest_company_planner" model="ai.quest">
+            <field name="name">AI Planning</field>
+            <field name="sub_description">Ett uppdrag  som ska sätta in SLA och Start/End date på en order.</field>
+            <field name="ai_type">default</field>
+            <field name="init_type">server-action</field>
+            <field name="code">
+for record in records:
+    # === Agent 0: Bedöm allvarlighetsgrad (severity) ===
+    severity_question = record.create_severity_question()
+    _logger.warning(f"[AI SEVERITY] Fråga: {severity_question}")
+
+    res_0 = agents[0].trigger_prompt( quest=quest, session=session, debug=quest.debug, message=severity_question,
+    )
+
+    extracted_severity = self.env['ai.quest'].custom_extract_json(res_0.content)
+    _logger.warning(f"[AI SEVERITY] RESULTAT: {extracted_severity}")
+
+    if extracted_severity:
+        record.set_severity_level(extracted_severity)
+        record._onchange_severity_level()
+
+    # === Agent 1: Uppskatta varaktighet (duration) för varje orderrad ===
+    for line in record.order_line_ids:
+        duration_question = line.create_duration_question()
+        _logger.warning(f"[AI DURATION] Fråga för orderrad {line.id}: {duration_question}")
+
+        res_1 = agents[1].trigger_prompt( quest=quest, session=session, debug=quest.debug, messages=[HumanMessage(content=duration_question)],
+        )
+
+        extracted_duration = self.env['ai.quest'].custom_extract_json(res_1.content)
+        _logger.warning(f"[AI DURATION] Resultat för orderrad {line.id}: {extracted_duration}")
+
+        if extracted_duration:
+            line.set_duration(extracted_duration)
+
+    # === Agent 2: Combined Planning + Allocation ===
+    planning_prompt = record.build_quest_prompt()
+    _logger.warning(f"[AI PLANNING] Fråga: {planning_prompt}")
+
+    res_2 = agents[2].trigger_prompt( quest=quest, session=session, debug=quest.debug, message=planning_prompt,
+    )
+
+    extracted_plan = self.env['ai.quest'].custom_extract_json(res_2.content)
+    _logger.warning(f"[AI PLANNING] Resultat: {extracted_plan}")
+
+    if extracted_plan:
+        plan_data = extracted_plan.get(str(record.id))
+        if plan_data:
+            record.apply_ai_planning({str(record.id): plan_data})
+            employee_id = plan_data.get("employee_id")
+
+            if employee_id:
+                for line in record.order_line_ids:
+                    if line:
+                        if line.fieldservice_order_line_employee_ids:
+                            line.fieldservice_order_line_employee_ids[0].write({
+                                'employee_id': employee_id
+                            })
+                            _logger.warning(f"[AI PLANNING] Uppdaterade employee_id {employee_id} för orderrad {line.id}")
+                        else:
+                            self.env['fieldservice.order.line.employee'].create({
+                                'fieldservice_order_line_id': line.id,
+                                'employee_id': employee_id,
+                                'description': 'Assigned by AI'
+                            })
+                            _logger.warning(f"[AI PLANNING] Skapade och tilldelade employee_id {employee_id} till orderrad {line.id}")     
+            </field>
+            <field name="is_supervisor" eval="True"/>
+            <field name="model_id" ref="fieldservice_vrtl_ai.model_fieldservice_order" />
+            <field name="description">Ett uppdrag  som ska sätta in SLA och Start/End date på en order.</field>
+        </record>
+
+        <record id="ai_agent_severity_level" model="ai.agent">
+            <field name="name">Severity Level</field>
+            <field name="ai_role">severity level estimators use the error description and the object to provide a severity level estimate.</field>
+            <field name="ai_goal">Give me a severity level estimate as a Low, Medium, Critic</field>
             <field name="ai_backstory">
+You will receive brand, model, serial_number, description, work_instructions, and the order id.
+
+Your job is to estimate severity level for each order.
+
+Use this format strictly:
+{"1376": 2}
+
+0 = low severity
+1 = medium severity
+2 = critical severity
+
+Only respond in JSON.
+Never include explanations or extra keys.            </field>
+            <field name="ai_prompt_template">{id}{duration}{order_ids}{sla_id}{stage_id}</field>
+            <field name="ai_type">default</field>
+        </record>
+        <record id="ai_agent_time_estimate" model="ai.agent">
+            <field name="name">Time Estimate</field>
+            <field name="ai_role">Time estimators use the error description and the object to provide a time estimate.</field>
+            <field name="ai_goal">Give me a time estimate 1-4 hours</field>
+            <field name="ai_backstory">
+You will get, objects description/brand/serial_number/work_instructions/id from a occasion and you will estimate.
+i want an estimate from hole hours 1-4 as json.
+{"1":2} like this. First number is for the id of the record and the other is for the amount of hour.
+format your answer as a Json always
+            </field>
+            <field name="ai_prompt_template">{description}{brand}{serial_number}{model}{work_instructions}{id}</field>
+            <field name="ai_type">default</field>
+        </record>
+        <record id="ai_agent_planning" model="ai.agent">
+            <field name="name">Date Planning</field>
+            <field name="ai_role">You are a smart scheduling assistant for field service orders. You receive input about a work order’s severity, duration, SLA deadlines, and the availability of employees.</field>
+            <field name="ai_goal">Estimate a planned start and end datetime for the work order, and assign the most available employee for the job.</field>
+            <field name="ai_backstory">
+You are an AI scheduling assistant. You must return only valid JSON, with no explanations, no markdown, and no comments.
+
+Job:
+- Order ID: {{ order_id }}
+- Duration: {{ duration_hours }} hours
+- SLA Deadline: {{ sla_deadline }}
+
+Work Rules:
+- Working hours: 08:00 to 17:00 (Monday to Friday)
+- Max 8h per employee per day
+- Distribute work fairly across employees and days
+- Do not schedule beyond the SLA deadline
+
+Employee availability (hours already booked):
+{{ employee_availability_json }}
+
+Instructions:
+- Choose a valid employee and day to fit the job into working hours.
+- Never exceed 8 hours total per day per employee.
+- Never go beyond the SLA deadline.
+- Only use the order ID "{{ order_id }}" as the key in your JSON — do not make up or modify it.
+- Respond **only** with JSON — no other text.
+
+Valid response:
+{
+  "{{ order_id }}": {
+    "start_date": "YYYY-MM-DD HH:MM:SS",
+    "end_date": "YYYY-MM-DD HH:MM:SS",
+    "employee_id": employee id
+  }
+}
+
+If no schedule is possible:
+{
+  "{{ order_id }}": null
+}            </field>
+                <field name="ai_prompt_template">{severity_level}{duration}{sla_id}{id}{employee_id}</field>
+                <field name="ai_type">default</field>
+            </record>
+
+
+            <record id="ai_agent_helpdesk_chat" model="ai.agent">
+                <field name="name">Chat with fieldservice</field>
+                <field name="ai_role">You are an expert chatbot who can answer questions about around serviceorders</field>
+                <field name="ai_goal">Your goal is to help the service technicians via answering questions.</field>
+                <field name="ai_backstory">
                 This AI agent access to the current serviceorder that a technician is working with and can answer questions regarding that.
                 This AI agent also have access to historical serviceorders and can give suggestions based how a similar serviceorder was handeled in the past.
-            </field>
-            <field name="ai_prompt_template">{message}</field>
-            <field name="ai_type">fieldservice-order</field>
-        </record>
-    </data>
-</odoo>
+                </field>
+                <field name="ai_prompt_template">{message}</field>
+                <field name="ai_type">fieldservice-order</field>
+            </record>
+
+            <record id="ai_quest_agent_severity_level_ai" model="ai.quest.agent">
+                <field name="ai_quest_id" ref="ai_quest_company_planner" />
+                <field name="ai_agent_id" ref="ai_agent_severity_level" />
+            </record>
+            <record id="ai_quest_agent_time_estimate_ai" model="ai.quest.agent">
+                <field name="ai_quest_id" ref="ai_quest_company_planner" />
+                <field name="ai_agent_id" ref="ai_agent_time_estimate" />
+            </record>
+            <record id="ai_quest_agent_planning_ai" model="ai.quest.agent">
+                <field name="ai_quest_id" ref="ai_quest_company_planner" />
+                <field name="ai_agent_id" ref="ai_agent_planning" />
+            </record>
+
+        </data>
+    </odoo>
