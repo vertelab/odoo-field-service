@@ -5,7 +5,8 @@
     'author': "Vertel AB",
     'category': 'Category',
     'license': 'LGPL-3',
-    'description': """
+    'description': """AI-baserad planeringsmotor för Field Service. Automatisk schemaläggning baserat på SLA, arbetsbörda och tillgänglighet. 
+    Minskar manuell administration och förbättrar resursutnyttjande."
     Fieldservice
     """,
     'data': [
