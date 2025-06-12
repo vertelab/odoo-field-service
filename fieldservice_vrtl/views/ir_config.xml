@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="res_config_settings_view_form_inherit_fieldservice" model="ir.ui.view">
+      <field name="name">res.config.settings.view.form.inherit.fieldservice</field>
+      <field name="model">res.config.settings</field>
+      <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form" position="inside">
+          <app data-string="Field Service" string="Field Service" name="fieldservice" groups="base.group_system">
+            <block title="Field Service Settings" id="fieldservice_settings">
+              <setting id="fieldservice_project_setting"
+                       help="Select the project that will be used by default for all Field Service tasks.">
+                <field name="fieldservice_project_id"/>
+              </setting>
+            </block>
+          </app>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>
+

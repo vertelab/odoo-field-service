@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+    <record id="resource_calendar_leave_form_inherit_by_fieldservice" model="ir.ui.view">
+        <field name="name">resource.calendar.leaves.form.inherit</field>
+        <field name="model">resource.calendar.leaves</field>
+        <field name="inherit_id" ref="resource.resource_calendar_leave_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="field_service_id" options="{'no_quick_create': True}"/>
+                <field name="field_service_employee_line_id" options="{'no_quick_create': True}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

@@ -43,5 +43,6 @@
             <field name="fold">True</field>
             <field name="is_closed">True</field>
         </record>
+        
     </data>
 </odoo>

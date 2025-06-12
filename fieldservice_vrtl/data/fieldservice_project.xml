@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <record id="project_fieldservice" model="project.project">
+          <field name="name">Fieldservice</field>
+        </record>
+        
+        <record id="fieldservice_default_project_param" model="ir.config_parameter">
+            <field name="key">fieldservice.default_project_id</field>
+            <field name="value" eval="ref('project_fieldservice')"/>
+        </record>
+
+    </data>
+</odoo>

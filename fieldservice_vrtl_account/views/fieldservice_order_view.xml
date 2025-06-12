@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_fieldservice_order_form_inherit" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.inherit</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/> 
+        <field name="arch" type="xml">
+            
+               <div class="oe_button_box" positon="inside">
+                <button
+                    type="object"
+                    name="action_view_invoices"
+                    class="oe_stat_button"
+                    icon="fa-file-invoice"
+                    >
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="invoice_count" widget="statinfo"/>
+                        </span>
+                        <span class="o_stat_text">Invoices</span>
+                    </div>
+                </button>
+
+               </div>
+              <notebook name="Main_order_notebook" position="inside">
+                
+                <button name="create_invoices"
+                type="object"
+                string="Create Invoices"
+                class="btn-primary"
+                attrs="{'invisible': [('invoice_line_ids', '=', False)]}"/>
+                <page string="Invoice" name="invoice_line_ids">
+                    <field name="invoice_line_ids">
+                        <list editable="bottom">
+                            <field name="product_id"/>
+                            <field name="delivered"/>
+                            <field name="invoiced"/> 
+                            <field name="price"/>
+                            <field name="tax_id"/>
+                        </list>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

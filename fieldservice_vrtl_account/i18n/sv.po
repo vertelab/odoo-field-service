@@ -1,0 +1,227 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fieldservice_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20250327\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-07 12:34+0000\n"
+"PO-Revision-Date: 2025-04-07 14:34+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: fieldservice_hr
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_kanban
+msgid "Address:"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.model,name:fieldservice_hr.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Objekttransaktion"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line__timesheet_ids
+msgid "Associated Timesheets"
+msgstr "Tillhörande tidrapporter"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__avatar_128
+msgid "Avatar 128"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__company_id
+msgid "Company"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__create_date
+msgid "Created on"
+msgstr "Skapad på"
+
+#. module: fieldservice_hr
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_kanban
+msgid "Delete"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_search
+msgid "Department"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__description
+msgid "Description"
+msgstr "Beskrivning"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__display_name
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+#. module: fieldservice_hr
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_kanban
+msgid "Edit"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.model,name:fieldservice_hr.model_hr_employee
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__employee_id
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_search
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_form_planning_inherit_hr
+msgid "Employee"
+msgstr "Anställd"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line__fieldservice_order_line_employee_ids
+#: model:ir.model.fields,field_description:fieldservice_hr.field_hr_employee__fieldservice_order_line_employee_ids
+msgid "Employees"
+msgstr "Anställda"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__date_end
+msgid "End Date"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_list
+msgid "External Views"
+msgstr "Externa synpunkter"
+
+#. module: fieldservice_hr
+#: model:ir.actions.act_window,name:fieldservice_hr.action_fieldservice_employees
+#: model:ir.ui.menu,name:fieldservice_hr.menu_fieldservice_employees
+msgid "Field Service Employees"
+msgstr "Fältservicemedarbetare"
+
+#. module: fieldservice_hr
+#: model:ir.model,name:fieldservice_hr.model_fieldservice_order
+msgid "Field Service Order"
+msgstr "Ärende"
+
+#. module: fieldservice_hr
+#: model:ir.model,name:fieldservice_hr.model_fieldservice_order_line
+msgid "Field Service Order Line"
+msgstr "Tillfälle"
+
+#. module: fieldservice_hr
+#: model:ir.model,name:fieldservice_hr.model_fieldservice_order_line_employee
+msgid "Field Service Order Line Employee"
+msgstr "Fältservice Order Line Anställd"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_account_analytic_line__fieldservice_order_line_id
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__fieldservice_order_line_id
+msgid "Fieldservice Order Line"
+msgstr "Fältservice orderlinje"
+
+#. module: fieldservice_hr
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_search
+msgid "Group By"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__hr_department_id
+msgid "Hr Department"
+msgstr "HR-avdelning"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__id
+msgid "ID"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__image_1024
+msgid "Image 1024"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__image_128
+msgid "Image 128"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad den"
+
+#. module: fieldservice_hr
+#: model:ir.actions.act_window,name:fieldservice_hr.action_my_fieldservice_order_line
+msgid "My Field Service Kalender"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.ui.menu,name:fieldservice_hr.menu_my_fieldservice_order_line
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_search
+msgid "My Occasions"
+msgstr "Mina tillfällen"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line__name
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__name
+msgid "Name"
+msgstr "Namn"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__priority
+msgid "Priority"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_pivot
+msgid "Service Request"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__date_start
+msgid "Start Date"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__address
+msgid "Street"
+msgstr ""
+
+#. module: fieldservice_hr
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_form_reporting_inherit_hr
+msgid "Time Spent"
+msgstr "Utnyttjad tid"
+
+#. module: fieldservice_hr
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_form_reporting_inherit_hr
+msgid "Timesheet"
+msgstr "Tidrapport"
+
+#. module: fieldservice_hr
+#: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_form_reporting_inherit_hr
+msgid "Timesheet Activities"
+msgstr "Aktiviteter för tidrapporter"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order__total_time_duration
+msgid "Total Time Duration"
+msgstr "Total arbetstid"
+
+#. module: fieldservice_hr
+#. odoo-python
+#: code:addons/fieldservice_hr/models/fieldservice_order_line_employee.py:0
+msgid "Unassigned Slot"
+msgstr ""

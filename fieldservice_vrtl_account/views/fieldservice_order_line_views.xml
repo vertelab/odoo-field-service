@@ -1,0 +1,85 @@
+<odoo>
+
+    <record id="view_fieldservice_order_line_form_reporting_inherit_hr" model="ir.ui.view">
+        <field name="name">fieldservice.order.line.form.inherit.hr</field>
+        <field name="model">fieldservice.order.line</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_line_form_reporting"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[@name='reporting_notebook']" position="inside">
+                <page string="Timesheet">
+                    <group>
+                        <field name="timesheet_ids" mode="list,kanban">
+                            <list editable="bottom" string="Timesheet Activities" default_order="date" decoration-muted="readonly_timesheet == True">
+                                <field name="readonly_timesheet" column_invisible="True"/>
+                                <field name="date" readonly="readonly_timesheet"/>
+                                <field name="user_id" column_invisible="True"/>
+                                <field name="employee_id" widget="many2one_avatar_employee" context="{'active_test': True}" required="1" readonly="readonly_timesheet"/>
+                                <field name="name" required="1" readonly="readonly_timesheet"/>
+                                <field name="unit_amount" string="Time Spent" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24 or unit_amount &lt; 0" readonly="readonly_timesheet"/>
+                                <field name="company_id" column_invisible="True"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_fieldservice_order_line_form_planning_inherit_hr" model="ir.ui.view">
+        <field name="name">fieldservice.order.line.form.inherit.hr</field>
+        <field name="model">fieldservice.order.line</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_line_form_planning"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[@name='planning_notebook']" position="inside">
+                <page string="Employee">
+                    <group>
+                        <field name="fieldservice_order_line_employee_ids" nolabel="1" mode="list">
+                            <list editable="bottom">
+                                <field name = "employee_id"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+        <record id="view_fieldservice_order_line_search" model="ir.ui.view">
+            <field name="name">fieldservice.order.line.search</field>
+            <field name="model">fieldservice.order.line</field>
+            <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_line_search"/>
+            <field name="arch" type="xml">
+                <field name="date_week_start_char" position="after">
+                    <filter string="My Occasions" name="my_field_service_occasion" domain="[('fieldservice_order_line_employee_ids.employee_id.user_id', '=', uid)]"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_fieldservice_order_line_kanban" model="ir.ui.view">
+            <field name="name">fieldservice.order.line.kanban</field>
+            <field name="model">fieldservice.order.line</field>
+            <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_line_kanban"/>
+            <field name="arch" type="xml">
+                <field name="address" position="after">
+                    <field name="fieldservice_order_line_employee_ids" widget="many2many_tags" />
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_timesheet.act_hr_timesheet_line" model="ir.actions.act_window">
+            <field name="domain">['&amp;', ('user_id', '=', uid), '|', ('project_id', '!=', False), ('fieldservice_order_line_id', '!=', False)]</field>
+        </record>
+
+        <record id="action_my_fieldservice_order_line" model="ir.actions.act_window">
+            <field name="name">My Field Service Kalender</field>
+            <field name="res_model">fieldservice.order.line</field>
+            <field name="view_mode">list,kanban,calendar,form</field>
+            <field name="context">{'search_default_my_field_service_occasion': 1}</field>
+        </record>
+
+        <menuitem id="menu_my_fieldservice_order_line" name="My Occasions" parent="fieldservice_vrtl.menu_fieldservice_order_line_root" action="action_my_fieldservice_order_line" sequence="20"/>
+
+
+    </odoo>
