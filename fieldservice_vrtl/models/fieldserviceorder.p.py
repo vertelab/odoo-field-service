@@ -8,6 +8,10 @@ class FieldServiceOrder(models.Model):
     _name = 'fieldservice.order'
     _description = 'Field Service Order'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherits = {'project.task': 'task_id'}
+    task_id = fields.Many2one('project.task', required=True, ondelete="cascade")
+
+   
 
     name = fields.Char(string='Name', required=True, copy=False, readonly=False)
     order_number = fields.Char(string="Reference Number", default=lambda self: _('New'), readonly=True, copy=False, required = True)
@@ -105,14 +109,23 @@ class FieldServiceOrder(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
+        default_project_id = int(self.env['ir.config_parameter'].sudo().get_param('fieldservice.default_project_id') or 0)
         for vals in vals_list:
-            _logger.info(f"Creating order with initial vals: {vals}")
+            # Generate order number if needed
             if vals.get('order_number', _('New')) == _('New'):
                 new_number = self.env['ir.sequence'].next_by_code('fieldservice.order')
-                _logger.info(f"Generated new number: {new_number}")
                 vals['order_number'] = new_number or _('New')
+            # Create the related project.task
+            task_vals = {
+                'name': vals.get('name', 'New Task'),
+                'project_id':default_project_id,
+            }
+            task = self.env['project.task'].create(task_vals)
+            vals['task_id'] = task.id
             _logger.info(f"Final vals for creation: {vals}")
+
         res = super(FieldServiceOrder, self).create(vals_list)
+        # If you have a method to call after creation, call it for each record
         res.create_occasion()
         return res
 

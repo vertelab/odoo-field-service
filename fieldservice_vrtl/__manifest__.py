@@ -1,7 +1,7 @@
 {
     'name': "Field service: Vertel",
     'version': '1.0',
-    'depends': ['mail','base','hr'],
+    'depends': ['mail','base','hr','project'],
     'author': "Vertel AB",
     'category': 'Category',
     'license': 'LGPL-3',
@@ -17,6 +17,8 @@
         'views/fieldservice_order_line_views.xml',
         'views/fieldservice_order_type_view.xml',
         'views/fieldservice_stage_views.xml',
+        'views/ir_config.xml',
+        'data/fieldservice_project.xml',
         'data/fieldservice_stage_data.xml',
         'data/fieldservice_sequence_data.xml'
         #'demo/demo_employees.xml',
