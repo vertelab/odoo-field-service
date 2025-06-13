@@ -69,17 +69,32 @@ class FieldServiceOrder(models.Model):
                 order.sla_duration_hours = 0.0
 
     reaction_time = fields.Float(string='Reaction Time', compute='_compute_reaktion_time', store=True, help='Time in hours')
-    reaction_time_avg = fields.Float(string='Reaction Time (AVG)', group_operator='avg', compute='_compute_reaktion_time', store=True, help='Time in hours')
-    reaction_time_min = fields.Float(string='Reaction Time (MIN)', group_operator='min', compute='_compute_reaktion_time', store=True, help='Time in hours')
-    reaction_time_max = fields.Float(string='Reaction Time (MAX)', group_operator='max', compute='_compute_reaktion_time', store=True, help='Time in hours')
-    time_until_work_start = fields.Float(string='Resolution Time', compute='_compute_time_until_work_start', store=True, help='Time in hours')
-    time_until_work_start_avg = fields.Float(group_operator='avg', string='Resolution Time (AVG)', compute='_compute_time_until_work_start', store=True, help='Time in hours')
-    time_until_work_start_max = fields.Float(group_operator="max", string='Resolution Time (MAX)', compute='_compute_time_until_work_start', store=True, help='Time in hours')
-    time_until_work_start_min = fields.Float(group_operator="min", string='Resolution Time (MIN)', compute='_compute_time_until_work_start', store=True, help='Time in hours')
-    time_until_work_done = fields.Float(string='Arrival Time', compute='_compute_time_until_work_done', store=True, help='Time in hours')
-    time_until_work_done_avg = fields.Float(group_operator='avg', string='Arrival Time (AVG)', compute='_compute_time_until_work_done', store=True, help='Time in hours')
-    time_until_work_done_min = fields.Float(group_operator='min', string='Arrival Time (MIN)', compute='_compute_time_until_work_done', store=True, help='Time in hours')
-    time_until_work_done_max = fields.Float(group_operator='max', string='Arrival Time (MAX)', compute='_compute_time_until_work_done', store=True, help='Time in hours')
+    reaction_time_avg = fields.Float(string='Reaction Time (AVG)', group_operator='avg',
+                                     compute='_compute_reaktion_time', store=True, help='Time in hours')
+    reaction_time_min = fields.Float(string='Reaction Time (MIN)', group_operator='min',
+                                     compute='_compute_reaktion_time', store=True, help='Time in hours')
+    reaction_time_max = fields.Float(string='Reaction Time (MAX)', group_operator='max',
+                                     compute='_compute_reaktion_time', store=True, help='Time in hours')
+    time_until_work_start_avg = fields.Float(group_operator='avg', string='Resolution Time (AVG)',
+                                             compute='_compute_time_until_work_start', store=True, help='Time in hours')
+    time_until_work_start_max = fields.Float(group_operator="max", string='Resolution Time (MAX)',
+                                             compute='_compute_time_until_work_start', store=True, help='Time in hours')
+    time_until_work_start_min = fields.Float(group_operator="min", string='Resolution Time (MIN)',
+                                             compute='_compute_time_until_work_start', store=True, help='Time in hours')
+
+    time_until_work_done_avg = fields.Float(group_operator='avg', string='Arrival Time (AVG)',
+                                            compute='_compute_time_until_work_done', store=True, help='Time in hours')
+    time_until_work_done_min = fields.Float(group_operator='min', string='Arrival Time (MIN)',
+                                            compute='_compute_time_until_work_done', store=True, help='Time in hours')
+    time_until_work_done_max = fields.Float(group_operator='max', string='Arrival Time (MAX)',
+                                            compute='_compute_time_until_work_done', store=True, help='Time in hours')
+
+    time_until_work_start = fields.Float(string='Resolution Time', compute='_compute_time_until_work_start', store=True,
+                                         help='Time in hours')
+    time_until_work_done = fields.Float(string='Arrival Time', compute='_compute_time_until_work_done', store=True,
+                                        help='Time in hours')
+
+
 
     @api.depends('create_date', 'date_start')
     def _compute_time_until_work_start(self):
