@@ -9,9 +9,8 @@ class FieldServiceOrder(models.Model):
     _description = 'Field Service Order'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _inherits = {'project.task': 'task_id'}
-    task_id = fields.Many2one('project.task', required=True, ondelete="cascade")
 
-   
+    task_id = fields.Many2one('project.task', required=True, ondelete="cascade")
 
     name = fields.Char(string='Name', required=True, copy=False, readonly=False)
     order_number = fields.Char(string="Reference Number", default=lambda self: _('New'), readonly=True, copy=False, required = True)
@@ -30,7 +29,6 @@ class FieldServiceOrder(models.Model):
         default=lambda self: self.env['fieldservice.stage'].search([], limit=1)
     )
     field_service_order_tag_ids = fields.Many2many('field.service.order.tag', string="Tag")
-
     company_id = fields.Many2one(
         'res.company', 
         string="Company", 
