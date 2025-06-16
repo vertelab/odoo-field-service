@@ -53,7 +53,7 @@
                             </page>
                             <page string="Object Description">
                                 <group>
-
+                                    <field name="product_tmpl_id"/>
                                     <field name="product_type" widget="many2one"/>
                                     <field name="brand"/>
                                     <field name="model"/>

@@ -68,13 +68,31 @@ class FieldServiceOrder(models.Model):
     create_date = fields.Datetime(readonly=True)
 
     #Object description
-    brand = fields.Char(string='Brand', help="The manufacturer or brand of the product")
+    brand = product_brand_id = fields.Many2one("product.brand", string="Brand", help="Select a brand for this product")
+    #brand = fields.Char(string='Brand', help="The manufacturer or brand of the product")
     model = fields.Char(string='Model', help="The model name or number of the product")
     serial_number = fields.Char(string='Serial Number', help="The unique serial number of the product")
     product_number = fields.Char(string='Product Number', help="The product number or part number")
     marking = fields.Char(string='Marking', help="Any specific marking or label on the product")
     purchase_date = fields.Date(string='Purchase Date', help="The date when the product was purchased")
-
+    product_tmpl_id = fields.Many2one('product.template', string='Product Template')
+    def create_or_set_product(self):
+        for order in self:
+            product_tmpl = self.env['product.template'].search([
+            ('product_number','=',order.product_number),
+            ('product_type','=',order.product_type),
+            ('brand','=',order.brand),
+            ('model','=',order.model),
+            ])
+            if product_tmpl:
+               order.product_tmpl_id = product_tmpl
+            else:
+                order.product_tmpl_id = self.env['product.template'].create({
+                'product_number':order.product_number,
+                'product_type':order.product_type,
+                'brand':order.brand,
+                'model':order.model,
+                })
     #ocassion count
     line_count = fields.Integer(string='Occasion Count', compute='_compute_line_count', store = True)
     line_count_avg = fields.Integer(group_operator='avg',string='Occasion Count (AVG)', compute='_compute_line_count', store=True)
