@@ -1,1 +1,2 @@
 git@github.com:vertelab/odoo-ai.git /usr/share/odoo-ai
+git@github.com:oca/brand.git /usr/share/odooext-OCA-brand
