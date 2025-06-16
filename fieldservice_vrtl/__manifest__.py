@@ -32,4 +32,3 @@
         #  'demo/demo_work_orders.xml'
      ],
 }
-
