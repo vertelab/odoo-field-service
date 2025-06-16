@@ -1,0 +1,11 @@
+<odoo>
+    <record id="action_create_or_set_product" model="ir.actions.server">
+        <field name="name">Create or Set Product</field>
+        <field name="model_id" ref="module_name.model_fieldservice_order"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.create_or_set_product()
+        </field>
+    </record>
+</odoo>
+
