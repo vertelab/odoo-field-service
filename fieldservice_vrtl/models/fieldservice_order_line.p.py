@@ -38,7 +38,7 @@ class FieldServiceOrderLine(models.Model):
         ('red', 'Red')
     ], string='Custom State', compute='_compute_custom_state', store=True)
 
-    brand = fields.Many2one(related='order_id.brand', string='Brand', readonly=True)
+    brand_id = fields.Many2one(related='order_id.brand_id', string='Brand', readonly=True)
     model = fields.Char(related='order_id.model', string='Model', readonly=True)
     serial_number = fields.Char(related='order_id.serial_number', string='Serial Number', readonly=True)
     product_number = fields.Char(related='order_id.product_number', string='Product Number', readonly=True)
