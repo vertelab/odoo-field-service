@@ -70,8 +70,8 @@ class FieldServiceOrder(models.Model):
     create_date = fields.Datetime(readonly=True)
 
     #Object description
-    brand = fields.Many2one("product.brand", string="Brand", help="Select a brand for this product")
-    brand_logo = fields.Binary(related='brand.logo', string='Brand', readonly=True)
+    brand_id = fields.Many2one("product.brand", string="Brand", help="Select a brand for this product")
+    brand_logo = fields.Binary(related='brand_id.logo', string='Brand', readonly=True)
     #brand = fields.Char(string='Brand', help="The manufacturer or brand of the product")
     model = fields.Char(string='Model', help="The model name or number of the product")
     serial_number = fields.Char(string='Serial Number', help="The unique serial number of the product")
@@ -83,8 +83,8 @@ class FieldServiceOrder(models.Model):
         for order in self:
             product_tmpl = self.env['product.template'].search([
             ('product_number','=',order.product_number),
-            ('product_type','=',order.product_type),
-            ('brand','=',order.brand),
+            ('product_type','=',order.product_type.id),
+            ('product_brand_id','=',order.brand_id.id),
             ('model','=',order.model),
             ])
             if product_tmpl:
@@ -92,8 +92,8 @@ class FieldServiceOrder(models.Model):
             else:
                 order.product_tmpl_id = self.env['product.template'].create({
                 'product_number':order.product_number,
-                'product_type':order.product_type,
-                'brand':order.brand,
+                'product_type':order.product_type.id,
+                'product_brand_id':order.brand_id.id,
                 'model':order.model,
                 })
     #ocassion count
