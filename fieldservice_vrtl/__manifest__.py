@@ -1,7 +1,7 @@
 {
     'name': "Field service: Vertel",
     'version': '1.0',
-    'depends': ['mail','base','hr','project','product_brand'],
+    'depends': ['mail','base','hr','project', 'product_brand'],
     'author': "Vertel AB",
     'category': 'Category',
     'license': 'LGPL-3',
