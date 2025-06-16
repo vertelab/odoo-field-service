@@ -9,9 +9,8 @@ class FieldServiceOrder(models.Model):
     _description = 'Field Service Order'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _inherits = {'project.task': 'task_id'}
-    task_id = fields.Many2one('project.task', required=True, ondelete="cascade")
 
-   
+    task_id = fields.Many2one('project.task', required=True, ondelete="cascade")
 
     name = fields.Char(string='Name', required=True, copy=False, readonly=False)
     order_number = fields.Char(string="Reference Number", default=lambda self: _('New'), readonly=True, copy=False, required = True)
@@ -25,8 +24,11 @@ class FieldServiceOrder(models.Model):
         ('2', 'High'),
         ('3', 'Urgent')
     ], string='Priority', default='1')
-    stage_id = fields.Many2one('fieldservice.stage', string='Stage', tracking=True,
-                               group_expand='_read_group_stage_ids', default=lambda self: self.env['fieldservice.stage'].search([], limit=1))
+    stage_id = fields.Many2one(
+        'fieldservice.stage', string='Stage', tracking=True, group_expand='_read_group_stage_ids',
+        default=lambda self: self.env['fieldservice.stage'].search([], limit=1)
+    )
+    field_service_order_tag_ids = fields.Many2many('field.service.order.tag', string="Tag")
     company_id = fields.Many2one(
         'res.company', 
         string="Company", 
@@ -68,7 +70,8 @@ class FieldServiceOrder(models.Model):
     create_date = fields.Datetime(readonly=True)
 
     #Object description
-    brand = product_brand_id = fields.Many2one("product.brand", string="Brand", help="Select a brand for this product")
+    brand = fields.Many2one("product.brand", string="Brand", help="Select a brand for this product")
+    brand_logo = fields.Binary(related='brand.logo', string='Brand', readonly=True)
     #brand = fields.Char(string='Brand', help="The manufacturer or brand of the product")
     model = fields.Char(string='Model', help="The model name or number of the product")
     serial_number = fields.Char(string='Serial Number', help="The unique serial number of the product")
