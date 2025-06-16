@@ -28,7 +28,7 @@
                         <group name="group_top">
                             <group name="group_top_left" >
                                 <field name="order_number"/>
-                                <field name="field_service_order_tag_ids" widget="many2many_tags"/>
+                                <field name="field_service_order_tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags"/>
                                 <field name="priority" widget="priority"/>
                                 <field name="company_id"/>
                                 <field name="planned_start_datetime"/>
@@ -54,7 +54,7 @@
                             </page>
                             <page string="Object Description">
                                 <group>
-
+                                    <field name="product_tmpl_id"/>
                                     <field name="product_type" widget="many2one"/>
                                     <field name="brand"/>
                                     <field name="model"/>
@@ -127,14 +127,14 @@
 <!--                    <field name="company_id"/>-->
                     <templates>
                         <t t-name="card" class="flex-row">
-                            <aside class="o_kanban_aside_full">
-<!--                                <t t-if="record.image_1024.raw_value">-->
-<!--                                    <field name="image_1024" widget="background_image" options="{'zoom': true, 'zoom_delay': 1000, 'preview_image':'image_128'}" class="d-block position-relative"/>-->
-<!--                                </t>-->
+                            <aside class="w-25 p-1">
+                                <t t-if="record.brand_logo.raw_value">
+                                    <field name="brand_logo" widget="image" options="{'zoom': true, 'zoom_delay': 1000, 'preview_image':'brand_logo'}" class="d-block position-relative"/>
+                                </t>
 <!--                                <t t-elif="record.image_128.raw_value">-->
 <!--                                    <field name="avatar_128" widget="background_image" options="{'zoom': true, 'zoom_delay': 1000}" class="d-block position-relative"/>-->
 <!--                                </t>-->
-                                <div class="d-flex align-items-center justify-content-center bg-100 bg-gradient">
+                                <div t-else="" class="d-flex align-items-center justify-content-center bg-100 bg-gradient">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-75 h-75 opacity-50" viewBox="0 0 20 20">
                                         <g fill="currentColor">
                                             <path d="M 10 11 C 4.08 11 2 14 2 16 L 2 19 L 18 19 L 18 16 C 18 14 15.92 11 10 11 Z"/>
@@ -147,14 +147,16 @@
                                 <div class="border-bottom">
                                     <span>
                                         <field class="fw-bold fs-5" name="name"/>
-                                        -
-                                        <field class="fw-bold fs-5" name="model"/>
+
+                                        <t t-if="record.model.raw_value">
+                                            -
+                                            <field class="fw-bold fs-5" name="model"/>
+                                        </t>
                                     </span>
-                                    <field class="fw-bold fs-5" name="name" placeholder="Employee's Name"/>
                                 </div>
                                 <field t-if="record.product_number.raw_value" name="product_number"/>
                                 <field t-if="record.product_type.raw_value" name="product_type"/>
-                                <field name="field_service_order_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" optional="hide"/>
+                                <field name="field_service_order_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                                 <footer>
                                     <div class="d-lg-contents">
                                         <div>
