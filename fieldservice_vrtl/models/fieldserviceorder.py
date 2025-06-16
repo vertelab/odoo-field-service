@@ -25,8 +25,12 @@ class FieldServiceOrder(models.Model):
         ('2', 'High'),
         ('3', 'Urgent')
     ], string='Priority', default='1')
-    stage_id = fields.Many2one('fieldservice.stage', string='Stage', tracking=True,
-                               group_expand='_read_group_stage_ids', default=lambda self: self.env['fieldservice.stage'].search([], limit=1))
+    stage_id = fields.Many2one(
+        'fieldservice.stage', string='Stage', tracking=True, group_expand='_read_group_stage_ids',
+        default=lambda self: self.env['fieldservice.stage'].search([], limit=1)
+    )
+    field_service_order_tag_ids = fields.Many2many('field.service.order.tag', string="Tag")
+
     company_id = fields.Many2one(
         'res.company', 
         string="Company", 
