@@ -18,9 +18,11 @@
         'views/fieldservice_order_type_view.xml',
         'views/fieldservice_stage_views.xml',
         'views/ir_config.xml',
+        'views/product_views.xml'
         'data/fieldservice_project.xml',
         'data/fieldservice_stage_data.xml',
         'data/fieldservice_sequence_data.xml'
+        'data/fieldservice_server_action.xml'
         #'demo/demo_employees.xml',
         #'demo/demo_work_orders.xml'
     ],

@@ -1,0 +1,17 @@
+<odoo>
+<data>
+  <record id="view_product_template_form_inherit_add_fields" model="ir.ui.view">
+    <field name="name">product.template.form.inherit.add.fields</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='categ_id']" position="after">
+        <field name="model"/>
+        <field name="product_number"/>
+        <field name="product_type"/>
+      </xpath>
+    </field>
+  </record>
+
+</data>
+</odoo>

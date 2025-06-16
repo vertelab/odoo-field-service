@@ -43,7 +43,7 @@ class FieldServiceOrder(models.Model):
     work_instructions = fields.Html(string='Work Instructions')
     location_instructions = fields.Text(string='Location Instructions')
 
-    product_type = fields.Many2one('fieldservice.order.type', string= 'Product Type')
+    product_type = fields.Many2one('fieldservice.order.type', string= 'Product Type', compute="set_description_values", store=True, readonly=False)
     date_start = fields.Datetime(string='Actual Start',compute="compute_date_start_end",store=True,readonly=False)
     date_end = fields.Datetime(string='Actual End',compute="co mpute_date_start_end",store=True,readonly=False)
    
@@ -70,15 +70,30 @@ class FieldServiceOrder(models.Model):
     create_date = fields.Datetime(readonly=True)
 
     #Object description
-    brand = fields.Many2one("product.brand", string="Brand", help="Select a brand for this product")
+    brand = fields.Many2one("product.brand", string="Brand", help="Select a brand for this product", compute="set_description_values", store=True, readonly=False)
     brand_logo = fields.Binary(related='brand.logo', string='Brand', readonly=True)
     #brand = fields.Char(string='Brand', help="The manufacturer or brand of the product")
-    model = fields.Char(string='Model', help="The model name or number of the product")
+    model = fields.Char(string='Model', help="The model name or number of the product", compute="set_description_values", store=True, readonly=False)
     serial_number = fields.Char(string='Serial Number', help="The unique serial number of the product")
-    product_number = fields.Char(string='Product Number', help="The product number or part number")
+    product_number = fields.Char(string='Product Number', help="The product number or part number", compute="set_description_values", store=True, readonly=False)
     marking = fields.Char(string='Marking', help="Any specific marking or label on the product")
     purchase_date = fields.Date(string='Purchase Date', help="The date when the product was purchased")
     product_tmpl_id = fields.Many2one('product.template', string='Product Template')
+    
+    @api.depends('product_tmpl_id')
+    def set_description_values(self):
+        for record in self:
+            if record.product_tmpl_id:
+               record.model = record.product_tmpl_id.model
+               record.product_number = record.product_tmpl_id.product_number
+               record.product_type = record.product_tmpl_id.product_type
+               record.brand = record.product_tmpl_id.brand
+            else:
+               record.model = False
+               record.product_number = False
+               record.product_type = False
+               record.brand = False
+    
     def create_or_set_product(self):
         for order in self:
             product_tmpl = self.env['product.template'].search([
@@ -91,6 +106,7 @@ class FieldServiceOrder(models.Model):
                order.product_tmpl_id = product_tmpl
             else:
                 order.product_tmpl_id = self.env['product.template'].create({
+                'name': order.order.model
                 'product_number':order.product_number,
                 'product_type':order.product_type,
                 'brand':order.brand,
