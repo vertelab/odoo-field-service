@@ -95,8 +95,11 @@ class FieldServiceOrder(models.Model):
                 })
     #ocassion count
     line_count = fields.Integer(string='Occasion Count', compute='_compute_line_count', store = True)
-    line_count_avg = fields.Integer(group_operator='avg',string='Occasion Count (AVG)', compute='_compute_line_count', store=True)
-    total_duration = fields.Float(string='Total Duration', compute='_compute_total_duration', store=True, help='Total duration of all lines', group_operator=False)
+    line_count_avg = fields.Integer(aggregator='avg', string='Occasion Count (AVG)', compute='_compute_line_count',
+                                    store=True)
+    total_duration = fields.Float(string='Total Duration', compute='_compute_total_duration', store=True,
+                                  help='Total duration of all lines', aggregator=False)
+
 
     @api.depends('order_line_ids.duration')
     def _compute_total_duration(self):
