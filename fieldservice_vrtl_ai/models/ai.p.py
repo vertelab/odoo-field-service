@@ -36,7 +36,7 @@ class AIAgent(models.Model):
                 res['Service Title'] = service_order.name
                 res['Reference number'] = service_order.order_number
                 res['Service Order Description'] = service_order.description
-                res['The manufacturer or brand of the product'] = service_order.brand
+                res['The manufacturer or brand of the product'] = service_order.brand_id.name
                 res['The model name or number of the product'] = service_order.model
                 res['The unique serial number of the product'] = service_order.serial_number
                 res['The product number or part number'] = service_order.product_number
