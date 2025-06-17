@@ -10,7 +10,7 @@ class FieldServiceOrder(models.Model):
     _name = 'fieldservice.order'
     _description = 'Field Service Order'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    _inherits = {'project.task': 'task_id'}
+    #_inherits = {'project.task': 'task_id'}
 
     task_id = fields.Many2one('project.task', required=True, ondelete="cascade")
 
