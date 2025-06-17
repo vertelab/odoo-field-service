@@ -50,7 +50,7 @@ class FieldServiceOrder(models.Model):
                     'init_type': 'channel',
                     'status': 'active',
                     'description':'A quest to help a service tech in the field.',
-                    'code': """result = quest.build(session=session,message=message_body).invoke(message_invoke)"""
+                    'code': """result = quest.build(session=session,message=message_body,record=record).invoke(message_invoke)"""
                 })
                 self.env['ai.quest.agent'].create({
                     'ai_agent_id': self.env.ref('fieldservice_vrtl_ai.ai_agent_helpdesk_chat').id,
