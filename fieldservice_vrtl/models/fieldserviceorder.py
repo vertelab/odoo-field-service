@@ -80,8 +80,8 @@ class FieldServiceOrder(models.Model):
     product_number = fields.Char(string='Product Number', help="The product number or part number", store=True, readonly=True, related='product_tmpl_id.product_number')
     marking = fields.Char(string='Marking', help="Any specific marking or label on the product",)
     purchase_date = fields.Date(string='Purchase Date', help="The date when the product was purchased")
-    product_type = fields.Many2one('fieldservice.order.type', string='Product Type', store=True, readonly=True, related='product_tmpl_id.product_type')
     product_category = fields.Many2one('product.category', string='Product Kategory', store=True, readonly=True, related='product_tmpl_id.categ_id')
+    product_type = fields.Many2one('fieldservice.order.type', string='Product Type', store=True, readonly=True, related='product_tmpl_id.product_type')
     product_tmpl_id = fields.Many2one('product.template', string='Product')
 
 
