@@ -45,8 +45,6 @@ class FieldServiceOrder(models.Model):
 
     work_instructions = fields.Html(string='Work Instructions')
     location_instructions = fields.Text(string='Location Instructions')
-
-    product_type = fields.Many2one('fieldservice.order.type', string='Product Type', store=True, readonly=False, compute="set_values_from_product")
     date_start = fields.Datetime(string='Actual Start', compute="compute_date_start_end", store=True, readonly=False)
     date_end = fields.Datetime(string='Actual End', compute="co mpute_date_start_end", store=True, readonly=False)
 
@@ -72,31 +70,19 @@ class FieldServiceOrder(models.Model):
     stakeholder_ids = fields.One2many('fieldservice.stakeholder', 'order_id', string='Stakeholders', ondelete='cascade')
     create_date = fields.Datetime(readonly=True)
 
+
     # Object description
-    brand_id = fields.Many2one("product.brand", string="Brand", help="Select a brand for this product", store=True, readonly=False, compute="set_values_from_product")
+    brand_id = fields.Many2one("product.brand",related='product_tmpl_id.product_brand_id',string="Brand", help="Select a brand for this product", store=True, readonly=True)
     brand_logo = fields.Binary(related='brand_id.logo', string='Brand', readonly=True)
     # brand = fields.Char(string='Brand', help="The manufacturer or brand of the product")
-    model = fields.Char(string='Model', help="The model name or number of the product", store=True, readonly=False, compute="set_values_from_product")
+    model = fields.Char(string='Model', help="The model name or number of the product", store=True, readonly=True,related='product_tmpl_id.model')
     serial_number = fields.Char(string='Serial Number', help="The unique serial number of the product")
-    product_number = fields.Char(string='Product Number', help="The product number or part number", store=True, readonly=False, compute="set_values_from_product")
+    product_number = fields.Char(string='Product Number', help="The product number or part number", store=True, readonly=True, related='product_tmpl_id.product_number')
     marking = fields.Char(string='Marking', help="Any specific marking or label on the product",)
     purchase_date = fields.Date(string='Purchase Date', help="The date when the product was purchased")
-    product_tmpl_id = fields.Many2one('product.template', string='Product Template')
+    product_type = fields.Many2one('fieldservice.order.type', string='Product Type', store=True, readonly=True, related='product_tmpl_id.product_type')
+    product_tmpl_id = fields.Many2one('product.template', string='Product')
 
-
-    @api.depends("product_tmpl_id")
-    def set_values_from_product(self):
-        for order in self:
-            if order.product_tmpl_id:
-                order.model = order.product_tmpl_id.model
-                order.product_number = order.product_tmpl_id.product_number
-                order.brand_id = order.product_tmpl_id.product_brand_id
-                order.product_type = order.product_tmpl_id.product_type
-            else:
-                order.model = False
-                order.product_number = False
-                order.brand_id = False
-                order.product_type = False
 
     def create_or_set_product(self):
         for order in self:
