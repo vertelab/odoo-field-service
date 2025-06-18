@@ -58,8 +58,8 @@
                                     <field name="product_type" widget="many2one"/>
                                     <field name="brand_id"/>
                                     <field name="model"/>
-                                    <field name="serial_number"/>
                                     <field name="product_number"/>
+                                    <field name="serial_number"/>
                                     <field name="marking"/>
                                     <field name="purchase_date"/>
                                 </group>
