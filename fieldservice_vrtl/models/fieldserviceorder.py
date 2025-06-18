@@ -45,7 +45,6 @@ class FieldServiceOrder(models.Model):
 
     work_instructions = fields.Html(string='Work Instructions')
     location_instructions = fields.Text(string='Location Instructions')
-
     date_start = fields.Datetime(string='Actual Start', compute="compute_date_start_end", store=True, readonly=False)
     date_end = fields.Datetime(string='Actual End', compute="co mpute_date_start_end", store=True, readonly=False)
 
@@ -71,6 +70,7 @@ class FieldServiceOrder(models.Model):
     stakeholder_ids = fields.One2many('fieldservice.stakeholder', 'order_id', string='Stakeholders', ondelete='cascade')
     create_date = fields.Datetime(readonly=True)
 
+
     # Object description
     brand_id = fields.Many2one("product.brand",related='product_tmpl_id.product_brand_id',string="Brand", help="Select a brand for this product", store=True, readonly=True)
     brand_logo = fields.Binary(related='brand_id.logo', string='Brand', readonly=True)
@@ -83,7 +83,6 @@ class FieldServiceOrder(models.Model):
     product_type = fields.Many2one('fieldservice.order.type', string='Product Type', store=True, readonly=True, related='product_tmpl_id.product_type')
     product_category = fields.Many2one('product.category', string='Product Kategory', store=True, readonly=True, related='product_tmpl_id.categ_id')
     product_tmpl_id = fields.Many2one('product.template', string='Product')
-
 
 
     def create_or_set_product(self):
