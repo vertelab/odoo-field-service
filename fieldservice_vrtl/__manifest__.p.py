@@ -4,7 +4,7 @@
     'depends': ['mail','base','hr','project', 'product_brand'],
     'author': "Vertel AB",
     'category': 'Category',
-    'license': 'LGPL-3',
+    'license': 'AGPL-3',
     'description': """AI-baserad planeringsmotor för Field Service. Automatisk schemaläggning baserat på SLA, arbetsbörda och tillgänglighet. 
     Minskar manuell administration och förbättrar resursutnyttjande."
     Fieldservice
