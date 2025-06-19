@@ -32,8 +32,8 @@ class ChangeCompanyWizard(models.TransientModel):
             if record.exists() and 'company_id' in record._fields:
                 try:
                     company_id = self.env['res.company'].search([('partner_id','=',self.partner_id.id)])
-                    logging.warning(f"{self.partner_id=}")
-                    logging.warning(f"{company_id=}")
+                    #logging.warning(f"{self.partner_id=}")
+                    #logging.warning(f"{company_id=}")
                     record.company_id = company_id.id
                 except Exception as e:
                     raise UserError(f"Could not change company: {str(e)}")
