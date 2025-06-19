@@ -4,7 +4,7 @@
     'summary': 'Manage SLA agreements and track service level compliance',
     'category': 'Services',
     'author': 'Your Name or Company',
-    'license': 'LGPL-3',
+    'license': 'AGPL-3',
     'depends': ['base', 'fieldservice_vrtl','hr'],  
     'data': [
         'data/cron_jobs.xml',
