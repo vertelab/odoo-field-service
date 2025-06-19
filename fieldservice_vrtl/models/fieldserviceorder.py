@@ -155,7 +155,7 @@ class FieldServiceOrder(models.Model):
             }
             task = self.env['project.task'].create(task_vals)
             vals['task_id'] = task.id
-            _logger.info(f"Final vals for creation: {vals}")
+            #_logger.info(f"Final vals for creation: {vals}")
 
         res = super(FieldServiceOrder, self).create(vals_list)
         # If you have a method to call after creation, call it for each record

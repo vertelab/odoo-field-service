@@ -119,12 +119,10 @@ class FieldServiceOrderLineEmployee(models.Model):
         """ This method will create entry in resource calendar time off object at the time of holidays validated
         :returns: created `resource.calendar.leaves`
         """
-        _logger.warning(f"works bad.{self}")
-        _logger.warning(f"works bad.{self._prepare_fieldservice_resource_vals()}")
         vals_list = [leave._prepare_fieldservice_resource_vals() for leave in self]
         
-        _logger.warning(f"works good."*20)
-        _logger.warning(f"works good.{vals_list}")
+        #_logger.warning(f"works good."*20)
+        #_logger.warning(f"works good.{vals_list}")
         # if not vals_list.get('date_from'):
         #     return
         vals_list = list(filter(lambda _: _.get('date_from'), vals_list))

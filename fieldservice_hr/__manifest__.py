@@ -4,7 +4,7 @@
     'depends': ['fieldservice_vrtl','hr_timesheet','hr'],
     'author': "Vertel AB",
     'category': 'Category',
-    'license': 'LGPL-3',
+    'license': 'AGPL-3',
     'description': """
     Fieldservice
     """,
