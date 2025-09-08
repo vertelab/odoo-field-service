@@ -35,7 +35,7 @@ class FieldServiceOrder(models.Model):
     company_id = fields.Many2one(
         'res.company',
         string="Company",
-        required=True,
+        required=False,
         default=lambda self: self.env.company
     )
     planned_start_datetime = fields.Datetime(string='Planned Start')
@@ -152,6 +152,7 @@ class FieldServiceOrder(models.Model):
             task_vals = {
                 'name': vals.get('name', 'New Task'),
                 'project_id': default_project_id,
+                'stage_id':False,
             }
             task = self.env['project.task'].create(task_vals)
             vals['task_id'] = task.id
