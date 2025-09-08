@@ -152,7 +152,6 @@ class FieldServiceOrder(models.Model):
             task_vals = {
                 'name': vals.get('name', 'New Task'),
                 'project_id': default_project_id,
-                'stage_id':False,
             }
             task = self.env['project.task'].create(task_vals)
             vals['task_id'] = task.id
