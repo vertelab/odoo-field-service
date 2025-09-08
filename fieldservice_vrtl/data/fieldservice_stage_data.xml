@@ -4,11 +4,19 @@
         <!-- New Stage -->
         <record id="fieldservice_stage_new" model="fieldservice.stage">
             <field name="name">New</field>
-            <field name="sequence">10</field>
+            <field name="sequence">1</field>
             <field name="fold">False</field>
             <field name="is_closed">False</field>
         </record>
 
+        <!-- Assigned -->
+        <record id="fieldservice_stage_assigned" model="fieldservice.stage">
+            <field name="name">Assigned</field>
+            <field name="sequence">2</field>
+            <field name="fold">False</field>
+            <field name="is_closed">False</field>
+        </record>
+        
         <!-- Planning Stage-->
         <record id="fieldservice_stage_planning" model="fieldservice.stage">
             <field name="name">Planning</field>
