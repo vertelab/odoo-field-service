@@ -51,6 +51,13 @@
             <field name="fold">True</field>
             <field name="is_closed">True</field>
         </record>
+
+        <record id="fieldservice_stage_historical" model="fieldservice.stage">
+            <field name="name">Historical</field>
+            <field name="sequence">100</field>
+            <field name="fold">True</field>
+            <field name="is_closed">True</field>
+        </record>
         
     </data>
 </odoo>
