@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0-20250327\n"
+"Project-Id-Version: Odoo Server 18.0-20250925\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-07 12:34+0000\n"
-"PO-Revision-Date: 2025-04-07 14:34+0200\n"
+"POT-Creation-Date: 2025-10-03 09:02+0000\n"
+"PO-Revision-Date: 2025-10-03 11:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -18,9 +18,16 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #. module: fieldservice_hr
+#. odoo-python
+#: code:addons/fieldservice_hr/models/fieldservice_order_line_employee.p.py:0
+#: code:addons/fieldservice_hr/models/fieldservice_order_line_employee.py:0
+msgid "%s: Field Service"
+msgstr "%s: Fältservice"
+
+#. module: fieldservice_hr
 #: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_kanban
 msgid "Address:"
-msgstr ""
+msgstr "Adress:"
 
 #. module: fieldservice_hr
 #: model:ir.model,name:fieldservice_hr.model_account_analytic_line
@@ -35,12 +42,12 @@ msgstr "Tillhörande tidrapporter"
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__avatar_128
 msgid "Avatar 128"
-msgstr ""
+msgstr "Avatar 128"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__company_id
 msgid "Company"
-msgstr ""
+msgstr "Företag"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__create_uid
@@ -50,17 +57,17 @@ msgstr "Skapad av"
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__create_date
 msgid "Created on"
-msgstr "Skapad på"
+msgstr "Skapad den"
 
 #. module: fieldservice_hr
 #: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_kanban
 msgid "Delete"
-msgstr ""
+msgstr "Radera"
 
 #. module: fieldservice_hr
 #: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_search
 msgid "Department"
-msgstr ""
+msgstr "Avdelning"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__description
@@ -73,9 +80,44 @@ msgid "Display Name"
 msgstr "Visningsnamn"
 
 #. module: fieldservice_hr
+#. odoo-python
+#: code:addons/fieldservice_hr/models/resource.p.py:0
+#: code:addons/fieldservice_hr/models/resource.py:0
+msgid ""
+"Due to a change in global time offs, %s extra day(s) have been taken from "
+"your allocation. Please review this leave if you need it to be changed."
+msgstr ""
+"På grund av en förändring i den globala ledigheten har %s extra dag(ar) "
+"tagits från din tilldelning. Vänligen se över denna ledighet om du behöver "
+"ändra den."
+
+#. module: fieldservice_hr
+#. odoo-python
+#: code:addons/fieldservice_hr/models/resource.p.py:0
+#: code:addons/fieldservice_hr/models/resource.py:0
+msgid ""
+"Due to a change in global time offs, this leave no longer has the required "
+"amount of available allocation and has been set to refused. Please review "
+"this leave."
+msgstr ""
+"På grund av en ändring av globala ledigheter har denna ledighet inte längre "
+"den nödvändiga mängden tillgänglig tilldelning och har ställts in som "
+"nekad. Vänligen se över denna ledighet."
+
+#. module: fieldservice_hr
+#. odoo-python
+#: code:addons/fieldservice_hr/models/resource.p.py:0
+#: code:addons/fieldservice_hr/models/resource.py:0
+msgid ""
+"Due to a change in global time offs, you have been granted %s day(s) back."
+msgstr ""
+"På grund av en förändring i den globala ledigheten har du beviljats %s "
+"dag(ar) tillbaka."
+
+#. module: fieldservice_hr
 #: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_kanban
 msgid "Edit"
-msgstr ""
+msgstr "Redigera"
 
 #. module: fieldservice_hr
 #: model:ir.model,name:fieldservice_hr.model_hr_employee
@@ -88,13 +130,14 @@ msgstr "Anställd"
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line__fieldservice_order_line_employee_ids
 #: model:ir.model.fields,field_description:fieldservice_hr.field_hr_employee__fieldservice_order_line_employee_ids
+#: model:ir.ui.menu,name:fieldservice_hr.menu_fieldservice_employees
 msgid "Employees"
 msgstr "Anställda"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__date_end
 msgid "End Date"
-msgstr ""
+msgstr "Slutdatum"
 
 #. module: fieldservice_hr
 #: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_list
@@ -103,35 +146,36 @@ msgstr "Externa synpunkter"
 
 #. module: fieldservice_hr
 #: model:ir.actions.act_window,name:fieldservice_hr.action_fieldservice_employees
-#: model:ir.ui.menu,name:fieldservice_hr.menu_fieldservice_employees
 msgid "Field Service Employees"
 msgstr "Fältservicemedarbetare"
 
 #. module: fieldservice_hr
 #: model:ir.model,name:fieldservice_hr.model_fieldservice_order
+#: model:ir.model.fields,field_description:fieldservice_hr.field_resource_calendar_leaves__field_service_employee_line_id
+#: model:ir.model.fields,field_description:fieldservice_hr.field_resource_calendar_leaves__field_service_id
 msgid "Field Service Order"
-msgstr "Ärende"
+msgstr "Fältservice order"
 
 #. module: fieldservice_hr
 #: model:ir.model,name:fieldservice_hr.model_fieldservice_order_line
 msgid "Field Service Order Line"
-msgstr "Tillfälle"
+msgstr "Fältservice orderrad"
 
 #. module: fieldservice_hr
 #: model:ir.model,name:fieldservice_hr.model_fieldservice_order_line_employee
 msgid "Field Service Order Line Employee"
-msgstr "Fältservice Order Line Anställd"
+msgstr "Fältservice orderrad anställd"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_account_analytic_line__fieldservice_order_line_id
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__fieldservice_order_line_id
 msgid "Fieldservice Order Line"
-msgstr "Fältservice orderlinje"
+msgstr "Fältservice orderrad"
 
 #. module: fieldservice_hr
 #: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_search
 msgid "Group By"
-msgstr ""
+msgstr "Gruppera efter"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__hr_department_id
@@ -141,17 +185,17 @@ msgstr "HR-avdelning"
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__image_1024
 msgid "Image 1024"
-msgstr ""
+msgstr "Bild 1024"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__image_128
 msgid "Image 128"
-msgstr ""
+msgstr "Bild 128"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__write_uid
@@ -166,7 +210,7 @@ msgstr "Senast uppdaterad den"
 #. module: fieldservice_hr
 #: model:ir.actions.act_window,name:fieldservice_hr.action_my_fieldservice_order_line
 msgid "My Field Service Kalender"
-msgstr ""
+msgstr "Min fältservice kalender"
 
 #. module: fieldservice_hr
 #: model:ir.ui.menu,name:fieldservice_hr.menu_my_fieldservice_order_line
@@ -183,22 +227,27 @@ msgstr "Namn"
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__priority
 msgid "Priority"
-msgstr ""
+msgstr "Prioritet"
+
+#. module: fieldservice_hr
+#: model:ir.model,name:fieldservice_hr.model_resource_calendar_leaves
+msgid "Resource Time Off Detail"
+msgstr "Resurs ledihgetsdetalj"
 
 #. module: fieldservice_hr
 #: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_pivot
 msgid "Service Request"
-msgstr ""
+msgstr "Begäran om service"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__date_start
 msgid "Start Date"
-msgstr ""
+msgstr "Startdatum"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__address
 msgid "Street"
-msgstr ""
+msgstr "Gata"
 
 #. module: fieldservice_hr
 #: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_form_reporting_inherit_hr
@@ -218,10 +267,25 @@ msgstr "Aktiviteter för tidrapporter"
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order__total_time_duration
 msgid "Total Time Duration"
-msgstr "Total arbetstid"
+msgstr "Total förlupen tid"
+
+#. module: fieldservice_hr
+#: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order__total_time_duration_avg
+msgid "Total Time Duration AVG"
+msgstr "Total tid Varaktighet AVG"
 
 #. module: fieldservice_hr
 #. odoo-python
+#: code:addons/fieldservice_hr/models/resource.p.py:0
+#: code:addons/fieldservice_hr/models/resource.py:0
+msgid ""
+"Two public holidays cannot overlap each other for the same working hours."
+msgstr ""
+"Två allmänna helgdagar kan inte överlappa varandra under samma arbetstid."
+
+#. module: fieldservice_hr
+#. odoo-python
+#: code:addons/fieldservice_hr/models/fieldservice_order_line_employee.p.py:0
 #: code:addons/fieldservice_hr/models/fieldservice_order_line_employee.py:0
 msgid "Unassigned Slot"
-msgstr ""
+msgstr "Otilldelad plats"
