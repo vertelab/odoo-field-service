@@ -1,0 +1,400 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fieldservice_sla
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20250925\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-03 09:19+0000\n"
+"PO-Revision-Date: 2025-10-03 11:46+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: fieldservice_sla
+#: model_terms:ir.ui.view,arch_db:fieldservice_sla.view_fieldservice_sla_form
+msgid "<span class=\"o_field_widget o_readonly_modifier\">Reaction Hours</span>"
+msgstr "<span class=\"o_field_widget o_readonly_modifier\">Reaktionstid</span>"
+
+#. module: fieldservice_sla
+#: model_terms:ir.ui.view,arch_db:fieldservice_sla.view_fieldservice_sla_form
+msgid "<span class=\"o_stat_text\">Linked Orders</span>"
+msgstr "<span class=\"o_stat_text\">Länkade ordrar</span>"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields.selection,name:fieldservice_sla.selection__fieldservice_sla__sla_time_type__all_hours
+msgid "All Hours"
+msgstr "Alla timmar"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__allowed_hours
+msgid "Allowed Hours"
+msgstr "Tillåtna timmar"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__severity_level
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__severity_level
+msgid "Allvarlighetsgrad"
+msgstr "Allvarlighetsgrad"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__sla_breached
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__breached
+msgid "Any SLA Breached"
+msgstr "SLA-brott i något fall"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__time_until_work_done
+msgid "Arrival Time"
+msgstr "Ankomsttid"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__time_until_work_done_avg
+msgid "Arrival Time (AVG)"
+msgstr "Ankomsttid (AVG)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__time_until_work_done_max
+msgid "Arrival Time (MAX)"
+msgstr "Ankomsttid (MAX)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__time_until_work_done_min
+msgid "Arrival Time (MIN)"
+msgstr "Ankomsttid (MIN)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__assigned_date
+msgid "Assigned Date"
+msgstr "Tilldelat datum"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__avg_duration_to_sla
+msgid "Avg Duration to SLA (hours)"
+msgstr "Genomsnittlig tid till SLA (timmar)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields.selection,name:fieldservice_sla.selection__fieldservice_sla__sla_status__breached
+msgid "Breached"
+msgstr "Intrång"
+
+#. module: fieldservice_sla
+#: model:ir.actions.server,name:fieldservice_sla.ir_cron_check_sla_breach_ir_actions_server
+msgid "Check SLA Breaches"
+msgstr "Kontrollera SLA-överträdelser"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__company_id
+msgid "Company"
+msgstr "Företag"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__create_uid
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__create_date
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__create_date
+msgid "Created on"
+msgstr "Skapad den"
+
+#. module: fieldservice_sla
+#: model_terms:ir.ui.view,arch_db:fieldservice_sla.view_fieldservice_sla_form
+msgid "Criteria"
+msgstr "Kriterier"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields.selection,name:fieldservice_sla.selection__fieldservice_order__severity_level__high
+#: model:ir.model.fields.selection,name:fieldservice_sla.selection__fieldservice_sla__severity_level__high
+msgid "Critic"
+msgstr "Kritiker"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__description
+msgid "Description"
+msgstr "Beskrivning"
+
+#. module: fieldservice_sla
+#: model_terms:ir.ui.view,arch_db:fieldservice_sla.view_fieldservice_sla_form
+msgid "Description of the policy..."
+msgstr "Beskrivning av policyn..."
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__display_name
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__display_name
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__sla_duration_hours
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__duration_to_sla
+msgid "Duration to SLA (hours)"
+msgstr "Varaktighet till SLA (timmar)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__end_date
+msgid "End Date"
+msgstr "Slutdatum"
+
+#. module: fieldservice_sla
+#: model:ir.model,name:fieldservice_sla.model_fieldservice_order
+msgid "Field Service Order"
+msgstr "Ärende"
+
+#. module: fieldservice_sla
+#: model:ir.actions.act_window,name:fieldservice_sla.action_fieldservice_sla
+msgid "Field Service SLA"
+msgstr "SLA för fältservice"
+
+#. module: fieldservice_sla
+#: model:ir.model,name:fieldservice_sla.model_fieldservice_sla
+msgid "Field Service SLA Module"
+msgstr "SLA-modul för fältservice"
+
+#. module: fieldservice_sla
+#: model:ir.ui.menu,name:fieldservice_sla.menu_fieldservice_sla
+msgid "Field service SLA"
+msgstr "SLA för fältservice"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__fulfilled
+msgid "Fulfilled"
+msgstr "Uppfyllt"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__id
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__id
+msgid "ID"
+msgstr "ID"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__write_uid
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__write_date
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad den"
+
+#. module: fieldservice_sla
+#. odoo-python
+#: code:addons/fieldservice_sla/models/fieldservice_sla.p.py:0
+#: code:addons/fieldservice_sla/models/fieldservice_sla.py:0
+msgid "Linked Orders"
+msgstr "Länkade beställningar"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields.selection,name:fieldservice_sla.selection__fieldservice_order__severity_level__low
+#: model:ir.model.fields.selection,name:fieldservice_sla.selection__fieldservice_sla__severity_level__low
+msgid "Low"
+msgstr "Låg"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__max_duration_to_sla
+msgid "Max Duration to SLA (hours)"
+msgstr "Max Varaktighet till SLA (timmar)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields.selection,name:fieldservice_sla.selection__fieldservice_order__severity_level__medium
+#: model:ir.model.fields.selection,name:fieldservice_sla.selection__fieldservice_sla__severity_level__medium
+msgid "Medium"
+msgstr "Medium"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__min_duration_to_sla
+msgid "Min Duration to SLA (hours)"
+msgstr "Min Varaktighet till SLA (timmar)"
+
+#. module: fieldservice_sla
+#: model:ir.actions.server,name:fieldservice_sla.ir_cron_notify_fieldservice_sla_ir_actions_server
+msgid "Notify SLA Breach"
+msgstr "Meddela SLA-överträdelse"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__order_sla_count
+msgid "Number of Linked Orders"
+msgstr "Antal länkade order"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields.selection,name:fieldservice_sla.selection__fieldservice_sla__sla_status__on_track
+msgid "On Track"
+msgstr "På rätt spår"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__order_id
+msgid "Order"
+msgstr "Beställning"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__order_sla_ids
+msgid "Order Links"
+msgstr "Beställ länkar"
+
+#. module: fieldservice_sla
+#: model:ir.model,name:fieldservice_sla.model_fieldservice_order_sla
+msgid "Order SLA Link"
+msgstr "Beställning SLA Länk"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__reaction_time
+msgid "Reaction Time"
+msgstr "Reaktionstid"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__reaction_time_avg
+msgid "Reaction Time (AVG)"
+msgstr "Reaktionstid (AVG)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__reaction_time_max
+msgid "Reaction Time (MAX)"
+msgstr "Reaktionstid (MAX)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__reaction_time_min
+msgid "Reaction Time (MIN)"
+msgstr "Reaktionstid (MIN)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__time_until_work_start
+msgid "Resolution Time"
+msgstr "Upplösningstid"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__time_until_work_start_avg
+msgid "Resolution Time (AVG)"
+msgstr "Upplösningstid (AVG)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__time_until_work_start_max
+msgid "Resolution Time (MAX)"
+msgstr "Upplösningstid (MAX)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__time_until_work_start_min
+msgid "Resolution Time (MIN)"
+msgstr "Upplösningstid (MIN)"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__sla_ids
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__sla_id
+msgid "SLA"
+msgstr "SLA"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__sla_breached
+msgid "SLA Breached"
+msgstr "SLA-brott"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__sla_end_date
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__sla_end_date
+msgid "SLA End Date"
+msgstr "SLA:s slutdatum"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__name
+msgid "SLA Schema"
+msgstr "SLA-ordning"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__sla_status
+msgid "SLA Status"
+msgstr "SLA-status"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__sla_time_type
+msgid "SLA Time Type"
+msgstr "SLA Tidstyp"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order__order_sla_ids
+#: model_terms:ir.ui.view,arch_db:fieldservice_sla.view_fieldservice_order_form_inherit_sla
+msgid "SLAs"
+msgstr "SLA:er"
+
+#. module: fieldservice_sla
+#: model_terms:ir.ui.view,arch_db:fieldservice_sla.view_fieldservice_order_search_inherit_sla
+msgid "Severity Level"
+msgstr "Allvarlighetsgrad"
+
+#. module: fieldservice_sla
+#. odoo-python
+#: code:addons/fieldservice_sla/models/fieldservice_sla.p.py:0
+#: code:addons/fieldservice_sla/models/fieldservice_sla.py:0
+msgid "Stage not found: %s"
+msgstr "Läge hittades inte: %s"
+
+#. module: fieldservice_sla
+#: model_terms:ir.ui.view,arch_db:fieldservice_sla.view_fieldservice_sla_form
+msgid "Target"
+msgstr "Mål"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_order_sla__target_reached_date
+msgid "Target Reached Date"
+msgstr "Mål uppnått Datum"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__stage_id
+msgid "Target Stage"
+msgstr "Målstadium"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_sla__stage_id
+msgid "The stage that fulfills this SLA when the order reaches it."
+msgstr "Det steg som uppfyller detta SLA när ordern når det."
+
+#. module: fieldservice_sla
+#: model_terms:ir.ui.view,arch_db:fieldservice_sla.view_fieldservice_sla_form
+msgid ""
+"This SLA Policy will apply to tickets matching ALL of the following criteria:"
+msgstr ""
+"Denna SLA-policy gäller för ärenden som uppfyller ALLA av följande kriterier:"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__order_ids
+msgid "Tickets"
+msgstr "Ärenden"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__reaction_time
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__reaction_time_avg
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__reaction_time_max
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__reaction_time_min
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__time_until_work_done
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__time_until_work_done_avg
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__time_until_work_done_max
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__time_until_work_done_min
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__time_until_work_start
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__time_until_work_start_avg
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__time_until_work_start_max
+#: model:ir.model.fields,help:fieldservice_sla.field_fieldservice_order__time_until_work_start_min
+msgid "Time in hours"
+msgstr "Tid i timmar"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__time_within
+msgid "Within"
+msgstr "Inom"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields.selection,name:fieldservice_sla.selection__fieldservice_sla__sla_time_type__work_hours
+msgid "Work Hours"
+msgstr "Arbetstid"
+
+#. module: fieldservice_sla
+#: model:ir.model.fields,field_description:fieldservice_sla.field_fieldservice_sla__calendar_id
+msgid "Working Hours Calendar"
+msgstr "Arbetstidskalender"
