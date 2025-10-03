@@ -4,27 +4,20 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0-20250313\n"
+"Project-Id-Version: Odoo Server 18.0-20250925\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24 08:47+0000\n"
-"PO-Revision-Date: 2025-03-24 09:49+0100\n"
+"POT-Creation-Date: 2025-10-03 09:01+0000\n"
+"PO-Revision-Date: 2025-10-03 09:01+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. module: fieldservice_demo_vrtl
 #. odoo-python
-#: code:addons/fieldservice_demo_vrtl/wizard/create_demo_data_wizard.py:0
-msgid "%d service orders have been created."
-msgstr ""
-
-#. module: fieldservice_demo_vrtl
-#. odoo-python
+#: code:addons/fieldservice_demo_vrtl/wizard/create_demo_data_wizard.p.py:0
 #: code:addons/fieldservice_demo_vrtl/wizard/create_demo_data_wizard.py:0
 msgid "An error occurred while creating demo data."
 msgstr "Ett fel uppstod vid skapandet av demodata."
@@ -49,26 +42,21 @@ msgstr "Skapa demo ärenden menu"
 #. module: fieldservice_demo_vrtl
 #: model:ir.model.fields,field_description:fieldservice_demo_vrtl.field_create_demo_data_wizard__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Skapad av"
 
 #. module: fieldservice_demo_vrtl
 #: model:ir.model.fields,field_description:fieldservice_demo_vrtl.field_create_demo_data_wizard__create_date
 msgid "Created on"
-msgstr ""
-
-#. module: fieldservice_demo_vrtl
-#. odoo-python
-#: code:addons/fieldservice_demo_vrtl/wizard/create_demo_data_wizard.py:0
-msgid "Demo Data Created"
-msgstr "Demo ärenden skapade"
+msgstr "Skapad den"
 
 #. module: fieldservice_demo_vrtl
 #: model:ir.model.fields,field_description:fieldservice_demo_vrtl.field_create_demo_data_wizard__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Visningsnamn"
 
 #. module: fieldservice_demo_vrtl
 #. odoo-python
+#: code:addons/fieldservice_demo_vrtl/wizard/create_demo_data_wizard.p.py:0
 #: code:addons/fieldservice_demo_vrtl/wizard/create_demo_data_wizard.py:0
 msgid "Error"
 msgstr "Fel"
@@ -76,17 +64,17 @@ msgstr "Fel"
 #. module: fieldservice_demo_vrtl
 #: model:ir.model.fields,field_description:fieldservice_demo_vrtl.field_create_demo_data_wizard__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: fieldservice_demo_vrtl
 #: model:ir.model.fields,field_description:fieldservice_demo_vrtl.field_create_demo_data_wizard__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Senast uppdaterad av"
 
 #. module: fieldservice_demo_vrtl
 #: model:ir.model.fields,field_description:fieldservice_demo_vrtl.field_create_demo_data_wizard__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Senast uppdaterad den"
 
 #. module: fieldservice_demo_vrtl
 #: model:ir.model.fields,field_description:fieldservice_demo_vrtl.field_create_demo_data_wizard__number_of_records
