@@ -1,0 +1,184 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fieldservice_vrtl_ai
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20250925\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-03 09:22+0000\n"
+"PO-Revision-Date: 2025-10-03 11:41+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_ai_agent
+msgid "AI Agent"
+msgstr "AI-agent"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_ai_quest
+msgid "AI Quest"
+msgstr "AI-uppdrag"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_ai_quest_session
+msgid "AI Quest Session"
+msgstr "AI-uppdragssession"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_fieldservice_order__ai_quest_id
+msgid "Ai Quest"
+msgstr "AI-quest"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_ai_agent__ai_type
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_ai_quest__ai_type
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_ai_quest_session__ai_type
+msgid "Ai Type"
+msgstr "Ai Typ"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_fieldservice_order_line__employee_id
+msgid "Assigned Employee"
+msgstr "Tilldelad medarbetare"
+
+#. module: fieldservice_vrtl_ai
+#. odoo-python
+#: code:addons/fieldservice_vrtl_ai/models/fieldserviceorder.p.py:0
+#: code:addons/fieldservice_vrtl_ai/models/fieldserviceorder.py:0
+msgid "Chat with fieldserviceorders"
+msgstr "Chatta med ärenden"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields.selection,name:fieldservice_vrtl_ai.selection__ai_agent__ai_type__fieldservice-order
+#: model:ir.model.fields.selection,name:fieldservice_vrtl_ai.selection__ai_quest__ai_type__fieldservice-order
+msgid "Chat with serviceorder"
+msgstr "Chatta med ärende"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields.selection,name:fieldservice_vrtl_ai.selection__ai_quest_session__ai_type__fieldservice-order
+msgid "Chat with servicorder"
+msgstr "Chatta med ärende"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_followup_questions__create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_followup_questions__create_date
+msgid "Created on"
+msgstr "Skapad den"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,help:fieldservice_vrtl_ai.field_fieldservice_order_line__employee_id
+msgid "Den anställda som tilldelats denna arbetsorder-rad."
+msgstr "Den anställda som tilldelats denna arbetsorder-rad."
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_discuss_channel
+msgid "Discussion Channel"
+msgstr "Diskussionskanal"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_followup_questions__display_name
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_fieldservice_order
+msgid "Field Service Order"
+msgstr "Ärende"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_fieldservice_order_line
+msgid "Field Service Order Line"
+msgstr "Fältservice orderrad"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_fieldservice_order_line_employee
+msgid "Field Service Order Line Employee"
+msgstr "Fältservice orderrad anställd"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_fieldservice_stage
+msgid "Field Service Stage"
+msgstr "Fältservice läge"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_mail_mail__followup_question_ids
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_mail_message__followup_question_ids
+msgid "Followup Question"
+msgstr "Uppföljningsfråga"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_followup_questions
+#: model_terms:ir.ui.view,arch_db:fieldservice_vrtl_ai.mail_message_inherit_form_view
+msgid "Followup Questions"
+msgstr "Uppföljningsfrågor"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_followup_questions__id
+msgid "ID"
+msgstr "ID"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_followup_questions__write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_followup_questions__write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad den"
+
+#. module: fieldservice_vrtl_ai
+#. odoo-javascript
+#: code:addons/fieldservice_vrtl_ai/static/src/xml/mail_message_followup_questions.xml:0
+msgid "Loading questions..."
+msgstr "Laddar frågor..."
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_followup_questions__mail_message_id
+msgid "Mail Message"
+msgstr "E-postmeddelande"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model,name:fieldservice_vrtl_ai.model_mail_message
+msgid "Message"
+msgstr "Meddelande"
+
+#. module: fieldservice_vrtl_ai
+#. odoo-python
+#: code:addons/fieldservice_vrtl_ai/wizard/change_company.py:0
+msgid "No channel found for the AI quest"
+msgstr "Ingen kanal hittades för AI-uppdraget"
+
+#. module: fieldservice_vrtl_ai
+#. odoo-python
+#: code:addons/fieldservice_vrtl_ai/wizard/change_company.py:0
+msgid "No partners found for users in the company."
+msgstr "Inga partners hittades för användare i företaget."
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_followup_questions__question
+msgid "Question"
+msgstr "Fråga"
+
+#. module: fieldservice_vrtl_ai
+#: model:ir.model.fields,field_description:fieldservice_vrtl_ai.field_fieldservice_stage__start_quest
+msgid "Start Quest"
+msgstr "Starta Quest"
+
+#. module: fieldservice_vrtl_ai
+#. odoo-javascript
+#: code:addons/fieldservice_vrtl_ai/static/src/js/thread_action.js:0
+msgid "View Field Service"
+msgstr "Gå till ärende"
