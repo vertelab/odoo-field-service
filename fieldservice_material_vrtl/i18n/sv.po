@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0-20250313\n"
+"Project-Id-Version: Odoo Server 18.0-20250925\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24 08:42+0000\n"
-"PO-Revision-Date: 2025-03-24 09:46+0100\n"
+"POT-Creation-Date: 2025-10-03 09:15+0000\n"
+"PO-Revision-Date: 2025-10-03 11:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -27,7 +27,7 @@ msgstr "Skapad av"
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line_material__create_date
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line_material_request__create_date
 msgid "Created on"
-msgstr "Skapad på"
+msgstr "Skapad den"
 
 #. module: fieldservice_material_vrtl
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line_material__display_name
@@ -38,23 +38,23 @@ msgstr "Visningsnamn"
 #. module: fieldservice_material_vrtl
 #: model:ir.model,name:fieldservice_material_vrtl.model_fieldservice_order_line
 msgid "Field Service Order Line"
-msgstr "Tillfälle"
+msgstr "Fältservice orderrad"
 
 #. module: fieldservice_material_vrtl
 #: model:ir.model,name:fieldservice_material_vrtl.model_fieldservice_order_line_material
 msgid "Field Service Order Line Material"
-msgstr "Beställt material"
+msgstr "Fältservice orderrad material"
 
 #. module: fieldservice_material_vrtl
 #: model:ir.model,name:fieldservice_material_vrtl.model_fieldservice_order_line_material_request
 msgid "Field Service Order Line Material Request"
-msgstr "Begärdt material"
+msgstr "Fältservice orderrad begärt material"
 
 #. module: fieldservice_material_vrtl
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line_material__id
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line_material_request__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: fieldservice_material_vrtl
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line_material__write_uid
@@ -72,7 +72,7 @@ msgstr "Senast uppdaterad den"
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line_material__order_line_id
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line_material_request__order_line_id
 msgid "Order Line"
-msgstr "Tillfälle"
+msgstr "Orderrad"
 
 #. module: fieldservice_material_vrtl
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line_material__product_id
@@ -84,12 +84,12 @@ msgstr "Produkt"
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line_material__product_uom_qty
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line_material_request__product_uom_qty
 msgid "Quantity"
-msgstr "Kvantitet"
+msgstr "Antal"
 
 #. module: fieldservice_material_vrtl
 #: model:ir.model.fields,field_description:fieldservice_material_vrtl.field_fieldservice_order_line__requested_material_ids
 msgid "Requested Materials"
-msgstr "Begärdt material"
+msgstr "Begärt material"
 
 #. module: fieldservice_material_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_material_vrtl.view_fieldservice_order_line_form_planning_inherit_material
