@@ -161,7 +161,7 @@ msgstr "Förändring"
 #: model:ir.actions.act_window,name:fieldservice_vrtl.action_change_company_wizard model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_change_company_wizard_form
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
 msgid "Change Company"
-msgstr "Förändra företaget"
+msgstr "Byt bolag"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__closed_depend_on_count
