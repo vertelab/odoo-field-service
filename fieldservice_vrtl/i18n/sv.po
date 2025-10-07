@@ -161,11 +161,7 @@ msgstr "Ändra"
 #: model:ir.actions.act_window,name:fieldservice_vrtl.action_change_company_wizard model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_change_company_wizard_form
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
 msgid "Change Company"
-<<<<<<< HEAD
-msgstr "Uppdatera bolaget"
-=======
 msgstr "Byt bolag"
->>>>>>> 26d0335f26f04dbd06051c9295c545da21ab108b
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__closed_depend_on_count
@@ -196,7 +192,7 @@ msgstr "Bolag"
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__partner_company_name
 msgid "Company Name"
-msgstr "Bolagets namn"
+msgstr "Bolagsnamn"
 
 #. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
@@ -261,7 +257,7 @@ msgstr "Skapad den"
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__custom_state
 msgid "Custom State"
-msgstr "Anpassad stat"
+msgstr "Anpassat läge"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__partner_name
@@ -423,7 +419,7 @@ msgstr "Ärende"
 #. module: fieldservice_vrtl
 #: model:ir.model,name:fieldservice_vrtl.model_fieldservice_order_line
 msgid "Field Service Order Line"
-msgstr "Tillfälle"
+msgstr "Rad för fältserviceorder"
 
 #. module: fieldservice_vrtl
 #: model:ir.model,name:fieldservice_vrtl.model_field_service_order_tag
@@ -443,7 +439,7 @@ msgstr "Ordertyper för fältservice"
 #. module: fieldservice_vrtl
 #: model:ir.actions.act_window,name:fieldservice_vrtl.action_fieldservice_order
 msgid "Field Service Orders"
-msgstr "Ärenden"
+msgstr "Fältserviceärenden"
 
 #. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.res_config_settings_view_form_inherit_fieldservice
