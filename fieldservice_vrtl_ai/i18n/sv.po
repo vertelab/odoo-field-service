@@ -95,7 +95,7 @@ msgstr "Visningsnamn"
 #. module: fieldservice_vrtl_ai
 #: model:ir.model,name:fieldservice_vrtl_ai.model_fieldservice_order
 msgid "Field Service Order"
-msgstr "Ärende"
+msgstr "Fältservice order"
 
 #. module: fieldservice_vrtl_ai
 #: model:ir.model,name:fieldservice_vrtl_ai.model_fieldservice_order_line
