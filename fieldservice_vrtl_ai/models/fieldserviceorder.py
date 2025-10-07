@@ -13,6 +13,7 @@ class FieldServiceOrder(models.Model):
 
     ai_quest_id = fields.Many2one(comodel_name='ai.quest',string="",help="")
 
+  
     @api.depends("stage_id")
     def _onchange_stage_id(self):
         if self.stage_id.start_quest:
