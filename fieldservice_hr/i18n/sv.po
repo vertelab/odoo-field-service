@@ -142,7 +142,7 @@ msgstr "Slutdatum"
 #. module: fieldservice_hr
 #: model_terms:ir.ui.view,arch_db:fieldservice_hr.view_fieldservice_order_line_employee_list
 msgid "External Views"
-msgstr "Externa synpunkter"
+msgstr "Externa vyer"
 
 #. module: fieldservice_hr
 #: model:ir.actions.act_window,name:fieldservice_hr.action_fieldservice_employees
