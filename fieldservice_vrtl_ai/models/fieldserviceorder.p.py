@@ -17,6 +17,8 @@ class FieldServiceOrder(models.Model):
     def _onchange_stage_id(self):
         if self.stage_id.start_quest:
            self.start_quest()
+           self.ai_quest_id.status = 'active'
+           self.ai_quest_id.channel_id.write({'active': True})
         elif not self.stage_id.is_closed:
             if self.ai_quest_id:
                 self.ai_quest_id.status = 'active'
