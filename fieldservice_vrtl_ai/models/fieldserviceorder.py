@@ -19,14 +19,12 @@ class FieldServiceOrder(models.Model):
            self.start_quest()
            self.ai_quest_id.status = 'active'
            self.ai_quest_id.channel_id.write({'active': True})
-        elif not self.stage_id.is_closed:
-            if self.ai_quest_id:
-                self.ai_quest_id.status = 'active'
-                self.ai_quest_id.channel_id.write({'active': True,})
-        else:
+        elif self.stage_id.is_closed:
             if self.ai_quest_id.channel_id:
+                _logger.warning(f"{self.ai_quest_id.channel_id=}")
                 self.ai_quest_id.status = 'done'
                 self.ai_quest_id.channel_id.write({'active': False})
+                self.ai_quest_id.channel_id.write({'channel_member_ids': False})
 
     @api.depends("name")
     def _onchange_name(self):
