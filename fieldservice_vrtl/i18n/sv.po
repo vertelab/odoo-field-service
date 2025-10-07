@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0-20250925\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-03 09:20+0000\n"
-"PO-Revision-Date: 2025-10-03 11:45+0200\n"
+"PO-Revision-Date: 2025-10-03 16:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -155,13 +155,13 @@ msgstr "Avbryt"
 #. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_change_company_wizard_form
 msgid "Change"
-msgstr "Förändring"
+msgstr "Ändra"
 
 #. module: fieldservice_vrtl
 #: model:ir.actions.act_window,name:fieldservice_vrtl.action_change_company_wizard model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_change_company_wizard_form
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
 msgid "Change Company"
-msgstr "Förändra företaget"
+msgstr "Uppdatera bolaget"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__closed_depend_on_count
@@ -187,12 +187,12 @@ msgstr "Färg"
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__partner_id model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__company_id
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__company_id
 msgid "Company"
-msgstr "Företag"
+msgstr "Bolag"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__partner_company_name
 msgid "Company Name"
-msgstr "Företagets namn"
+msgstr "Bolagets namn"
 
 #. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
@@ -1328,7 +1328,7 @@ msgstr "Ärenden"
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__leave_types_count
 msgid "Time Off Types Count"
-msgstr "Typer av ledighet Räkna"
+msgstr "Antalet typer av ledighet"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__remaining_hours
@@ -1343,7 +1343,7 @@ msgstr "Återstående tid på SO"
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__effective_hours
 msgid "Time Spent"
-msgstr "Utnyttjad tid"
+msgstr "Åtgången tid"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__subtask_effective_hours
@@ -1424,7 +1424,7 @@ msgstr "Veckan"
 #. module: fieldservice_vrtl
 #: model:ir.model,name:fieldservice_vrtl.model_change_company_wizard
 msgid "Wizard to change company on Field Service Order"
-msgstr "Wizard för att ändra företag på Field Service Order"
+msgstr "Guide för att ändra bolag på Field Service Order"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__work_instructions
