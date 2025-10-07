@@ -161,7 +161,11 @@ msgstr "Ändra"
 #: model:ir.actions.act_window,name:fieldservice_vrtl.action_change_company_wizard model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_change_company_wizard_form
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
 msgid "Change Company"
+<<<<<<< HEAD
 msgstr "Uppdatera bolaget"
+=======
+msgstr "Byt bolag"
+>>>>>>> 26d0335f26f04dbd06051c9295c545da21ab108b
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__closed_depend_on_count
@@ -1424,7 +1428,11 @@ msgstr "Veckan"
 #. module: fieldservice_vrtl
 #: model:ir.model,name:fieldservice_vrtl.model_change_company_wizard
 msgid "Wizard to change company on Field Service Order"
+<<<<<<< HEAD
 msgstr "Guide för att ändra bolag på Field Service Order"
+=======
+msgstr "Wizard för att ändra bolag på Field Service Order"
+>>>>>>> 26d0335f26f04dbd06051c9295c545da21ab108b
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__work_instructions
