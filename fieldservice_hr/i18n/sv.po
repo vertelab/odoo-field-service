@@ -47,7 +47,7 @@ msgstr "Avatar 128"
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__company_id
 msgid "Company"
-msgstr "Företag"
+msgstr "Bolag"
 
 #. module: fieldservice_hr
 #: model:ir.model.fields,field_description:fieldservice_hr.field_fieldservice_order_line_employee__create_uid
