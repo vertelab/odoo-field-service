@@ -344,7 +344,7 @@ msgstr "Visningsnamn"
 #. module: fieldservice_vrtl
 #: model:fieldservice.stage,name:fieldservice_vrtl.fieldservice_stage_completed
 msgid "Done"
-msgstr "Färdigställd"
+msgstr "Färdig"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__duration
@@ -712,7 +712,7 @@ msgstr "Ny"
 #. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
 msgid "Not done"
-msgstr "Inte gjort"
+msgstr "Inte färdig"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_needaction_counter
