@@ -765,7 +765,7 @@ msgstr "Antal tillfällen (genomsnitt)"
 #: model:ir.ui.menu,name:fieldservice_vrtl.menu_fieldservice_order_line model:ir.ui.menu,name:fieldservice_vrtl.menu_fieldservice_order_line_root
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
 msgid "Occasions"
-msgstr "Tillfälligheter"
+msgstr "Tillfällen"
 
 #. module: fieldservice_vrtl
 #: model:fieldservice.stage,name:fieldservice_vrtl.fieldservice_stage_ongoing model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
