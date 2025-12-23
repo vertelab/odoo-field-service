@@ -4,7 +4,8 @@ import logging
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, AccessError, ValidationError
-from langchain.schema import AIMessage, HumanMessage, SystemMessage
+#from langchain.schema import AIMessage, HumanMessage, SystemMessage
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 
 _logger = logging.getLogger(__name__)
 
