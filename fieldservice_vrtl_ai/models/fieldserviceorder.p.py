@@ -70,13 +70,29 @@ class FieldServiceOrder(models.Model):
                members = record.order_line_ids.fieldservice_order_line_employee_ids
                members.set_member_of_quest_chat()
 
-    def write(self,vals):
-          res = super(FieldServiceOrder, self).write(vals)
-          if "name" in vals:
-             self._onchange_name()
-          if "stage_id" in vals:
-             self._onchange_stage_id()
-          return res
+    def write(self, vals):
+        # the hack for sequence-only updates during kanban drag/reorder
+        if set(vals.keys()) <= {'sequence', 'write_date', 'write_uid'}:
+            # Bypass ORM overhead by updating project.task directly via SQL
+            for record in self:
+                if vals.get('sequence') is not None:
+                    self.env.cr.execute(
+                        "UPDATE project_task SET sequence = %s WHERE id = %s",
+                        (vals.get('sequence'), record.task_id.id)
+                    )
+            
+            # Invalidate cache to ensure UI reflects changes
+            self.env['fieldservice.order'].invalidate_model(['sequence'])
+            self.env['project.task'].invalidate_model(['sequence'])
+            return True
+        
+        # Normal write path with AI operations
+        res = super(FieldServiceOrder, self).write(vals)
+        if "name" in vals:
+            self._onchange_name()
+        if "stage_id" in vals:
+            self._onchange_stage_id()
+        return res
 
     
 # Gonzo Examens

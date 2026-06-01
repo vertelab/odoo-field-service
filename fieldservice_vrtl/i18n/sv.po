@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0-20251006\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-07 14:28+0000\n"
-"PO-Revision-Date: 2025-10-07 16:35+0200\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2026-02-24 13:40+0100\n"
+"Last-Translator: Jakob Krabbe <jakob.krabbe@vertel.se>\n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
@@ -155,13 +155,13 @@ msgstr "Avbruten"
 #. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_change_company_wizard_form
 msgid "Change"
-msgstr "Förändring"
+msgstr "Ändring"
 
 #. module: fieldservice_vrtl
 #: model:ir.actions.act_window,name:fieldservice_vrtl.action_change_company_wizard model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_change_company_wizard_form
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
 msgid "Change Company"
-msgstr "Förändra företaget"
+msgstr "Ändra bolag"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__closed_depend_on_count
@@ -171,7 +171,7 @@ msgstr "Stängt beroende på arbetsuppgifter"
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_stage__is_closed
 msgid "Closed Stage"
-msgstr "Stängd scen"
+msgstr "Stängt läge"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__is_closed
@@ -187,7 +187,7 @@ msgstr "Färg"
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_change_company_wizard__partner_id model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__company_id
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__company_id
 msgid "Company"
-msgstr "Företag"
+msgstr "Bolag"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__partner_company_name
@@ -344,7 +344,7 @@ msgstr "Visningsnamn"
 #. module: fieldservice_vrtl
 #: model:fieldservice.stage,name:fieldservice_vrtl.fieldservice_stage_completed
 msgid "Done"
-msgstr "Färdigställd"
+msgstr "Klar"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__duration
@@ -658,7 +658,7 @@ msgstr "Modell"
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__my_activity_date_deadline
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order_line__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr "Min aktivitet Deadline"
+msgstr "Min aktivitetstidsfrist"
 
 #. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
@@ -712,7 +712,7 @@ msgstr "Ny"
 #. module: fieldservice_vrtl
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
 msgid "Not done"
-msgstr "Inte gjort"
+msgstr "Inte klar"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__message_needaction_counter
@@ -765,7 +765,7 @@ msgstr "Antal tillfällen (genomsnitt)"
 #: model:ir.ui.menu,name:fieldservice_vrtl.menu_fieldservice_order_line model:ir.ui.menu,name:fieldservice_vrtl.menu_fieldservice_order_line_root
 #: model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_form
 msgid "Occasions"
-msgstr "Tillfälligheter"
+msgstr "Tillfällen"
 
 #. module: fieldservice_vrtl
 #: model:fieldservice.stage,name:fieldservice_vrtl.fieldservice_stage_ongoing model_terms:ir.ui.view,arch_db:fieldservice_vrtl.view_fieldservice_order_search
@@ -853,7 +853,7 @@ msgstr "Personlig scen"
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__personal_stage_id
 msgid "Personal Stage State"
-msgstr "Personligt stadium Stat"
+msgstr "Personligt scenläge"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__planned_duration
@@ -1251,7 +1251,7 @@ msgstr "Produktens unika serienummer"
 #. odoo-python
 #: code:addons/fieldservice_vrtl/models/fieldservice_stage.p.py:0 code:addons/fieldservice_vrtl/models/fieldservice_stage.py:0
 msgid "This is the Fakturerad stage."
-msgstr ""
+msgstr "Detta är det fakturerade läget"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__ticket_count
@@ -1342,7 +1342,7 @@ msgstr "Veckan"
 #. module: fieldservice_vrtl
 #: model:ir.model,name:fieldservice_vrtl.model_change_company_wizard
 msgid "Wizard to change company on Field Service Order"
-msgstr "Wizard för att ändra företag på Field Service Order"
+msgstr "Guide för att ändra bolag på Field Service Order"
 
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__work_instructions
@@ -1378,4 +1378,4 @@ msgstr "Gul"
 #. module: fieldservice_vrtl
 #: model:ir.model.fields,field_description:fieldservice_vrtl.field_fieldservice_order__x_processed_new
 msgid "x_processed_new"
-msgstr ""
+msgstr "x_processed_new"
