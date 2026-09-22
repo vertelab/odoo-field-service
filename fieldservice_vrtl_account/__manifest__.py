@@ -3,6 +3,7 @@
     'version': '1.0',
     'depends': ['fieldservice_vrtl','hr_timesheet','hr'],
     'author': "Vertel AB",
+    "website": "https://vertel.se/apps/odoo-field-service/fieldservice_vrtl_account",
     'category': 'Category',
     'license': 'AGPL-3',
     'description': """

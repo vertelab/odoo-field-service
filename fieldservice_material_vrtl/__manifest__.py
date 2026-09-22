@@ -1,4 +1,5 @@
 {
+    'website': 'https://vertel.se/apps/odoo-field-service/fieldservice_material_vrtl',
     'name': 'Field Service: Stock Picking',
     'version': '1.0',
     'depends': ['fieldservice_vrtl', 'stock'],

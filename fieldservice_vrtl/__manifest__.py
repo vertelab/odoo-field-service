@@ -3,6 +3,7 @@
     'version': '1.0',
     'depends': ['mail','base','hr','project', 'product_brand'],
     'author': "Vertel AB",
+    "website": "https://vertel.se/apps/odoo-field-service/fieldservice_vrtl",
     'category': 'Category',
     'license': 'AGPL-3',
     'description': """AI-baserad planeringsmotor för Field Service. Automatisk schemaläggning baserat på SLA, arbetsbörda och tillgänglighet. 

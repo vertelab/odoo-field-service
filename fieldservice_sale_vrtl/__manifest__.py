@@ -11,6 +11,7 @@
         
     ],
     'author': ' Company',
+    'website': 'https://vertel.se/apps/odoo-field-service/fieldservice_sale_vrtl',
     'license': 'AGPL-3',
     'installable': True,
     'application': False,
