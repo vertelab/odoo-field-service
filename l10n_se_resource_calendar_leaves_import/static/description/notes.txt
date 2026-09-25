@@ -1,6 +1,10 @@
 odoo-l10n_se_payroll / l10n_se_resource_calendar_leaves_import
 2022-01-10
 
+Be aware of these!
+odoo-field-service/l10n_se_resource_calendar_leaves_import/static/description/banner.png
+odoo-field-service/l10n_se_resource_calendar_leaves_import/static/description/icon.png
+
 /static/description/icon.png
 
 Icon: User

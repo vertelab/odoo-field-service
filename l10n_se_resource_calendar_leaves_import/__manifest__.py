@@ -25,9 +25,18 @@
     # Version ledger: 14.0 = Odoo version. 1 = Major. Non regressionable code. 2 = Minor. New features that are regressionable. 3 = Bug fixes
     'summary': 'Import swedish holidays to work schedule.',
     'category': 'Payroll Localization',
-    'description': """
+    'description': '''
+Swedish Holiday Schedule
+========================
+
     Import swedish holidays to work schedule.
-    """,
+
+    Features:
+
+        - Automation: Scheduled jobs: Swedish holidays uppdate.
+        - UI Integration: Extends 2 view(s) in the Odoo interface.
+        - Extends Odoo: Builds on calendar.event.
+    ''',
     #'sequence': '1'
     'author': 'Vertel AB',
     'website': 'https://vertel.se/apps/odoo-field-service/l10n_se_resource_calendar_leaves_import',
