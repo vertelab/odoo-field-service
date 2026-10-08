@@ -2,7 +2,7 @@
     'name': "Field service: Vertel",
     'version': '1.0',
     'depends': ['mail','base','hr','project', 'product_brand'],
-    'author': "Vertel AB",
+    'author': "Vertel Sverige AB",
     'category': 'Category',
     'license': 'AGPL-3',
     'description': """AI-baserad planeringsmotor för Field Service. Automatisk schemaläggning baserat på SLA, arbetsbörda och tillgänglighet. 

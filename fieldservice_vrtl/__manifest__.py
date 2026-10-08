@@ -1,21 +1,14 @@
 {
     'name': "Field service: Vertel",
-    'summary': "Vertel extensions for field service orders.",
-    'version': '18.0.1.0.0',
+    'version': '1.0',
     'depends': ['mail','base','hr','project', 'product_brand'],
-    'author': "Vertel AB",
-    "website": "https://vertel.se/apps/odoo-field-service/fieldservice_vrtl",
+    'author': "Vertel Sverige AB",
     'category': 'Category',
     'license': 'AGPL-3',
-    'description': '''
-Vertel
-======
-
-    AI-based planning engine for Field Service.
-
-Automatic scheduling based on SLA, workload and availability. Reduces manual
-administration and improves resource utilisation.
-    ''',
+    'description': """AI-baserad planeringsmotor för Field Service. Automatisk schemaläggning baserat på SLA, arbetsbörda och tillgänglighet. 
+    Minskar manuell administration och förbättrar resursutnyttjande."
+    Fieldservice
+    """,
     'data': [
         'wizards/company_wizard_view.xml',
         'security/fieldservice_security.xml',
