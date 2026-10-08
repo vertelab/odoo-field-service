@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    Odoo SA, Open Source Management Solution, third party addon
-#    Copyright (C) 2022- Vertel AB (<https://vertel.se>).
+#    Copyright (C) 2022- Vertel Sverige AB (<https://vertel.se>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -25,25 +25,16 @@
     # Version ledger: 14.0 = Odoo version. 1 = Major. Non regressionable code. 2 = Minor. New features that are regressionable. 3 = Bug fixes
     'summary': 'Import swedish holidays to work schedule.',
     'category': 'Payroll Localization',
-    'description': '''
-Swedish Holiday Schedule
-========================
-
+    'description': """
     Import swedish holidays to work schedule.
-
-    Features:
-
-        - Automation: Scheduled jobs: Swedish holidays uppdate.
-        - UI Integration: Extends 2 view(s) in the Odoo interface.
-        - Extends Odoo: Builds on calendar.event.
-    ''',
+    """,
     #'sequence': '1'
-    'author': 'Vertel AB',
-    'website': 'https://vertel.se/apps/odoo-field-service/l10n_se_resource_calendar_leaves_import',
+    'author': 'Vertel Sverige AB',
+    'website': 'https://vertel.se/apps/odoo-l10n_se_payroll/l10n_se_resource_calendar_leaves_import',
     'images': ['static/description/banner.png'], # 560x280 px.
     'license': 'AGPL-3',
     'contributor': '',
-    'maintainer': 'Vertel AB',
+    'maintainer': 'Vertel Sverige AB',
     'repository': 'https://github.com/vertelab/odoo-l10n-se-payroll',
 
     # Categories can be used to filter modules in modules listing
@@ -61,3 +52,5 @@ Swedish Holiday Schedule
     'demo': [
     ],
 }
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
