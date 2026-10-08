@@ -21,25 +21,15 @@
 
 {
     'name': 'Fieldservice: chat with orders',
-    'version': '18.0.1.0.3',
-    'summary': 'Mailbox for AI.',
+    'version': '1.0.3',
+    'summary': 'Mailbox for AI',
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Fieldservice',
-    'description': '''
-chat with orders
-================
-
-    Mailbox for AI.
-
-    Features:
-
-        - Web integration: Exposes HTTP endpoints for external systems.
-        - Guided Wizards: Step-by-step dialogs for data entry.
-        - UI Integration: Extends 2 view(s) in the Odoo interface.
-        - Extends Odoo: Builds on ai.agent, ai.quest, ai.quest.session, discuss.channel.
-    ''',
+    'description': """
+        Chat
+    """,
     #'sequence': '1',
     'author': 'Vertel Sverige AB',
     'website': 'https://vertel.se/apps/odoo-field-service/fieldservice_vrtl_ai',
@@ -72,3 +62,18 @@ chat with orders
     'auto_install': False,
     'application': False,
 }
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
