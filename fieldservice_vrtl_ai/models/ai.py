@@ -1,6 +1,7 @@
 import re
 import ast
 import logging
+import traceback
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, AccessError, ValidationError
@@ -133,9 +134,12 @@ class AIQuest(models.Model):
 
         if match:
             result = match.group(1)
-            result = eval(result)
-            return result
-            
+            try:
+                return ast.literal_eval(result)
+            except (ValueError, SyntaxError):
+                _logger.debug("custom_extract_json: not a literal, ignoring %r", result[:200])
+                return False
+
         return False
         
         

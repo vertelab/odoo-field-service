@@ -5,6 +5,7 @@ import datetime
 from multiprocessing.sharedctypes import Value
 from unicodedata import name
 from odoo import fields, models, api, _
+from odoo.exceptions import UserError
 import logging
 from ics import Calendar, Event
 import requests
@@ -27,9 +28,17 @@ class ImportHolidays(models.Model):
     def _holiday_cron(self):       
         self = self.sudo()
         url = self.env['ir.config_parameter'].sudo().get_param('holiday.url.ics')
-        url = "https://www.webcal.guru/sv-SE/ladda_ner_kalendern?calendar_instance_id=86"
+        if not url:
+            raise UserError(_(
+                "No holiday calendar URL is configured. Set it in Settings "
+                "(parameter 'holiday.url.ics') before importing holidays."))
         calendar = Calendar(requests.get(url).text)
-        responsible_id = self.env['res.users'].search([('login', '=', 'holidays')])[0].id
+        responsible = self.env['res.users'].search([('login', '=', 'holidays')], limit=1)
+        if not responsible:
+            raise UserError(_(
+                "The calendar-owning user 'holidays' does not exist. Create it "
+                "before importing holidays."))
+        responsible_id = responsible.id
 
         for event in list(calendar.timeline): 
             event_xmlid = f"{IMPORT}.calendar_{event.name.replace(' ', '_')}_{event.begin.date().strftime('%Y-%m-%d')}"

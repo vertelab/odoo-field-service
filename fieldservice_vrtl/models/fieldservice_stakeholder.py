@@ -6,6 +6,7 @@ class FieldServiceStakeHolder(models.Model):
 
     partner_id = fields.Many2one('res.partner', ondelete='cascade', string="Partner")
     partner_status = fields.Selection([('legal_owner', 'Legal Owner'),
+                                       ('reporter', 'Reporter'),
                                        ],ondelete='cascade', string="Status", default='legal_owner')
 
     order_id = fields.Many2one('fieldservice.order', string='Service Order', ondelete='cascade', required=True)

@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 import logging
 class ChangeCompanyWizard(models.TransientModel):
     _name = 'change.company.wizard'

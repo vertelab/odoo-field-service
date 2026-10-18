@@ -3,6 +3,7 @@ import datetime
 from ics import Calendar
 import requests
 from odoo import fields, models, api, _
+from odoo.exceptions import UserError
 _logger = logging.getLogger(__name__)
 IMPORT = '__import__'
 
@@ -21,12 +22,19 @@ class ImportSwedishHolidays(models.Model):
 
     @api.model
     def eves_conf(self):
-        _logger.error("GO")
         self = self.sudo()
         url = self.env['ir.config_parameter'].sudo().get_param('holiday.url.ics')
-        url = "https://www.webcal.guru/sv-SE/ladda_ner_kalendern?calendar_instance_id=86"
+        if not url:
+            raise UserError(_(
+                "No holiday calendar URL is configured. Set it in Settings "
+                "(parameter 'holiday.url.ics') before importing holidays."))
         calendar = Calendar(requests.get(url).text)
-        responsible_id = self.env['res.users'].search([('login', '=', 'holidays')])[0].id
+        responsible = self.env['res.users'].search([('login', '=', 'holidays')], limit=1)
+        if not responsible:
+            raise UserError(_(
+                "The calendar-owning user 'holidays' does not exist. Create it "
+                "before importing holidays."))
+        responsible_id = responsible.id
 
         for event in list(calendar.timeline):
             event_xmlid = f"{IMPORT}.calendar_{event.name.replace(' ', '_')}_{event.begin.date().strftime('%Y-%m-%d')}"
@@ -41,7 +49,7 @@ class ImportSwedishHolidays(models.Model):
 
             #Creates the eves
             for key, value in eves.items():
-                if event.name[3::] in key:
+                if len(event.name) > 3 and event.name[3::] in key:
                     eve = {'name': eves[event.name[3::]],
                             'start': (event_id['start'] - datetime.timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S'), 
                             'stop': (event_id['stop'] - datetime.timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S'),
@@ -75,6 +83,8 @@ class ImportSwedishHolidays(models.Model):
                             }
 
                 for key, value in eves.items():
+                    if len(event.name) <= 3:
+                        continue
                     if event.name[3::] == key:
 
                         leave_eve = {'name': eves[event.name[3::]],

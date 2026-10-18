@@ -42,12 +42,11 @@
     # for the full list
     # ~ 'depends': ['resource_calendar_leaves_import'],
     'depends': [
-    'ics_import_holidays'
+        'cron_tick',
+        'ics_import_holidays',
     ],
     'data': [
-    # 'views/res_config_settings_url.xml',
-        # 'data/ir_server_action.xml'
-        # 'security/ir.model.access.csv',
+        'data/cron_tasks.xml',
     ],
     'demo': [
     ],

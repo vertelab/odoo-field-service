@@ -46,7 +46,7 @@ class FieldServiceOrder(models.Model):
     work_instructions = fields.Html(string='Work Instructions')
     location_instructions = fields.Text(string='Location Instructions')
     date_start = fields.Datetime(string='Actual Start', compute="compute_date_start_end", store=True, readonly=False)
-    date_end = fields.Datetime(string='Actual End', compute="co mpute_date_start_end", store=True, readonly=False)
+    date_end = fields.Datetime(string='Actual End', compute="compute_date_start_end", store=True, readonly=False)
 
     # time_until_work_start = fields.Float(string='Time until work start', compute='_compute_time_until_work_start', store=True, help='Time in hours')
     # time_until_work_start_avg = fields.Float(group_operator='avg', string='Time until work start (AVG)', compute='_compute_time_until_work_start', store=True, help='Time in hours')
@@ -122,8 +122,6 @@ class FieldServiceOrder(models.Model):
             record.line_count = len(record.order_line_ids)
             record.line_count_avg = record.line_count
 
-    api.depends()
-
     def create_occasion(self):
         record = self.env['fieldservice.order.line'].create(
             [{'order_id': self.id, 'date_start': self.planned_start_datetime}])
@@ -176,7 +174,7 @@ class FieldServiceOrder(models.Model):
         for record in self:
             stakeholder_ids = list(
                 filter(lambda stakeholder_id: stakeholder_id.partner_status == "reporter", record.stakeholder_ids))
-            _logger.error(f"{stakeholder_ids=}")
+            _logger.debug(f"{stakeholder_ids=}")
             if stakeholder_ids:
                 record.reporter = stakeholder_ids[0].partner_id
             else:

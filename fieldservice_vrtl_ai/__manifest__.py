@@ -21,7 +21,7 @@
 
 {
     'name': 'Fieldservice: chat with orders',
-    'version': '18.0.1.0.3',
+    'version': '18.0.1.0.4',
     'summary': 'Mailbox for AI.',
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml

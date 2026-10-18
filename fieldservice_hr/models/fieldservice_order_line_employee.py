@@ -56,7 +56,6 @@ class FieldServiceOrderLineEmployee(models.Model):
     def create(self, vals_list):
         for val in vals_list:
             if val.get('employee_id'):
-                _logger.warning(f"har inget arbetsschema."*20)
                 employee = self.env['hr.employee'].browse(int(val['employee_id']))
                 if employee.exists() and employee.department_id:
                     val['hr_department_id'] = employee.department_id.id
@@ -119,19 +118,12 @@ class FieldServiceOrderLineEmployee(models.Model):
         """ This method will create entry in resource calendar time off object at the time of holidays validated
         :returns: created `resource.calendar.leaves`
         """
-        _logger.warning(f"works bad.{self}")
-        _logger.warning(f"works bad.{self._prepare_fieldservice_resource_vals()}")
         vals_list = [leave._prepare_fieldservice_resource_vals() for leave in self]
-        
-        _logger.warning(f"works good."*20)
-        _logger.warning(f"works good.{vals_list}")
-        # if not vals_list.get('date_from'):
-        #     return
         vals_list = list(filter(lambda _: _.get('date_from'), vals_list))
-        _logger.warning(f"final works good.{vals_list}")
         if vals_list:
             return self.env['resource.calendar.leaves'].sudo().create(vals_list)
 
     def _remove_fieldservice_resource(self):
         """ This method will create entry in resource calendar time off object at the time of holidays cancel/removed """
-        return self.env['resource.calendar.leaves'].search([('holiday_id', 'in', self.ids)]).unlink()
+        return self.env['resource.calendar.leaves'].search(
+            [('field_service_employee_line_id', 'in', self.ids)]).unlink()

@@ -1,6 +1,6 @@
 {
     'name': "Field service: Vertel",
-    'version': '1.0',
+    'version': '18.0.1.0.1',
     'depends': ['mail','base','hr','project', 'product_brand'],
     'author': "Vertel Sverige AB",
     'category': 'Category',

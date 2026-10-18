@@ -1,4 +1,5 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 import logging
 class ChangeCompanyWizard(models.TransientModel):
     _inherit = 'change.company.wizard'

@@ -5,9 +5,9 @@
     'category': 'Services',
     'author': 'Your Name or Company',
     'license': 'AGPL-3',
-    'depends': ['base', 'fieldservice_vrtl','hr'],  
+    'depends': ['base', 'cron_tick', 'fieldservice_vrtl', 'hr'],  
     'data': [
-        'data/cron_jobs.xml',
+        'data/cron_tasks.xml',
         'views/fieldservice_inherit_views.xml',
         'security/ir.model.access.csv',
         'views/fieldservice_sla_views.xml'

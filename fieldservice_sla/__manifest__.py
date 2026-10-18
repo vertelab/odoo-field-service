@@ -1,6 +1,6 @@
 {
     'name': 'SLA Management',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     'summary': 'Manage SLA agreements and track service level compliance.',
     'description': '''
 SLA Management
@@ -18,9 +18,9 @@ SLA Management
     'author': 'Your Name or Company',
     'website': 'https://vertel.se/apps/odoo-field-service/fieldservice_sla',
     'license': 'AGPL-3',
-    'depends': ['base', 'fieldservice_vrtl','hr'],  
+    'depends': ['base', 'cron_tick', 'fieldservice_vrtl', 'hr'],  
     'data': [
-        'data/cron_jobs.xml',
+        'data/cron_tasks.xml',
         'views/fieldservice_inherit_views.xml',
         'security/ir.model.access.csv',
         'views/fieldservice_sla_views.xml'

@@ -64,16 +64,6 @@
         </field>
     </record>
 
-    <!-- Cron to notify SLA breach -->
-    <record id="ir_cron_notify_fieldservice_sla" model="ir.cron">
-        <field name="name">Notify SLA Breach</field>
-        <field name="model_id" ref="model_fieldservice_sla"/>
-        <field name="state">code</field>
-        <field name="code">model.notify_sla_breach()</field>
-        <field name="interval_number">1</field>
-        <field name="interval_type">hours</field>
-    </record>
-
     <!-- Window Action -->
     <record id="action_fieldservice_sla" model="ir.actions.act_window">
         <field name="name">Field Service SLA</field>
@@ -147,14 +137,6 @@
         </field>
     </record>
 
-    <record id="ir_cron_notify_fieldservice_sla" model="ir.cron">
-        <field name="name">Notify SLA Breach</field>
-        <field name="model_id" ref="model_fieldservice_sla"/>
-        <field name="state">code</field>
-        <field name="code">model.notify_sla_breach()</field>
-        <field name="interval_number">1</field>       
-        <field name="interval_type">hours</field>
-    </record>
 
 
     <record id="action_fieldservice_sla" model="ir.actions.act_window">
