@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Service — Blue (reliable, calm) -->
+        <record id="fsm_order_type_service" model="fieldservice.order.type">
+            <field name="name">Service</field>
+            <field name="color">#3498DB</field>
+        </record>
+
+        <!-- Troubleshooting — Red (warning, problem) -->
+        <record id="fsm_order_type_troubleshooting" model="fieldservice.order.type">
+            <field name="name">Troubleshooting</field>
+            <field name="color">#E74C3C</field>
+        </record>
+
+        <!-- New Installation — Green (new, positive) -->
+        <record id="fsm_order_type_new_installation" model="fieldservice.order.type">
+            <field name="name">New Installation</field>
+            <field name="color">#2ECC71</field>
+        </record>
+
+        <!-- Modernization — Purple (innovation, upgrade) -->
+        <record id="fsm_order_type_modernization" model="fieldservice.order.type">
+            <field name="name">Modernization</field>
+            <field name="color">#9B59B6</field>
+        </record>
+
+        <!-- Upgrade — Yellow (improvement, attention) -->
+        <record id="fsm_order_type_upgrade" model="fieldservice.order.type">
+            <field name="name">Upgrade</field>
+            <field name="color">#F1C40F</field>
+        </record>
+
+        <!-- Repair — Orange (warning, needs action) -->
+        <record id="fsm_order_type_repair" model="fieldservice.order.type">
+            <field name="name">Repair</field>
+            <field name="color">#E67E22</field>
+        </record>
+
+        <!-- Inspection — Grey (neutral, routine) -->
+        <record id="fsm_order_type_inspection" model="fieldservice.order.type">
+            <field name="name">Inspection</field>
+            <field name="color">#95A5A6</field>
+        </record>
+
+        <!-- Besiktningsanmärkning — Orange (åtgärd krävs) -->
+        <record id="fsm_order_type_inspection_remark" model="fieldservice.order.type">
+            <field name="name">Besiktningsanmärkning</field>
+            <field name="color">#E67E22</field>
+        </record>
+
+        <!-- Röd besiktningsanmärkning — Dark red (kritisk, hiss avstängd) -->
+        <record id="fsm_order_type_inspection_remark_red" model="fieldservice.order.type">
+            <field name="name">Röd besiktningsanmärkning</field>
+            <field name="color">#C0392B</field>
+        </record>
+
+    </data>
+</odoo>

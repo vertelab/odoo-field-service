@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form view: the fork has no form view for order types, so this
+         module supplies one. It also carries the colour picker. -->
+    <record id="view_fieldservice_order_type_form" model="ir.ui.view">
+        <field name="name">fieldservice.order.type.form</field>
+        <field name="model">fieldservice.order.type</field>
+        <field name="arch" type="xml">
+            <form string="Field Service Order Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="color" widget="color" class="oe_inline"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List view: add the colour column after the name. -->
+    <record id="view_fieldservice_order_type_list_inherit_color" model="ir.ui.view">
+        <field name="name">fieldservice.order.type.list.inherit.color</field>
+        <field name="model">fieldservice.order.type</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_type_list"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="color" widget="color"/>
+            </field>
+        </field>
+    </record>
+
+
+</odoo>
