@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="hr_equipment_view_form_vrtl" model="ir.ui.view">
+        <field name="name">maintenance.equipment.form.vrtl</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="action_view_fieldservice_orders"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-truck"
+                        invisible="fieldservice_order_count == 0">
+                    <field name="fieldservice_order_count" widget="statinfo"
+                           string="Orders"/>
+                </button>
+                <button name="action_view_maintenance_requests"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-wrench"
+                        invisible="open_maintenance_request_count == 0">
+                    <field name="open_maintenance_request_count" widget="statinfo"
+                           string="Open Requests"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>
