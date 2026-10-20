@@ -28,19 +28,15 @@ class FSMOrder(models.Model):
         compute='_compute_active_order_count',
     )
 
-    # Reporter — the fork already has reporter (Many2one res.partner).
-    # Name and phone are read from it rather than stored again.
+    # Reporter. The fork already has reporter, computed from
+    # stakeholder_ids (the stakeholder with partner_status 'reporter'),
+    # so it is read only and cannot be written. The phone is a related
+    # read of the same partner rather than a second stored field.
     reporter_phone = fields.Char(
         string="Telefon",
-        compute='_compute_reporter_phone',
+        related='reporter.phone',
+        readonly=True,
     )
-
-    @api.depends('reporter', 'reporter.phone', 'reporter.mobile')
-    def _compute_reporter_phone(self):
-        for order in self:
-            order.reporter_phone = (
-                order.reporter.phone or order.reporter.mobile or ''
-            ) if order.reporter else ''
 
     # Address — read from the property. Display only: the form and the
     # kanban card show it so a technician knows where to drive. Billing

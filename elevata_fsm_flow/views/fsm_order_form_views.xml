@@ -81,8 +81,9 @@
                                    style="border: 1px solid #ccc; border-radius: 4px; padding: 8px;"/>
                         </group>
                         <group string="Felanmälare" name="reporter_grp" class="elevata-order-summary">
-                            <field name="reporter" string="Kontakt"
-                                   options="{'no_quick_create': False, 'no_create_edit': False}"/>
+                            <field name="reporter" string="Kontakt" readonly="1"
+                                   options="{'no_quick_create': False, 'no_create_edit': False}"
+                                   help="Sätts från kontakten i listan Stakeholders med rollen Reporter."/>
                             <field name="reporter_phone" string="Telefon" widget="phone"/>
                         </group>
                         <group string="Utförda åtgärder" name="resolution_grp">
