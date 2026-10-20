@@ -1,0 +1,472 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* elevata_hr_contract
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20260317\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 13:13+0000\n"
+"PO-Revision-Date: 2026-10-18 13:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: elevata_hr_contract
+#: model:mail.template,body_html:elevata_hr_contract.email_template_contract
+msgid ""
+"\n"
+"<div style=\"font-family:'Segoe UI',Arial,sans-serif;font-size:13px;color:#333;max-width:600px;margin:0 auto;\">\n"
+"    <p>Hej {{ object.employee_id.name }},</p>\n"
+"    <p>Bifogat finner du ditt anställningsavtal hos {{ object.company_id.name }}.</p>\n"
+"    <table style=\"width:100%;border-collapse:collapse;margin:16px 0;\">\n"
+"        <tr><td style=\"padding:4px 8px;color:#64748b;\">Avtalsnummer</td><td style=\"padding:4px 8px;font-weight:600;\">{{ object.name }}</td></tr>\n"
+"        <tr><td style=\"padding:4px 8px;color:#64748b;\">Startdatum</td><td style=\"padding:4px 8px;\">{{ object.date_start }}</td></tr>\n"
+"        <tr><td style=\"padding:4px 8px;color:#64748b;\">Befattning</td><td style=\"padding:4px 8px;\">{{ object.job_id.name or '–' }}</td></tr>\n"
+"    </table>\n"
+"    <p>Vänligen granska avtalet och kontakta oss om du har frågor.</p>\n"
+"    <p>Med vänlig hälsning,<br/>{{ object.company_id.name }}</p>\n"
+"</div>\n"
+"\n"
+"        "
+msgstr "\"\"\\n\"\"<div style=\"font-family:'Segoe UI',Arial,sans-serif;font-size:13px;color:#333;max-width:600px;margin:0 auto;\">\\n\"\"    <p>Hej {{ object.employee_id.name }},</p>\\n\"\"    <p>Bifogat finner du ditt anställningsavtal hos {{ object.company_id.name }}.</p>\\n\"\"    <table style=\"width:100%;border-collapse:collapse;margin:16px 0;\">\\n\"\"        <tr><td style=\"padding:4px 8px;color:#64748b;\">Avtalsnummer</td><td style=\"padding:4px 8px;font-weight:600;\">{{ object.name }}</td></tr>\\n\"\"        <tr><td style=\"padding:4px 8px;color:#64748b;\">Startdatum</td><td style=\"padding:4px 8px;\">{{ object.date_start }}</td></tr>\\n\"\"        <tr><td style=\"padding:4px 8px;color:#64748b;\">Befattning</td><td style=\"padding:4px 8px;\">{{ object.job_id.name or '–' }}</td></tr>\\n\"\"    </table>\\n\"\"    <p>Vänligen granska avtalet och kontakta oss om du har frågor.</p>\\n\"\"    <p>Med vänlig hälsning,<br/>{{ object.company_id.name }}</p>\\n\"\"</div>\\n\"\"\\n\"\"        "
+
+#. module: elevata_hr_contract
+#: model:ir.actions.report,print_report_name:elevata_hr_contract.action_report_hr_contract
+msgid "'Anställningsavtal - %s' % object.employee_id.name"
+msgstr "'Anställningsavtal - %s' % object.employee_id.name"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.hr_contract_view_form_elevata
+msgid "<span>/ mån</span>"
+msgstr "<span>/ mån</span>"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid ""
+"<span>Anställd</span>\n"
+"                                <br/><br/><br/>\n"
+"                                <span>Datum: _______________</span>\n"
+"                                <br/>\n"
+"                                <span>Namnförtydligande: _______________</span>"
+msgstr "\"\"<span>Anställd</span>\\n\"\"                                <br/><br/><br/>\\n\"\"                                <span>Datum: _______________</span>\\n\"\"                                <br/>\\n\"\"                                <span>Namnförtydligande: _______________</span>"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid ""
+"<span>Arbetsgivare</span>\n"
+"                                <br/><br/><br/>\n"
+"                                <span>Datum: _______________</span>\n"
+"                                <br/>\n"
+"                                <span>Namnförtydligande: _______________</span>"
+msgstr "\"\"<span>Arbetsgivare</span>\\n\"\"                                <br/><br/><br/>\\n\"\"                                <span>Datum: _______________</span>\\n\"\"                                <br/>\\n\"\"                                <span>Namnförtydligande: _______________</span>"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Adress"
+msgstr "Adress"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.hr_contract_view_form_elevata
+msgid "Aktivera avtal"
+msgstr "Aktivera avtal"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,help:elevata_hr_contract.field_fsm_person__employment_percentage
+#: model:ir.model.fields,help:elevata_hr_contract.field_hr_contract__employment_percentage
+msgid "Andel av heltid i procent, t.ex. 100 = heltid, 80 = 80%"
+msgstr "Andel av heltid i procent, t.ex. 100 = heltid, 80 = 80%"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_fsm_person__employee_id
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Anställd"
+msgstr "Anställd"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Anställning"
+msgstr "Anställning"
+
+#. module: elevata_hr_contract
+#: model:ir.actions.report,name:elevata_hr_contract.action_report_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_fsm_person__contract_id
+#: model:mail.template,name:elevata_hr_contract.email_template_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Anställningsavtal"
+msgstr "Anställningsavtal"
+
+#. module: elevata_hr_contract
+#: model:mail.template,subject:elevata_hr_contract.email_template_contract
+msgid "Anställningsavtal — {{ object.employee_id.name }}"
+msgstr "Anställningsavtal — {{ object.employee_id.name }}"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Anställningsform"
+msgstr "Anställningsform"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,help:elevata_hr_contract.field_hr_contract__vacation_days
+msgid "Antal betalda semesterdagar per år (lagstadgat minimum: 25)"
+msgstr "Antal betalda semesterdagar per år (lagstadgat minimum: 25)"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.hr_contract_view_form_elevata
+msgid "Anteckningar"
+msgstr "Anteckningar"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Arbetsgivare"
+msgstr "Arbetsgivare"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_fsm_person__work_location
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_hr_contract__work_location
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Arbetsplats"
+msgstr "Arbetsplats"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Arbetstid"
+msgstr "Arbetstid"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.hr_contract_view_form_elevata
+msgid "Arbetsvillkor"
+msgstr "Arbetsvillkor"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Avdelning"
+msgstr "Avdelning"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Avtalsnummer"
+msgstr "Avtalsnummer"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Befattning"
+msgstr "Befattning"
+
+#. module: elevata_hr_contract
+#: model:ir.model,name:elevata_hr_contract.model_hr_contract
+msgid "Contract"
+msgstr "Anställningskontrakt"
+
+#. module: elevata_hr_contract
+#: model:ir.model,name:elevata_hr_contract.model_fsm_person
+msgid "Field Service Worker"
+msgstr "HissTekniker"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__work_location__field
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Fältarbete"
+msgstr "Fältarbete"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__work_location__office
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Företagsadress"
+msgstr "Företagsadress"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.hr_contract_view_form_elevata
+msgid "Genereras automatiskt"
+msgstr "Genereras automatiskt"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__work_location__home
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Hemstationerad"
+msgstr "Hemstationerad"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__work_location__hybrid
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Hybrid"
+msgstr "Hybrid"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__collective_agreement__inget
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Inget kollektivavtal"
+msgstr "Inget kollektivavtal"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__collective_agreement__installationsavtalet
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Installationsavtalet (EIO/SEF)"
+msgstr "Installationsavtalet (EIO/SEF)"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_fsm_person__collective_agreement
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_hr_contract__collective_agreement
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Kollektivavtal"
+msgstr "Kollektivavtal"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.hr_contract_view_form_elevata
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Lön"
+msgstr "Lön"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_fsm_person__wage_type
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_hr_contract__wage_type
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Löneform"
+msgstr "Löneform"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_hr_contract__pay_frequency
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Löneutbetalning"
+msgstr "Löneutbetalning"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__wage_type__monthly
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Månadslön"
+msgstr "Månadslön"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__pay_frequency__monthly
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Månadsvis"
+msgstr "Månadsvis"
+
+#. module: elevata_hr_contract
+#. odoo-python
+#: code:addons/elevata_hr_contract/models/hr_contract.py:0
+#: code:addons/elevata_hr_contract/models/hr_contract.py:0
+#, python-format
+msgid "New"
+msgstr "Ny"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Org.nummer"
+msgstr "Org.nummer"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Parterna"
+msgstr "Parterna"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Personnummer"
+msgstr "Personnummer"
+
+#. module: elevata_hr_contract
+#: model:hr.contract.type,name:elevata_hr_contract.contract_type_provanstallning
+msgid "Provanställning"
+msgstr "Provanställning"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_hr_contract__probation_end_date
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Provanställning t.o.m."
+msgstr "Provanställning t.o.m."
+
+#. module: elevata_hr_contract
+#: model:hr.leave.type,name:elevata_hr_contract.leave_type_semester
+msgid "Semester"
+msgstr "Semester"
+
+#. module: elevata_hr_contract
+#. odoo-python
+#: code:addons/elevata_hr_contract/models/hr_contract.py:0
+#, python-format
+msgid "Semester %s – %s"
+msgstr "Semester %s – %s"
+
+#. module: elevata_hr_contract
+#: model:ir.actions.server,name:elevata_hr_contract.cron_yearly_vacation_allocation_ir_actions_server
+msgid "Semester: Årlig tilldelning"
+msgstr "Semester: Årlig tilldelning"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_hr_contract__vacation_days
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Semesterdagar"
+msgstr "Semesterdagar"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_hr_contract__vacation_allocation_id
+msgid "Semestertilldelning"
+msgstr "Semestertilldelning"
+
+#. module: elevata_hr_contract
+#. odoo-python
+#: code:addons/elevata_hr_contract/models/hr_contract.py:0
+#, python-format
+msgid "Skicka anställningsavtal"
+msgstr "Skicka anställningsavtal"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.hr_contract_view_form_elevata
+msgid "Skicka e-post"
+msgstr "Skicka e-post"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.hr_contract_view_form_elevata
+msgid "Skriv ut PDF"
+msgstr "Skriv ut PDF"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Slutdatum"
+msgstr "Slutdatum"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,help:elevata_hr_contract.field_hr_contract__probation_end_date
+msgid "Slutdatum för provanställningsperioden (max 6 månader enligt LAS)"
+msgstr "Slutdatum för provanställningsperioden (max 6 månader enligt LAS)"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Startdatum"
+msgstr "Startdatum"
+
+#. module: elevata_hr_contract
+#: model:hr.contract.type,name:elevata_hr_contract.contract_type_sasong
+msgid "Säsongsanställning"
+msgstr "Säsongsanställning"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__collective_agreement__teknikavtalet
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Teknikavtalet (IF Metall)"
+msgstr "Teknikavtalet (IF Metall)"
+
+#. module: elevata_hr_contract
+#: model:hr.contract.type,name:elevata_hr_contract.contract_type_tillsvidare
+msgid "Tillsvidareanställning"
+msgstr "Tillsvidareanställning"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_hr_contract__hourly_wage
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__wage_type__hourly
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Timlön"
+msgstr "Timlön"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,help:elevata_hr_contract.field_hr_contract__hourly_wage
+msgid "Timlön i kronor (används vid löneform Timlön)"
+msgstr "Timlön i kronor (används vid löneform Timlön)"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__collective_agreement__tjanstemannaavtalet
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Tjänstemannaavtalet (Unionen)"
+msgstr "Tjänstemannaavtalet (Unionen)"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Tjänstgöringsgrad"
+msgstr "Tjänstgöringsgrad"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_fsm_person__employment_percentage
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_hr_contract__employment_percentage
+msgid "Tjänstgöringsgrad (%)"
+msgstr "Tjänstgöringsgrad (%)"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.hr_contract_view_form_elevata
+msgid "Uppsägning & Provanställning"
+msgstr "Uppsägning & Provanställning"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Uppsägningstid anställd"
+msgstr "Uppsägningstid anställd"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_hr_contract__notice_period_employee
+msgid "Uppsägningstid anställd (mån)"
+msgstr "Uppsägningstid anställd (mån)"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Uppsägningstid arbetsgivare"
+msgstr "Uppsägningstid arbetsgivare"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,field_description:elevata_hr_contract.field_hr_contract__notice_period_employer
+msgid "Uppsägningstid arbetsgivare (mån)"
+msgstr "Uppsägningstid arbetsgivare (mån)"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,help:elevata_hr_contract.field_hr_contract__notice_period_employer
+msgid "Uppsägningstid i månader för arbetsgivaren"
+msgstr "Uppsägningstid i månader för arbetsgivaren"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields,help:elevata_hr_contract.field_hr_contract__notice_period_employee
+msgid "Uppsägningstid i månader för den anställde"
+msgstr "Uppsägningstid i månader för den anställde"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__pay_frequency__biweekly
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Var 14:e dag"
+msgstr "Var 14:e dag"
+
+#. module: elevata_hr_contract
+#: model:ir.model.fields.selection,name:elevata_hr_contract.selection__hr_contract__pay_frequency__weekly
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Veckovis"
+msgstr "Veckovis"
+
+#. module: elevata_hr_contract
+#: model:hr.contract.type,name:elevata_hr_contract.contract_type_vikariat
+msgid "Vikariat"
+msgstr "Vikariat"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Villkor"
+msgstr "Villkor"
+
+#. module: elevata_hr_contract
+#: model:hr.contract.type,name:elevata_hr_contract.contract_type_visstid
+msgid "Visstidsanställning"
+msgstr "Visstidsanställning"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "dagar/år"
+msgstr "dagar/år"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "kr"
+msgstr "kr"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "mån"
+msgstr "mån"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.report_contract_document
+msgid "Övriga villkor"
+msgstr "Övriga villkor"
+
+#. module: elevata_hr_contract
+#: model_terms:ir.ui.view,arch_db:elevata_hr_contract.hr_contract_view_form_elevata
+msgid "Övriga villkor och anteckningar..."
+msgstr "Övriga villkor och anteckningar..."

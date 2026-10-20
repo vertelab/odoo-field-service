@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Extend contract form: flat layout, no tabs -->
+    <record id="hr_contract_view_form_elevata" model="ir.ui.view">
+        <field name="name">hr.contract.form.elevata</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Auto-genererat avtalsnummer — ta bort required -->
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="required">0</attribute>
+                <attribute name="placeholder">Genereras automatiskt</attribute>
+            </xpath>
+
+            <!-- Knappar i header: Aktivera, Skriv ut, Skicka -->
+            <xpath expr="//header" position="inside">
+                <button name="action_activate_contract" string="Aktivera avtal" type="object"
+                        class="oe_highlight" invisible="state != 'draft'"
+                        groups="hr_contract.group_hr_contract_manager"/>
+                <button name="action_print_contract" string="Skriv ut PDF" type="object"
+                        icon="fa-print" invisible="not id"/>
+                <button name="action_send_contract" string="Skicka e-post" type="object"
+                        icon="fa-envelope" invisible="not id"/>
+            </xpath>
+
+            <!-- Replace the whole notebook with flat groups -->
+            <xpath expr="//notebook" position="replace">
+
+                <!-- Salary -->
+                <group string="Salary">
+                    <group>
+                        <field name="wage_type"/>
+                        <label for="wage"/>
+                        <div class="o_row">
+                            <field name="wage" class="oe_inline o_hr_narrow_field" nolabel="1"/>
+                            <span>/ month</span>
+                        </div>
+                        <field name="hourly_wage" invisible="wage_type != 'hourly'"/>
+                    </group>
+                    <group>
+                        <field name="pay_frequency"/>
+                        <field name="employment_percentage"/>
+                    </group>
+                </group>
+
+                <!-- Arbetsvillkor -->
+                <group string="Arbetsvillkor">
+                    <group>
+                        <field name="collective_agreement"/>
+                        <field name="vacation_days"/>
+                    </group>
+                    <group>
+                        <field name="work_location"/>
+                    </group>
+                </group>
+
+                <!-- Notice period and probation -->
+                <group string="Notice Period &amp; Probation">
+                    <group>
+                        <field name="notice_period_employee"/>
+                        <field name="notice_period_employer"/>
+                    </group>
+                    <group>
+                        <field name="probation_end_date"/>
+                    </group>
+                </group>
+
+                <!-- Anteckningar -->
+                <group string="Anteckningar">
+                    <field name="notes" nolabel="1" colspan="2" placeholder="Other terms and notes..."/>
+                </group>
+
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- Extend contract tree: add employment form and percentage -->
+    <record id="hr_contract_view_tree_elevata" model="ir.ui.view">
+        <field name="name">hr.contract.tree.elevata</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="employment_percentage" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
