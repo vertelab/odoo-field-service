@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="skill_type_certifieringar" model="hr.skill.type">
+            <field name="name">Certifieringar</field>
+            <field name="is_certification">True</field>
+        </record>
+
+        <record id="skill_level_certifierad" model="hr.skill.level">
+            <field name="name">Certifierad</field>
+            <field name="skill_type_id" ref="skill_type_certifieringar"/>
+            <field name="level_progress">100</field>
+            <field name="default_level">True</field>
+        </record>
+
+        <record id="skill_heta_arbeten" model="hr.skill">
+            <field name="name">Heta arbeten</field>
+            <field name="skill_type_id" ref="skill_type_certifieringar"/>
+        </record>
+        <record id="skill_tunga_lyft" model="hr.skill">
+            <field name="name">Tunga lyft</field>
+            <field name="skill_type_id" ref="skill_type_certifieringar"/>
+        </record>
+        <record id="skill_fallskydd" model="hr.skill">
+            <field name="name">Fallskydd / Höjdarbete</field>
+            <field name="skill_type_id" ref="skill_type_certifieringar"/>
+        </record>
+        <record id="skill_elsaker" model="hr.skill">
+            <field name="name">Elsäkerhet</field>
+            <field name="skill_type_id" ref="skill_type_certifieringar"/>
+        </record>
+        <record id="skill_hissinstallation" model="hr.skill">
+            <field name="name">Hissinstallation</field>
+            <field name="skill_type_id" ref="skill_type_certifieringar"/>
+        </record>
+        <record id="skill_truckkort" model="hr.skill">
+            <field name="name">Truckkort</field>
+            <field name="skill_type_id" ref="skill_type_certifieringar"/>
+        </record>
+        <record id="skill_forsta_hjalpen" model="hr.skill">
+            <field name="name">Första hjälpen / HLR</field>
+            <field name="skill_type_id" ref="skill_type_certifieringar"/>
+        </record>
+        <record id="skill_sakerhetsutbildning" model="hr.skill">
+            <field name="name">Säkerhetsutbildning</field>
+            <field name="skill_type_id" ref="skill_type_certifieringar"/>
+        </record>
+
+    </data>
+</odoo>
