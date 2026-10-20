@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tekniker-dashboard: klient-aktion, bara teknikerns egna ordrar,
+         ingen ekonomi. Menyn ligger i elevata_fsm_mobile (Hisstekniker). -->
+    <record id="action_fsm_tech_dashboard" model="ir.actions.client">
+        <field name="name">Min dashboard</field>
+        <field name="tag">elevata_fsm_tech_dashboard</field>
+    </record>
+
+    <!-- Lista: arbetsordrar delegerade till inloggad tekniker -->
+    <record id="action_fsm_my_orders" model="ir.actions.act_window">
+        <field name="name">Mina arbetsorder</field>
+        <field name="res_model">fieldservice.order</field>
+        <field name="view_mode">kanban,list,form,calendar</field>
+        <field name="domain">[]</field>
+        <field name="context">{
+            'search_default_my_orders': 1,
+            'search_default_todo': 1,
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Inga arbetsorder tilldelade dig ännu
+            </p>
+        </field>
+    </record>
+
+    <record id="menu_fsm_my_orders" model="ir.ui.menu">
+        <field name="name">Mina arbetsorder</field>
+        <field name="parent_id" ref="fieldservice_vrtl.menu_fieldservice_root"/>
+        <field name="action" ref="action_fsm_my_orders"/>
+        <field name="sequence">1</field>
+        <field name="groups_id" eval="[(6, 0, [ref('elevata_base.group_technician')])]"/>
+        <field name="active" eval="False"/>
+    </record>
+</odoo>

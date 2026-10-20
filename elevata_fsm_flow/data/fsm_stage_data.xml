@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2026 Vertel Sverige AB
+  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
+  Elevata's field service stages. The Vertel fork ships six of its own
+  (New, Assigned, Planning, Ongoing, Completed, Cancelled) with a `type`
+  selection (none/start/end) instead of the OCA `stage_type`/`is_default`/
+  `custom_color` triple. Only the stages the fork does not already have
+  are added here; the rest are matched by name from the fork's own set.
+-->
+<odoo noupdate="1">
+
+    <!-- "Scheduled" is the fork's "Planning" stage; not duplicated. -->
+    <record id="fsm_stage_started" model="fieldservice.stage">
+        <field name="name">Started</field>
+        <field name="sequence">25</field>
+        <field name="type">start</field>
+    </record>
+
+    <record id="fsm_stage_invoiced" model="fieldservice.stage">
+        <field name="name">Invoiced</field>
+        <field name="sequence">45</field>
+        <field name="type">end</field>
+        <field name="fold">True</field>
+        <field name="is_closed">True</field>
+    </record>
+
+    <record id="fsm_stage_warranty" model="fieldservice.stage">
+        <field name="name">Warranty</field>
+        <field name="sequence">55</field>
+        <field name="type">end</field>
+        <field name="fold">True</field>
+        <field name="is_closed">True</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,1597 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* elevata_fsm_flow
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20260317\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 13:12+0000\n"
+"PO-Revision-Date: 2026-10-18 13:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid ""
+"<span class=\"badge text-bg-success fs-6\" invisible=\"operational_status != 'operational'\">\n"
+"                        <i class=\"fa fa-check-circle me-1\"/>I drift\n"
+"                    </span>\n"
+"                    <span class=\"badge text-bg-danger fs-6\" invisible=\"operational_status != 'out_of_order'\">\n"
+"                        <i class=\"fa fa-ban me-1\"/>Avstängd\n"
+"                    </span>\n"
+"                    <span class=\"badge text-bg-danger fs-6\" invisible=\"operational_status != 'decommissioned'\">\n"
+"                        <i class=\"fa fa-ban me-1\"/>Avställd\n"
+"                    </span>"
+msgstr "<span class=\"badge text-bg-success fs-6\" invisible=\"operational_status != 'operational'\">\\n\"\"                        <i class=\"fa fa-check-circle me-1\"/>I drift\\n\"\"                    </span>\\n\"\"                    <span class=\"badge text-bg-danger fs-6\" invisible=\"operational_status != 'out_of_order'\">\\n\"\"                        <i class=\"fa fa-ban me-1\"/>Avstängd\\n\"\"                    </span>\\n\"\"                    <span class=\"badge text-bg-danger fs-6\" invisible=\"operational_status != 'decommissioned'\">\\n\"\"                        <i class=\"fa fa-ban me-1\"/>Avställd\\n\"\"                    </span>"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "<span class=\"o_stat_text\">Recurring Order</span>"
+msgstr "<span class=\"o_stat_text\">Återkommande order</span>"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "<span class=\"o_stat_text\">Sales Order</span>"
+msgstr "<span class=\"o_stat_text\">Försäljningsorder</span>"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid ""
+"<strong>Observera:</strong>\n"
+"                            Hissen är"
+msgstr "<strong>Observera:</strong>\\n\"\"                            Hissen är"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_bearing_config__active
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_car_door_type__active
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_control_system__active
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_elevator_type__active
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_emergency_phone_type__active
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_gsm_device__active
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_inspection_company__active
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_lubrication_type__active
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_mechanical_brand__active
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_shaft_door_type__active
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__elevator_status__active
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_control_system_form_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_elevator_type_form_view
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__service_contract_count
+msgid "Active Contracts"
+msgstr "Serviceavtal"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Affärsmöjlighet"
+msgstr "Affärsmöjlighet"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__active_order_count
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Aktiva ordrar"
+msgstr "Aktiva ordrar"
+
+#. module: elevata_fsm_flow
+#. odoo-python
+#: code:addons/elevata_fsm_flow/models/fsm_order.py:0
+#, python-format
+msgid "Aktiva ordrar — %s"
+msgstr "Aktiva ordrar — %s"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Aktiva serviceavtal"
+msgstr "Aktiva serviceavtal"
+
+#. module: elevata_fsm_flow
+#: model:fsm.mechanical.brand,name:elevata_fsm_flow.brand_alimak
+msgid "Alimak"
+msgstr "Alimak"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_elevata_elevator_shutdown_wizard__out_of_order_reason
+msgid "Anledning"
+msgstr "Anledning"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__out_of_order_reason
+msgid "Anledning till avstängning"
+msgstr "Anledning till avstängning"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Antal fakturor"
+msgstr "Antal fakturor"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__4
+msgid "April"
+msgstr "April"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Arbetsorder ("
+msgstr "Arbetsorder ("
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Assign"
+msgstr "Tilldela"
+
+#. module: elevata_fsm_flow
+#: model:fsm.stage,name:elevata_fsm_flow.fsm_stage_assigned
+msgid "Assigned"
+msgstr "Tilldelad"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Att fakturera"
+msgstr "Att fakturera"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__8
+msgid "August"
+msgstr "Augusti"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.view_elevator_shutdown_wizard_form
+msgid "Avbryt"
+msgstr "Avbryt"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__elevata_elevator_shutdown_wizard__operational_status__decommissioned
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__operational_status__decommissioned
+msgid "Avställd"
+msgstr "Avställd"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.act_window,name:elevata_fsm_flow.action_out_of_service_elevators
+#: model:ir.ui.menu,name:elevata_fsm_flow.menu_out_of_service_elevators
+msgid "Avställda hissar"
+msgstr "Avställda hissar"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__elevata_elevator_shutdown_wizard__operational_status__out_of_order
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__operational_status__out_of_order
+msgid "Avstängd"
+msgstr "Avstängd"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_elevata_elevator_shutdown_wizard__out_of_order_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__out_of_order_date
+msgid "Avstängd fr.o.m."
+msgstr "Avstängd fr.o.m."
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Avstängda hissar"
+msgstr "Avstängda hissar"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.act_window,name:elevata_fsm_flow.action_fsm_bearing_config
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__bearing_config_id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__bearing_config_id
+#: model:ir.ui.menu,name:elevata_fsm_flow.menu_fsm_bearing_config
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_bearing_config_form_view
+msgid "Bearing/Top/Pit"
+msgstr "Lager/Topp/Grop"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_bearing_config
+msgid "Bearing/Top/Pit Configuration"
+msgstr "Lager/Topp/Grop"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Besiktning"
+msgstr "Besiktning"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Besiktningsanmärkningar"
+msgstr "Besiktningsanmärkningar"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Beskrivning"
+msgstr "Beskrivning"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Beskrivning av felanmälan / önskad åtgärd"
+msgstr "Beskrivning av felanmälan / önskad åtgärd"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Bilder"
+msgstr "Bilder"
+
+#. module: elevata_fsm_flow
+#: model:fsm.car.door.type,name:elevata_fsm_flow.car_door_bus
+#: model:fsm.shaft.door.type,name:elevata_fsm_flow.shaft_door_bus
+msgid "Bus Door"
+msgstr "Bussdörr"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Cancel Order"
+msgstr "Avbryt order"
+
+#. module: elevata_fsm_flow
+#. odoo-python
+#: code:addons/elevata_fsm_flow/models/fsm_order.py:0
+#, python-format
+msgid "Cannot complete order without timesheet or material entries"
+msgstr "Kan inte slutföra order utan tidsrapportering eller materialrader"
+
+#. module: elevata_fsm_flow
+#. odoo-python
+#: code:addons/elevata_fsm_flow/models/fsm_order.py:0
+#, python-format
+msgid "Cannot move to Assigned until 'Assigned To' is filled in"
+msgstr "Kan inte flyttas till Tilldelad förrän 'Tilldelad till' är ifyllt"
+
+#. module: elevata_fsm_flow
+#. odoo-python
+#: code:addons/elevata_fsm_flow/models/fsm_order.py:0
+#, python-format
+msgid "Cannot move to Complete until 'Resolution' is filled in"
+msgstr "Kan inte slutföra förrän 'Åtgärd' är ifyllt"
+
+#. module: elevata_fsm_flow
+#. odoo-python
+#: code:addons/elevata_fsm_flow/models/fsm_order.py:0
+#, python-format
+msgid ""
+"Cannot move to Scheduled until both 'Assigned To' and 'Scheduled Start Date'"
+" are filled in"
+msgstr "Cannot move to Scheduled until both 'Assigned To' and 'Scheduled Start Date'\"\" are filled in"
+
+#. module: elevata_fsm_flow
+#. odoo-python
+#: code:addons/elevata_fsm_flow/models/fsm_order.py:0
+#, python-format
+msgid "Cannot move to Started until 'Assigned To' is filled in"
+msgstr "Kan inte flyttas till Påbörjad förrän 'Tilldelad till' är ifyllt"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_car_door_type
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__car_door_type_id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__car_door_type_id
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_car_door_type_form_view
+msgid "Car Door Type"
+msgstr "Korgdörrstyp"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.act_window,name:elevata_fsm_flow.action_fsm_car_door_type
+#: model:ir.ui.menu,name:elevata_fsm_flow.menu_fsm_car_door_type
+msgid "Car Door Types"
+msgstr "Korgdörrstyper"
+
+#. module: elevata_fsm_flow
+#: model:fsm.car.door.type,name:elevata_fsm_flow.car_door_center_opening
+#: model:fsm.shaft.door.type,name:elevata_fsm_flow.shaft_door_center_opening
+msgid "Center Opening"
+msgstr "Centralöppnande"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__city
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_tree_view
+msgid "City"
+msgstr "Stad"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Complete"
+msgstr "Genomförd"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Compute Localization"
+msgstr "Beräkna lokalisering"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Compute based on address"
+msgstr "Beräkna baserat på adress"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_res_partner
+msgid "Contact"
+msgstr "Kontakt"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_control_system__name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__control_system_id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__control_system_id
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_control_system_form_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_tree_view
+msgid "Control System"
+msgstr "Styrsystem"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.act_window,name:elevata_fsm_flow.action_fsm_control_system
+#: model:ir.ui.menu,name:elevata_fsm_flow.menu_fsm_control_system
+msgid "Control Systems"
+msgstr "Styrsystem"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_elevata_elevator_shutdown_wizard__create_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_bearing_config__create_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_car_door_type__create_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_control_system__create_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_elevator_type__create_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_emergency_phone_type__create_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_gsm_device__create_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_inspection_company__create_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_lubrication_type__create_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_mechanical_brand__create_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_shaft_door_type__create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_elevata_elevator_shutdown_wizard__create_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_bearing_config__create_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_car_door_type__create_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_control_system__create_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_elevator_type__create_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_emergency_phone_type__create_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_gsm_device__create_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_inspection_company__create_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_lubrication_type__create_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_mechanical_brand__create_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_shaft_door_type__create_date
+msgid "Created on"
+msgstr "Skapad den"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.client,name:elevata_fsm_flow.action_elevata_fsm_dashboard
+msgid "Dashboard"
+msgstr "Instrumentpanel"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__12
+msgid "December"
+msgstr "December"
+
+#. module: elevata_fsm_flow
+#: model:fsm.inspection.company,name:elevata_fsm_flow.inspection_dekra
+msgid "Dekra"
+msgstr "Dekra"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_control_system__description
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_elevator_type__description
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_control_system_form_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_control_system_tree_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_elevator_type_form_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_elevator_type_tree_view
+msgid "Description"
+msgstr "Beskrivning"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_elevata_elevator_shutdown_wizard__display_name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_bearing_config__display_name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_car_door_type__display_name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_control_system__display_name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_elevator_type__display_name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_emergency_phone_type__display_name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_gsm_device__display_name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_inspection_company__display_name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_lubrication_type__display_name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_mechanical_brand__display_name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_shaft_door_type__display_name
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Distrikt"
+msgstr "Distrikt"
+
+#. module: elevata_fsm_flow
+#: model:fsm.elevator.type,name:elevata_fsm_flow.elevator_type_door_automatic
+msgid "Door Automation"
+msgstr "Dörrautomatik"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__operational_status
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_tree_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Driftstatus"
+msgstr "Driftstatus"
+
+#. module: elevata_fsm_flow
+#: model:fsm.lubrication.type,name:elevata_fsm_flow.lubrication_dry
+msgid "Dry"
+msgstr "Torrt"
+
+#. module: elevata_fsm_flow
+#: model:fsm.elevator.type,name:elevata_fsm_flow.elevator_type_small_goods
+msgid "Dumbwaiter"
+msgstr "Mathiss"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Dörrar & övrigt"
+msgstr "Dörrar & övrigt"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_control_system
+msgid "Elevator Control System"
+msgstr "Styrsystem"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_tree_view
+msgid "Elevator Number"
+msgstr "Hissnummer"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_elevator_type
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_elevator_type__name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__elevator_type_id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__elevator_type_id
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_elevator_type_form_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_tree_view
+msgid "Elevator Type"
+msgstr "Hisstyp"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.act_window,name:elevata_fsm_flow.action_fsm_elevator_type
+#: model:ir.ui.menu,name:elevata_fsm_flow.menu_fsm_elevator_type
+msgid "Elevator Types"
+msgstr "Hisstyper"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_emergency_phone_type
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__emergency_phone_type_id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__emergency_phone_type_id
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_emergency_phone_type_form_view
+msgid "Emergency Phone Type"
+msgstr "Nödtelefonstyp"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.act_window,name:elevata_fsm_flow.action_fsm_emergency_phone_type
+#: model:ir.ui.menu,name:elevata_fsm_flow.menu_fsm_emergency_phone_type
+msgid "Emergency Phone Types"
+msgstr "Nödtelefonstyper"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Fakturera till"
+msgstr "Fakturera till"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Fakturering denna månad"
+msgstr "Fakturering denna månad"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__2
+msgid "February"
+msgstr "Februari"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__reporter
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Felanmälare"
+msgstr "Anmälare"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_location
+msgid "Field Service Location"
+msgstr "Hiss"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_order
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Field Service Order"
+msgstr "ArbertsOrder"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_stage
+msgid "Field Service Stage"
+msgstr "Orderetapp"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Filial"
+msgstr "Filial"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Föredragna tekniker"
+msgstr "Föredragna tekniker"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Försenade"
+msgstr "Försenade"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Försäljningsorder"
+msgstr "Försäljningsorder"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Försäljningsorderrad"
+msgstr "Försäljningsorderrad"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_gsm_device
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__gsm_device_id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__gsm_device_id
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_gsm_device_form_view
+msgid "GSM Device"
+msgstr "GSM enhet"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.act_window,name:elevata_fsm_flow.action_fsm_gsm_device
+#: model:ir.ui.menu,name:elevata_fsm_flow.menu_fsm_gsm_device
+msgid "GSM Devices"
+msgstr "GSM enheter"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "GSM enhet"
+msgstr "GSM enhet"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Gata"
+msgstr "Gata"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Gata..."
+msgstr "Gata..."
+
+#. module: elevata_fsm_flow
+#: model:fsm.elevator.type,name:elevata_fsm_flow.elevator_type_gate
+msgid "Gate"
+msgstr "Port"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Geo Location"
+msgstr "Geoposition"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Geolocate"
+msgstr "Geokoda plats"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Geoposition"
+msgstr "Geoposition"
+
+#. module: elevata_fsm_flow
+#: model:fsm.lubrication.type,name:elevata_fsm_flow.lubrication_grease
+msgid "Grease"
+msgstr "Fett"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Grundinformation"
+msgstr "Grundinformation"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Grupperat resultat"
+msgstr "Grupperat resultat"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_elevata_elevator_shutdown_wizard__location_id
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+#, python-format
+msgid "Hiss"
+msgstr "Hiss"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__location_operational_status
+msgid "Hiss driftstatus"
+msgstr "Hiss driftstatus"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__location_operational_status_str
+msgid "Hiss driftstatus (text)"
+msgstr "Hiss driftstatus (text)"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Hissdata"
+msgstr "Hissdata"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_tree_view_inherit
+msgid "Hissstatus"
+msgstr "Hissstatus"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Hisstyp"
+msgstr "Hisstyp"
+
+#. module: elevata_fsm_flow
+#: model:fsm.elevator.type,name:elevata_fsm_flow.elevator_type_hydraulic
+msgid "Hydraulic Elevator"
+msgstr "Hydraulhiss"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_order__priority__3
+msgid "Hög"
+msgstr "Brådskande"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_search_view_inherit
+#, python-format
+msgid "Hög prioritet"
+msgstr "Hög prioritet"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__operational_status__operational
+msgid "I drift"
+msgstr "I drift"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_elevata_elevator_shutdown_wizard__id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_bearing_config__id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_car_door_type__id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_control_system__id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_elevator_type__id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_emergency_phone_type__id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_gsm_device__id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_inspection_company__id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_lubrication_type__id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_mechanical_brand__id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_shaft_door_type__id
+msgid "ID"
+msgstr "ID"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__elevator_status__inactive
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Inga avstängda hissar."
+msgstr "Inga avstängda hissar."
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Inga kritiska eller högprioriterade ordrar."
+msgstr "Inga kritiska eller högprioriterade ordrar."
+
+#. module: elevata_fsm_flow
+#: model:fsm.inspection.company,name:elevata_fsm_flow.inspection_inspecta
+msgid "Inspecta"
+msgstr "Inspecta"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.act_window,name:elevata_fsm_flow.action_fsm_inspection_company
+#: model:ir.ui.menu,name:elevata_fsm_flow.menu_fsm_inspection_company
+msgid "Inspection Companies"
+msgstr "Besiktningsföretag"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_inspection_company
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__inspection_company_id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__inspection_company_id
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_inspection_company_form_view
+msgid "Inspection Company"
+msgstr "Besiktningsföretag"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__inspection_month
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__inspection_month
+msgid "Inspection Month"
+msgstr "Besiktningsmånad"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__inspection_number
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__inspection_number
+msgid "Inspection Number"
+msgstr "Besiktningsnummer"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__installation_year
+msgid "Installation Year"
+msgstr "Installationsår"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Intern typ"
+msgstr "Intern typ"
+
+#. module: elevata_fsm_flow
+#: model:fsm.stage,name:elevata_fsm_flow.fsm_stage_invoiced
+msgid "Invoiced"
+msgstr "Fakturerad"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Invoices"
+msgstr "Fakturor"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__is_elevator
+msgid "Is Elevator"
+msgstr "Är hiss"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__1
+msgid "January"
+msgstr "Januari"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__7
+msgid "July"
+msgstr "Juli"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__6
+msgid "June"
+msgstr "Juni"
+
+#. module: elevata_fsm_flow
+#: model:fsm.mechanical.brand,name:elevata_fsm_flow.brand_kone
+msgid "KONE"
+msgstr "KONE"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Karta"
+msgstr "Karta"
+
+#. module: elevata_fsm_flow
+#: model:fsm.inspection.company,name:elevata_fsm_flow.inspection_kiwa
+msgid "Kiwa"
+msgstr "Kiwa"
+
+#. module: elevata_fsm_flow
+#: model:fsm.mechanical.brand,name:elevata_fsm_flow.brand_kleemann
+msgid "Kleemann"
+msgstr "Kleemann"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__reporter_id
+msgid "Kontakt"
+msgstr "Kontakt"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Kontakt (valfritt)"
+msgstr "Kontakt (valfritt)"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Korgdörrstyp"
+msgstr "Korgdörrstyp"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_order__priority__4
+msgid "Kritisk"
+msgstr "Kritisk"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_search_view_inherit
+#, python-format
+msgid "Kritiska"
+msgstr "Kritiska"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Kund"
+msgstr "Kund"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Laddar..."
+msgstr "Laddar..."
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Lager/Topp/Grop"
+msgstr "Lager/Topp/Grop"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__last_inspection
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__last_inspection
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_tree_view
+msgid "Last Inspection"
+msgstr "Senaste besiktning"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_elevata_elevator_shutdown_wizard__write_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_bearing_config__write_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_car_door_type__write_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_control_system__write_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_elevator_type__write_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_emergency_phone_type__write_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_gsm_device__write_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_inspection_company__write_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_lubrication_type__write_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_mechanical_brand__write_uid
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_shaft_door_type__write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_elevata_elevator_shutdown_wizard__write_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_bearing_config__write_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_car_door_type__write_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_control_system__write_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_elevator_type__write_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_emergency_phone_type__write_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_gsm_device__write_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_inspection_company__write_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_lubrication_type__write_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_mechanical_brand__write_date
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_shaft_door_type__write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad den"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Lat:"
+msgstr "Lat:"
+
+#. module: elevata_fsm_flow
+#: model:fsm.elevator.type,name:elevata_fsm_flow.elevator_type_lifting_table
+msgid "Lifting Table"
+msgstr "Lyftbord"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Long:"
+msgstr "Long:"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_lubrication_type
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__lubrication_type_id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__lubrication_type_id
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_lubrication_type_form_view
+msgid "Lubrication Type"
+msgstr "Smörjtyp"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.act_window,name:elevata_fsm_flow.action_fsm_lubrication_type
+#: model:ir.ui.menu,name:elevata_fsm_flow.menu_fsm_lubrication_type
+msgid "Lubrication Types"
+msgstr "Smörjtyper"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_order__priority__1
+msgid "Låg"
+msgstr "Låg"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__has_machine_room
+msgid "Machine Room"
+msgstr "Maskinrum"
+
+#. module: elevata_fsm_flow
+#: model:fsm.elevator.type,name:elevata_fsm_flow.elevator_type_machine_room_less
+msgid "Machine-Room-Less Traction"
+msgstr "Maskinrumslös Linhiss"
+
+#. module: elevata_fsm_flow
+#: model:fsm.car.door.type,name:elevata_fsm_flow.car_door_manual
+#: model:fsm.shaft.door.type,name:elevata_fsm_flow.shaft_door_manual
+msgid "Manual"
+msgstr "Manuell"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__manufacturing_number
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__manufacturing_number
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_tree_view
+msgid "Manufacturing Number"
+msgstr "Tillverkningsnummer"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__3
+msgid "March"
+msgstr "Mars"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__5
+msgid "May"
+msgstr "Maj"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_mechanical_brand
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__mechanical_brand_id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__mechanical_brand_id
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_tree_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_mechanical_brand_form_view
+msgid "Mechanical Brand"
+msgstr "Mekaniskt märke"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.act_window,name:elevata_fsm_flow.action_fsm_mechanical_brand
+#: model:ir.ui.menu,name:elevata_fsm_flow.menu_fsm_mechanical_brand
+msgid "Mechanical Brands"
+msgstr "Mekaniska märken"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Mekaniskt märke"
+msgstr "Mekaniskt märke"
+
+#. module: elevata_fsm_flow
+#: model:fsm.emergency.phone.type,name:elevata_fsm_flow.phone_type_memco
+#: model:fsm.gsm.device,name:elevata_fsm_flow.gsm_memco
+msgid "Memco"
+msgstr "Memco"
+
+#. module: elevata_fsm_flow
+#: model:fsm.bearing.config,name:elevata_fsm_flow.bearing_minimal
+msgid "Minimal"
+msgstr "Låg topp/grop"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__elevator_status__modernization
+msgid "Modernization"
+msgstr "Modernisering"
+
+#. module: elevata_fsm_flow
+#: model:fsm.mechanical.brand,name:elevata_fsm_flow.brand_montanari
+msgid "Montanari"
+msgstr "Montanari"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_bearing_config__name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_car_door_type__name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_emergency_phone_type__name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_gsm_device__name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_inspection_company__name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_lubrication_type__name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_mechanical_brand__name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_shaft_door_type__name
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_stage__name
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_control_system_form_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_control_system_tree_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_elevator_type_form_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_elevator_type_tree_view
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_tree_view
+msgid "Name"
+msgstr "Namn"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Namn"
+msgstr "Namn"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__elevator_status__new_installation
+msgid "New Installation"
+msgstr "Ny installation"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__next_inspection_date
+msgid "Next Inspection"
+msgstr "Nästa besiktning"
+
+#. module: elevata_fsm_flow
+#: model:fsm.bearing.config,name:elevata_fsm_flow.bearing_no_overhead
+msgid "No Overhead"
+msgstr "Låg topp"
+
+#. module: elevata_fsm_flow
+#: model:fsm.bearing.config,name:elevata_fsm_flow.bearing_no_pit
+msgid "No Pit"
+msgstr "Låg grop"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_order__priority__2
+msgid "Normal"
+msgstr "Hög"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__11
+msgid "November"
+msgstr "November"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__number_of_stops
+msgid "Number of Stops"
+msgstr "Antal stopp"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Nödtelefon"
+msgstr "Nödtelefon"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Nödtelefonstyp"
+msgstr "Nödtelefonstyp"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__10
+msgid "October"
+msgstr "Oktober"
+
+#. module: elevata_fsm_flow
+#: model:fsm.lubrication.type,name:elevata_fsm_flow.lubrication_oil
+msgid "Oil"
+msgstr "Olja"
+
+#. module: elevata_fsm_flow
+#: model:fsm.lubrication.type,name:elevata_fsm_flow.lubrication_oil_grease
+msgid "Oil & Grease"
+msgstr "Olja & Fett"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Order"
+msgstr "Order"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_tree_view_inherit
+msgid "Order Number"
+msgstr "Ordernummer"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_tree_view_inherit
+msgid "Order Type"
+msgstr "Ordertyp"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Orderbeskrivning..."
+msgstr "Orderbeskrivning..."
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Ordrar idag"
+msgstr "Ordrar idag"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Ordrar per status"
+msgstr "Ordrar per status"
+
+#. module: elevata_fsm_flow
+#: model:fsm.emergency.phone.type,name:elevata_fsm_flow.phone_type_other
+#: model:fsm.gsm.device,name:elevata_fsm_flow.gsm_other
+msgid "Other"
+msgstr "Annan"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Otilldelade"
+msgstr "Otilldelade"
+
+#. module: elevata_fsm_flow
+#: model:fsm.mechanical.brand,name:elevata_fsm_flow.brand_otis
+msgid "Otis"
+msgstr "Otis"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__p100
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__p100
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "P100"
+msgstr "P100"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_search_view_inherit
+msgid "Past Due Orders"
+msgstr "Förfallna ordrar"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__location_image_ids
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__location_image_ids
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Pictures"
+msgstr "Bilder"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_order__priority__0
+msgid "Planerad"
+msgstr "Normal"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Plats"
+msgstr "Plats"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Prio"
+msgstr "Prio"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Prioriterade ordrar"
+msgstr "Prioriterade ordrar"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__priority
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_search_view_inherit
+msgid "Prioritet"
+msgstr "Prioritet"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Projekt"
+msgstr "Projekt"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Projektuppgift"
+msgstr "Projektuppgift"
+
+#. module: elevata_fsm_flow
+#: model:fsm.emergency.phone.type,name:elevata_fsm_flow.phone_type_rath
+#: model:fsm.gsm.device,name:elevata_fsm_flow.gsm_rath
+msgid "Rath"
+msgstr "Rath"
+
+#. module: elevata_fsm_flow
+#: model:fsm.bearing.config,name:elevata_fsm_flow.bearing_reduced_overhead
+msgid "Reduced Overhead"
+msgstr "Reducerat överutrymme"
+
+#. module: elevata_fsm_flow
+#: model:fsm.bearing.config,name:elevata_fsm_flow.bearing_reduced_pit
+msgid "Reduced Pit"
+msgstr "normal"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Referensfält"
+msgstr "Referensfält"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Refresh"
+msgstr "Uppdatera"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Refresh Localization"
+msgstr "Uppdatera lokalisering"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Region"
+msgstr "Region"
+
+#. module: elevata_fsm_flow
+#. odoo-python
+#: code:addons/elevata_fsm_flow/models/fsm_order.py:0
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.view_elevator_shutdown_wizard_form
+#, python-format
+msgid "Registrera avstängning"
+msgstr "Registrera avstängning"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__out_of_order_by
+msgid "Registrerad av"
+msgstr "Registrerad av"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__sim_image
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__sim_image
+msgid "SIM Image"
+msgstr "Bild SIM"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "SIM-bild"
+msgstr "SIM-bild"
+
+#. module: elevata_fsm_flow
+#: model:fsm.inspection.company,name:elevata_fsm_flow.inspection_safe_control
+msgid "Safe Control"
+msgstr "Safe Control"
+
+#. module: elevata_fsm_flow
+#: model:fsm.emergency.phone.type,name:elevata_fsm_flow.phone_type_safeline_3000
+#: model:fsm.gsm.device,name:elevata_fsm_flow.gsm_safeline_3000
+msgid "Safeline 3000"
+msgstr "Safeline 3000"
+
+#. module: elevata_fsm_flow
+#: model:fsm.emergency.phone.type,name:elevata_fsm_flow.phone_type_safeline_pro
+#: model:fsm.gsm.device,name:elevata_fsm_flow.gsm_safeline_pro
+msgid "Safeline Pro"
+msgstr "Safeline Pro"
+
+#. module: elevata_fsm_flow
+#: model:fsm.emergency.phone.type,name:elevata_fsm_flow.phone_type_safeline_sl6
+#: model:fsm.gsm.device,name:elevata_fsm_flow.gsm_safeline_sl6
+msgid "Safeline SL6"
+msgstr "Safeline SL6"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Sammanfattning av utförda åtgärder"
+msgstr "Sammanfattning av utförda åtgärder"
+
+#. module: elevata_fsm_flow
+#: model:fsm.mechanical.brand,name:elevata_fsm_flow.brand_sassi
+msgid "Sassi"
+msgstr "Sassi"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Schaktdörrstyp"
+msgstr "Schaktdörrstyp"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Schedule"
+msgstr "Schemalägg"
+
+#. module: elevata_fsm_flow
+#: model:fsm.stage,name:elevata_fsm_flow.fsm_stage_scheduled
+msgid "Scheduled"
+msgstr "Planerad"
+
+#. module: elevata_fsm_flow
+#: model:fsm.mechanical.brand,name:elevata_fsm_flow.brand_schindler
+msgid "Schindler"
+msgstr "Schindler"
+
+#. module: elevata_fsm_flow
+#: model:fsm.elevator.type,name:elevata_fsm_flow.elevator_type_screw_drive
+msgid "Screw Drive Elevator"
+msgstr "Skruvhiss"
+
+#. module: elevata_fsm_flow
+#: model:fsm.elevator.type,name:elevata_fsm_flow.elevator_type_screw_drive_home
+msgid "Screw Drive Home Elevator"
+msgstr "Skruvhiss Hemma Hos"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields.selection,name:elevata_fsm_flow.selection__fsm_location__inspection_month__9
+msgid "September"
+msgstr "September"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_fsm_shaft_door_type
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__shaft_door_type_id
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__shaft_door_type_id
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_shaft_door_type_form_view
+msgid "Shaft Door Type"
+msgstr "Schaktdörrstyp"
+
+#. module: elevata_fsm_flow
+#: model:ir.actions.act_window,name:elevata_fsm_flow.action_fsm_shaft_door_type
+#: model:ir.ui.menu,name:elevata_fsm_flow.menu_fsm_shaft_door_type
+msgid "Shaft Door Types"
+msgstr "Schaktdörrstyper"
+
+#. module: elevata_fsm_flow
+#: model:fsm.car.door.type,name:elevata_fsm_flow.car_door_side_opening
+#: model:fsm.shaft.door.type,name:elevata_fsm_flow.shaft_door_side_opening
+msgid "Side Opening"
+msgstr "Sidöppnande"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Smörjtyp"
+msgstr "Smörjtyp"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.view_elevator_shutdown_wizard_form
+msgid "Spara avstängning"
+msgstr "Spara avstängning"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Stad"
+msgstr "Stad"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_tree_view_inherit
+msgid "Stage"
+msgstr "Orderetapp"
+
+#. module: elevata_fsm_flow
+#: model:fsm.elevator.type,name:elevata_fsm_flow.elevator_type_stair_lift
+msgid "Stair Lift"
+msgstr "Trapphiss"
+
+#. module: elevata_fsm_flow
+#: model:fsm.elevator.type,name:elevata_fsm_flow.elevator_type_stair_lift_home
+msgid "Stair Lift Home"
+msgstr "Trapphiss Hemma Hos"
+
+#. module: elevata_fsm_flow
+#: model:fsm.bearing.config,name:elevata_fsm_flow.bearing_standard
+msgid "Standard"
+msgstr "Standard"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Start"
+msgstr "Starta"
+
+#. module: elevata_fsm_flow
+#: model:fsm.stage,name:elevata_fsm_flow.fsm_stage_started
+msgid "Started"
+msgstr "Påbörjad"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_elevata_elevator_shutdown_wizard__operational_status
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__elevator_status
+msgid "Status"
+msgstr "Status"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__street
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_tree_view
+msgid "Street"
+msgstr "Gata"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Street 2..."
+msgstr "Street 2..."
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Street..."
+msgstr "Street..."
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Styrsystem"
+msgstr "Styrsystem"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Summa"
+msgstr "Summa"
+
+#. module: elevata_fsm_flow
+#: model:fsm.shaft.door.type,name:elevata_fsm_flow.shaft_door_swing
+msgid "Swing Door"
+msgstr "Svingdörr"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Systemfält"
+msgstr "Systemfält"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Team"
+msgstr "Team"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Tekniska detaljer"
+msgstr "Tekniska detaljer"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__reporter_phone
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Telefon"
+msgstr "Telefon anmälare"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Telefondetaljer"
+msgstr "Telefondetaljer"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Territorium"
+msgstr "Territorium"
+
+#. module: elevata_fsm_flow
+#: model:fsm.mechanical.brand,name:elevata_fsm_flow.brand_thyssenkrupp
+msgid "ThyssenKrupp"
+msgstr "ThyssenKrupp"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Tid & material"
+msgstr "Tid & material"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Tilldelad"
+msgstr "Tilldelad"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Tillverkningsnummer"
+msgstr "Tillverkningsnummer"
+
+#. module: elevata_fsm_flow
+#: model:fsm.elevator.type,name:elevata_fsm_flow.elevator_type_traction
+msgid "Traction Elevator"
+msgstr "Linhiss"
+
+#. module: elevata_fsm_flow
+#: model:fsm.car.door.type,name:elevata_fsm_flow.car_door_two_speed_center
+msgid "Two-Speed Center"
+msgstr "Tvåhastighets CO"
+
+#. module: elevata_fsm_flow
+#: model:fsm.car.door.type,name:elevata_fsm_flow.car_door_two_speed_side
+msgid "Two-Speed Side"
+msgstr "Tvåhastighets SO"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+#, python-format
+msgid "Typ"
+msgstr "Typ"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_order__type_color
+msgid "Type Color"
+msgstr "Typfärg"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Updated on:"
+msgstr "Uppdaterad:"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Utförda åtgärder"
+msgstr "Utförda åtgärder"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,help:elevata_fsm_flow.field_fsm_order__reporter_id
+msgid ""
+"Valfritt — välj en befintlig kontakt för att fylla i namn och telefon "
+"automatiskt."
+msgstr "Valfritt — välj en befintlig kontakt för att fylla i namn och telefon \"\"automatiskt."
+
+#. module: elevata_fsm_flow
+#: model:fsm.stage,name:elevata_fsm_flow.fsm_stage_no_invoice
+msgid "Warranty"
+msgstr "Garanti"
+
+#. module: elevata_fsm_flow
+#: model:ir.model,name:elevata_fsm_flow.model_elevata_elevator_shutdown_wizard
+msgid "Wizard: registrera hissavstängning"
+msgstr "Wizard: registrera hissavstängning"
+
+#. module: elevata_fsm_flow
+#: model:ir.model.fields,field_description:elevata_fsm_flow.field_fsm_location__fsm_order_count
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "Work Orders"
+msgstr "Arbetsorder"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+msgid "ZIP"
+msgstr "Postnummer"
+
+#. module: elevata_fsm_flow
+#: model:fsm.mechanical.brand,name:elevata_fsm_flow.brand_ziehl_abegg
+msgid "Ziehl-Abegg"
+msgstr "Ziehl-Abegg"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Är knapp"
+msgstr "Är knapp"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Är stängd"
+msgstr "Är stängd"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Åter i drift"
+msgstr "Åter i drift"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Återkommande order"
+msgstr "Återkommande order"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Åtgärd"
+msgstr "Åtgärd"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Öppna i arbetsordervyn"
+msgstr "Öppna i arbetsordervyn"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "Öppna ordrar"
+msgstr "Öppna ordrar"
+
+#. module: elevata_fsm_flow
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_location_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_flow.fsm_order_form
+msgid "Övrigt"
+msgstr "Övrigt"
+
+#. module: elevata_fsm_flow
+#. odoo-javascript
+#: code:addons/elevata_fsm_flow/static/src/xml/fsm_dashboard.xml:0
+#, python-format
+msgid "— sedan"
+msgstr "— sedan"

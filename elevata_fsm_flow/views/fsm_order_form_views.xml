@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- FSM Order Form — full replacement -->
+    <record id="fsm_order_form" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.elevata</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="replace">
+                <form string="Field Service Order">
+                    <header>
+                        <field name="is_closed" invisible="1"/>
+                        <button id="action_assign" name="action_assign" string="Assign"
+                                type="object" class="oe_highlight"
+                                groups="fieldservice_vrtl.fieldservice_group_manager"
+                                invisible="is_closed"/>
+                        <button id="action_schedule" name="action_schedule" string="Schedule"
+                                type="object" class="oe_highlight"
+                                groups="fieldservice_vrtl.fieldservice_group_manager"
+                                invisible="is_closed"/>
+                        <button id="action_start" name="action_start" string="Start"
+                                type="object" class="oe_highlight"
+                                groups="fieldservice_vrtl.fieldservice_group_user"
+                                invisible="is_closed"/>
+                        <field name="stage_id" widget="statusbar"
+                               options="{'fold_field': 'fold'}"
+                               domain="[('stage_type', '=', 'order')]"/>
+                        <button id="action_complete" name="action_complete" string="Complete"
+                                class="oe_highlight" type="object"
+                                invisible="is_closed"/>
+                        <button id="action_cancel" name="action_cancel" string="Cancel Order"
+                                type="object" invisible="is_closed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button type="object" name="action_view_active_orders"
+                                    class="oe_stat_button" icon="fa-wrench"
+                                    invisible="active_order_count == 0">
+                                <field name="active_order_count" widget="statinfo"
+                                       string="Aktiva ordrar"/>
+                            </button>
+                            <button type="object" name="action_view_fsm_recurring"
+                                    class="oe_stat_button" icon="fa-calendar"
+                                    invisible="not fsm_recurring_id">
+                                <span class="o_stat_text">Recurring Order</span>
+                            </button>
+                            <button type="object" name="action_view_sales"
+                                    class="oe_stat_button" icon="fa-usd"
+                                    groups="sales_team.group_sale_salesman">
+                                <span class="o_stat_text">Sales Order</span>
+                            </button>
+                        </div>
+                        <div class="alert alert-danger" role="alert"
+                             invisible="not equipment_id or location_operational_status == 'operational'"><strong>Observera:</strong><span class="ms-1">Hissen är</span><field name="location_operational_status_str" readonly="1" nolabel="1" class="d-inline-block ms-1"/></div>
+                        <div class="oe_title">
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group name="order_summary_group" class="elevata-order-summary">
+                            <group>
+                                <field name="product_type" string="Typ" readonly="id"
+                                       options="{'no_create': True, 'no_open': True}"/>
+                                <field name="priority" string="Prioritet" widget="elevata_priority_stars"/>
+                                <field name="equipment_id" string="Hiss" required="1" readonly="id"/>
+                                <field name="street" string="Gata" placeholder="Gata..."
+                                       class="o_address_street" readonly="id"/>
+                                <field name="city" string="Stad" placeholder="Stad"
+                                       class="o_address_city" readonly="id"/>
+                                <field name="requested_employee_ids" string="Tilldelad"/>
+                                <field name="location_operational_status_str" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="elevator_type_id" string="Hisstyp"/>
+                                <field name="control_system_id" string="Styrsystem"/>
+                                <field name="manufacturing_number" string="Tillverkningsnummer"/>
+                            </group>
+                        </group>
+                        <group string="Beskrivning av felanmälan / önskad åtgärd" name="description_grp">
+                            <field name="description" string="Beskrivning" nolabel="1"
+                                   colspan="2" placeholder="Orderbeskrivning..." required="True"
+                                   style="border: 1px solid #ccc; border-radius: 4px; padding: 8px;"/>
+                        </group>
+                        <group string="Felanmälare" name="reporter_grp" class="elevata-order-summary">
+                            <field name="reporter" string="Kontakt"
+                                   options="{'no_quick_create': False, 'no_create_edit': False}"/>
+                            <field name="reporter_phone" string="Telefon" widget="phone"/>
+                        </group>
+                        <group string="Utförda åtgärder" name="resolution_grp">
+                            <field name="resolution" string="Åtgärd" nolabel="1"
+                                   colspan="2" placeholder="Sammanfattning av utförda åtgärder"
+                                   style="border: 1px solid #ccc; border-radius: 4px; padding: 8px;"/>
+                        </group>
+                        <notebook>
+                            <page string="Hissdata" name="elevator_data_page" sequence="10">
+                                <group>
+                                    <group string="Grundinformation">
+                                        <field name="elevator_type_id" string="Hisstyp"/>
+                                        <field name="control_system_id" string="Styrsystem"/>
+                                        <field name="manufacturing_number" string="Tillverkningsnummer"/>
+                                        <field name="mechanical_brand_id" string="Mekaniskt märke"/>
+                                    </group>
+                                    <group string="Dörrar &amp; övrigt">
+                                        <field name="car_door_type_id" string="Korgdörrstyp"/>
+                                        <field name="shaft_door_type_id" string="Schaktdörrstyp"/>
+                                        <field name="lubrication_type_id" string="Smörjtyp"/>
+                                        <field name="bearing_config_id" string="Lager/Topp/Grop"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Nödtelefon" name="emergency_phone_page" sequence="20">
+                                <group>
+                                    <group string="Telefondetaljer">
+                                        <field name="emergency_phone_type_id" string="Nödtelefonstyp"/>
+                                        <field name="gsm_device_id" string="GSM enhet"/>
+                                        <field name="p100" string="P100"/>
+                                    </group>
+                                    <group>
+                                        <field name="sim_image" string="SIM-bild" widget="image" class="oe_avatar"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Besiktning" name="inspection_page" sequence="30">
+                                <group>
+                                    <group>
+                                        <field name="last_inspection"/>
+                                        <field name="inspection_company_id"/>
+                                        <field name="inspection_number"/>
+                                        <field name="inspection_month"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Bilder" name="pictures_page" sequence="35" invisible="1">
+                                <field name="location_image_ids" widget="many2many_binary"
+                                       string="Bilder" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"
+                               options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

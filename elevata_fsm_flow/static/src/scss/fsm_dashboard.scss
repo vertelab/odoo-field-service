@@ -1,0 +1,174 @@
+.elevata_fsm_dashboard {
+    // .o_action is overflow:hidden — let the dashboard scroll itself
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    .elevata_dash_search {
+        position: relative;
+        max-width: 480px;
+
+        .search_icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        input { padding-left: 34px; }
+    }
+
+    .elevata_dash_search_results {
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        padding: 8px 0;
+        max-width: 640px;
+
+        .result_header {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #6c757d;
+            padding: 4px 14px;
+        }
+        .result_row {
+            padding: 6px 14px;
+            cursor: pointer;
+            &:hover { background: #f4f7fb; }
+        }
+    }
+
+    .elevata_dash_card {
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-left: 4px solid #0d2c52;
+        border-radius: 6px;
+        padding: 14px 16px;
+        cursor: pointer;
+        transition: box-shadow 0.15s, transform 0.15s;
+
+        &:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            transform: translateY(-1px);
+        }
+
+        .card_value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0d2c52;
+            line-height: 1.1;
+        }
+
+        .card_label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #6c757d;
+        }
+
+        &.card_critical {
+            border-left-color: #dc3545;
+            .card_value { color: #dc3545; }
+        }
+        &.card_high {
+            border-left-color: #fd7e14;
+            .card_value { color: #fd7e14; }
+        }
+        &.card_invoice {
+            border-left-color: #198754;
+            .card_value { color: #198754; }
+        }
+        &.card_shutdown {
+            border-left-color: #842029;
+            .card_value { color: #842029; }
+        }
+        &.card_overdue {
+            border-left-color: #dc3545;
+            .card_value { color: #dc3545; }
+        }
+        &.card_note {
+            border-left-color: #6f42c1;
+            .card_value { color: #6f42c1; }
+        }
+        &.card_contract {
+            border-left-color: #0d6efd;
+            .card_value { color: #0d6efd; }
+        }
+    }
+
+    .elevata_pipeline {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+
+        .pipeline_step {
+            flex: 1 1 90px;
+            min-width: 90px;
+            text-align: center;
+            background: #f4f7fb;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 10px 6px;
+
+            &:hover { background: #e9eff7; }
+
+            .step_count {
+                font-size: 22px;
+                font-weight: 700;
+                color: #0d2c52;
+            }
+            .step_name {
+                font-size: 11px;
+                color: #6c757d;
+            }
+        }
+    }
+
+    .elevata_dash_panel {
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        padding: 14px 16px;
+
+        .panel_title {
+            margin: 0 0 10px;
+            font-weight: 600;
+            color: #0d2c52;
+        }
+
+        .o_clickable {
+            cursor: pointer;
+            &:hover { background: #f4f7fb; }
+        }
+    }
+
+    // ─── Mobilanpassning: dashboarden används alltid i fält ───
+    @media (max-width: 767.98px) {
+        padding: 8px 8px 40px;
+
+        h4 { font-size: 18px; margin-bottom: 8px; }
+
+        .elevata_dash_card {
+            padding: 10px 12px;
+            border-radius: 8px;
+
+            .card_value { font-size: 22px; }
+            .card_label { font-size: 10px; }
+        }
+
+        // tabeller får horisontell scroll istället för att klämmas
+        .elevata_dash_panel {
+            padding: 10px 12px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+
+            .panel_title { font-size: 14px; }
+
+            table {
+                white-space: nowrap;
+                font-size: 13px;
+            }
+        }
+    }
+}

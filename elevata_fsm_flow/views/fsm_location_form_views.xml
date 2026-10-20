@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (C) 2026 Vertel Sverige AB
+  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
+  Ported from Odoo 17 / OCA fieldservice. The OCA fsm.location model does
+  not exist in the Vertel fork: the elevator is maintenance.equipment and
+  the address is the property.
+
+  Most of what the original location form did is already provided by
+  maintenance_elevator, which puts an "Elevator" page (identity, status,
+  technical configuration, statutory inspection) on the equipment form.
+  What is added here is the link back to field service: a Work Orders
+  smart button and the count behind it.
+-->
+<odoo>
+
+    <record id="maintenance_equipment_view_form_inherit_fsm_flow" model="ir.ui.view">
+        <field name="name">maintenance.equipment.form.fsm.flow</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Work orders on this elevator -->
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button class="oe_stat_button"
+                        type="object"
+                        name="action_view_fsm_orders"
+                        icon="fa-wrench"
+                        invisible="fsm_order_count == 0">
+                    <field name="fsm_order_count" widget="statinfo" string="Work Orders"/>
+                </button>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- Search: no filter on fsm_order_count — it is a non-stored compute,
+         so it cannot be used in a search domain (same trap as
+         inspection_soon in maintenance_elevator). -->
+
+</odoo>
