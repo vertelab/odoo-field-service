@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="maintenance_request_view_form_inherit_fieldservice" model="ir.ui.view">
+        <field name="name">maintenance.request.form.inherit.fieldservice</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//header" position="inside">
+                <button name="action_create_fieldservice_order"
+                        type="object"
+                        string="Create Field Service Order"
+                        class="btn-primary"
+                        invisible="fieldservice_order_id"/>
+            </xpath>
+
+            <!-- Odoo 18: maintenance.request-formuläret har ingen oe_button_box
+                 (till skillnad från maintenance.equipment). Vi skapar den
+                 längst upp i sheet, före oe_title. -->
+            <xpath expr="//sheet/div[hasclass('oe_title')]" position="before">
+                <div class="oe_button_box" name="button_box">
+                <button name="action_view_fieldservice_order"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-truck"
+                        invisible="not fieldservice_order_id">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">Field Service</span>
+                        <span class="o_stat_text">Order</span>
+                    </div>
+                </button>
+                </div>
+            </xpath>
+
+            <xpath expr="//field[@name='equipment_id']" position="after">
+                <field name="fieldservice_order_id"
+                       readonly="1"
+                       invisible="not fieldservice_order_id"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="maintenance_request_view_search_inherit_fieldservice" model="ir.ui.view">
+        <field name="name">maintenance.request.search.inherit.fieldservice</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[1]" position="before">
+                <filter name="filter_has_fieldservice_order"
+                        string="With Field Service Order"
+                        domain="[('fieldservice_order_id', '!=', False)]"/>
+                <filter name="filter_no_fieldservice_order"
+                        string="Without Field Service Order"
+                        domain="[('fieldservice_order_id', '=', False)]"/>
+                <separator/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

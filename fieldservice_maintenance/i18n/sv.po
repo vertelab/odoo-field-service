@@ -1,0 +1,74 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fieldservice_maintenance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-20 22:55+0000\n"
+"PO-Revision-Date: 2026-10-20 22:55+0000\n"
+"Last-Translator: Vertel Sverige AB\n"
+"Language-Team: Swedish\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: fieldservice_maintenance
+#: model_terms:ir.ui.view,arch_db:fieldservice_maintenance.maintenance_request_views.xml.x
+msgid "Create Field Service Order"
+msgstr "Skapa arbetsorder"
+
+#. module: fieldservice_maintenance
+#: model:ir.model.fields,field_description:fieldservice_maintenance.field_fieldservice_order__equipment_id
+msgid "Equipment"
+msgstr "Utrustning"
+
+#. module: fieldservice_maintenance
+#: code:addons/fieldservice_maintenance/models/x.py:0
+#: model:ir.model.fields,field_description:fieldservice_maintenance.field_maintenance_request__fieldservice_order_id
+msgid "Field Service Order"
+msgstr "Arbetsorder"
+
+#. module: fieldservice_maintenance
+#: model:ir.model.fields,field_description:fieldservice_maintenance.field_maintenance_request__fieldservice_order_count
+msgid "Field Service Orders"
+msgstr "Arbetsordrar"
+
+#. module: fieldservice_maintenance
+#: model_terms:ir.module.module,description:fieldservice_maintenance.module_fieldservice_maintenance
+msgid "Field service: Maintenance"
+msgstr "Fältservice: Underhåll"
+
+#. module: fieldservice_maintenance
+#: code:addons/fieldservice_maintenance/models/x.py:0
+#: model:ir.model.fields,field_description:fieldservice_maintenance.field_fieldservice_order__maintenance_request_id
+msgid "Maintenance Request"
+msgstr "Underhållsärende"
+
+#. module: fieldservice_maintenance
+#: model:ir.model.fields,help:fieldservice_maintenance.field_fieldservice_order__equipment_id
+msgid "The asset the technician is working on."
+msgstr "Tillgången som teknikern arbetar på."
+
+#. module: fieldservice_maintenance
+#: model:ir.model.fields,help:fieldservice_maintenance.field_maintenance_request__fieldservice_order_id
+msgid "The field service order that dispatches this work to a technician."
+msgstr "Arbetsordern som skickar ut arbetet till en tekniker."
+
+#. module: fieldservice_maintenance
+#: model:ir.model.fields,help:fieldservice_maintenance.field_fieldservice_order__maintenance_request_id
+msgid "The maintenance request this order was created from."
+msgstr "Underhållsärendet som arbetsordern skapades från."
+
+#. module: fieldservice_maintenance
+#: model_terms:ir.ui.view,arch_db:fieldservice_maintenance.maintenance_request_views.xml.x
+msgid "With Field Service Order"
+msgstr "Med arbetsorder"
+
+#. module: fieldservice_maintenance
+#: model_terms:ir.ui.view,arch_db:fieldservice_maintenance.maintenance_request_views.xml.x
+msgid "Without Field Service Order"
+msgstr "Utan arbetsorder"
