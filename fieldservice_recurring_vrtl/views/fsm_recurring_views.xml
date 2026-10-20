@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         fsm.recurring — list
+         ================================================================ -->
+    <record id="fsm_recurring_view_list" model="ir.ui.view">
+        <field name="name">fsm.recurring.list</field>
+        <field name="model">fsm.recurring</field>
+        <field name="arch" type="xml">
+            <list string="Recurring Orders">
+                <field name="name"/>
+                <field name="equipment_id"/>
+                <field name="product_tmpl_id" optional="show"/>
+                <field name="interval"/>
+                <field name="unit"/>
+                <field name="next_date"/>
+                <field name="last_date" optional="hide"/>
+                <field name="order_count"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ================================================================
+         fsm.recurring — form
+         ================================================================ -->
+    <record id="fsm_recurring_view_form" model="ir.ui.view">
+        <field name="name">fsm.recurring.form</field>
+        <field name="model">fsm.recurring</field>
+        <field name="arch" type="xml">
+            <form string="Recurring Order">
+                <header>
+                    <button name="action_generate_orders"
+                            type="object"
+                            string="Generate Due Orders"
+                            class="btn-primary"
+                            help="Create the order if it has come due, then advance the schedule."/>
+                    <field name="active" invisible="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_orders"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-calendar"
+                                invisible="order_count == 0">
+                            <field name="order_count" widget="statinfo" string="Orders"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon"
+                            title="Archived"
+                            bg_color="text-bg-danger"
+                            invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Annual statutory inspection"/></h1>
+                    </div>
+                    <group>
+                        <group string="What to Generate">
+                            <field name="equipment_id"/>
+                            <field name="product_tmpl_id"/>
+                            <field name="requested_employee_ids" widget="many2many_tags"/>
+                        </group>
+                        <group string="Schedule">
+                            <label for="interval" string="Repeat Every"/>
+                            <div class="o_row">
+                                <field name="interval" class="oe_inline"/>
+                                <field name="unit" class="oe_inline"/>
+                            </div>
+                            <field name="next_date"/>
+                            <field name="last_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes" name="notes">
+                            <field name="description" placeholder="Instructions copied onto every generated order."/>
+                        </page>
+                        <page string="Generated Orders" name="orders">
+                            <field name="order_ids" readonly="1">
+                                <list>
+                                    <field name="order_number"/>
+                                    <field name="name"/>
+                                    <field name="stage_id"/>
+                                    <field name="planned_start_datetime"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ================================================================
+         fsm.recurring — search
+         ================================================================ -->
+    <record id="fsm_recurring_view_search" model="ir.ui.view">
+        <field name="name">fsm.recurring.search</field>
+        <field name="model">fsm.recurring</field>
+        <field name="arch" type="xml">
+            <search string="Recurring Orders">
+                <field name="name"/>
+                <field name="equipment_id"/>
+                <filter name="filter_active" string="Active" domain="[('active','=',True)]"/>
+                <filter name="filter_archived" string="Archived" domain="[('active','=',False)]"/>
+                <separator/>
+                <filter name="filter_due" string="Due Now"
+                        domain="[('next_date','&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_unit" string="Unit"
+                            context="{'group_by': 'unit'}"/>
+                    <filter name="group_by_equipment" string="Equipment"
+                            context="{'group_by': 'equipment_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ================================================================
+         Actions and menu
+         ================================================================ -->
+    <record id="fsm_recurring_action" model="ir.actions.act_window">
+        <field name="name">Recurring Orders</field>
+        <field name="res_model">fsm.recurring</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="fsm_recurring_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a recurring order</p>
+            <p>A recurring order generates field service orders on a schedule —
+               service visits, statutory inspections, maintenance intervals.</p>
+        </field>
+    </record>
+
+    <menuitem id="fsm_recurring_menu"
+              name="Recurring Orders"
+              parent="fieldservice_vrtl.configurations"
+              action="fsm_recurring_action"
+              sequence="50"/>
+
+</odoo>
