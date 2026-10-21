@@ -1,0 +1,310 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* elevata_fsm_mobile
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20260317\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 13:12+0000\n"
+"PO-Revision-Date: 2026-10-18 13:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_location_form_mobile_nav
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "<i class=\"fa fa-map-marker text-primary\" title=\"Vägbeskrivning\"/>"
+msgstr "<i class=\"fa fa-map-marker text-primary\" title=\"Vägbeskrivning\"/>"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid ""
+"<span class=\"badge text-bg-danger\">\n"
+"                            Garantijobb — faktureras ej\n"
+"                        </span>"
+msgstr "\"\"<span class=\"badge text-bg-danger\">\\n\"\"                            Garantijobb — faktureras ej\\n\"\"                        </span>"
+
+#. module: elevata_fsm_mobile
+#: model:ir.model.fields,field_description:elevata_fsm_mobile.field_fsm_location__directions_address
+#: model:ir.model.fields,field_description:elevata_fsm_mobile.field_fsm_order__directions_address
+msgid "Adress"
+msgstr "Adress"
+
+#. module: elevata_fsm_mobile
+#: model:ir.actions.act_window,name:elevata_fsm_mobile.action_fsm_order_mobile_all
+msgid "Alla arbetsorder"
+msgstr "Alla arbetsorder"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Anteckning"
+msgstr "Anteckning"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Anteckning..."
+msgstr "Anteckning..."
+
+#. module: elevata_fsm_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_map_orders
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Arbetsorder"
+msgstr "Arbetsorder"
+
+#. module: elevata_fsm_mobile
+#: model:ir.actions.act_window,name:elevata_fsm_mobile.action_map_orders_tech
+msgid "Arbetsorder — karta"
+msgstr "Arbetsorder — karta"
+
+#. module: elevata_fsm_mobile
+#: model:ir.actions.act_window,name:elevata_fsm_mobile.action_fsm_order_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_my_orders
+msgid "Arbetsordrar"
+msgstr "Arbetsordrar"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Avtalstyp"
+msgstr "Avtalstyp"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Beskriv vad som gjordes, eventuella anmärkningar..."
+msgstr "Beskriv vad som gjordes, eventuella anmärkningar..."
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Beskrivning"
+msgstr "Beskrivning"
+
+#. module: elevata_fsm_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_certifications
+msgid "Certifieringar"
+msgstr "Certifieringar"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Datum"
+msgstr "Datum"
+
+#. module: elevata_fsm_mobile
+#: model:ir.model,name:elevata_fsm_mobile.model_fsm_location
+msgid "Field Service Location"
+msgstr "Hiss"
+
+#. module: elevata_fsm_mobile
+#: model:ir.model,name:elevata_fsm_mobile.model_fsm_order
+msgid "Field Service Order"
+msgstr "ArbertsOrder"
+
+#. module: elevata_fsm_mobile
+#: model:ir.model.fields,field_description:elevata_fsm_mobile.field_fsm_order__photo_after
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Foto efter"
+msgstr "Foto efter"
+
+#. module: elevata_fsm_mobile
+#: model:ir.model.fields,field_description:elevata_fsm_mobile.field_fsm_order__photo_before
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Foto före"
+msgstr "Foto före"
+
+#. module: elevata_fsm_mobile
+#: model:ir.model.fields,help:elevata_fsm_mobile.field_fsm_order__photo_fault
+msgid "Foto på eventuellt fel eller skada."
+msgstr "Foto på eventuellt fel eller skada."
+
+#. module: elevata_fsm_mobile
+#: model:ir.model.fields,field_description:elevata_fsm_mobile.field_fsm_order__photo_fault
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Foto på fel"
+msgstr "Foto på fel"
+
+#. module: elevata_fsm_mobile
+#: model:ir.model.fields,help:elevata_fsm_mobile.field_fsm_order__photo_after
+msgid "Foto taget efter att arbetet slutförts."
+msgstr "Foto taget efter att arbetet slutförts."
+
+#. module: elevata_fsm_mobile
+#: model:ir.model.fields,help:elevata_fsm_mobile.field_fsm_order__photo_before
+msgid "Foto taget innan arbetet påbörjades."
+msgstr "Foto taget innan arbetet påbörjades."
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Foton"
+msgstr "Foton"
+
+#. module: elevata_fsm_mobile
+#: model:ir.model.fields,help:elevata_fsm_mobile.field_fsm_location__directions_address
+#: model:ir.model.fields,help:elevata_fsm_mobile.field_fsm_order__directions_address
+msgid "Fullständig adress. Klickbar — öppnar Google Maps vägbeskrivning."
+msgstr "Fullständig adress. Klickbar — öppnar Google Maps vägbeskrivning."
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_list
+msgid "Hiss"
+msgstr "Hiss"
+
+#. module: elevata_fsm_mobile
+#: model:ir.actions.act_window,name:elevata_fsm_mobile.action_mobile_elevators
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_elevators
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_map_elevators
+msgid "Hissar"
+msgstr "Hissar"
+
+#. module: elevata_fsm_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_root
+msgid "Hisstekniker"
+msgstr "Hisstekniker"
+
+#. module: elevata_fsm_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_calendar
+msgid "Kalender"
+msgstr "Kalender"
+
+#. module: elevata_fsm_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_maps
+msgid "Kartor"
+msgstr "Kartor"
+
+#. module: elevata_fsm_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_time_off
+msgid "Ledighet/Frånvaro"
+msgstr "Ledighet/Frånvaro"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Markera som klar"
+msgstr "Markera som klar"
+
+#. module: elevata_fsm_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_my_leaves
+msgid "Min ledighetsöversikt"
+msgstr "Min ledighetsöversikt"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_list
+msgid "Mina arbetsorder"
+msgstr "Mina arbetsorder"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_search_mobile
+msgid "Mina ordrar"
+msgstr "Mina ordrar"
+
+#. module: elevata_fsm_mobile
+#: model:ir.actions.act_window,name:elevata_fsm_mobile.action_my_timesheets_tech
+msgid "Mina tidrapporter"
+msgstr "Mina tidrapporter"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Navigera hit"
+msgstr "Navigera hit"
+
+#. module: elevata_fsm_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_map_keys
+msgid "Nyckelrör"
+msgstr "Nyckelrör"
+
+#. module: elevata_fsm_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_keys
+msgid "Nycklar"
+msgstr "Nycklar"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_list
+msgid "Order"
+msgstr "Order"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_list
+msgid "Planerad"
+msgstr "Planerad"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Serviceavtal"
+msgstr "Serviceavtal"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Servicechecklista"
+msgstr "Servicechecklista"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Slut"
+msgstr "Slut"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Start"
+msgstr "Start"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_list
+msgid "Status"
+msgstr "Status"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Tekniker"
+msgstr "Tekniker"
+
+#. module: elevata_fsm_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_my_timesheets
+msgid "Tidrapporter"
+msgstr "Tidrapporter"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Tidrapportering"
+msgstr "Tidrapportering"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Timmar"
+msgstr "Timmar"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_list
+msgid "Typ"
+msgstr "Typ"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Uppgift"
+msgstr "Uppgift"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_location_form_mobile_nav
+msgid "Vägbeskrivning"
+msgstr "Vägbeskrivning"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "av"
+msgstr "av"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "klara"
+msgstr "klara"
+
+#. module: elevata_fsm_mobile
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_mobile.view_fsm_order_mobile_form
+msgid "Åtgärd / anteckningar"
+msgstr "Åtgärd / anteckningar"
+
+#. module: elevata_fsm_mobile
+#: model:ir.ui.menu,name:elevata_fsm_mobile.menu_mobile_misc
+msgid "Övrigt"
+msgstr "Övrigt"

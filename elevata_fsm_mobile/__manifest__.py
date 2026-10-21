@@ -1,0 +1,36 @@
+{
+    'name': 'Elevata FSM Mobile',
+    'version': '18.0.1.0.2',
+    'category': 'Field Service',
+    'summary': 'Mobilanpassad vy för hisstekniker på fältet',
+    'author': 'Vertel Sverige AB',
+    'website': 'https://github.com/vertelab/odoo-field-service',
+    'maintainer': 'Vertel Sverige AB',
+    'repository': 'https://github.com/vertelab/odoo-field-service',
+    'depends': [
+        'elevata_fsm_flow',
+        'elevata_timesheet',
+        'elevata_service_contract',
+        'elevata_googlemap_arbetsorder',
+        'elevata_googlemap_hiss',
+        'elevata_fsm_key_management',
+        'elevata_employee_certification',
+        'hr_holidays',
+        'web_responsive',
+    ],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/fsm_order_mobile.xml',
+        'views/menu_views.xml',
+    ],
+    'assets': {
+        'web.assets_backend': [
+            'elevata_fsm_mobile/static/src/scss/mobile.scss',
+        ],
+    },
+    'installable': True,
+    'application': False,
+    'auto_install': False,
+    'license': 'AGPL-3',
+    'images': ['static/description/banner.png'],
+}
