@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="offer_template_v6_reparation_liten" model="elevata.offer.template">
+        <field name="name">Reparation – Liten · V6</field>
+        <field name="sequence">-5</field>
+        <field name="offer_type">reparation</field>
+        <field name="design_version">v6</field>
+        <field name="simple_layout" eval="True"/>
+        <field name="offer_title">Reparation av hiss</field>
+        <field name="scope_of_work" type="html"><p>Vi erbjuder nedanstående åtgärder för er hiss. Uppdraget omfattar specificerat arbete och material samt funktionskontroll av berörda delar.</p></field>
+        <field name="delivery_time_info">Tidpunkt och tillträde bekräftas vid beställning.</field>
+        <field name="downtime_info">Avställning samordnas med beställaren inför arbetet.</field>
+        <field name="payment_terms_text" type="html"><p>30 dagar netto. Samtliga priser anges exklusive moms.</p></field>
+        <field name="terms_conditions" type="html"><p>Offerten avser specificerade åtgärder. Ändringar och tillägg avtalas skriftligt innan de utförs.</p></field>
+        <field name="warranty_terms" type="html"><p>Garanti på utfört arbete enligt den garantitid som anges i offerten. Omfattning och eventuella undantag fastställs före beställning.</p></field>
+        <field name="line_ids" eval="[(0, 0, {'sequence': 10, 'line_type': 'arbete', 'name': 'Arbete enligt specifikation', 'quantity': 1}), (0, 0, {'sequence': 20, 'line_type': 'material', 'name': 'Material enligt specifikation', 'quantity': 1})]"/>
+    </record>
+    <record id="offer_template_v6_reparation_stor" model="elevata.offer.template">
+        <field name="name">Reparation – Stor · V6</field>
+        <field name="sequence">-4</field>
+        <field name="offer_type">reparation</field>
+        <field name="design_version">v6</field>
+        <field name="simple_layout" eval="False"/>
+        <field name="offer_title">Reparation och uppgradering</field>
+        <field name="repair_payment_structure">thirds</field>
+        <field name="background" type="html"><p>En genomtänkt åtgärd börjar med tydliga förutsättningar. Här samlar vi vårt förslag för reparation eller uppgradering av er hiss, med omfattning, investering och planering som underlag för ert beslut.</p></field>
+        <field name="scope_of_work" type="html"><p>Uppdraget omfattar arbeten och komponenter enligt prisöversikten. Demontering, montage och funktionskontroll planeras tillsammans med beställaren. Eventuella ytterligare behov dokumenteras och stäms av innan åtgärd.</p></field>
+        <field name="cover_feature_1">Tydlig omfattning|Specificerade arbeten och komponenter</field>
+        <field name="cover_feature_2">Samordnat genomförande|Planering med hänsyn till fastigheten</field>
+        <field name="cover_feature_3">Personlig kontakt|En tydlig kontaktväg genom uppdraget</field>
+        <field name="delivery_time_info">Leveransplan bekräftas vid beställning.</field>
+        <field name="downtime_info">Avställning och återstart samordnas med beställaren.</field>
+        <field name="payment_terms_text" type="html"><p>1/3 vid beställning, 1/3 vid materialleverans och 1/3 vid godkänd besiktning. Betalning mot faktura, 30 dagar netto.</p></field>
+        <field name="terms_conditions" type="html"><p>Offerten avser angiven omfattning. Ändrade förutsättningar, tillägg och eventuella arbeten i fastigheten ska avtalas skriftligt innan de utförs.</p></field>
+        <field name="delivery_terms" type="html"><p>Beställaren och Elevata samordnar tillträde, materialhantering och avställning inför arbetets start.</p></field>
+        <field name="line_ids" eval="[(0, 0, {'sequence': 10, 'line_type': 'arbete', 'name': 'Demontering och förberedelser', 'quantity': 1}), (0, 0, {'sequence': 20, 'line_type': 'material', 'name': 'Komponenter enligt specifikation', 'quantity': 1}), (0, 0, {'sequence': 30, 'line_type': 'arbete', 'name': 'Montage, injustering och funktionskontroll', 'quantity': 1})]"/>
+    </record>
+    <record id="offer_template_v6_modernisering" model="elevata.offer.template">
+        <field name="name">Modernisering · V6</field>
+        <field name="sequence">-3</field>
+        <field name="offer_type">modernisering</field>
+        <field name="design_version">v6</field>
+        <field name="offer_title">Modernisering av hiss</field>
+        <field name="warranty_years">2</field>
+        <field name="repair_payment_structure">thirds</field>
+        <field name="content" type="html"><p>Ett samlat förslag för nästa steg i hissens livscykel. Vi beskriver de föreslagna åtgärderna och hur de kan genomföras med hänsyn till fastighetens förutsättningar.</p></field>
+        <field name="background" type="html"><p>Moderniseringen utgår från anläggningens skick, användning och överenskomna behov. Befintliga delar som ska behållas och teknikområden som ska förnyas fastställs i uppdragets specifikation.</p></field>
+        <field name="modernization_proposal" type="html"><p>Vi samordnar vald utrustning, installation och överlämnande. Teknisk omfattning, gränssnitt mot fastigheten och erforderliga kontroller preciseras inför beställning.</p></field>
+        <field name="cover_feature_1">Långsiktig planering|Åtgärder utifrån hissens förutsättningar</field>
+        <field name="cover_feature_2">Tydlig investering|Omfattning och priser samlade</field>
+        <field name="cover_feature_3">Samordnat projekt|Från tekniska val till överlämnande</field>
+        <field name="delivery_time_info">Leveransplan bekräftas vid beställning.</field>
+        <field name="downtime_info">Avställning samordnas med beställaren.</field>
+        <field name="payment_terms_text" type="html"><p>1/3 vid beställning, 1/3 vid materialleverans och 1/3 vid godkänd besiktning. Betalning mot faktura, 30 dagar netto.</p></field>
+        <field name="terms_conditions" type="html"><p>Pris och omfattning avser specificerade åtgärder. Ändringar, tillägg och arbeten i fastigheten avtalas separat innan de utförs.</p></field>
+        <field name="line_ids" eval="[(0, 0, {'sequence': 10, 'line_type': 'material', 'name': 'Hissutrustning enligt teknisk specifikation', 'quantity': 1}), (0, 0, {'sequence': 20, 'line_type': 'arbete', 'name': 'Demontering, montage och driftsättning', 'quantity': 1})]"/>
+    </record>
+    <record id="offer_template_v6_serviceavtal" model="elevata.offer.template">
+        <field name="name">Serviceavtal · V6</field>
+        <field name="sequence">-2</field>
+        <field name="offer_type">serviceavtal</field>
+        <field name="design_version">v6</field>
+        <field name="offer_title">Service och underhåll</field>
+        <field name="billing_interval">yearly</field>
+        <field name="contract_years">1</field>
+        <field name="content" type="html"><p>Ett tydligt upplägg för tillsyn och underhåll av era hissar. Avtalstyp, besöksfrekvens och årsavgift anges per anläggning i prisöversikten.</p></field>
+        <field name="service_sections" type="html"><p>Planerade servicebesök utförs enligt vald servicenivå. Iakttagelser och rekommenderade åtgärder dokumenteras så att ni får ett underlag för fortsatt underhåll.</p><p>Jour, besiktningsbiträde, nödtelefon och andra tillägg ingår endast när de uttryckligen anges i avtalet.</p></field>
+        <field name="cover_feature_1">Planerat underhåll|Besöksfrekvens enligt vald servicenivå</field>
+        <field name="cover_feature_2">Tydlig omfattning|Årsavgift och tillägg specificeras</field>
+        <field name="cover_feature_3">Personlig kontakt|Dialog om anläggningens behov</field>
+        <field name="payment_terms_text" type="html"><p>Fakturering enligt valt intervall och avtalad servicenivå, 30 dagar netto. Samtliga priser anges exklusive moms.</p></field>
+        <field name="terms_conditions" type="html"><p>Avtalet omfattar angiven servicenivå per hiss. Arbete och material utöver avtalad omfattning hanteras efter överenskommelse enligt tillämplig prislista.</p><p>Avtalstid, förlängning och uppsägning ska fastställas i avtalsvillkoren före beställning.</p></field>
+        <field name="delivery_terms" type="html"><p>Servicebesök planeras enligt avtalad frekvens. Tillträde och eventuella avställningar samordnas med beställaren.</p></field>
+        <field name="closing_text" type="html"><p>Vi ser fram emot att vara er partner för hissens tillsyn och underhåll.</p><p>Kontakta oss gärna för att gå igenom servicenivå, omfattning och nästa steg.</p></field>
+    </record>
+    <record id="offer_template_v6_nyinstallation" model="elevata.offer.template">
+        <field name="name">Nyinstallation · V6</field>
+        <field name="sequence">-1</field>
+        <field name="offer_type">nyinstallation</field>
+        <field name="design_version">v6</field>
+        <field name="offer_title">En ny hiss för er fastighet</field>
+        <field name="repair_payment_structure">thirds</field>
+        <field name="content" type="html"><p>En ny hiss med utgångspunkt i fastighetens användning och förutsättningar. Här samlar vi föreslagen utrustning, installation och överlämnande i ett tydligt beslutsunderlag.</p></field>
+        <field name="background" type="html"><p>Förslaget utgår från överenskomna funktionskrav och verifierade objektdata. Mått, materialval och gränssnitt mot byggnaden fastställs före beställning.</p></field>
+        <field name="scope_of_work" type="html"><p>Leverans och installation enligt angivna offertrader. Provning, besiktning och dokumentation specificeras för det aktuella uppdraget.</p></field>
+        <field name="cover_feature_1">Genomtänkt lösning|Utifrån fastighetens behov och krav</field>
+        <field name="cover_feature_2">Samordnad installation|Tydliga gränssnitt mot byggnaden</field>
+        <field name="cover_feature_3">Planerat överlämnande|Kontroller och dokumentation enligt avtal</field>
+        <field name="delivery_time_info">Leveransplan bekräftas vid beställning.</field>
+        <field name="payment_terms_text" type="html"><p>1/3 vid beställning, 1/3 vid materialleverans och 1/3 vid godkänd besiktning. Betalning mot faktura, 30 dagar netto.</p></field>
+        <field name="terms_conditions" type="html"><p>Offerten gäller specificerad utrustning och omfattning. Byggnadsarbeten, elmatning och andra gränssnitt ska vara fastställda före genomförandet. Ändringar och tillägg avtalas separat.</p></field>
+        <field name="line_ids" eval="[(0, 0, {'sequence': 10, 'line_type': 'material', 'name': 'Hiss enligt teknisk specifikation', 'quantity': 1}), (0, 0, {'sequence': 20, 'line_type': 'arbete', 'name': 'Montage och driftsättning', 'quantity': 1})]"/>
+    </record>
+</odoo>

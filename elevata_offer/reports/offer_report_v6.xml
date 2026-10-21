@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="offer_v6_styles">
+        <style>
+            @page offer-v6 {size:A4;margin:14mm 0 18mm;
+                @bottom-left{content:'ELEVATA  /  OFFERT';font-family:Arial,sans-serif;font-size:7pt;color:#64748b;margin-left:18mm}
+                @bottom-right{content:counter(page) ' / ' counter(pages);font-family:Arial,sans-serif;font-size:8pt;color:#64748b;margin-right:18mm}
+            }
+            @page offer-v6-cover {size:A4;margin:0;@bottom-left{content:none}@bottom-right{content:none}}
+            .v6{page:offer-v6;font-size:10pt;line-height:1.55;color:#253448;--accent:#2F4560}
+            .v6 .v6-page{min-height:264mm;break-after:page;page-break-after:always;background:#fff}
+            .v6 .v6-page:last-child{break-after:auto;page-break-after:auto}
+            .v6 .v6-body{padding:7mm 18mm 0;overflow-wrap:anywhere}
+            .v6 .hd{padding:0 18mm 5mm}
+            .v6 .hd .logo{height:9mm}
+            .v6 .hdrule{margin:0 18mm;border-color:var(--accent)}
+            .v6 h1{font-size:29pt;line-height:1.12;font-weight:700;color:var(--accent);margin:0 0 6mm;overflow-wrap:anywhere}
+            .v6 h2{font-size:18pt;line-height:1.25;font-weight:500;color:var(--accent);margin:0 0 5mm;display:block;break-after:avoid}
+            .v6 h3{font-size:11pt;color:var(--accent);margin:6mm 0 2mm;break-after:avoid}
+            .v6 .eyebrow{font-size:8pt;text-transform:uppercase;letter-spacing:2px;color:#64748b;margin-bottom:4mm}
+            .v6 .rich{font-size:10pt;line-height:1.55;color:#334155;overflow-wrap:anywhere}
+            .v6 .rich p{margin:0 0 3mm}
+            .v6 .rich ul,.v6 .rich ol{margin:0 0 4mm 5mm}
+            .v6 .rich img{max-width:100%;max-height:180mm;object-fit:contain}
+            .v6 .rich table{table-layout:fixed}
+            .v6 .rich h1,.v6 .rich h2,.v6 .rich h3{font-size:12pt;color:var(--accent);break-after:avoid}
+            .v6 .block{margin:0 0 7mm}
+            .v6 .tb{font-size:9pt;table-layout:fixed}
+            .v6 .tb th{background:var(--accent);padding:3mm 3mm;font-size:8pt}
+            .v6 .tb td{padding:3mm;overflow-wrap:anywhere}
+            .v6 .tb .r{white-space:normal;text-align:right}
+            .v6 .totband{background:var(--accent);border-radius:0;padding:5mm;font-variant-numeric:tabular-nums}
+            .v6 .pricenote{font-size:8pt;margin:3mm 0 7mm}
+            .v6 .v6-cover{page:offer-v6-cover;min-height:296.4mm;padding:18mm;display:flow-root;border-top:2mm solid var(--accent)}
+            .v6 .v6-cover .hd{padding:0;margin-bottom:8mm}
+            .v6 .v6-cover .hdrule{display:none}
+            .v6 .v6-cover-title{padding-top:4mm;margin-bottom:8mm}
+            .v6 .v6-cover-title h1{max-width:165mm}
+            .v6 .v6-customer{font-size:12pt;font-weight:500}
+            .v6 .v6-address{font-size:9pt;color:#64748b}
+            .v6 .v6-hero{display:inline-block;vertical-align:top;width:174mm;height:94mm;object-fit:cover;margin-bottom:8mm}
+            .v6 .v6-features{display:flex;gap:8mm;margin-bottom:9mm}
+            .v6 .v6-features .feat{flex:1;border-top:1px solid #cbd5df;padding-top:4mm;min-width:0}
+            .v6 .v6-features .ic{width:6mm;height:6mm;color:var(--accent);margin-bottom:3mm}
+            .v6 .v6-features b{font-size:10pt;display:block;color:var(--accent)}
+            .v6 .v6-features span{font-size:8.5pt;display:block;color:#64748b;margin-top:1mm}
+            .v6 .v6-contact-strip{margin-top:auto;padding-top:5mm;border-top:1px solid #cbd5df;display:flex;justify-content:space-between;gap:8mm;font-size:8pt;color:#64748b}
+            .v6 .v6-contact-strip b{display:block;color:var(--accent);font-size:9pt}
+            .v6 .v6-facts{background:#f2f5f8;padding:4mm 5mm;margin:6mm 0;break-inside:avoid}
+            .v6 .v6-facts div{display:flex;gap:5mm;padding:1mm 0;font-size:9pt}
+            .v6 .v6-facts b{width:37mm;flex:none;color:var(--accent)}
+            .v6 .v6-images{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin:7mm 0}
+            .v6 .v6-images figure{margin:0;break-inside:avoid}
+            .v6 .v6-images img{width:100%;height:46mm;object-fit:cover}
+            .v6 .v6-images figcaption{font-size:9pt;padding:2mm 0;color:var(--accent)}
+            .v6 .v6-plan{border-top:1px solid #cbd5df;margin-top:4mm}
+            .v6 .v6-plan div{display:flex;gap:6mm;border-bottom:1px solid #e2e8f0;padding:3mm 0;break-inside:avoid}
+            .v6 .v6-plan b{width:40mm;flex:none;color:var(--accent)}
+            .v6 .v6-terms{column-count:2;column-gap:9mm}
+            .v6 .v6-terms section{margin-bottom:4mm;break-inside:avoid}
+            .v6 .v6-terms h3{margin-top:0}
+            .v6 .v6-terms .rich{font-size:9pt}
+            .v6 .v6-closing{page:offer-v6-cover;min-height:296.4mm;position:relative;border-top:2mm solid var(--accent)}
+            .v6 .v6-closing-copy{width:105mm;padding:18mm 9mm 16mm 18mm;overflow-wrap:anywhere}
+            .v6 .v6-closing-logo{width:60mm;height:auto;margin-bottom:35mm}
+            .v6 .v6-closing h1{font-size:26pt;margin:0 0 8mm}
+            .v6 .v6-closing .rich{font-size:10pt;margin-bottom:10mm}
+            .v6 .v6-closing-photo{position:absolute;top:0;right:0;width:105mm;height:100%;object-fit:cover;object-position:60% center}
+            .v6 .v6-closing-contact{font-size:9pt;border-top:1px solid #cbd5df;padding-top:5mm;width:100%}
+            .v6 .v6-closing-company{margin-top:18mm;font-size:8pt;color:#64748b}
+            .v6 .v6-small h1{font-size:24pt}
+            .v6 .v6-small .rich{font-size:9pt}
+            .v6 .v6-small .block{margin-bottom:5mm}
+            .v6 .v6-small .v6-terms .rich{font-size:8.5pt}
+            @media screen{.v6 .v6-page{width:210mm;margin:0 auto 24px;box-shadow:0 6px 24px #24324433}.v6 .v6-page:not(.v6-cover):not(.v6-closing){padding-top:14mm;padding-bottom:18mm;min-height:297mm}}
+        </style>
+    </template>
+
+    <template id="offer_v6_cover">
+        <section class="v6-page v6-cover">
+            <t t-call="elevata_offer.offer_pdf_header"/>
+            <div class="v6-cover-title">
+                <div class="eyebrow">Offert / <t t-out="doc._pdf_selection_label('elevata.offer', 'offer_type', doc.offer_type)"/></div>
+                <h1 data-field="offer_title" t-out="doc.pdf_title()"/>
+                <div class="v6-customer" t-out="doc.partner_id.name"/>
+                <div class="v6-address" t-out="', '.join(x for x in [doc.partner_id.street, doc.partner_id.city] if x)"/>
+            </div>
+            <img class="v6-hero" t-att-src="hero if hero.startswith('data:') else img4 + hero"/>
+            <div class="v6-features"><t t-call="elevata_offer.offer_pdf_features"/></div>
+            <div class="v6-contact-strip">
+                <div><b t-out="company.name"/><span t-out="cp.website"/></div>
+                <div><b>Er kontakt</b><t t-foreach="doc.pdf_contact()" t-as="part"><div t-out="part"/></t></div>
+                <div><b>Offertens giltighet</b><span t-out="doc.validity_date"/></div>
+            </div>
+        </section>
+    </template>
+
+    <template id="offer_v6_prices">
+        <t t-if="doc.offer_type == 'serviceavtal'">
+            <t t-set="rows" t-value="doc.pdf_price_rows()"/>
+            <t t-set="amount_head" t-value="'Årsavgift exkl. moms'"/>
+            <t t-call="elevata_offer.offer_pdf_price_table"/>
+        </t>
+        <t t-else="">
+            <table class="tb">
+                <thead><tr><th style="width:46%">Benämning</th><th style="width:14%">Antal</th><th class="r" style="width:20%">À-pris</th><th class="r" style="width:20%">Belopp</th></tr></thead>
+                <tbody>
+                    <tr t-foreach="doc.pdf_scope_rows()" t-as="r" class="keep">
+                        <td><span t-out="r['label']"/><div class="muted" t-if="r['location']" t-out="r['location']"/></td>
+                        <td><t t-out="r['qty']"/> <t t-out="r['unit']"/></td>
+                        <td class="r" t-out="doc.pdf_money(r['price'])"/>
+                        <td class="r" t-out="doc.pdf_money(r['amount'])"/>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="totband"><span>Summa exkl. moms</span><span t-out="doc.pdf_money(doc.amount_untaxed)"/></div>
+        </t>
+        <p class="pricenote">Samtliga priser anges exklusive moms. Priserna avser angiven omfattning och prisperiod.</p>
+    </template>
+
+    <template id="offer_v6_terms">
+        <div class="v6-terms">
+            <section t-foreach="doc.pdf_terms_sections()" t-as="term">
+                <h3 t-out="term['title']"/>
+                <div class="rich" t-att-data-field="term.get('field', '')" t-out="term['html']"/>
+            </section>
+        </div>
+    </template>
+
+    <template id="offer_v6_plan">
+        <div class="v6-plan">
+            <t t-if="doc.offer_type == 'serviceavtal'">
+                <div><b>Avtalsstart</b><span t-out="doc.contract_start_date"/></div>
+                <div><b>Avtalstid</b><span t-out="doc._pdf_selection_label('elevata.offer', 'contract_years', doc.contract_years)"/></div>
+                <div><b>Fakturering</b><span t-out="doc._pdf_selection_label('elevata.offer', 'billing_interval', doc.billing_interval)"/></div>
+            </t>
+            <t t-else="">
+                <div t-foreach="doc.pdf_timeline()" t-as="step"><b t-out="step['title']"/><span t-out="step['text']"/></div>
+                <div t-if="doc.downtime_info and doc.offer_type != 'reparation'"><b>Driftstopp</b><span data-field="downtime_info" t-out="doc.downtime_info"/></div>
+                <div t-if="doc.warranty_years"><b>Garantitid</b><span t-out="doc._pdf_selection_label('elevata.offer', 'warranty_years', doc.warranty_years)"/></div>
+            </t>
+        </div>
+    </template>
+
+    <template id="offer_doc_v6">
+        <t t-set="hero" t-value="doc.pdf_hero()"/>
+        <t t-set="compact" t-value="doc.offer_type == 'reparation' and doc.simple_layout"/>
+        <t t-call="elevata_offer.offer_v6_styles"/>
+        <div class="od v6" t-att-style="'--accent:' + doc.pdf_accent_color()">
+            <t t-if="not compact" t-call="elevata_offer.offer_v6_cover"/>
+            <section t-att-class="'v6-page v6-small' if compact else 'v6-page'">
+                <t t-call="elevata_offer.offer_pdf_header"/>
+                <div class="v6-body">
+                    <t t-if="compact">
+                        <div class="eyebrow">Reparation / Uppgradering</div>
+                        <h1 data-field="offer_title" t-out="doc.pdf_title()"/>
+                        <p class="block"><b t-out="doc.partner_id.name"/></p>
+                    </t>
+                    <t t-else=""><div class="eyebrow">01 / Uppdraget</div><h2 t-out="'Service och underhåll' if doc.offer_type == 'serviceavtal' else 'Bakgrund och omfattning'"/></t>
+                    <div class="rich block" data-field="content" t-if="doc.pdf_html('content')" t-out="doc.pdf_html('content')"/>
+                    <div class="rich block" data-field="background" t-if="doc.pdf_html('background')" t-out="doc.pdf_html('background')"/>
+                    <div class="rich block" data-field="scope_of_work" t-if="doc.pdf_html('scope_of_work')" t-out="doc.pdf_html('scope_of_work')"/>
+                    <div class="rich block" data-field="modernization_proposal" t-if="doc.pdf_html('modernization_proposal')" t-out="doc.pdf_html('modernization_proposal')"/>
+                    <div class="rich block" data-field="service_sections" t-if="doc.pdf_html('service_sections')" t-out="doc.pdf_html('service_sections')"/>
+                    <t t-if="compact">
+                        <h3>Prisöversikt</h3><t t-call="elevata_offer.offer_v6_prices"/>
+                        <p t-if="doc.delivery_time_info"><b>Utförande: </b><span data-field="delivery_time_info" t-out="doc.delivery_time_info"/></p>
+                        <p t-if="doc.downtime_info"><b>Driftstopp: </b><span data-field="downtime_info" t-out="doc.downtime_info"/></p>
+                        <p t-if="doc.warranty_years"><b>Garantitid: </b><span t-out="doc._pdf_selection_label('elevata.offer', 'warranty_years', doc.warranty_years)"/></p>
+                        <t t-set="compact_exclude" t-value="('delivery_time',)"/>
+                        <t t-if="doc.pdf_terms_sections(exclude=compact_exclude)">
+                            <h3>Villkor</h3>
+                            <div class="v6-terms">
+                                <section t-foreach="doc.pdf_terms_sections(exclude=compact_exclude)" t-as="term">
+                                    <h3 t-out="term['title']"/>
+                                    <div class="rich" t-att-data-field="term.get('field', '')" t-out="term['html']"/>
+                                </section>
+                            </div>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <div t-if="doc.pdf_facts()" class="v6-facts"><div t-foreach="doc.pdf_facts()" t-as="fact"><b t-out="fact['label']"/><span t-out="fact['value']"/></div></div>
+                        <div class="v6-images">
+                            <figure t-foreach="doc.pdf_cards()" t-as="card"><img t-att-src="img4 + card['image']"/><figcaption t-out="card['title']"/></figure>
+                        </div>
+                        <p class="pricenote">Bilderna är illustrationer. Avtalad omfattning framgår av offertens texter och specifikation.</p>
+                    </t>
+                </div>
+            </section>
+            <section t-if="not compact" class="v6-page">
+                <t t-call="elevata_offer.offer_pdf_header"/>
+                <div class="v6-body">
+                    <div class="eyebrow">02 / Investering och planering</div>
+                    <h2 t-out="'Avtalsomfattning och årsavgift' if doc.offer_type == 'serviceavtal' else 'Prisöversikt'"/>
+                    <t t-call="elevata_offer.offer_v6_prices"/>
+                    <div t-if="doc.offer_type == 'serviceavtal' and doc.pdf_hourly_rules()" class="block">
+                        <h3>Timpriser vid behov · exkl. moms</h3>
+                        <div class="rates"><div t-foreach="doc.pdf_hourly_rules()" t-as="rate" class="rate"><span t-out="rate['label']"/><b t-out="doc.pdf_money(rate['amount'])"/></div></div>
+                    </div>
+                    <h3 t-out="'Avtalsperiod' if doc.offer_type == 'serviceavtal' else 'Planering och genomförande'"/>
+                    <t t-call="elevata_offer.offer_v6_plan"/>
+                    <t t-if="doc.offer_type != 'serviceavtal' and doc.pdf_terms_sections()">
+                        <h3>Villkor och förutsättningar</h3>
+                        <t t-call="elevata_offer.offer_v6_terms"/>
+                    </t>
+                </div>
+            </section>
+            <section t-if="doc.pdf_tech_rows()" class="v6-page">
+                <t t-call="elevata_offer.offer_pdf_header"/>
+                <div class="v6-body">
+                    <div class="eyebrow">Specifikation</div><h2>Teknisk beskrivning</h2>
+                    <section t-foreach="doc.pdf_tech_rows()" t-as="row" class="block"><h3 t-out="row['title']"/><div class="rich" t-att-data-field="row.get('field', '')" t-out="row['html']"/></section>
+                </div>
+            </section>
+            <section t-if="doc.offer_type == 'serviceavtal' and doc.pdf_terms_sections()" class="v6-page">
+                <t t-call="elevata_offer.offer_pdf_header"/>
+                <div class="v6-body"><div class="eyebrow">Villkor och förutsättningar</div><h2>Tydliga förutsättningar för vårt samarbete</h2><t t-call="elevata_offer.offer_v6_terms"/></div>
+            </section>
+            <section class="v6-page v6-closing">
+                <div class="v6-closing-copy">
+                    <img class="v6-closing-logo" t-att-src="img4 + 'logo.png'"/>
+                    <h1 data-field="closing_title" t-out="doc.closing_title"/>
+                    <div class="rich" data-field="closing_text" t-if="doc.pdf_html('closing_text')" t-out="doc.pdf_html('closing_text')"/>
+                    <div class="v6-closing-contact"><b>Er kontakt</b><t t-foreach="doc.pdf_contact()" t-as="part"><div t-out="part"/></t></div>
+                    <div class="v6-closing-company"><b t-out="company.name"/><div t-out="cp.website"/><div t-if="doc.footer_text" t-out="doc.footer_text"/><div t-else="" t-out="' · '.join(p for p in [cp.street, cp.city, cp.phone] if p)"/></div>
+                </div>
+                <img class="v6-closing-photo" t-att-src="img4 + 'cabin.jpg'"/>
+            </section>
+        </div>
+    </template>
+</odoo>

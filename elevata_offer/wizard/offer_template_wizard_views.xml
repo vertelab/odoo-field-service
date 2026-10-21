@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_offer_template_wizard_form" model="ir.ui.view">
+        <field name="name">elevata.offer.template.wizard.form</field>
+        <field name="model">elevata.offer.template.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Välj offertmall">
+                <group>
+                    <field name="offer_id" invisible="1"/>
+                    <field name="offer_type" invisible="1"/>
+                    <field name="template_id" string="Mall"
+                           options="{'no_create': True}"/>
+                </group>
+                <footer>
+                    <button name="action_apply" string="Ladda mall" type="object"
+                            class="btn-primary"/>
+                    <button string="Avbryt" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

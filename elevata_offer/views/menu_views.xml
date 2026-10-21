@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- TOP-LEVEL MENU                                     -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <menuitem id="menu_elevata_offer_root"
+              name="Offerter"
+              web_icon="elevata_offer,static/description/icon.png"
+              sequence="45"/>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- OFFERTER                                           -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <menuitem id="menu_elevata_offer_main"
+              name="Offerter"
+              parent="menu_elevata_offer_root"
+              sequence="10"/>
+
+    <!-- Alla offerter -->
+    <record id="action_elevata_offer_all" model="ir.actions.act_window">
+        <field name="name">Alla offerter</field>
+        <field name="res_model">elevata.offer</field>
+        <field name="view_mode">kanban,list,form,pivot,graph</field>
+        <field name="search_view_id" ref="view_elevata_offer_search"/>
+        <field name="context">{}</field>
+    </record>
+    <menuitem id="menu_elevata_offer_all"
+              name="Alla offerter"
+              parent="menu_elevata_offer_main"
+              action="action_elevata_offer_all"
+              sequence="10"/>
+
+    <!-- Serviceavtal -->
+    <record id="action_elevata_offer_serviceavtal" model="ir.actions.act_window">
+        <field name="name">Serviceavtal</field>
+        <field name="res_model">elevata.offer</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_elevata_offer_search"/>
+        <field name="domain">[('offer_type','=','serviceavtal')]</field>
+        <field name="context">{'default_offer_type': 'serviceavtal'}</field>
+    </record>
+    <menuitem id="menu_elevata_offer_serviceavtal"
+              name="Serviceavtal"
+              parent="menu_elevata_offer_main"
+              action="action_elevata_offer_serviceavtal"
+              sequence="20"/>
+
+    <!-- Reparation / Uppgradering -->
+    <record id="action_elevata_offer_reparation" model="ir.actions.act_window">
+        <field name="name">Reparation / Uppgradering</field>
+        <field name="res_model">elevata.offer</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_elevata_offer_search"/>
+        <field name="domain">[('offer_type','=','reparation')]</field>
+        <field name="context">{'default_offer_type': 'reparation'}</field>
+    </record>
+    <menuitem id="menu_elevata_offer_reparation"
+              name="Reparation / Uppgradering"
+              parent="menu_elevata_offer_main"
+              action="action_elevata_offer_reparation"
+              sequence="30"/>
+
+    <!-- Modernisering -->
+    <record id="action_elevata_offer_modernisering" model="ir.actions.act_window">
+        <field name="name">Modernisering</field>
+        <field name="res_model">elevata.offer</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_elevata_offer_search"/>
+        <field name="domain">[('offer_type','=','modernisering')]</field>
+        <field name="context">{'default_offer_type': 'modernisering'}</field>
+    </record>
+    <menuitem id="menu_elevata_offer_modernisering"
+              name="Modernisering"
+              parent="menu_elevata_offer_main"
+              action="action_elevata_offer_modernisering"
+              sequence="40"/>
+
+    <!-- Nyinstallation -->
+    <record id="action_elevata_offer_nyinstallation" model="ir.actions.act_window">
+        <field name="name">Nyinstallation</field>
+        <field name="res_model">elevata.offer</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_elevata_offer_search"/>
+        <field name="domain">[('offer_type','=','nyinstallation')]</field>
+        <field name="context">{'default_offer_type': 'nyinstallation'}</field>
+    </record>
+    <menuitem id="menu_elevata_offer_nyinstallation"
+              name="Nyinstallation"
+              parent="menu_elevata_offer_main"
+              action="action_elevata_offer_nyinstallation"
+              sequence="50"/>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PROJEKTUPPFÖLJNING                                 -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <menuitem id="menu_elevata_offer_project"
+              name="Projektuppföljning"
+              parent="menu_elevata_offer_root"
+              groups="elevata_base.group_sales,elevata_base.group_manager"
+              sequence="15"/>
+
+    <record id="action_elevata_offer_project" model="ir.actions.act_window">
+        <field name="name">Projektuppföljning</field>
+        <field name="res_model">elevata.offer</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="search_view_id" ref="view_elevata_offer_search"/>
+        <field name="domain">[('state','=','won'),('milestone_count','&gt;',0)]</field>
+        <field name="context">{'search_default_group_billing': 1}</field>
+    </record>
+    <record id="action_elevata_offer_project_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_elevata_offer_project_tree"/>
+        <field name="act_window_id" ref="action_elevata_offer_project"/>
+    </record>
+    <record id="action_elevata_offer_project_kanban" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="view_elevata_offer_project_kanban"/>
+        <field name="act_window_id" ref="action_elevata_offer_project"/>
+    </record>
+
+    <menuitem id="menu_elevata_offer_project_all"
+              name="Alla projekt"
+              parent="menu_elevata_offer_project"
+              action="action_elevata_offer_project"
+              sequence="10"/>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- STATISTIK                                          -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <menuitem id="menu_elevata_offer_statistics"
+              name="Statistik"
+              parent="menu_elevata_offer_root"
+              sequence="20"/>
+
+    <record id="action_elevata_offer_pivot" model="ir.actions.act_window">
+        <field name="name">Offertstatistik</field>
+        <field name="res_model">elevata.offer</field>
+        <field name="view_mode">pivot,graph,tree</field>
+        <field name="search_view_id" ref="view_elevata_offer_search"/>
+    </record>
+    <menuitem id="menu_elevata_offer_pivot"
+              name="Offertstatistik"
+              parent="menu_elevata_offer_statistics"
+              action="action_elevata_offer_pivot"
+              sequence="10"/>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- KONFIGURATION                                      -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <menuitem id="menu_elevata_offer_config"
+              name="Konfiguration"
+              parent="menu_elevata_offer_root"
+              sequence="90"/>
+
+    <menuitem id="menu_elevata_pricelist"
+              name="Prislistor"
+              parent="menu_elevata_offer_config"
+              action="action_elevata_pricelist"
+              sequence="10"/>
+
+    <menuitem id="menu_elevata_offer_templates"
+              name="Offertmallar"
+              parent="menu_elevata_offer_config"
+              action="action_offer_template"
+              sequence="20"/>
+
+</odoo>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form View -->
+    <record id="view_offer_template_form" model="ir.ui.view">
+        <field name="name">elevata.offer.template.form</field>
+        <field name="model">elevata.offer.template</field>
+        <field name="arch" type="xml">
+            <form string="Offertmall">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="offer_type"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                            <field name="warranty_years" string="Garantitid"
+                                   invisible="offer_type in ('serviceavtal',)"/>
+                            <field name="repair_payment_structure" string="Betalningsstruktur"
+                                   invisible="offer_type in ('serviceavtal',)"/>
+                            <field name="delivery_time_info" string="Leveranstid"
+                                   invisible="offer_type in ('serviceavtal',)"/>
+                            <field name="simple_layout" string="Enkel offert (1 sida)"
+                                   invisible="offer_type != 'reparation'"/>
+                            <field name="modernization_construction_time" string="Ombyggnadstid"
+                                   invisible="offer_type != 'modernisering'"/>
+                            <field name="billing_interval" string="Faktureringsintervall"
+                                   invisible="offer_type != 'serviceavtal'"/>
+                            <field name="contract_years" string="Avtalsår"
+                                   invisible="offer_type != 'serviceavtal'"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Mallrader" name="lines">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="line_type"/>
+                                    <field name="rate_type" optional="show"/>
+                                    <field name="product_id" optional="show"/>
+                                    <field name="name"/>
+                                    <field name="quantity"/>
+                                    <field name="uom_id" optional="show"/>
+                                    <field name="price_unit"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Uppdrag" name="template_scope">
+                            <group invisible="offer_type != 'reparation'">
+                                <group string="Bakgrund">
+                                    <field name="background" nolabel="1" colspan="2"/>
+                                </group>
+                                <group string="Planering">
+                                    <field name="estimated_days" string="Uppskattad tid (dagar)"/>
+                                    <field name="downtime_info" string="Driftstopp"/>
+                                </group>
+                            </group>
+                            <group string="Arbetsbeskrivning"
+                                   invisible="offer_type != 'reparation'">
+                                <field name="scope_of_work" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Uppdragsbeskrivning"
+                                   invisible="offer_type != 'serviceavtal'">
+                                <field name="content" nolabel="1" colspan="2"
+                                       placeholder="Beskriv vad serviceavtalet omfattar..."/>
+                            </group>
+                            <group invisible="offer_type != 'modernisering'">
+                                <group string="Bakgrund och behov">
+                                    <field name="background" nolabel="1" colspan="2"/>
+                                </group>
+                                <group string="Planering">
+                                    <field name="estimated_days" string="Uppskattad tid (dagar)"/>
+                                    <field name="downtime_info" string="Driftstopp"/>
+                                </group>
+                            </group>
+                            <group string="Vårt förslag"
+                                   invisible="offer_type != 'modernisering'">
+                                <field name="modernization_proposal" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Besiktning"
+                                   invisible="offer_type != 'modernisering'">
+                                <field name="modernization_inspection_note" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Kvalitet och Miljö"
+                                   invisible="offer_type != 'modernisering'">
+                                <field name="modernization_quality_env" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Förtydliganden &amp; Reservationer"
+                                   invisible="offer_type != 'modernisering'">
+                                <field name="modernization_reservations" nolabel="1" colspan="2"/>
+                            </group>
+                        </page>
+                        <page string="Teknisk beskrivning" name="template_tech_spec"
+                              invisible="offer_type != 'modernisering'">
+                            <group string="Allmänt">
+                                <field name="tech_general" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Automatdörrar schakt">
+                                <field name="tech_doors" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Maskinrum">
+                                <field name="tech_machine_room" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Schakt">
+                                <field name="tech_shaft" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Hisskorg">
+                                <field name="tech_car" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Apparatställ">
+                                <field name="tech_control_panel" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Signalisering / Tablåer">
+                                <field name="tech_signalization" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Optioner">
+                                <field name="tech_options" nolabel="1" colspan="2"/>
+                            </group>
+                        </page>
+                        <page string="Villkor" name="template_terms">
+                            <group string="Garantivillkor">
+                                <field name="warranty_terms" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Betalningsvillkor">
+                                <field name="payment_terms_text" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Allmänna villkor">
+                                <field name="terms_conditions" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Leveranstid">
+                                <field name="delivery_time" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Leveransvillkor">
+                                <field name="delivery_terms" nolabel="1" colspan="2"/>
+                            </group>
+                            <group string="Ingår ej">
+                                <field name="not_included" nolabel="1" colspan="2"/>
+                            </group>
+                        </page>
+                        <page string="Design" name="template_design">
+                            <group>
+                                <group string="Omslag">
+                                    <field name="cover_image" widget="image"
+                                           options="{'accepted_file_extensions': '.jpg,.jpeg,.png,.webp'}"
+                                           class="oe_avatar"/>
+                                    <field name="cover_image_filename" invisible="1"/>
+                                </group>
+                                <group string="Färg och sidfot">
+                                    <field name="accent_color" widget="color"/>
+                                    <field name="footer_text" placeholder="Lämna tomt för standardsidfot"/>
+                                </group>
+                            </group>
+                            <group string="Omslagspunkter">
+                                <field name="cover_feature_1" placeholder="Rubrik|Beskrivning"/>
+                                <field name="cover_feature_2" placeholder="Rubrik|Beskrivning"/>
+                                <field name="cover_feature_3" placeholder="Rubrik|Beskrivning"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_offer_template_tree" model="ir.ui.view">
+        <field name="name">elevata.offer.template.tree</field>
+        <field name="model">elevata.offer.template</field>
+        <field name="arch" type="xml">
+            <list string="Offertmallar">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="offer_type"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_offer_template" model="ir.actions.act_window">
+        <field name="name">Offertmallar</field>
+        <field name="res_model">elevata.offer.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

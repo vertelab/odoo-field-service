@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+
+    <!-- ── Dölj oönskade betalningsvillkor ── -->
+
+    <record id="account.account_payment_term_21days" model="account.payment.term">
+        <field name="active" eval="False"/>
+    </record>
+    <record id="account.account_payment_term_45days" model="account.payment.term">
+        <field name="active" eval="False"/>
+    </record>
+    <record id="account.account_payment_term_end_following_month" model="account.payment.term">
+        <field name="active" eval="False"/>
+    </record>
+    <record id="account.account_payment_term_30_days_end_month_the_10" model="account.payment.term">
+        <field name="active" eval="False"/>
+    </record>
+    <record id="account.account_payment_term_advance_60days" model="account.payment.term">
+        <field name="active" eval="False"/>
+    </record>
+    <record id="account.account_payment_term_30days_early_discount" model="account.payment.term">
+        <field name="active" eval="False"/>
+    </record>
+
+</odoo>

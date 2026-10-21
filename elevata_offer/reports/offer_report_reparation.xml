@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Reparation (stor): omslag + omfattning, pris, genomförande och villkor + avtalsbilaga -->
+    <template id="offer_doc_reparation">
+        <t t-set="hero" t-value="doc.pdf_hero()"/>
+        <t t-set="sn" t-value="0"/>
+
+        <div class="od">
+
+            <!-- ══════════ SIDA 1: FÖRSÄTTSBLAD ══════════ -->
+            <t t-call="elevata_offer.offer_pdf_cover"/>
+
+            <!-- ══════════ SIDA 2: OMFATTNING, PRIS, GENOMFÖRANDE OCH VILLKOR ══════════ -->
+            <div class="sheet flow tight">
+                <t t-call="elevata_offer.offer_pdf_header"/>
+                <div class="pgbody">
+
+                    <div class="sec">
+                        <t t-set="sn" t-value="sn + 1"/>
+                        <h2><span class="n" t-out="sn"/>Omfattning</h2>
+                        <div class="rich sec" t-if="doc.pdf_html('background')" t-out="doc.pdf_html('background')"/>
+                        <div class="rich sec" t-if="doc.pdf_html('scope_of_work')" t-out="doc.pdf_html('scope_of_work')"/>
+                        <p class="muted" t-if="not doc.pdf_html('scope_of_work')">Vi erbjuder åtgärd enligt nedan specifikation.</p>
+                        <t t-set="srows" t-value="doc.pdf_scope_rows()"/>
+                        <t t-set="locs" t-value="list(dict.fromkeys(r['location'] for r in srows if r['location']))"/>
+                        <p class="muted" t-if="len(locs) == 1"><b>Hiss:</b> <t t-out="locs[0]"/></p>
+                        <table class="tb">
+                            <thead><tr><th class="s">Pos</th><th>Benämning</th><th class="c">Antal</th><th>Enhet</th></tr></thead>
+                            <tbody>
+                                <t t-foreach="srows" t-as="r">
+                                    <tr class="keep">
+                                        <td class="s" t-out="r['pos']"/>
+                                        <td><span t-out="r['label']"/><div class="muted" t-if="r['location'] and len(locs) &gt; 1" t-out="r['location']"/></td>
+                                        <td class="c" t-out="r['qty']"/>
+                                        <td t-out="r['unit']"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div class="small" t-if="doc.pdf_html('not_included')">
+                            <h3>Ingår ej</h3>
+                            <div class="rich" t-out="doc.pdf_html('not_included')"/>
+                        </div>
+                    </div>
+
+                    <div class="sec keep">
+                        <t t-set="sn" t-value="sn + 1"/>
+                        <h2><span class="n" t-out="sn"/>Pris</h2>
+                        <t t-set="rows" t-value="doc.pdf_price_groups()"/>
+                        <t t-set="amount_head" t-value="'Belopp exkl. moms'"/>
+                        <t t-call="elevata_offer.offer_pdf_price_table"/>
+                        <div class="pricenote">Alla priser anges exklusive moms. Tillägg avtalas separat.</div>
+                    </div>
+
+                    <div class="sec keep">
+                        <t t-set="sn" t-value="sn + 1"/>
+                        <h2><span class="n" t-out="sn"/>Genomförande</h2>
+                        <t t-call="elevata_offer.offer_pdf_steps"/>
+                    </div>
+
+                    <div class="sec keep">
+                        <t t-set="sn" t-value="sn + 1"/>
+                        <h2><span class="n" t-out="sn"/>Villkor i korthet</h2>
+                        <div class="cards c3">
+                            <t t-foreach="doc.pdf_terms_cards()[:3]" t-as="c">
+                                <div class="card">
+                                    <t t-call="elevata_offer.offer_pdf_icon"><t t-set="icon" t-value="c['icon']"/></t>
+                                    <div><b t-out="c['title']"/><span t-out="c['text']"/></div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <t t-call="elevata_offer.offer_pdf_footer"><t t-set="pg" t-value="2"/></t>
+            </div>
+
+            <!-- ══════════ SIDA 3: AVTALSBILAGA OCH GODKÄNNANDE ══════════ -->
+            <t t-set="terms" t-value="doc.pdf_terms_sections(['not_included'])"/>
+            <div class="sheet flow">
+                <t t-call="elevata_offer.offer_pdf_header"/>
+                <div class="pgbody">
+                    <h2><span class="n"><t t-call="elevata_offer.offer_pdf_icon"><t t-set="icon" t-value="'file'"/></t></span>Avtalsbilaga</h2>
+                    <div class="small" t-if="terms">
+                        <div class="cols2">
+                            <t t-foreach="terms" t-as="tm">
+                                <div class="keep"><h3 t-out="tm['title']"/><div class="rich" t-out="tm['html']"/></div>
+                            </t>
+                        </div>
+                    </div>
+                    <p class="muted" t-else="">Offertens villkor framgår av föregående sida.</p>
+                </div>
+                <t t-call="elevata_offer.offer_pdf_footer"><t t-set="pg" t-value="3"/></t>
+            </div>
+
+            <!-- ══════════ TACKSIDA ══════════ -->
+            <t t-call="elevata_offer.offer_pdf_thanks"/>
+
+        </div>
+    </template>
+
+    <!-- Enkel offert (1 sida): för mindre reparationer -->
+    <template id="offer_doc_enkel">
+        <t t-set="terms" t-value="doc.pdf_terms_sections()"/>
+        <t t-set="hero" t-value="doc.pdf_hero()"/>
+        <div class="od">
+            <div class="sheet flow">
+
+                <div class="hero2">
+                    <div class="photo"><img t-att-src="hero if hero.startswith('data:') else img4 + hero"/></div>
+                    <div class="in">
+                        <img style="height:11mm;width:auto;margin-bottom:9mm" t-att-src="img4 + 'logo.png'"/>
+                        <h1><span class="o">Offert</span><t t-out="doc.pdf_title()"/></h1>
+                        <div class="cust">
+                            <b t-out="doc.partner_id.name"/>
+                            <div t-if="doc.partner_id.street" t-out="doc.partner_id.street"/>
+                            <div t-if="doc.partner_id.zip or doc.partner_id.city"><t t-out="((doc.partner_id.zip or '') + ' ' + (doc.partner_id.city or '')).strip()"/></div>
+                        </div>
+                    </div>
+                    <div style="position:absolute;top:3mm;right:19mm;z-index:3;text-align:right;font-size:7.8pt;color:#5F6B7A;line-height:1.5;background:rgba(255,255,255,.96);padding:2.2mm 3.5mm;border-radius:1mm">
+                        <div><b style="color:#242E3D">Offertnr:</b> <t t-out="doc.name"/></div>
+                        <div><b style="color:#242E3D">Datum:</b> <t t-out="doc.date"/></div>
+                        <div t-if="doc.validity_date"><b style="color:#242E3D">Giltig t.o.m.:</b> <t t-out="doc.validity_date"/></div>
+                    </div>
+                </div>
+
+                <div class="pgbody">
+                    <div class="sec">
+                        <h2>Arbetets omfattning</h2>
+                        <div class="rich sec" t-if="doc.pdf_html('scope_of_work')" t-out="doc.pdf_html('scope_of_work')"/>
+                        <p class="muted" t-else="">Vi erbjuder åtgärd enligt nedan så att hissen åter kan användas som i normal drift.</p>
+                        <t t-set="srows" t-value="doc.pdf_scope_rows()"/>
+                        <t t-set="locs" t-value="list(dict.fromkeys(r['location'] for r in srows if r['location']))"/>
+                        <p class="muted" t-if="len(locs) == 1"><b>Hiss:</b> <t t-out="locs[0]"/></p>
+                        <table class="tb">
+                            <thead><tr><th class="s">Pos</th><th>Benämning</th><th class="c">Antal</th><th>Enhet</th><th class="r">Pris exkl. moms</th></tr></thead>
+                            <tbody>
+                                <t t-foreach="srows" t-as="r">
+                                    <tr class="keep">
+                                        <td class="s" t-out="r['pos']"/>
+                                        <td><span t-out="r['label']"/><div class="muted" t-if="r['location'] and len(locs) &gt; 1" t-out="r['location']"/></td>
+                                        <td class="c" t-out="r['qty']"/>
+                                        <td t-out="r['unit']"/>
+                                        <td class="r" t-out="doc.pdf_money(r['amount'])"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div class="totband"><span>Summa exkl. moms</span><span t-out="doc.pdf_money(doc.amount_untaxed)"/></div>
+                        <div class="pricenote">Alla priser anges exklusive moms.</div>
+                    </div>
+
+                    <div class="infos keep">
+                        <t t-set="steps" t-value="doc.pdf_timeline()"/>
+                        <div class="card">
+                            <t t-call="elevata_offer.offer_pdf_icon"><t t-set="icon" t-value="'calendar'"/></t>
+                            <div><b>Utförande</b><span t-out="steps[0]['text'] or steps[1]['text'] or 'Enligt överenskommelse'"/></div>
+                        </div>
+                        <t t-foreach="doc.pdf_terms_cards()[:2]" t-as="c">
+                            <div class="card">
+                                <t t-call="elevata_offer.offer_pdf_icon"><t t-set="icon" t-value="c['icon']"/></t>
+                                <div><b t-out="c['title']"/><span t-out="c['text']"/></div>
+                            </div>
+                        </t>
+                    </div>
+
+                    <div class="small" style="margin-top:5mm" t-if="terms">
+                        <div class="cols2">
+                            <t t-foreach="terms" t-as="tm">
+                                <div class="keep"><h3 t-out="tm['title']"/><div class="rich" t-out="tm['html']"/></div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ft">
+                    <div><b t-out="(company.name or '').upper()"/> &#183; <t t-out="cp.street"/>, <t t-out="cp.zip"/> <t t-out="cp.city"/><t t-if="cp.company_registry"> &#183; Org.nr <t t-out="cp.company_registry"/></t></div>
+                    <div><t t-out="cp.phone"/> &#183; <t t-out="cp.email"/> &#183; <t t-out="cp.website"/></div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+</odoo>

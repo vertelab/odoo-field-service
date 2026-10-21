@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Pappersformat utan marginaler (layouten styr alla marginaler själv) -->
+    <record id="paperformat_elevata_offer" model="report.paperformat">
+        <field name="name">Elevata Offert A4 (utan marginaler)</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_spacing">0</field>
+        <field name="dpi">96</field>
+    </record>
+
+    <!-- En enda rapport för alla offerttyper. Layouten väljs per offert. -->
+    <record id="action_report_elevata_offer" model="ir.actions.report">
+        <field name="name">Offert</field>
+        <field name="model">elevata.offer</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">elevata_offer.report_offer_document</field>
+        <field name="report_file">elevata_offer.report_offer_document</field>
+        <field name="print_report_name">{'serviceavtal': 'Serviceavtal', 'reparation': 'Reparation', 'modernisering': 'Modernisering', 'nyinstallation': 'Nyinstallation'}.get(object.offer_type, 'Offert') + ' ' + (object.name or '').replace('/', '-')</field>
+        <field name="binding_model_id" ref="model_elevata_offer"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_elevata_offer"/>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- STILMALL (Elevata offertdesign v4: mörkblå, Roboto, bildkort) -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <template id="offer_pdf_styles">
+        <style>
+            @page{size:A4;margin:10mm 0 14mm;
+                @bottom-right{content:'Sida ' counter(page);font-family:Arial,sans-serif;font-size:8pt;color:#5F6B7A;margin-right:16mm;vertical-align:middle}
+            }
+            @page offer-cover{size:A4;margin:0;@bottom-right{content:none}}
+            .od .sheet.cover{page:offer-cover}
+            @font-face{font-family:ElevataRoboto;font-style:normal;font-weight:400;src:url('<t t-out="_bu"/>/web/static/fonts/google/Roboto/Roboto-Regular.ttf') format('truetype')}
+            @font-face{font-family:ElevataRoboto;font-style:normal;font-weight:500;src:url('<t t-out="_bu"/>/web/static/fonts/google/Roboto/Roboto-Medium.ttf') format('truetype')}
+            @font-face{font-family:ElevataRoboto;font-style:normal;font-weight:700;src:url('<t t-out="_bu"/>/web/static/fonts/google/Roboto/Roboto-Bold.ttf') format('truetype')}
+            html,body{margin:0!important;padding:0!important;background:#fff!important}
+            body,body.container{max-width:none!important;width:auto!important;padding:0!important}
+            .od{font-family:ElevataRoboto,Roboto,Arial,Helvetica,sans-serif;color:#242E3D;font-size:9.6pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+            .od *{box-sizing:border-box}
+            .od p{margin:0 0 5px}
+            .od img{display:block}
+            .od .sheet{position:relative;width:210mm;height:296.4mm;overflow:hidden;background:#fff;break-after:page;page-break-after:always}
+            .od .sheet.flow{height:auto;min-height:272mm;overflow:visible;display:flex;flex-direction:column}
+            .od h2,.od h3{break-after:avoid}
+            .od p{orphans:3;widows:3}
+            .od thead{display:table-header-group}
+            .od .totband{break-inside:avoid;break-before:avoid}
+            .od:last-child .sheet:last-child{break-after:auto;page-break-after:auto}
+
+            /* Förhandsgranskning på skärm: grå bakgrund och skugga så att A4-sidan syns (påverkar inte PDF) */
+            @media screen{
+                html,body{background:#d5dae3!important}
+                body{padding:24px 0!important}
+                .od{width:210mm;margin:0 auto}
+                .od .sheet{box-shadow:0 1px 3px rgba(36,46,61,.25),0 8px 28px rgba(36,46,61,.22);margin-bottom:24px}
+                .od .sheet.flow{min-height:296mm;padding:10mm 0 14mm}
+                .od:last-child .sheet:last-child{margin-bottom:0}
+            }
+
+            /* Sidhuvud och sidfot */
+            .od .hd{display:flex;justify-content:space-between;align-items:center;padding:1mm 16mm 5mm}
+            .od .hd .logo{height:10mm;width:auto}
+            .od .hd .meta{text-align:right;font-size:7.8pt;color:#5F6B7A;line-height:1.65}
+            .od .hd .meta b{color:#242E3D;font-weight:500}
+            .od .hdrule{height:.35mm;background:#CBD5DF;margin:0 16mm;border-left:22mm solid #2F4560}
+            .od .pgbody{flex:1;padding:7mm 16mm 5mm}
+            .od .ft{display:flex;justify-content:space-between;align-items:center;gap:5mm;margin:0 16mm;padding:3mm 0 2mm;border-top:1px solid #D9DEE5;font-size:7pt;color:#5F6B7A}
+            .od .ft b{color:#2F4560;letter-spacing:.7px}
+
+            /* Rubriker och text */
+            .od h2{display:flex;align-items:center;font-size:16pt;color:#2F4560;margin:0 0 3.5mm;font-weight:700;line-height:1.2}
+            .od h2 .n{display:inline-flex;align-items:center;justify-content:center;width:8mm;height:8mm;flex:none;background:#EEF2F5;color:#2F4560;border-radius:50%;font-size:10pt;font-weight:500;margin-right:3mm}
+            .od h2 .n .ic{width:4.6mm;height:4.6mm;color:#2F4560}
+            .od h3{font-size:10.5pt;color:#2F4560;margin:4mm 0 1.5mm;font-weight:700}
+            .od .sec{margin-bottom:6mm}
+            .od .rich.sec{margin-bottom:3mm}
+            .od .keep{break-inside:avoid;page-break-inside:avoid}
+            .od .muted{color:#5F6B7A}
+            .od .rich{font-size:9.2pt;color:#2C3748}
+            .od .rich p{margin:0 0 4px}
+            .od .rich ul,.od .rich ol{margin:0 0 5px 14px;padding:0}
+            .od .rich li{margin-bottom:1.5px}
+            .od .rich h1,.od .rich h2,.od .rich h3,.od .rich h4{display:block;font-size:10pt;color:#2F4560;margin:8px 0 3px;font-weight:700}
+            .od .rich table{width:100%;border-collapse:collapse;margin-bottom:5px}
+            .od .rich td,.od .rich th{border:1px solid #E0E4EB;padding:3px 6px;vertical-align:top}
+            .od .rich img{max-width:100%}
+            .od .small .rich{font-size:8.3pt;line-height:1.5}
+            .od .small h3{font-size:8.5pt;margin:3mm 0 1mm}
+            .od .cols2{column-count:2;column-gap:8mm}
+            .od .cols2 .keep{margin-bottom:1mm}
+
+            /* Ikoner och paneler */
+            .od .ic{width:6mm;height:6mm;flex:none;color:#2F4560;display:block}
+            .od .panel{background:#EEF2F5;padding:3mm 6mm}
+            .od .ben{display:flex;align-items:flex-start;gap:4.5mm;padding:2.8mm 0;border-bottom:1px solid #fff}
+            .od .ben:last-child{border-bottom:0}
+            .od .ben b{display:block;color:#2F4560;font-size:9.5pt}
+            .od .ben span{color:#5F6B7A;font-size:8.6pt}
+
+            /* Bildkort och faktarutor */
+            .od .imgcards{display:grid;grid-template-columns:repeat(4,1fr);gap:3.5mm;margin:4mm 0 6mm}
+            .od .imgcard{background:#F3F6F8;padding:0 3mm 3mm;border-radius:1.5mm;overflow:hidden}
+            .od .imgcard img{width:calc(100% + 6mm);max-width:none;height:31mm;object-fit:cover;margin:0 -3mm 3mm}
+            .od .imgcard b{display:block;color:#2F4560;font-size:9pt;margin:2mm 0 .8mm;line-height:1.25}
+            .od .imgcard span{display:block;color:#5F6B7A;font-size:7.8pt;line-height:1.35}
+            .od .bgrow{display:flex;gap:6mm;margin-bottom:5mm;align-items:flex-start}
+            .od .bgrow img{width:62mm;height:48mm;object-fit:cover;flex:none}
+            .od .facts2{flex:1;width:100%;border-collapse:collapse;font-size:9pt}
+            .od .facts2 td{padding:3mm 4mm;border-bottom:1px solid #fff;background:#EEF2F5;vertical-align:top}
+            .od .facts2 td:first-child{width:34%;color:#2F4560;font-weight:700;background:#E3E9F0}
+            .od .goals{background:#EEF2F5;padding:4mm 5mm;margin-top:1mm}
+            .od .goals h3{margin:0 0 2mm}
+            .od .goals ul{list-style:none;margin:0;padding:0;column-count:2;column-gap:8mm}
+            .od .goals li{display:flex;align-items:center;gap:2.5mm;padding:1.5mm 0;border-bottom:1px solid #fff;font-size:8.8pt;break-inside:avoid}
+            .od .goals li .ic{width:4mm;height:4mm}
+
+            /* Tabeller */
+            .od .tb{width:100%;border-collapse:collapse;font-size:8.8pt}
+            .od .tb th{background:#2F4560;color:#fff;text-align:left;font-weight:500;padding:5px 9px;font-size:8.2pt}
+            .od .tb td{padding:5px 9px;border-bottom:1px solid #E1E5EB;vertical-align:top}
+            .od .tb tbody tr:nth-child(even) td{background:#F5F7FA}
+            .od .tb .r{text-align:right;white-space:nowrap}
+            .od .tb .c{text-align:center}
+            .od .tb .s{width:12mm}
+            .od .tb .nm{font-weight:700;color:#2F4560}
+            .od .tb .rich{font-size:8.6pt}
+            .od .totband{display:flex;justify-content:space-between;align-items:center;gap:5mm;background:#2F4560;color:#fff;padding:4mm 5mm;font-size:13pt;font-weight:700;border-radius:0 0 1.5mm 1.5mm}
+            .od .totband span:first-child{font-size:10pt;font-weight:400}
+            .od .totband span:last-child{white-space:nowrap}
+            .od .pricenote{font-size:7.6pt;color:#5F6B7A;margin-top:2mm}
+
+            /* Kompakt sida (Reparation) */
+            .od .tight .pgbody{padding-top:4mm;padding-bottom:3mm}
+            .od .tight .sec{margin-bottom:4.5mm}
+            .od .tight h2{font-size:13.5pt;margin-bottom:2.5mm}
+            .od .tight .tb th,.od .tight .tb td{padding:3.5px 9px}
+            .od .tight .card{padding:2.6mm 3mm}
+            .od .tight .small .rich{font-size:7.3pt}
+            .od .tight .small>h3{margin-top:0}
+            .od .tight .step .dot{width:9mm;height:9mm;margin-bottom:1.6mm}
+            .od .tight .step:not(:last-child):after{top:4.5mm}
+            .od .tight .ft{padding-bottom:6mm}
+
+            /* Tidsplan */
+            .od .steps{display:flex;margin-top:2mm}
+            .od .step{flex:1;text-align:center;position:relative;padding:0 2mm}
+            .od .step .dot{width:11mm;height:11mm;border-radius:50%;background:#2F4560;color:#fff;margin:0 auto 2.2mm;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+            .od .step .dot .ic{width:5.4mm;height:5.4mm;color:#fff}
+            .od .step:not(:last-child):after{content:'';position:absolute;top:5.5mm;left:50%;width:100%;height:1.3px;background:#2F4560}
+            .od .step b{display:block;color:#2F4560;font-size:9pt}
+            .od .step span{display:block;color:#5F6B7A;font-size:8.2pt;line-height:1.3}
+
+            /* Nästa steg, villkorskort och godkännande */
+            .od .next{display:flex;gap:6mm}
+            .od .nx{flex:1;display:flex;gap:3.5mm;align-items:flex-start}
+            .od .nx .ico{width:11mm;height:11mm;border-radius:50%;border:1.4px solid #2F4560;display:flex;align-items:center;justify-content:center;flex:none}
+            .od .nx .ico .ic{width:5.2mm;height:5.2mm}
+            .od .nx b{display:block;color:#2F4560;font-size:9.6pt}
+            .od .nx span{display:block;color:#5F6B7A;font-size:8.2pt;line-height:1.35}
+            .od .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
+            .od .cards.c3{grid-template-columns:repeat(3,1fr)}
+            .od .card{border:1px solid #D9DEE5;padding:3.2mm 3.4mm;display:flex;gap:2.6mm;align-items:flex-start;background:#fff}
+            .od .card b{display:block;color:#2F4560;font-size:8.8pt;line-height:1.25;margin-bottom:.6mm}
+            .od .card span{display:block;color:#5F6B7A;font-size:8pt;line-height:1.3}
+            .od .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
+            .od .fact{background:#EEF2F5;padding:3mm 3.4mm}
+            .od .fact span{display:block;color:#5F6B7A;font-size:7.4pt;text-transform:uppercase;letter-spacing:.6px}
+            .od .fact b{display:block;color:#2F4560;font-size:9.6pt;margin-top:.8mm}
+
+            /* Försättsblad */
+            .od .cover:before{content:'';position:absolute;top:0;left:0;right:0;height:3mm;background:#2F4560}
+            .od .cover .hero{position:absolute;top:103mm;left:16mm;width:178mm;height:106mm;overflow:hidden;border-radius:2mm}
+            .od .cover .hero img{width:100%;height:100%;object-fit:cover}
+            .od .cover .logochip{position:absolute;top:14mm;left:16mm;background:#fff;padding:0}
+            .od .cover .logochip img{height:12mm;width:auto}
+            .od .cover .metacard{position:absolute;top:14mm;right:16mm;padding:0;font-size:8pt;color:#5F6B7A;line-height:1.65;text-align:right}
+            .od .cover .metacard b{color:#242E3D;font-weight:500}
+            .od .cover .navyblock{position:absolute;left:16mm;top:42mm;width:178mm;height:57mm;color:#242E3D;padding:0}
+            .od .cover .navyblock .k{font-size:8pt;letter-spacing:3px;margin-bottom:4mm;color:#5F6B7A;text-transform:uppercase}
+            .od .cover .navyblock h1{font-size:32pt;line-height:1.08;margin:0 0 5mm;font-weight:700;color:#2F4560;max-width:178mm;overflow-wrap:anywhere}
+            .od .cover .navyblock .cu{font-size:11pt;font-weight:500;line-height:1.5}
+            .od .cover .navyblock .ad{font-size:9pt;color:#5F6B7A}
+            .od .cover .benefits{position:absolute;left:16mm;right:16mm;top:219mm;display:flex;gap:8mm}
+            .od .cover .benefits .feat{flex:1;border-top:1px solid #D9DEE5;padding-top:3mm}
+            .od .cover .benefits .ic{width:7mm;height:7mm;margin-bottom:2mm}
+            .od .cover .benefits b{display:block;font-size:9.5pt;color:#242E3D;line-height:1.25}
+            .od .cover .benefits span{display:block;font-size:8pt;color:#5F6B7A;line-height:1.35;margin-top:1mm}
+            .od .cover .infostrip{position:absolute;left:16mm;right:16mm;top:256mm;display:flex;background:#EEF2F5;border-radius:1mm}
+            .od .cover .infostrip div{flex:1;min-width:0;padding:3mm 4mm;font-size:6.5pt;color:#5F6B7A;text-transform:uppercase;letter-spacing:.6px}
+            .od .cover .infostrip b{display:block;text-transform:none;letter-spacing:0;font-size:8pt;color:#242E3D;margin-top:1mm;font-weight:500;overflow-wrap:anywhere}
+            .od .cover .cf{position:absolute;left:16mm;right:16mm;bottom:6mm;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid #D9DEE5;padding-top:2mm;font-size:6.6pt;color:#5F6B7A;line-height:1.4}
+            .od .cover .cf b{color:#2F4560;letter-spacing:.9px;font-size:8.4pt}
+            .od .cover .cf .rt{text-align:right}
+
+            /* Enkel offert */
+            .od .hero2{position:relative;padding:0 16mm}
+            .od .hero2 .photo{position:absolute;top:0;right:16mm;width:65mm;height:61mm;overflow:hidden;border-radius:2mm}
+            .od .hero2 .photo img{width:100%;height:100%;object-fit:cover}
+            .od .hero2 .photo:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(36,46,61,.2),transparent 55%)}
+            .od .hero2 .in{position:relative;z-index:2;padding-top:10mm;min-height:60mm}
+            .od .hero2 h1{font-size:23pt;line-height:1.15;margin:0 0 5mm;color:#242E3D;font-weight:700;max-width:107mm;overflow-wrap:anywhere}
+            .od .hero2 h1 .o{display:block;font-size:8pt;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5F6B7A;margin-bottom:3mm}
+            .od .hero2 .cust{font-size:9.6pt;line-height:1.45;color:#2C3748;border-top:2px solid #2F4560;padding-top:3mm;width:70mm}
+            .od .hero2 .cust b{display:block;color:#242E3D;font-size:10.5pt}
+            .od .infos{display:flex;gap:6mm;margin-top:4mm;border-top:1px solid #D9DEE5;padding-top:5mm}
+            .od .infos .card{flex:1;border:0;padding:0}
+            .od .totbox{width:78mm;margin-left:auto;margin-top:3mm}
+            .od .rates{column-count:2;column-gap:6mm}
+            .od .rate{display:flex;justify-content:space-between;gap:4mm;padding:1.7mm 2mm;border-bottom:1px solid #E1E5EB;font-size:8.6pt;break-inside:avoid}
+            .od .rate b{color:#2F4560;white-space:nowrap}
+        </style>
+    </template>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- IKONER (inline SVG, 24x24)                                 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <template id="offer_pdf_icon">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <t t-if="icon == 'shield'"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></t>
+            <t t-elif="icon == 'wrench' or icon == 'tools'"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></t>
+            <t t-elif="icon == 'clock'"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></t>
+            <t t-elif="icon == 'calendar'"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></t>
+            <t t-elif="icon == 'award'"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></t>
+            <t t-elif="icon == 'file'"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></t>
+            <t t-elif="icon == 'card'"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></t>
+            <t t-elif="icon == 'users'"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></t>
+            <t t-elif="icon == 'leaf'"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></t>
+            <t t-elif="icon == 'cpu'"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></t>
+            <t t-elif="icon == 'trend'"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></t>
+            <t t-elif="icon == 'info'"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></t>
+            <t t-elif="icon == 'truck'"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></t>
+            <t t-else=""><path d="M20 6 9 17l-5-5"/></t>
+        </svg>
+    </template>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- GEMENSAMMA DELAR                                           -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <!-- Sidhuvud på insidor: logotyp till vänster, offertuppgifter till höger -->
+    <template id="offer_pdf_header">
+        <div class="hd">
+            <img class="logo" t-att-src="img4 + 'logo.png'"/>
+            <div class="meta">
+                <div><b>Offertnr:</b> <t t-out="doc.name"/></div>
+                <div><b>Datum:</b> <t t-out="doc.date"/></div>
+                <div t-if="doc.validity_date"><b>Giltig t.o.m.:</b> <t t-out="doc.validity_date"/></div>
+            </div>
+        </div>
+        <div class="hdrule"></div>
+    </template>
+
+    <!-- Sidfot på insidor -->
+    <template id="offer_pdf_footer">
+        <div class="ft">
+            <t t-if="doc.footer_text">
+                <div t-out="doc.footer_text"/>
+            </t>
+            <t t-else="">
+                <div><b t-out="(company.name or '').upper()"/> &#183; <t t-out="cp.street"/>, <t t-out="cp.zip"/> <t t-out="cp.city"/><t t-if="cp.company_registry"> &#183; Org.nr <t t-out="cp.company_registry"/></t></div>
+            </t>
+            <div t-out="doc.name"/>
+        </div>
+    </template>
+
+    <!-- Fördelar på försättsbladet -->
+    <template id="offer_pdf_features">
+        <t t-foreach="doc.pdf_cover_features()" t-as="f">
+            <div class="feat">
+                <t t-call="elevata_offer.offer_pdf_icon"><t t-set="icon" t-value="f['icon']"/></t>
+                <b t-out="f['title']"/>
+                <span t-out="f['text']"/>
+            </div>
+        </t>
+    </template>
+
+    <!-- Försättsblad (används av Premium och Reparation) -->
+    <template id="offer_pdf_cover">
+        <t t-set="facts" t-value="doc.pdf_facts()"/>
+        <t t-set="contact" t-value="doc.pdf_contact()"/>
+        <div class="sheet cover">
+            <div class="hero"><img t-att-src="hero if hero.startswith('data:') else img4 + hero"/></div>
+            <div class="logochip"><img t-att-src="img4 + 'logo.png'"/></div>
+            <div class="metacard">
+                <div><b>Offertnr:</b> <t t-out="doc.name"/></div>
+                <div><b>Datum:</b> <t t-out="doc.date"/></div>
+                <div t-if="doc.validity_date"><b>Giltig t.o.m.:</b> <t t-out="doc.validity_date"/></div>
+            </div>
+            <div class="navyblock">
+                <div class="k">OFFERT · <t t-out="{'serviceavtal': 'SERVICE &amp; UNDERHÅLL', 'reparation': 'REPARATION &amp; UPPGRADERING', 'modernisering': 'MODERNISERING', 'nyinstallation': 'NYINSTALLATION'}.get(doc.offer_type, '')"/></div>
+                <h1 t-att-style="'font-size:24pt' if len(doc.pdf_title()) &gt; 50 else None" t-out="doc.pdf_title()"/>
+                <div class="cu" t-out="doc.partner_id.name"/>
+                <div class="ad"><t t-out="', '.join(x for x in [doc.partner_id.street, ' '.join(y for y in [doc.partner_id.zip, doc.partner_id.city] if y)] if x)"/></div>
+            </div>
+            <div class="benefits"><t t-call="elevata_offer.offer_pdf_features"/></div>
+            <div class="infostrip">
+                <div>Fastighet / hiss
+                    <b t-if="facts" t-out="facts[0]['value']"/>
+                    <b t-else="" t-out="' '.join(x for x in [doc.partner_id.street, doc.partner_id.city] if x)"/>
+                </div>
+                <div>Vår kontakt
+                    <b t-out="contact[0] if contact else ''"/>
+                    <b t-if="len(contact) &gt; 1" style="font-weight:400;font-size:8pt" t-out="' · '.join(contact[1:])"/>
+                </div>
+                <div>Giltig till<b t-out="doc.validity_date or ''"/></div>
+            </div>
+            <div class="cf">
+                <div>
+                    <b t-out="(company.name or '').upper()"/><br/>
+                    <t t-out="cp.street"/>, <t t-out="cp.zip"/> <t t-out="cp.city"/><br/>
+                    <t t-if="cp.company_registry">Org.nr <t t-out="cp.company_registry"/></t>
+                </div>
+                <div class="rt">
+                    <t t-if="cp.website"><t t-out="cp.website"/><br/></t>
+                    <t t-if="cp.phone"><t t-out="cp.phone"/><br/></t>
+                    <t t-if="cp.email"><t t-out="cp.email"/></t>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Prissammanfattning: alla belopp exkl. moms. Kräver 'rows' (label/amount/note) -->
+    <template id="offer_pdf_price_table">
+        <t t-set="has_note" t-value="any(r.get('note') for r in rows)"/>
+        <table class="tb">
+            <thead><tr>
+                <th>Benämning</th>
+                <th t-if="has_note">Vad ingår</th>
+                <th class="r" t-out="amount_head or 'Belopp exkl. moms'"/>
+            </tr></thead>
+            <tbody>
+                <t t-foreach="rows" t-as="r">
+                    <tr class="keep">
+                        <td t-out="r['label']"/>
+                        <td t-if="has_note" class="muted" style="font-size:8pt" t-out="r.get('note') or ''"/>
+                        <td class="r" t-out="doc.pdf_money(r['amount'])"/>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
+        <div class="totband"><span>Summa exkl. moms</span><span t-out="doc.pdf_money(doc.amount_untaxed)"/></div>
+    </template>
+
+    <!-- Tidsplan med ikoner -->
+    <template id="offer_pdf_steps">
+        <t t-set="tl" t-value="doc.pdf_timeline()"/>
+        <t t-set="step_icons" t-value="['calendar', 'wrench', 'check'] if len(tl) == 3 else ['calendar', 'truck', 'wrench', 'check']"/>
+        <div class="steps">
+            <t t-foreach="tl" t-as="s">
+                <div class="step">
+                    <div class="dot"><t t-call="elevata_offer.offer_pdf_icon"><t t-set="icon" t-value="step_icons[s_index]"/></t></div>
+                    <b t-out="s['title']"/>
+                    <span t-out="s['text']"/>
+                </div>
+            </t>
+        </div>
+    </template>
+
+    <!-- Nästa steg -->
+    <template id="offer_pdf_next">
+        <div class="next">
+            <t t-foreach="doc.pdf_next_steps()" t-as="n">
+                <div class="nx">
+                    <div class="ico"><t t-call="elevata_offer.offer_pdf_icon"><t t-set="icon" t-value="n['icon']"/></t></div>
+                    <div><b t-out="n['title']"/><span t-out="n['text']"/></div>
+                </div>
+            </t>
+        </div>
+    </template>
+
+    <!-- Avslutande tacksida -->
+    <template id="offer_pdf_thanks">
+        <div class="sheet flow">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:230mm;text-align:center;padding:30mm 20mm">
+                <img t-att-src="img4 + 'logo.png'" style="height:18mm;width:auto;margin-bottom:14mm"/>
+                <h1 style="font-size:26pt;font-weight:700;color:#2F4560;margin:0 0 6mm">Tack för<br/>ert förtroende</h1>
+                <p style="font-size:11pt;color:#5F6B7A;max-width:120mm;margin:0 0 18mm;line-height:1.6">
+                    Vi ser fram emot att få bidra till en säkrare, mer energieffektiv och
+                    trivsam hiss i er fastighet.
+                </p>
+                <p style="font-size:11pt;color:#5F6B7A;max-width:120mm;margin:0 0 18mm;line-height:1.6">
+                    Har ni frågor eller vill justera omfattningen får ni varmt
+                    välkommen att kontakta oss.
+                </p>
+                <t t-set="contact" t-value="doc.pdf_contact()"/>
+                <div t-if="contact" style="margin-top:6mm;border-top:1px solid #dee2e6;padding-top:8mm;min-width:80mm">
+                    <div style="font-weight:600;color:#2F4560;font-size:10pt;margin-bottom:2mm">Er kontakt hos Elevata</div>
+                    <div t-if="contact[0:]" style="font-size:10pt;color:#333" t-out="contact[0]"/>
+                    <div style="font-size:9pt;color:#5F6B7A;margin-top:1mm">
+                        <t t-if="len(contact) > 1"><t t-out="contact[1]"/></t>
+                        <t t-if="len(contact) > 2"> · <t t-out="contact[2]"/></t>
+                    </div>
+                </div>
+                <div style="margin-top:14mm;font-size:9pt;color:#9AA5B4">
+                    <b t-out="(company.name or '').upper()"/> · <t t-out="cp.website or 'www.elevata.se'"/>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- VÄLJARE: väljer layout per offert                          -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <template id="report_offer_document">
+        <t t-call="web.html_container">
+            <t t-set="_bu" t-value="env['ir.config_parameter'].sudo().get_param('web.base.url', 'http://localhost:8069')"/>
+            <t t-call="elevata_offer.offer_pdf_styles"/>
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="company" t-value="doc.company_id"/>
+                <t t-set="cp" t-value="company.partner_id"/>
+                <t t-set="img4" t-value="_bu + '/elevata_offer/static/src/img/pdf/v4/'"/>
+                <t t-set="layout" t-value="doc.get_report_layout()"/>
+                <t t-set="_ac" t-value="doc.pdf_accent_color()"/>
+                <t t-if="_ac != '#2F4560' and doc.design_version != 'v6'">
+                    <style>
+                        .od .navyblock, .od .th-navy, .od th[style*='2F4560'],
+                        .od .numhead, .od .goalsbox,
+                        .od table.price thead th {background:<t t-out="_ac"/> !important}
+                        .od .numhead .num, .od .navyblock .k, .od .navyblock .t,
+                        .od h2, .od h3, .od .sec b, .od .timerow .dot,
+                        .od .stepnum, .od .feat b {color:<t t-out="_ac"/> !important}
+                        .od table.price tfoot td {border-color:<t t-out="_ac"/> !important;color:<t t-out="_ac"/> !important}
+                    </style>
+                </t>
+                <t t-if="doc.design_version == 'v6'"><t t-call="elevata_offer.offer_doc_v6"/></t>
+                <t t-elif="layout == 'premium'"><t t-call="elevata_offer.offer_doc_premium"/></t>
+                <t t-elif="layout == 'reparation'"><t t-call="elevata_offer.offer_doc_reparation"/></t>
+                <t t-else=""><t t-call="elevata_offer.offer_doc_enkel"/></t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
