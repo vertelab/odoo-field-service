@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fieldservice_team_view_form_fleet" model="ir.ui.view">
+        <field name="name">fieldservice.team.form.fleet</field>
+        <field name="model">fieldservice.team</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.fieldservice_team_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='members']" position="after">
+                <page string="Vehicles" name="vehicles">
+                    <field name="vehicle_ids">
+                        <list>
+                            <field name="name"/>
+                            <field name="license_plate"/>
+                            <field name="model_id"/>
+                            <field name="driver_id"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="fieldservice_team_view_list_fleet" model="ir.ui.view">
+        <field name="name">fieldservice.team.list.fleet</field>
+        <field name="model">fieldservice.team</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.fieldservice_team_view_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_count']" position="after">
+                <field name="vehicle_count"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
