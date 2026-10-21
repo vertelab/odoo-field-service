@@ -22,11 +22,17 @@ from odoo import fields, models
 
 
 class FieldserviceOrderType(models.Model):
-    """Add a colour to the order type.
+    """Add a colour and a service-checklist flag to the order type.
 
     The colour is stored as a hex string rather than an integer index: the
     set of types is customer-defined and open-ended, so a fixed palette
     would run out. The `color` widget accepts a hex value directly.
+
+    `use_service_checklist` was carried over from Elevata's
+    elevata_order_types. It lives here rather than in
+    elevata_service_contract because the flag belongs to the order type,
+    and the contract module reads it through
+    product_tmpl_id.product_type.use_service_checklist.
     """
 
     _inherit = 'fieldservice.order.type'
@@ -35,4 +41,9 @@ class FieldserviceOrderType(models.Model):
         string='Color',
         default='#3498DB',
         help='Hex colour used to tell order types apart in lists.',
+    )
+    use_service_checklist = fields.Boolean(
+        string='Generate Service Checklist',
+        help='Automatically generate the service checklist on orders of '
+             'this type when the equipment requires one.',
     )

@@ -13,6 +13,7 @@
                         <group>
                             <field name="name"/>
                             <field name="color" widget="color" class="oe_inline"/>
+                            <field name="use_service_checklist"/>
                         </group>
                     </group>
                 </sheet>
@@ -28,6 +29,7 @@
         <field name="arch" type="xml">
             <field name="name" position="after">
                 <field name="color" widget="color"/>
+                <field name="use_service_checklist" optional="show"/>
             </field>
         </field>
     </record>
