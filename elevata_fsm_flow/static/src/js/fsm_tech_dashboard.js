@@ -119,20 +119,20 @@ export class ElevataFsmTechDashboard extends Component {
         this.state.priorityList = await this.orm.searchRead(
             Order,
             [...this._openDomain, ["priority", "in", ["3", "4"]]],
-            ["name", "equipment_id", "type", "priority", "planned_start_datetime"],
+            ["name", "equipment_id", "product_type", "priority", "planned_start_datetime"],
             { limit: 8, order: "priority desc, planned_start_datetime asc" }
         );
 
         this.state.upcoming = await this.orm.searchRead(
             Order,
             [...this._openDomain, ["planned_start_datetime", ">=", now]],
-            ["name", "equipment_id", "type", "priority", "planned_start_datetime"],
+            ["name", "equipment_id", "product_type", "priority", "planned_start_datetime"],
             { limit: 10, order: "planned_start_datetime asc" }
         );
         this.state.overdueList = await this.orm.searchRead(
             Order,
             [...this._openDomain, ["planned_start_datetime", "<", now]],
-            ["name", "equipment_id", "type", "priority", "planned_start_datetime"],
+            ["name", "equipment_id", "product_type", "priority", "planned_start_datetime"],
             { limit: 10, order: "planned_start_datetime asc" }
         );
     }

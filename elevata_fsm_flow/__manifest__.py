@@ -8,7 +8,7 @@
 #                           through product_tmpl_id.product_type.
 {
     'name': 'Elevata FSM Flow',
-    'version': '18.0.1.0.1',
+    'version': '18.0.1.0.3',
     'category': 'Field Service',
     'summary': 'Core FSM module: stages, elevator data, order workflow, views',
     'author': 'Vertel Sverige AB',
@@ -24,6 +24,7 @@
         'fieldservice_project_vrtl',
         'fieldservice_recurring_vrtl',
         'fieldservice_order_type_color',
+        'fieldservice_account_analytic',
         'maintenance_elevator',
         'property_maintanance',
         'hr_timesheet',

@@ -51,7 +51,7 @@ export class DashboardSearch extends Component {
             this.state.groups = [];
             this.state.orders = await this.orm.searchRead(
                 "fieldservice.order", domain,
-                ["name", "equipment_id", "type", "stage_id"],
+                ["name", "equipment_id", "product_type", "stage_id"],
                 { limit: 20 }
             );
         }
@@ -126,7 +126,7 @@ export class ElevataFsmDashboard extends Component {
                 this._invoicesThisMonth(),
                 this.orm.searchCount(Order, [...openDomain, ["planned_start_datetime", "<", now]]),
                 this.orm.searchCount(Order, [...openDomain, ["requested_employee_ids", "=", false]]),
-                this.orm.searchCount(Order, [...openDomain, ["type", "ilike", "anmärk"]]),
+                this.orm.searchCount(Order, [...openDomain, ["product_type.name", "ilike", "anmärk"]]),
                 this.orm.searchCount("elevata.service.contract", [["state", "=", "confirmed"]]),
             ]);
 
@@ -149,7 +149,7 @@ export class ElevataFsmDashboard extends Component {
         this.state.urgent = await this.orm.searchRead(
             Order,
             [...openDomain, ["priority", "in", ["3", "4"]]],
-            ["name", "equipment_id", "priority", "type", "planned_start_datetime"],
+            ["name", "equipment_id", "priority", "product_type", "planned_start_datetime"],
             { limit: 8, order: "priority desc, planned_start_datetime asc" }
         );
         this.state.shutdown = await this.orm.searchRead(
@@ -197,7 +197,7 @@ export class ElevataFsmDashboard extends Component {
             Order,
             [["stage_id.is_closed", "=", false],
              ["planned_start_datetime", ">=", now]],
-            ["name", "equipment_id", "requested_employee_ids", "type", "planned_start_datetime"],
+            ["name", "equipment_id", "requested_employee_ids", "product_type", "planned_start_datetime"],
             { limit: 10, order: "planned_start_datetime asc" }
         );
     }
@@ -288,7 +288,7 @@ export class ElevataFsmDashboard extends Component {
     }
     openInspectionNotes() {
         this._open("fieldservice.order", "Besiktningsanmärkningar",
-            [["stage_id.is_closed", "=", false], ["type", "ilike", "anmärk"]],
+            [["stage_id.is_closed", "=", false], ["product_type.name", "ilike", "anmärk"]],
             [[false, "kanban"], [false, "list"], [false, "form"]]);
     }
     openContracts() {

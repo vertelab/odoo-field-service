@@ -111,7 +111,7 @@
                                         <td t-esc="rec.name"/>
                                         <td t-esc="rec.equipment_id ? rec.equipment_id[1] : ''"/>
                                         <td t-esc="rec.person_id ? rec.person_id[1] : '—'"/>
-                                        <td t-esc="rec.type ? rec.type[1] : ''"/>
+                                        <td t-esc="rec.product_type ? rec.product_type[1] : ''"/>
                                         <td t-esc="formatPlanned(rec)"/>
                                     </tr>
                                 </tbody>
@@ -139,7 +139,7 @@
                                         class="o_clickable">
                                         <td t-esc="rec.name"/>
                                         <td t-esc="rec.equipment_id ? rec.equipment_id[1] : ''"/>
-                                        <td t-esc="rec.type ? rec.type[1] : ''"/>
+                                        <td t-esc="rec.product_type ? rec.product_type[1] : ''"/>
                                         <td>
                                             <span t-attf-class="badge {{rec.priority === '4' ? 'bg-danger' : 'bg-warning text-dark'}}"
                                                   t-esc="rec.priority === '4' ? 'Kritisk' : 'Hög'"/>
