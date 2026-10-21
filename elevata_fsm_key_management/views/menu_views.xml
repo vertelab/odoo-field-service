@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Actions -->
+    <record id="action_key_management" model="ir.actions.act_window">
+        <field name="name">Keys</field>
+        <field name="res_model">elevata.key</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_key_position_management" model="ir.actions.act_window">
+        <field name="name">Key Positions</field>
+        <field name="res_model">elevata.key.position</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_key_position_search"/>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_key_management_root"
+              name="Key Management"
+              parent="fieldservice_vrtl.configurations"
+              sequence="20"/>
+
+    <menuitem id="menu_key_list"
+              name="Keys"
+              parent="menu_key_management_root"
+              action="action_key_management"
+              sequence="10"/>
+
+    <menuitem id="menu_key_position_list"
+              name="Key Positions"
+              parent="menu_key_management_root"
+              action="action_key_position_management"
+              sequence="20"/>
+
+</odoo>

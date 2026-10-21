@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_key_position_user,key.position.user,model_elevata_key_position,elevata_fsm_key_management.group_key_management_user,1,0,0,0
+access_key_position_manager,key.position.manager,model_elevata_key_position,elevata_fsm_key_management.group_key_management_manager,1,1,1,1
+access_key_user,key.user,model_elevata_key,elevata_fsm_key_management.group_key_management_user,1,0,0,0
+access_key_manager,key.manager,model_elevata_key,elevata_fsm_key_management.group_key_management_manager,1,1,1,1

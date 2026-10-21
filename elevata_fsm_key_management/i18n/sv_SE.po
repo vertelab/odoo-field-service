@@ -1,0 +1,350 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* elevata_fsm_key_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20260317\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 13:12+0000\n"
+"PO-Revision-Date: 2026-10-18 13:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__active
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__active
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_search
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_form
+msgid "Additional notes about the key"
+msgstr "Ytterligare anteckningar om nyckeln"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__city
+msgid "City"
+msgstr "Stad"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__code
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__code
+msgid "Code"
+msgstr "Kod/info"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.fsm_location_form_key_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.fsm_order_form_key_inherit
+msgid "Codes/Notes"
+msgstr "Koder/anteckningar"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Compute from address"
+msgstr "Beräkna från adress"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Compute position"
+msgstr "Beräkna position"
+
+#. module: elevata_fsm_key_management
+#. odoo-python
+#: code:addons/elevata_fsm_key_management/models/key_position.py:0
+#, python-format
+msgid "Could not find coordinates for these positions: %s"
+msgstr "Kunde inte hitta koordinater för dessa positioner: %s"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__create_uid
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__create_date
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__create_date
+msgid "Created on"
+msgstr "Skapad den"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__display_name
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__display_name
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__elevator_ids
+msgid "Elevator"
+msgstr "Hiss"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__elevator_ids
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_form
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Elevators"
+msgstr "Hissar"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model,name:elevata_fsm_key_management.model_fsm_location
+msgid "Field Service Location"
+msgstr "Hiss"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model,name:elevata_fsm_key_management.model_fsm_order
+msgid "Field Service Order"
+msgstr "ArbertsOrder"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Geolocation"
+msgstr "Geolokalisering"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__date_localization
+msgid "Geolocation Date"
+msgstr "Geopositionsdatum"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__id
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__id
+msgid "ID"
+msgstr "ID"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_search
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model,name:elevata_fsm_key_management.model_elevata_key
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_form
+msgid "Key"
+msgstr "Nyckel"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_location__key_access_info
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_order__key_access_info
+msgid "Key Access Info"
+msgstr "Nyckelinfo"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_location__key_codes
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_order__key_codes
+msgid "Key Codes"
+msgstr "Nyckelkoder"
+
+#. module: elevata_fsm_key_management
+#: model:ir.module.category,name:elevata_fsm_key_management.module_category_key_management
+#: model:ir.ui.menu,name:elevata_fsm_key_management.menu_key_management_root
+msgid "Key Management"
+msgstr "Nyckelhantering"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_location__key_notes
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_order__key_notes
+msgid "Key Notes"
+msgstr "Nyckelanteckningar"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.fsm_location_form_key_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.fsm_order_form_key_inherit
+msgid "Key Number"
+msgstr "Nyckelnr"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model,name:elevata_fsm_key_management.model_elevata_key_position
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__position_id
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.fsm_location_form_key_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.fsm_order_form_key_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Key Position"
+msgstr "Nyckelposition"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_location__key_position_addresses
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_order__key_position_addresses
+msgid "Key Position Addresses"
+msgstr "Nyckelpositionsadresser"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.fsm_location_form_key_inherit
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.fsm_order_form_key_inherit
+msgid "Key Position Code"
+msgstr "Nyckelpositionskod"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_location__key_position_codes
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_order__key_position_codes
+msgid "Key Position Codes"
+msgstr "Nyckelpositionskoder"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_order__key_position_map_url
+msgid "Key Position Map URL"
+msgstr "Kart-URL"
+
+#. module: elevata_fsm_key_management
+#: model:ir.actions.act_window,name:elevata_fsm_key_management.action_key_position_management
+#: model:ir.ui.menu,name:elevata_fsm_key_management.menu_key_position_list
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_tree
+msgid "Key Positions"
+msgstr "Nyckelpositioner"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields.selection,name:elevata_fsm_key_management.selection__elevata_key_position__position_type__key_tube
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_search
+msgid "Key Tube"
+msgstr "Nyckelrör"
+
+#. module: elevata_fsm_key_management
+#. odoo-python
+#: code:addons/elevata_fsm_key_management/models/key.py:0
+#, python-format
+msgid "Key code must be unique!"
+msgstr "Nyckelkoden måste vara unik!"
+
+#. module: elevata_fsm_key_management
+#: model:ir.actions.act_window,name:elevata_fsm_key_management.action_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__key_ids
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_location__key_ids
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_order__key_ids
+#: model:ir.ui.menu,name:elevata_fsm_key_management.menu_key_list
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Keys"
+msgstr "Nycklar"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__write_uid
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__write_date
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad den"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Lat:"
+msgstr "Lat:"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__latitude
+msgid "Latitude"
+msgstr "Latitud"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Long:"
+msgstr "Long:"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__longitude
+msgid "Longitude"
+msgstr "Longitud"
+
+#. module: elevata_fsm_key_management
+#: model:ir.module.category,description:elevata_fsm_key_management.module_category_key_management
+msgid "Manage keys and key positions for field service"
+msgstr "Hantera nycklar och nyckelpositioner för fältservice"
+
+#. module: elevata_fsm_key_management
+#: model:res.groups,name:elevata_fsm_key_management.group_key_management_manager
+msgid "Manager"
+msgstr "Administratör"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_fsm_location__key_position_map_url
+msgid "Map URL"
+msgstr "Kart-URL"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__name
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__name
+msgid "Name"
+msgstr "Namn"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__notes
+msgid "Notes"
+msgstr "Anteckningar"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields.selection,name:elevata_fsm_key_management.selection__elevata_key_position__position_type__other
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_search
+msgid "Other"
+msgstr "Övrigt"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key__owner_id
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__owner_id
+msgid "Owner"
+msgstr "Ägare"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Position"
+msgstr "Position"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__position_type
+msgid "Position Type"
+msgstr "Positionstyp"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Refresh"
+msgstr "Uppdatera"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Refresh position"
+msgstr "Uppdatera position"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields.selection,name:elevata_fsm_key_management.selection__elevata_key_position__position_type__safe
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_search
+msgid "Safe"
+msgstr "Kassaskåp"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields.selection,name:elevata_fsm_key_management.selection__elevata_key_position__position_type__shaft
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_search
+msgid "Shaft"
+msgstr "Schakt"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__street
+msgid "Street"
+msgstr "Gata"
+
+#. module: elevata_fsm_key_management
+#: model_terms:ir.ui.view,arch_db:elevata_fsm_key_management.view_key_position_form
+msgid "Updated:"
+msgstr "Uppdaterad:"
+
+#. module: elevata_fsm_key_management
+#: model:res.groups,name:elevata_fsm_key_management.group_key_management_user
+msgid "User"
+msgstr "Användare"
+
+#. module: elevata_fsm_key_management
+#. odoo-python
+#: code:addons/elevata_fsm_key_management/models/key_position.py:0
+#, python-format
+msgid "Warning"
+msgstr "Varning"
+
+#. module: elevata_fsm_key_management
+#: model:ir.model.fields,field_description:elevata_fsm_key_management.field_elevata_key_position__zip
+msgid "ZIP"
+msgstr "Postnummer"

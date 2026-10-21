@@ -1,0 +1,37 @@
+{
+    'name': 'Elevata FSM Key Management',
+    'version': '18.0.1.0.0',
+    'category': 'Field Service',
+    'summary': 'Key and key position management for elevator field service',
+    'author': 'Vertel Sverige AB',
+    'maintainer': 'Vertel Sverige AB',
+    'website': 'https://vertel.se',
+    'repository': 'https://github.com/vertelab/odoo-field-service',
+    'license': 'AGPL-3',
+    'images': ['static/description/banner.png'],
+    'depends': [
+        'fieldservice_vrtl',
+        'elevata_fsm_elevator',
+        'elevata_fsm_flow',
+        'contacts',
+        'base_geolocalize',
+    ],
+    'data': [
+        'security/key_management_security.xml',
+        'security/ir.model.access.csv',
+        'data/sequence_data.xml',
+        'views/key_position_views.xml',
+        'views/key_views.xml',
+        'views/fsm_location_views.xml',
+        'views/fsm_order_views.xml',
+        'views/menu_views.xml',
+    ],
+    'assets': {
+        'web.assets_backend': [
+            'elevata_fsm_key_management/static/src/js/url_text_widget.js',
+            'elevata_fsm_key_management/static/src/xml/url_text_widget.xml',
+        ],
+    },
+    'installable': True,
+    'application': False,
+}

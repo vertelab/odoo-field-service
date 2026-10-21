@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <record id="seq_key_position" model="ir.sequence">
+        <field name="name">Key Position</field>
+        <field name="code">elevata.key.position</field>
+        <field name="prefix">NP</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+    </record>
+
+    <record id="seq_key" model="ir.sequence">
+        <field name="name">Key</field>
+        <field name="code">elevata.key</field>
+        <field name="prefix">KEY</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+    </record>
+
+</odoo>

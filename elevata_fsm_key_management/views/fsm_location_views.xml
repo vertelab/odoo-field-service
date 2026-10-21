@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fsm_location_form_key_inherit" model="ir.ui.view">
+        <field name="name">fsm.location.form.key.inherit</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="elevata_fsm_flow.maintenance_equipment_view_form_inherit_fsm_flow"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group[1]" position="inside">
+                <group invisible="not key_ids">
+                    <field name="key_ids" readonly="1" widget="many2many_tags"
+                           options="{'no_create': True}" string="Key Number"/>
+                    <field name="key_codes" readonly="1" invisible="not key_codes"
+                           string="Codes/Notes"/>
+                    <field name="key_position_addresses" string="Key Position"
+                           readonly="1" invisible="not key_position_addresses"
+                           widget="url_text"/>
+                    <field name="key_position_codes" readonly="1"
+                           invisible="not key_position_codes"
+                           string="Key Position Code"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

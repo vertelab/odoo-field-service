@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_key_form" model="ir.ui.view">
+        <field name="name">elevata.key.form</field>
+        <field name="model">elevata.key</field>
+        <field name="arch" type="xml">
+            <form string="Key">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="position_id"/>
+                            <field name="code"/>
+                            <field name="owner_id"/>
+                            <field name="active"/>
+                            <field name="notes" placeholder="Additional notes about the key"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Elevators" name="elevators">
+                            <field name="elevator_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_key_tree" model="ir.ui.view">
+        <field name="name">elevata.key.tree</field>
+        <field name="model">elevata.key</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="position_id"/>
+                <field name="code"/>
+                <field name="owner_id"/>
+            </list>
+        </field>
+    </record>
+
+</odoo>
