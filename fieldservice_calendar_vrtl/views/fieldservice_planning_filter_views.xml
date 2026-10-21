@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Team checkbox list in the planning calendar.
+
+        Odoo's calendar renders a checkbox per value of a many2one field
+        when the field carries filters="1". write_model/write_field say
+        where the per-user state is stored; filter_field names the boolean
+        the view reads to decide visibility.
+
+        In its own file so it survives edits to the base calendar view.
+    -->
+    <record id="fieldservice_planning_view_calendar_filtered" model="ir.ui.view">
+        <field name="name">fieldservice.planning.calendar.filtered</field>
+        <field name="model">fieldservice.planning</field>
+        <field name="inherit_id" ref="fieldservice_calendar_vrtl.fieldservice_planning_view_calendar"/>
+        <field name="arch" type="xml">
+            <xpath expr="//calendar/field[@name='requested_employee_ids']" position="attributes">
+                <attribute name="filters">1</attribute>
+                <attribute name="write_model">calendar.filters</attribute>
+                <attribute name="write_field">partner_id</attribute>
+                <attribute name="filter_field">partner_checked</attribute>
+                <attribute name="avatar_field">avatar_128</attribute>
+            </xpath>
+            <xpath expr="//calendar/field[@name='team_id']" position="attributes">
+                <attribute name="filters">1</attribute>
+                <attribute name="write_model">calendar.filters.team</attribute>
+                <attribute name="write_field">team_id</attribute>
+                <attribute name="filter_field">team_checked</attribute>
+            </xpath>
+            <xpath expr="//calendar" position="attributes">
+                <attribute name="color">team_id</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

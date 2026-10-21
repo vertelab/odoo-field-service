@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_fieldservice_planning_user,fieldservice.planning.user,model_fieldservice_planning,fieldservice_vrtl.fieldservice_group_user,1,1,1,1
 access_fieldservice_planning_manager,fieldservice.planning.manager,model_fieldservice_planning,fieldservice_vrtl.fieldservice_group_manager,1,1,1,1
+access_calendar_filters_team_user,calendar.filters.team.user,model_calendar_filters_team,base.group_user,1,1,1,1
+access_calendar_filters_team_fsm_user,calendar.filters.team.fsm.user,model_calendar_filters_team,fieldservice_vrtl.fieldservice_group_user,1,1,1,1
+access_calendar_filters_team_fsm_manager,calendar.filters.team.fsm.manager,model_calendar_filters_team,fieldservice_vrtl.fieldservice_group_manager,1,1,1,1
