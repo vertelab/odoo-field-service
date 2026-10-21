@@ -6,3 +6,6 @@ from . import fieldservice_order_type
 from . import ir_config
 from . import fieldservice_order_tag
 from . import product_template
+from . import fieldservice_team
+from . import hr_employee
+from . import fieldservice_order_team

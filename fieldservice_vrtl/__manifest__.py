@@ -1,7 +1,7 @@
 {
     'name': "Field service: Vertel",
-    'version': '18.0.1.0.1',
-    'depends': ['mail','base','hr','project', 'product_brand'],
+    'version': '18.0.1.0.3',
+    'depends': ['mail','base','hr','project', 'product_brand', 'maintenance'],
     'author': "Vertel Sverige AB",
     'category': 'Category',
     'license': 'AGPL-3',
@@ -16,6 +16,7 @@
         'views/fieldservice_order_views.xml',
         'views/fieldservice_order_line_views.xml',
         'views/fieldservice_order_type_view.xml',
+        'views/fieldservice_team_views.xml',
         'views/fieldservice_stage_views.xml',
         'views/ir_config.xml',
         'views/product_views.xml',
