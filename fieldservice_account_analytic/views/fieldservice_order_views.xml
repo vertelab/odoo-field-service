@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fieldservice_order_form_analytic" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.analytic</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="elevata_fsm_flow.fsm_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Analytic" name="analytic_page" sequence="60">
+                    <group>
+                        <field name="analytic_account_id"/>
+                        <field name="analytic_distribution" widget="analytic_distribution"
+                               groups="analytic.group_analytic_accounting"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
