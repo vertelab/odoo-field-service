@@ -25,12 +25,6 @@
               action="action_contract_templates"
               sequence="10"/>
 
-    <menuitem id="menu_service_checklists"
-              name="Checklist Templates"
-              parent="menu_service_contract_config"
-              action="action_service_checklist"
-              sequence="20"/>
-
     <menuitem id="menu_template_modifications"
               name="Template Modifications"
               parent="menu_service_contract_config"

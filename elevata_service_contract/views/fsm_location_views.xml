@@ -39,26 +39,6 @@
                 <field name="annual_visits" string="Antal besök/år" readonly="1"
                        invisible="not active_service_contract_id"/>
             </xpath>
-            <xpath expr="//page[@name='maintenance']" position="inside">
-                <group string="Serviceavtal">
-                    <field name="require_service_checklist"/>
-                </group>
-            </xpath>
-            <xpath expr="//page[@name='maintenance']" position="inside">
-                <group string="Anpassad servicechecklista" invisible="not require_service_checklist">
-                    <div colspan="2">
-                        <button name="action_populate_checklist" type="object"
-                                string="Hämta från mall" class="btn btn-secondary btn-sm mb-2"
-                                confirm="Detta ersätter befintliga rader med standardmallen. Fortsätt?"/>
-                    </div>
-                    <field name="custom_checklist_line_ids" nolabel="1" colspan="2">
-                        <list editable="bottom">
-                            <field name="sequence" widget="handle"/>
-                            <field name="name" string="Uppgift"/>
-                        </list>
-                    </field>
-                </group>
-            </xpath>
         </field>
     </record>
 </odoo>

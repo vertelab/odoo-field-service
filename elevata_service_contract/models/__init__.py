@@ -11,5 +11,4 @@ from . import fsm_material_line
 from . import fsm_location
 from . import calendar_event
 from . import res_partner
-from . import service_checklist
 from . import account_move

@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Extend FSM Order form: billing status + checklist + invoice button -->
+    <!-- Extend FSM Order form: billing status + invoice button -->
     <record id="view_fsm_order_service_contract_ext" model="ir.ui.view">
         <field name="name">fsm.order.service.contract.ext</field>
         <field name="model">fieldservice.order</field>
         <field name="inherit_id" ref="elevata_fsm_flow.fsm_order_form"/>
         <field name="arch" type="xml">
-
-            <!-- Smart button: checklista -->
-            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
-                <button class="oe_stat_button"
-                        icon="fa-check-square-o"
-                        invisible="checklist_count == 0">
-                    <div class="o_stat_info">
-                        <span class="o_stat_value">
-                            <field name="checklist_done_count"/>/<field name="checklist_count"/>
-                        </span>
-                        <span class="o_stat_text">Checklista</span>
-                    </div>
-                </button>
-            </xpath>
 
             <!-- Garantijobb-badge (visas bara vid garanti) -->
             <xpath expr="//field[@name='name']" position="after">
@@ -141,41 +127,6 @@
                         </field>
                     </group>
                 </page>
-            </xpath>
-
-            <!-- Göm beskrivningsfält på serviceordrar med checklista -->
-            <xpath expr="//group[@name='description_grp']" position="attributes">
-                <attribute name="invisible">location_require_checklist and type_use_service_checklist</attribute>
-            </xpath>
-
-            <!-- Ta bort required på description när hiss har checklista -->
-            <xpath expr="//group[@name='description_grp']/field[@name='description']" position="attributes">
-                <attribute name="required">not (location_require_checklist and type_use_service_checklist)</attribute>
-            </xpath>
-
-            <!-- Göm felanmälare på serviceordrar med checklista -->
-            <xpath expr="//group[@name='reporter_grp']" position="attributes">
-                <attribute name="invisible">location_require_checklist and type_use_service_checklist</attribute>
-            </xpath>
-
-            <!-- Checklista inline (ersätter beskrivning + felanmälare) -->
-            <xpath expr="//group[@name='description_grp']" position="after">
-                <field name="location_require_checklist" invisible="1"/>
-                <field name="type_use_service_checklist" invisible="1"/>
-                <group string="Servicechecklista" name="checklist_grp"
-                       invisible="not (location_require_checklist and type_use_service_checklist)">
-                    <field name="checklist_item_ids" nolabel="1" colspan="2">
-                        <list editable="bottom" decoration-muted="done">
-                            <field name="sequence" widget="handle"/>
-                            <field name="done" widget="boolean_toggle"/>
-                            <field name="name" string="Uppgift"/>
-                            <field name="note" string="Anteckning"/>
-                        </list>
-                    </field>
-                    <div class="text-muted" style="margin-top:4px; font-size:12px;">
-                        <span><field name="checklist_done_count" class="d-inline"/> av <field name="checklist_count" class="d-inline"/> uppgifter klara</span>
-                    </div>
-                </group>
             </xpath>
 
         </field>

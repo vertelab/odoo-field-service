@@ -110,121 +110,6 @@ class FSMOrder(models.Model):
         digits=(16, 2),
     )
 
-    location_require_checklist = fields.Boolean(
-        related='equipment_id.require_service_checklist',
-        string='Hiss kräver checklista',
-    )
-    type_use_service_checklist = fields.Boolean(
-        related='product_tmpl_id.product_type.use_service_checklist',
-        string='Ordertyp använder checklista',
-    )
-
-    checklist_item_ids = fields.One2many(
-        'elevata.service.checklist.item',
-        'fsm_order_id',
-        string='Checklist',
-    )
-    checklist_count = fields.Integer(
-        string='Checklist Items',
-        compute='_compute_checklist_count',
-    )
-    checklist_done_count = fields.Integer(
-        string='Done',
-        compute='_compute_checklist_count',
-    )
-
-    @api.onchange('equipment_id', 'type')
-    def _onchange_location_set_description(self):
-        if not self.equipment_id:
-            return
-        if (self.equipment_id.require_service_checklist
-                and self.type.use_service_checklist):
-            if not self.checklist_item_ids:
-                self._onchange_populate_checklist()
-        else:
-            if not self.description:
-                self.description = 'Service'
-
-    def _onchange_populate_checklist(self):
-        location = self.equipment_id
-        items = []
-        if location.custom_checklist_line_ids:
-            for line in location.custom_checklist_line_ids:
-                items.append((0, 0, {
-                    'name': line.name,
-                    'sequence': line.sequence,
-                }))
-        else:
-            if 'elevata.service.checklist' not in self.env.registry:
-                return
-            elevator_type = location.elevator_type_id
-            if not elevator_type:
-                return
-            domain = [
-                '|',
-                ('elevator_type_ids', '=', False),
-                ('elevator_type_ids', 'in', elevator_type.id),
-            ]
-            checklists = self.env['elevata.service.checklist'].search(domain)
-            for checklist in checklists:
-                for line in checklist.line_ids:
-                    items.append((0, 0, {
-                        'checklist_line_id': line.id,
-                        'name': line.name,
-                        'sequence': line.sequence,
-                    }))
-        if items:
-            self.checklist_item_ids = items
-
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            if not vals.get('description'):
-                loc_id = vals.get('equipment_id')
-                if loc_id:
-                    loc = self.env['maintenance.equipment'].browse(loc_id)
-                    if not loc.require_service_checklist:
-                        vals['description'] = 'Service'
-        orders = super().create(vals_list)
-        for order in orders:
-            if (order.equipment_id
-                    and order.equipment_id.require_service_checklist
-                    and order.type.use_service_checklist
-                    and not order.checklist_item_ids):
-                self._auto_generate_checklist(order)
-        return orders
-
-    def _auto_generate_checklist(self, order):
-        location = order.equipment_id
-        items = []
-        if location.custom_checklist_line_ids:
-            for line in location.custom_checklist_line_ids:
-                items.append((0, 0, {
-                    'name': line.name,
-                    'sequence': line.sequence,
-                }))
-        else:
-            if 'elevata.service.checklist' not in self.env.registry:
-                return
-            elevator_type = location.elevator_type_id
-            if not elevator_type:
-                return
-            domain = [
-                '|',
-                ('elevator_type_ids', '=', False),
-                ('elevator_type_ids', 'in', elevator_type.id),
-            ]
-            checklists = self.env['elevata.service.checklist'].search(domain)
-            for checklist in checklists:
-                for line in checklist.line_ids:
-                    items.append((0, 0, {
-                        'checklist_line_id': line.id,
-                        'name': line.name,
-                        'sequence': line.sequence,
-                    }))
-        if items:
-            order.write({'checklist_item_ids': items})
-
     @api.depends('material_line_ids.amount')
     def _compute_material_totals(self):
         for order in self:
@@ -332,13 +217,6 @@ class FSMOrder(models.Model):
             else:
                 order.billing_label = ''
 
-    @api.depends('checklist_item_ids', 'checklist_item_ids.done')
-    def _compute_checklist_count(self):
-        for order in self:
-            items = order.checklist_item_ids
-            order.checklist_count = len(items)
-            order.checklist_done_count = len(items.filtered('done'))
-
     def action_create_time_invoice(self):
         self.ensure_one()
         if self.is_warranty:
@@ -404,19 +282,6 @@ class FSMOrder(models.Model):
                     _('Add at least one time line or material line '
                       'before completing the order.')
                 )
-            if (order.equipment_id
-                    and order.equipment_id.require_service_checklist
-                    and order.type.use_service_checklist
-                    and order.checklist_item_ids):
-                undone = order.checklist_item_ids.filtered(
-                    lambda i: not i.done
-                )
-                if undone:
-                    raise ValidationError(
-                        _('All checklist items must be completed before '
-                          'closing this order. %d item(s) remaining.')
-                        % len(undone)
-                    )
         # Skip fieldservice_elevata_flow duplicate check via MRO
         mro = type(self).__mro__
         skip = False
