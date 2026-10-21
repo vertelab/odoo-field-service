@@ -31,13 +31,6 @@ class HrDepartment(models.Model):
 
     _inherit = 'hr.department'
 
-    fsm_calendar_user_id = fields.Many2one(
-        'res.users',
-        string='Field Service Calendar Owner',
-        domain="[('share', '=', False)]",
-        help='Owner of planning events for this department. Used when the '
-             'team has no calendar owner of its own.',
-    )
     fieldservice_team_ids = fields.One2many(
         'fieldservice.team',
         'department_id',
@@ -47,14 +40,20 @@ class HrDepartment(models.Model):
     def _get_fsm_calendar_user(self):
         """Owner for this department, walking up the parent chain.
 
-        A sub-department without its own owner inherits the parent's — the
-        same way a team falls back to its company.
+        The department manager is the owner — hr.department.manager_id
+        already exists, so there is no second field to keep in sync. A
+        manager without a user account cannot own a calendar, so the walk
+        continues to the parent department.
+
+        A sub-department without a manager inherits the parent's, the same
+        way a team falls back to its company.
         """
         self.ensure_one()
         department = self
         while department:
-            if department.fsm_calendar_user_id:
-                return department.fsm_calendar_user_id
+            manager = department.manager_id
+            if manager and manager.user_id:
+                return manager.user_id
             department = department.parent_id
         return self.env['res.users']
 

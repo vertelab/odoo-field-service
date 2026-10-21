@@ -1,6 +1,6 @@
 {
     'name': 'Field Service - Planning (Vertel)',
-    'version': '18.0.1.0.6',
+    'version': '18.0.1.0.7',
     'category': 'Field Service',
     'summary': 'Plan field service orders on the calendar',
     'description': """
@@ -40,9 +40,9 @@ works on any field service installation.
     ],
     'data': [
         'data/calendar_event_type_data.xml',
+        'data/res_groups_data.xml',
         'security/ir.model.access.csv',
         'views/res_company_views.xml',
-        'views/hr_department_views.xml',
         'views/fieldservice_team_views.xml',
         'views/fieldservice_planning_views.xml',
         'views/fieldservice_planning_filter_views.xml',

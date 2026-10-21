@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        A Field Service user is a real Odoo user.
+
+        fieldservice_group_user implied nothing, so a technician holding
+        only that group could not read calendar.event at all — every
+        calendar ACL row is keyed on base.group_user or narrower. The
+        technician saw an AccessError instead of their week.
+
+        Implied rather than assigned: whoever grants the Field Service
+        role gets a working user, without a second manual step that is
+        easy to forget when a new technician is onboarded.
+    -->
+    <record id="fieldservice_vrtl.fieldservice_group_user" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+</odoo>

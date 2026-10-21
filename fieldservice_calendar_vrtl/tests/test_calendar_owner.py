@@ -41,9 +41,13 @@ class TestCalendarOwner(TransactionCase):
             'login': 'owner_tech_test',
             'email': 'tech.user@example.com',
         })
+        cls.manager = cls.env['hr.employee'].create({
+            'name': 'Department Manager',
+            'user_id': cls.user_dept.id,
+        })
         cls.department = cls.env['hr.department'].create({
             'name': 'Service Test Dept',
-            'fsm_calendar_user_id': cls.user_dept.id,
+            'manager_id': cls.manager.id,
         })
         cls.team = cls.env['fieldservice.team'].create({
             'name': 'Owner Chain Team',
@@ -79,14 +83,14 @@ class TestCalendarOwner(TransactionCase):
 
     def test_company_owner_used_when_department_has_none(self):
         """No department owner falls through to the company."""
-        self.department.fsm_calendar_user_id = False
+        self.department.manager_id = False
         self.company.fsm_calendar_user_id = self.user_company
         line = self._make_planning()
         self.assertEqual(line._get_calendar_user(), self.user_company)
 
     def test_individual_used_when_nothing_above_resolves(self):
         """Nothing configured: the technician's own user is the owner."""
-        self.department.fsm_calendar_user_id = False
+        self.department.manager_id = False
         self.company.fsm_calendar_user_id = False
         employee = self.env['hr.employee'].create({
             'name': 'Owner Chain Tech',
@@ -98,7 +102,7 @@ class TestCalendarOwner(TransactionCase):
 
     def test_owner_is_never_empty(self):
         """Last resort is the current user — an ownerless event is invisible."""
-        self.department.fsm_calendar_user_id = False
+        self.department.manager_id = False
         self.company.fsm_calendar_user_id = False
         line = self._make_planning()
         self.assertTrue(line._get_calendar_user())
@@ -148,3 +152,37 @@ class TestCalendarOwner(TransactionCase):
         partner_ids = vals['partner_ids'][0][2]
         self.assertIn(line.fsm_order_id.partner_id.id, partner_ids)
         self.assertIn(employee._get_calendar_partner().id, partner_ids)
+
+    # --- technician is a real user -------------------------------------
+
+    def test_fieldservice_user_implies_internal_user(self):
+        """Field Service User must imply base.group_user.
+
+        Every calendar.event ACL row is keyed on base.group_user or
+        narrower, so without this a technician holding only the Field
+        Service role gets AccessError instead of their week view.
+        """
+        group = self.env.ref('fieldservice_vrtl.fieldservice_group_user')
+        self.assertIn(self.env.ref('base.group_user'), group.implied_ids)
+
+    def test_technician_can_read_calendar(self):
+        """A technician with only the Field Service role can read events."""
+        group = self.env.ref('fieldservice_vrtl.fieldservice_group_user')
+        technician = self.env['res.users'].create({
+            'name': 'Real Technician',
+            'login': 'real_technician_test',
+            'email': 'real.tech@example.com',
+            'groups_id': [(6, 0, [group.id])],
+        })
+        self.env.flush_all()
+        event = self.env['calendar.event'].create({
+            'name': 'Technician Visible',
+            'start': '2026-07-01 08:00:00',
+            'stop': '2026-07-01 09:00:00',
+            'user_id': technician.id,
+        })
+        self.assertTrue(
+            self.env['calendar.event'].with_user(technician).search_count(
+                [('id', '=', event.id)]),
+            'A technician must be able to see their own calendar event',
+        )
