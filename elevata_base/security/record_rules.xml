@@ -6,7 +6,19 @@
              Record Rules — Elevata Security
              ========================================================== -->
 
-        <!-- Technician: sees only own work orders (assigned to them) -->
+        <!-- Technician: sees only own work orders (assigned to them)
+
+             NOTE: this rule cannot restrict on its own. Odoo ORs the rules
+             of every group a user belongs to, and group_user now implies
+             fieldservice_group_user, whose rule "technician access to
+             active and recent orders" allows every open order. A domain
+             that is narrower than that one has no effect.
+
+             To actually scope technicians, that field service rule has to
+             be narrowed too, or this rule has to be global. Left as-is
+             because the Elevata behaviour in 17 may have relied on the
+             wider rule; see the note in the module description before
+             tightening it. -->
         <record id="rule_fsm_order_technician" model="ir.rule">
             <field name="name">Field Service Order: Technician sees own</field>
             <field name="model_id" ref="fieldservice_vrtl.model_fieldservice_order"/>

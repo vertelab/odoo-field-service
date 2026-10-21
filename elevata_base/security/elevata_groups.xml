@@ -15,11 +15,18 @@
             <field name="sequence">50</field>
         </record>
 
-        <!-- Level 1: Base user (all employees) -->
+        <!-- Level 1: Base user (all employees)
+
+             Implies fieldservice_group_user: Elevata's groups are the
+             company-wide hierarchy, but the field service module owns the
+             access rights on fieldservice.order. Without this implication
+             a technician passes the Elevata record rules and then hits
+             AccessError on the model itself. -->
         <record id="group_user" model="res.groups">
             <field name="name">User</field>
             <field name="comment">Base — sees own work, limited access</field>
             <field name="category_id" ref="module_category_elevata"/>
+            <field name="implied_ids" eval="[(4, ref('fieldservice_vrtl.fieldservice_group_user'))]"/>
         </record>
 
         <!-- Level 2a: Technician (inherits from group_user) -->
@@ -38,12 +45,15 @@
             <field name="implied_ids" eval="[(4, ref('group_user'))]"/>
         </record>
 
-        <!-- Level 3: Manager (inherits from technician + sales) -->
+        <!-- Level 3: Manager (inherits from technician + sales)
+
+             Also implies fieldservice_group_manager, which carries the
+             field service module's manager rights. -->
         <record id="group_manager" model="res.groups">
             <field name="name">Manager</field>
             <field name="comment">All functions + reports + pricelists</field>
             <field name="category_id" ref="module_category_elevata"/>
-            <field name="implied_ids" eval="[(4, ref('group_technician')), (4, ref('group_sales'))]"/>
+            <field name="implied_ids" eval="[(4, ref('group_technician')), (4, ref('group_sales')), (4, ref('fieldservice_vrtl.fieldservice_group_manager'))]"/>
         </record>
 
         <!-- Level 4: Admin (inherits from manager) -->

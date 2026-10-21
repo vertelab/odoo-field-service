@@ -1,6 +1,6 @@
 {
     'name': 'Elevata Base',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     'category': 'Elevata',
     'summary': 'Security groups, roles, calendar tags and shared constants for Elevata Hiss AB',
     'author': 'Elevata',
