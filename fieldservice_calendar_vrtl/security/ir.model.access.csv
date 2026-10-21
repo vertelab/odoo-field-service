@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fieldservice_planning_user,fieldservice.planning.user,model_fieldservice_planning,fieldservice_vrtl.fieldservice_group_user,1,1,1,1
+access_fieldservice_planning_manager,fieldservice.planning.manager,model_fieldservice_planning,fieldservice_vrtl.fieldservice_group_manager,1,1,1,1

@@ -18,6 +18,7 @@
         'views/fieldservice_order_type_view.xml',
         'views/fieldservice_team_views.xml',
         'views/fieldservice_stage_views.xml',
+        'views/fieldservice_team_views.xml',
         'views/ir_config.xml',
         'views/product_views.xml',
         'data/fieldservice_project.xml',

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fieldservice_planning_view_list" model="ir.ui.view">
+        <field name="name">fieldservice.planning.list</field>
+        <field name="model">fieldservice.planning</field>
+        <field name="arch" type="xml">
+            <list string="Planning">
+                <field name="date_start" widget="date"/>
+                <field name="time_start" widget="float_time"/>
+                <field name="time_end" widget="float_time"/>
+                <field name="fsm_order_id"/>
+                <field name="requested_employee_ids"/>
+                <field name="team_id" optional="show"/>
+                <field name="is_confirmed" widget="boolean_toggle"/>
+                <field name="note" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="fieldservice_planning_view_form" model="ir.ui.view">
+        <field name="name">fieldservice.planning.form</field>
+        <field name="model">fieldservice.planning</field>
+        <field name="arch" type="xml">
+            <form string="Planning">
+                <header>
+                    <field name="is_confirmed" widget="boolean_toggle"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="fsm_order_id"/>
+                            <field name="requested_employee_ids"/>
+                            <field name="team_id"/>
+                        </group>
+                        <group>
+                            <field name="planning_date"/>
+                            <field name="time_start" widget="float_time"/>
+                            <field name="time_end" widget="float_time"/>
+                            <field name="duration" widget="float_time"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note"/>
+                    </group>
+                    <group string="Calendar">
+                        <field name="calendar_event_id" readonly="1"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fieldservice_planning_view_search" model="ir.ui.view">
+        <field name="name">fieldservice.planning.search</field>
+        <field name="model">fieldservice.planning</field>
+        <field name="arch" type="xml">
+            <search string="Planning">
+                <field name="fsm_order_id"/>
+                <field name="requested_employee_ids"/>
+                <field name="team_id"/>
+                <filter name="filter_confirmed" string="Confirmed"
+                        domain="[('is_confirmed','=',True)]"/>
+                <filter name="filter_unconfirmed" string="Not Confirmed"
+                        domain="[('is_confirmed','=',False)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_employee" string="Technician"
+                            context="{'group_by':'requested_employee_ids'}"/>
+                    <filter name="group_team" string="Team"
+                            context="{'group_by':'team_id'}"/>
+                    <filter name="group_date" string="Date"
+                            context="{'group_by':'planning_date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="fieldservice_planning_view_calendar" model="ir.ui.view">
+        <field name="name">fieldservice.planning.calendar</field>
+        <field name="model">fieldservice.planning</field>
+        <field name="arch" type="xml">
+            <calendar string="Planning" date_start="date_start"
+                      date_stop="date_stop" color="requested_employee_ids"
+                      mode="week">
+                <field name="fsm_order_id"/>
+                <field name="requested_employee_ids"/>
+                <field name="team_id"/>
+                <field name="is_confirmed"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="fieldservice_planning_action" model="ir.actions.act_window">
+        <field name="name">Planning</field>
+        <field name="res_model">fieldservice.planning</field>
+        <field name="view_mode">calendar,list,form</field>
+        <field name="search_view_id" ref="fieldservice_planning_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Plan a work order
+            </p>
+            <p>
+                A planning line says when an order is scheduled and who does
+                the work. It owns a calendar event — drag the event to
+                reschedule.
+            </p>
+        </field>
+    </record>
+
+</odoo>

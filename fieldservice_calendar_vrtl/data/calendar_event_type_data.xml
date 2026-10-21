@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- The four colour tags are resolved at install time by a post-init
+         hook (see hooks.py). They cannot be declared as <record> here:
+         calendar_event_type.name is unique and elevata_base already
+         defines the same four names, so a plain record would either
+         duplicate or fail. The hook reuses the existing rows and binds
+         this module's xmlids to them, creating only what is missing. -->
+
+</odoo>

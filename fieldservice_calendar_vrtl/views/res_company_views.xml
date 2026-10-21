@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_company_view_form_fieldservice" model="ir.ui.view">
+        <field name="name">res.company.form.fieldservice</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Field Service" name="fieldservice">
+                    <group>
+                        <field name="fsm_calendar_user_id"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

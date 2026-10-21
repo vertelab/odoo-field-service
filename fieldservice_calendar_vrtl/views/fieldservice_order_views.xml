@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fieldservice_order_view_form_planning" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.planning</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Planning" name="planning">
+                    <group>
+                        <button name="action_plan_order" type="object"
+                                string="Plan Order" class="oe_highlight"
+                                colspan="2"/>
+                    </group>
+                    <field name="planning_line_ids">
+                        <list editable="bottom">
+                            <field name="planning_date"/>
+                            <field name="time_start" widget="float_time"/>
+                            <field name="time_end" widget="float_time"/>
+                            <field name="requested_employee_ids"/>
+                            <field name="team_id" optional="show"/>
+                            <field name="is_confirmed" widget="boolean_toggle"/>
+                            <field name="note" optional="show"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//sheet" position="inside">
+                <div class="oe_button_box" name="button_box_planning">
+                    <button name="action_view_planning_lines" type="object"
+                            class="oe_stat_button" icon="fa-calendar">
+                        <field name="planning_count" widget="statinfo"
+                               string="Planned"/>
+                    </button>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
