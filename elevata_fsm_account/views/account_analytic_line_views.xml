@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_timesheet_line_form_elevata_account" model="ir.ui.view">
+        <field name="name">account.analytic.line.form.elevata.account</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="fieldservice_account_analytic.hr_timesheet_line_form_fsm"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fsm_order_id']" position="after">
+                <field name="time_start" widget="float_time"/>
+                <field name="time_end" widget="float_time"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

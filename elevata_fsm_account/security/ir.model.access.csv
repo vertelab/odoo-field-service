@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fieldservice_order_cost_user,fieldservice.order.cost.user,model_fieldservice_order_cost,fieldservice.group_fsm_user,1,1,1,1
+access_fieldservice_order_cost_manager,fieldservice.order.cost.manager,model_fieldservice_order_cost,fieldservice.group_fsm_manager,1,1,1,1

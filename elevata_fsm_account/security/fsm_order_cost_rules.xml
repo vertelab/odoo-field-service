@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fieldservice_order_cost_rule" model="ir.rule">
+        <field name="name">Field Service Order Cost Multi-Company</field>
+        <field name="model_id" ref="model_fieldservice_order_cost"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+
+</odoo>

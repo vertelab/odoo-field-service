@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_move_form_fsm" model="ir.ui.view">
+        <field name="name">account.move.form.fsm</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook//page[@name='other_info']" position="inside">
+                <group name="fsm_orders" string="Work orders linked to this invoice"
+                       invisible="not fsm_order_ids">
+                    <field name="fsm_order_ids" readonly="1" nolabel="1">
+                        <list>
+                            <field name="name" string="Order Number"/>
+                            <field name="equipment_id" string="Lift"/>
+                            <field name="description" string="Reported Issue"/>
+                            <field name="resolution" string="Resolution"/>
+                            <field name="stage_id" string="Stage"/>
+                            <field name="date_start" string="Start Date"/>
+                            <field name="date_end" string="End Date"/>
+                            <field name="employee_time_total" string="Hours Worked"
+                                   sum="Total Hours" widget="float_time"/>
+                        </list>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

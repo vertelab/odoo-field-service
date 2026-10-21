@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="field_service_regular_time" model="product.product">
+        <field name="name">Field Service Regular Time</field>
+        <field name="categ_id" ref="product.product_category_all"/>
+        <field name="uom_id" ref="uom.product_uom_hour"/>
+        <field name="uom_po_id" ref="uom.product_uom_hour"/>
+        <field name="standard_price">0.0</field>
+        <field name="list_price">0.0</field>
+        <field name="purchase_ok" eval="True"/>
+        <field name="sale_ok" eval="False"/>
+    </record>
+
+</odoo>
