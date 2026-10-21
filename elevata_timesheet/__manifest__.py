@@ -12,6 +12,13 @@
     'depends': [
         'hr_timesheet',
         'hr_timesheet_calendar',
+        # account_analytic_line.py reads record.time_stop in
+        # _compute_datetime_fields, and the comment there says
+        # hr_timesheet_begin_end owns time_start/time_stop. It was missing
+        # from depends, so the field did not exist and the module crashed
+        # at registry load:
+        #   AttributeError: 'account.analytic.line' object has no attribute 'time_stop'
+        'hr_timesheet_begin_end',
         'calendar',
         'fieldservice_vrtl',
         'elevata_base',
