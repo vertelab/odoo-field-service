@@ -1,0 +1,259 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* elevata_reporting
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20260317\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 13:13+0000\n"
+"PO-Revision-Date: 2026-10-18 13:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: elevata_reporting
+#: model:ir.ui.menu,name:elevata_reporting.menu_elevata_reporting_all_locations
+msgid "All Elevators — KPI"
+msgstr "Alla hissar — KPI"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_tree_reporting
+msgid "Contract"
+msgstr "Avtal"
+
+#. module: elevata_reporting
+#: model:ir.ui.menu,name:elevata_reporting.menu_dashboard_contracts_expiring
+msgid "Contracts Expiring (90 days)"
+msgstr "Avtal som löper ut (90 dagar)"
+
+#. module: elevata_reporting
+#: model:ir.actions.act_window,name:elevata_reporting.action_dashboard_contracts_expiring
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_dashboard_contracts_expiring
+msgid "Contracts Expiring Within 90 Days"
+msgstr "Avtal som löper ut inom 90 dagar"
+
+#. module: elevata_reporting
+#: model:ir.actions.act_window,name:elevata_reporting.action_elevata_dashboard
+#: model:ir.ui.menu,name:elevata_reporting.menu_elevata_dashboard
+msgid "Dashboard"
+msgstr "Instrumentpanel"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_tree_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_order_search_reporting
+msgid "Elevator"
+msgstr "Hiss"
+
+#. module: elevata_reporting
+#: model:ir.ui.menu,name:elevata_reporting.menu_elevata_reporting_locations
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_search_reporting
+msgid "Elevators"
+msgstr "Hissar"
+
+#. module: elevata_reporting
+#: model:ir.actions.act_window,name:elevata_reporting.action_reporting_inspection_soon
+msgid "Elevators With Inspection Within 60 Days"
+msgstr "Hissar med besiktning inom 60 dagar"
+
+#. module: elevata_reporting
+#: model:ir.actions.act_window,name:elevata_reporting.action_reporting_no_contract
+msgid "Elevators Without Active Contract"
+msgstr "Hissar utan aktivt avtal"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_tree_reporting
+msgid "Elevators — KPI"
+msgstr "Hissar — KPI"
+
+#. module: elevata_reporting
+#: model:ir.actions.act_window,name:elevata_reporting.action_reporting_all_locations
+msgid "Elevators — Overview"
+msgstr "Hissar — Översikt"
+
+#. module: elevata_reporting
+#: model:ir.model,name:elevata_reporting.model_fsm_location
+msgid "Field Service Location"
+msgstr "Hiss"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_search_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_order_search_reporting
+msgid "Group By"
+msgstr "Gruppera efter"
+
+#. module: elevata_reporting
+#: model:ir.model.fields,field_description:elevata_reporting.field_fsm_location__has_active_contract
+msgid "Has Active Contract"
+msgstr "Har aktivt avtal"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_search_reporting
+msgid "Has Inspection Date"
+msgstr "Har besiktningsdatum"
+
+#. module: elevata_reporting
+#: model:ir.model.fields,field_description:elevata_reporting.field_fsm_location__inspection_soon
+#: model:ir.ui.menu,name:elevata_reporting.menu_elevata_reporting_inspection_soon
+msgid "Inspection Within 60 Days"
+msgstr "Besiktning inom 60 dagar"
+
+#. module: elevata_reporting
+#: model:ir.actions.act_window,name:elevata_reporting.action_dashboard_inspections_soon
+#: model:ir.ui.menu,name:elevata_reporting.menu_dashboard_inspections
+msgid "Inspections — Next 60 Days"
+msgstr "Besiktningar — kommande 60 dagar"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_search_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_tree_reporting
+msgid "Invoice Company"
+msgstr "Fakturaföretag"
+
+#. module: elevata_reporting
+#: model:ir.ui.menu,name:elevata_reporting.menu_elevata_reporting_fsm_order
+msgid "KPI — Time and Cost"
+msgstr "KPI — Tid och kostnad"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_search_reporting
+msgid "Name"
+msgstr "Namn"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_tree_reporting
+msgid "Next Inspection"
+msgstr "Nästa besiktning"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_order_search_reporting
+msgid "Non-warranty"
+msgstr "Ej garanti"
+
+#. module: elevata_reporting
+#: model:ir.model.fields,help:elevata_reporting.field_fsm_location__repeat_order_count
+msgid ""
+"Number of work orders in the last 6 months. >=3 indicates recurring "
+"problems."
+msgstr "Number of work orders in the last 6 months. >=3 indicates recurring \"\"problems."
+
+#. module: elevata_reporting
+#: model:ir.actions.act_window,name:elevata_reporting.action_dashboard_offer_pipeline
+#: model:ir.ui.menu,name:elevata_reporting.menu_dashboard_offer_pipeline
+msgid "Offer Pipeline"
+msgstr "Offertpipeline"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_tree_reporting
+msgid "Orders 6 mo"
+msgstr "Ordrar 6 mån"
+
+#. module: elevata_reporting
+#: model:ir.model.fields,field_description:elevata_reporting.field_fsm_location__repeat_order_count
+msgid "Orders Last 6 Months"
+msgstr "Ordrar senaste 6 månaderna"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_search_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_tree_reporting
+msgid "Property Owner"
+msgstr "Fastighetsägare"
+
+#. module: elevata_reporting
+#: model:ir.model.fields,field_description:elevata_reporting.field_fsm_location__repeat_problem_warning
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_tree_reporting
+msgid "Recurring Problem"
+msgstr "Återkommande problem"
+
+#. module: elevata_reporting
+#: model:ir.actions.act_window,name:elevata_reporting.action_reporting_repeat_problems
+#: model:ir.ui.menu,name:elevata_reporting.menu_elevata_reporting_repeat_problems
+msgid "Recurring Problems"
+msgstr "Återkommande problem"
+
+#. module: elevata_reporting
+#: model:ir.ui.menu,name:elevata_reporting.menu_elevata_reporting_root
+msgid "Reports"
+msgstr "Rapporter"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_search_reporting
+msgid "Search Elevators"
+msgstr "Sök hissar"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_order_search_reporting
+msgid "Search Work Orders"
+msgstr "Sök arbetsordrar"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_order_search_reporting
+msgid "Technician"
+msgstr "Tekniker"
+
+#. module: elevata_reporting
+#: model:ir.model.fields,help:elevata_reporting.field_fsm_location__warranty_order_count
+msgid "Total number of warranty work orders on this elevator."
+msgstr "Totalt antal garantiarbetsordrar på denna hiss."
+
+#. module: elevata_reporting
+#: model:ir.model.fields,help:elevata_reporting.field_fsm_location__repeat_problem_warning
+msgid "True if >=3 work orders created on this elevator in the last 6 months."
+msgstr "Sant om >=3 arbetsordrar skapats på denna hiss de senaste 6 månaderna."
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_tree_reporting
+msgid "Visits/Year"
+msgstr "Besök/år"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_order_search_reporting
+msgid "Warranty"
+msgstr "Garanti"
+
+#. module: elevata_reporting
+#: model:ir.actions.act_window,name:elevata_reporting.action_reporting_warranty_orders
+#: model:ir.model.fields,field_description:elevata_reporting.field_fsm_location__warranty_order_count
+#: model:ir.ui.menu,name:elevata_reporting.menu_elevata_reporting_warranty
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_location_tree_reporting
+msgid "Warranty Orders"
+msgstr "Garantiordrar"
+
+#. module: elevata_reporting
+#: model:ir.ui.menu,name:elevata_reporting.menu_elevata_reporting_no_contract
+msgid "Without Active Contract"
+msgstr "Utan aktivt avtal"
+
+#. module: elevata_reporting
+#: model:ir.ui.menu,name:elevata_reporting.menu_elevata_reporting_orders
+msgid "Work Orders"
+msgstr "Arbetsordrar"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_dashboard_orders_per_month
+msgid "Work Orders per Month"
+msgstr "Arbetsordrar per månad"
+
+#. module: elevata_reporting
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_order_graph_reporting
+msgid "Work Orders per Technician"
+msgstr "Arbetsordrar per tekniker"
+
+#. module: elevata_reporting
+#: model:ir.actions.act_window,name:elevata_reporting.action_reporting_fsm_order
+#: model_terms:ir.ui.view,arch_db:elevata_reporting.view_fsm_order_pivot_reporting
+msgid "Work Orders — KPI"
+msgstr "Arbetsordrar — KPI"
+
+#. module: elevata_reporting
+#: model:ir.ui.menu,name:elevata_reporting.menu_dashboard_orders_month
+msgid "Work Orders — Overview"
+msgstr "Arbetsordrar — översikt"
+
+#. module: elevata_reporting
+#: model:ir.actions.act_window,name:elevata_reporting.action_dashboard_orders_month
+msgid "Work Orders — This Month"
+msgstr "Arbetsordrar — denna månad"

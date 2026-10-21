@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extended list view with KPI columns -->
+    <record id="view_fsm_location_tree_reporting" model="ir.ui.view">
+        <field name="name">maintenance.equipment.tree.reporting</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="arch" type="xml">
+            <list string="Elevators — KPI"
+                  decoration-danger="repeat_problem_warning"
+                  decoration-warning="inspection_soon"
+                  decoration-muted="not has_active_contract">
+                <field name="name" string="Elevator"/>
+                <field name="partner_id" string="Property Owner"/>
+                <field name="partner_id" string="Invoice Company" optional="show"/>
+                <field name="operational_status" optional="show"/>
+                <field name="has_active_contract" string="Contract" widget="boolean"/>
+                <field name="annual_visits" string="Visits/Year" optional="show"/>
+                <field name="next_inspection_date" string="Next Inspection" optional="show"/>
+                <field name="inspection_soon" column_invisible="1"/>
+                <field name="repeat_order_count" string="Orders 6 mo"/>
+                <field name="repeat_problem_warning" string="Recurring Problem" widget="boolean"/>
+                <field name="warranty_order_count" string="Warranty Orders" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Search view with KPI filters -->
+    <record id="view_fsm_location_search_reporting" model="ir.ui.view">
+        <field name="name">maintenance.equipment.search.reporting</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="arch" type="xml">
+            <search string="Search Elevators">
+                <field name="name" string="Name"/>
+                <field name="partner_id" string="Property Owner"/>
+                <field name="partner_id" string="Invoice Company"/>
+                <separator/>
+                <filter name="is_elevator" string="Elevators"
+                        domain="[('is_elevator','=',True)]"/>
+                <filter name="has_inspection" string="Has Inspection Date"
+                        domain="[('next_inspection_date','!=',False)]"/>
+                <group expand="1" string="Group By">
+                    <filter name="group_partner" string="Property Owner" context="{'group_by': 'partner_id'}"/>
+                    <filter name="group_partner_ref" string="Invoice Company" context="{'group_by': 'partner_ref'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action: Elevators without contract -->
+    <record id="action_reporting_no_contract" model="ir.actions.act_window">
+        <field name="name">Elevators Without Active Contract</field>
+        <field name="res_model">maintenance.equipment</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_fsm_location_tree_reporting"/>
+        <field name="search_view_id" ref="view_fsm_location_search_reporting"/>
+        <field name="domain">[('is_elevator','=',True)]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Action: Inspection soon -->
+    <record id="action_reporting_inspection_soon" model="ir.actions.act_window">
+        <field name="name">Elevators With Inspection Within 60 Days</field>
+        <field name="res_model">maintenance.equipment</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_fsm_location_tree_reporting"/>
+        <field name="search_view_id" ref="view_fsm_location_search_reporting"/>
+        <field name="domain">[('is_elevator','=',True),('next_inspection_date','!=',False)]</field>
+        <field name="context">{'search_default_has_inspection': 1}</field>
+    </record>
+
+    <!-- Action: Recurring problems -->
+    <record id="action_reporting_repeat_problems" model="ir.actions.act_window">
+        <field name="name">Recurring Problems</field>
+        <field name="res_model">maintenance.equipment</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_fsm_location_tree_reporting"/>
+        <field name="search_view_id" ref="view_fsm_location_search_reporting"/>
+        <field name="domain">[('is_elevator','=',True)]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Action: All elevators KPI view -->
+    <record id="action_reporting_all_locations" model="ir.actions.act_window">
+        <field name="name">Elevators — Overview</field>
+        <field name="res_model">maintenance.equipment</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_fsm_location_tree_reporting"/>
+        <field name="search_view_id" ref="view_fsm_location_search_reporting"/>
+        <field name="domain">[('is_elevator','=',True)]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Pivot: time/cost per elevator / technician -->
+    <record id="view_fsm_order_pivot_reporting" model="ir.ui.view">
+        <field name="name">fieldservice.order.pivot.reporting</field>
+        <field name="model">fieldservice.order</field>
+        <field name="arch" type="xml">
+            <pivot string="Work Orders — KPI" display_quantity="1">
+                <field name="equipment_id" type="row"/>
+                <field name="requested_employee_ids" type="row"/>
+                <field name="employee_time_total" type="measure"/>
+                <field name="contractor_total" type="measure"/>
+                <field name="total_cost" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph: orders per technician -->
+    <record id="view_fsm_order_graph_reporting" model="ir.ui.view">
+        <field name="name">fieldservice.order.graph.reporting</field>
+        <field name="model">fieldservice.order</field>
+        <field name="arch" type="xml">
+            <graph string="Work Orders per Technician" type="bar" stacked="0">
+                <field name="requested_employee_ids" type="row"/>
+                <field name="employee_time_total" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Search view with warranty filter -->
+    <record id="view_fsm_order_search_reporting" model="ir.ui.view">
+        <field name="name">fieldservice.order.search.reporting</field>
+        <field name="model">fieldservice.order</field>
+        <field name="arch" type="xml">
+            <search string="Search Work Orders">
+                <field name="equipment_id" string="Elevator"/>
+                <field name="requested_employee_ids" string="Technician"/>
+                <separator/>
+                <filter name="garantijobb" string="Warranty"
+                        domain="[('is_warranty','=',True)]"/>
+                <filter name="ej_garanti" string="Non-warranty"
+                        domain="[('is_warranty','=',False)]"/>
+                <group expand="1" string="Group By">
+                    <filter name="group_equipment" string="Elevator" context="{'group_by': 'equipment_id'}"/>
+                    <filter name="group_employee" string="Technician" context="{'group_by': 'requested_employee_ids'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action: Warranty orders -->
+    <record id="action_reporting_warranty_orders" model="ir.actions.act_window">
+        <field name="name">Warranty Orders</field>
+        <field name="res_model">fieldservice.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_fsm_order_search_reporting"/>
+        <field name="domain">[('is_warranty','=',True)]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Action: KPI work orders -->
+    <record id="action_reporting_fsm_order" model="ir.actions.act_window">
+        <field name="name">Work Orders — KPI</field>
+        <field name="res_model">fieldservice.order</field>
+        <field name="view_mode">graph,pivot,list</field>
+        <field name="context">{}</field>
+    </record>
+</odoo>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root menu: Reports -->
+    <menuitem id="menu_elevata_reporting_root"
+              name="Reports"
+              sequence="80"/>
+
+    <!-- Elevators -->
+    <menuitem id="menu_elevata_reporting_locations"
+              name="Elevators"
+              parent="menu_elevata_reporting_root"
+              sequence="10"/>
+
+    <menuitem id="menu_elevata_reporting_all_locations"
+              name="All Elevators — KPI"
+              parent="menu_elevata_reporting_locations"
+              action="action_reporting_all_locations"
+              sequence="10"/>
+
+    <menuitem id="menu_elevata_reporting_no_contract"
+              name="Without Active Contract"
+              parent="menu_elevata_reporting_locations"
+              action="action_reporting_no_contract"
+              sequence="20"/>
+
+    <menuitem id="menu_elevata_reporting_inspection_soon"
+              name="Inspection Within 60 Days"
+              parent="menu_elevata_reporting_locations"
+              action="action_reporting_inspection_soon"
+              sequence="30"/>
+
+    <menuitem id="menu_elevata_reporting_repeat_problems"
+              name="Recurring Problems"
+              parent="menu_elevata_reporting_locations"
+              action="action_reporting_repeat_problems"
+              sequence="40"/>
+
+    <!-- Work Order KPI -->
+    <menuitem id="menu_elevata_reporting_orders"
+              name="Work Orders"
+              parent="menu_elevata_reporting_root"
+              sequence="20"/>
+
+    <menuitem id="menu_elevata_reporting_fsm_order"
+              name="KPI — Time and Cost"
+              parent="menu_elevata_reporting_orders"
+              action="action_reporting_fsm_order"
+              sequence="10"/>
+
+    <menuitem id="menu_elevata_reporting_warranty"
+              name="Warranty Orders"
+              parent="menu_elevata_reporting_orders"
+              action="action_reporting_warranty_orders"
+              sequence="20"/>
+
+    <!-- Dashboard -->
+    <menuitem id="menu_elevata_dashboard"
+              name="Dashboard"
+              parent="menu_elevata_reporting_root"
+              sequence="1"/>
+
+    <menuitem id="menu_dashboard_orders_month"
+              name="Work Orders — Overview"
+              parent="menu_elevata_dashboard"
+              action="action_dashboard_orders_month"
+              sequence="10"/>
+
+    <menuitem id="menu_dashboard_contracts_expiring"
+              name="Contracts Expiring (90 days)"
+              parent="menu_elevata_dashboard"
+              action="action_dashboard_contracts_expiring"
+              sequence="20"/>
+
+    <menuitem id="menu_dashboard_offer_pipeline"
+              name="Offer Pipeline"
+              parent="menu_elevata_dashboard"
+              action="action_dashboard_offer_pipeline"
+              sequence="30"/>
+
+    <menuitem id="menu_dashboard_inspections"
+              name="Inspections — Next 60 Days"
+              parent="menu_elevata_dashboard"
+              action="action_dashboard_inspections_soon"
+              sequence="40"/>
+</odoo>
