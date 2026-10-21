@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-inherit="calendar.AttendeeCalendarCommonPopover.footer"
+       t-inherit-mode="extension">
+        <xpath expr="//t[@t-if='isEventEditable']" position="before">
+            <button t-if="hasFsmOrder"
+                    class="btn btn-sm btn-secondary o_elevata_open_order me-1"
+                    t-on-click.stop="openFsmOrder">
+                Open Work Order
+            </button>
+            <button t-if="isPlanningEvent"
+                    class="btn btn-sm btn-warning o_elevata_convert_ts me-1"
+                    t-on-click.stop="convertToTimesheet">
+                → Tidrapport
+            </button>
+        </xpath>
+    </t>
+</templates>

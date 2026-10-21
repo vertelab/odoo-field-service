@@ -1,0 +1,63 @@
+/* Override Odoo calendar color palette for Elevata event types */
+
+/* Color index 2 = Planerad (ej bokad) — Green */
+.o_calendar_renderer .fc-view .o_calendar_color_2 {
+    --o-event-bg: #27ae60 !important;
+    background-color: #27ae60 !important;
+    border-color: #1e8449 !important;
+    color: #fff !important;
+
+    .fc-bg {
+        background-color: #27ae60 !important;
+    }
+    .fc-content, .o_event_title, .fc-time, .fc-title {
+        color: #fff !important;
+    }
+}
+
+/* Color index 3 = Planerad bokad — Red */
+.o_calendar_renderer .fc-view .o_calendar_color_3 {
+    --o-event-bg: #e74c3c !important;
+    background-color: #e74c3c !important;
+    border-color: #a93226 !important;
+    color: #fff !important;
+
+    .fc-bg {
+        background-color: #e74c3c !important;
+    }
+    .fc-content, .o_event_title, .fc-time, .fc-title {
+        color: #fff !important;
+    }
+}
+
+/* Color index 1 = Tidrapport (öppen) — Blue with border */
+.o_calendar_renderer .fc-view .o_calendar_color_1 {
+    --o-event-bg: #3498db !important;
+    background-color: #3498db !important;
+    border: 2px solid #2176ad !important;
+    border-radius: 3px !important;
+    color: #fff !important;
+
+    .fc-bg {
+        background-color: #3498db !important;
+    }
+    .fc-content, .o_event_title, .fc-time, .fc-title {
+        color: #fff !important;
+    }
+}
+
+/* Color index 8 = Låst tidrapport — Very light grey with dashed border */
+.o_calendar_renderer .fc-view .o_calendar_color_8 {
+    --o-event-bg: #e8e8e8 !important;
+    background-color: #e8e8e8 !important;
+    border: 2px dashed #999 !important;
+    border-radius: 3px !important;
+    color: #666 !important;
+
+    .fc-bg {
+        background-color: #e8e8e8 !important;
+    }
+    .fc-content, .o_event_title, .fc-time, .fc-title {
+        color: #666 !important;
+    }
+}
