@@ -22,20 +22,26 @@ from odoo import fields, models
 
 
 class FieldserviceOrderType(models.Model):
-    """Add a colour and a service-checklist flag to the order type.
+    """Colour, service-checklist flag and translatable names.
 
     The colour is stored as a hex string rather than an integer index: the
     set of types is customer-defined and open-ended, so a fixed palette
     would run out. The `color` widget accepts a hex value directly.
 
-    `use_service_checklist` was carried over from Elevata's
-    elevata_order_types. It lives here rather than in
-    elevata_service_contract because the flag belongs to the order type,
-    and the contract module reads it through
+    `use_service_checklist` and the translatable `name` were carried over
+    from Elevata's elevata_order_types. They live here rather than in
+    elevata_service_contract because both belong to the order type, and
+    the contract module reads the flag through
     product_tmpl_id.product_type.use_service_checklist.
     """
 
     _inherit = 'fieldservice.order.type'
+
+    # fieldservice_vrtl declares name without translate. Elevata's order
+    # types carry Swedish names, so the field has to be translatable or
+    # the English UI shows Swedish and vice versa. Redeclaring the field
+    # with the same type only flips the translate flag.
+    name = fields.Char(translate=True)
 
     color = fields.Char(
         string='Color',

@@ -21,7 +21,11 @@
         </field>
     </record>
 
-    <!-- List view: add the colour column after the name. -->
+    <!-- List view: add the colour column after the name.
+
+         elevata_order_types also tried to hide `internal_type` here, but
+         our fork's fieldservice.order.type has no such field — that xpath
+         matched nothing in the 17 port either. Dropped rather than ported. -->
     <record id="view_fieldservice_order_type_list_inherit_color" model="ir.ui.view">
         <field name="name">fieldservice.order.type.list.inherit.color</field>
         <field name="model">fieldservice.order.type</field>
