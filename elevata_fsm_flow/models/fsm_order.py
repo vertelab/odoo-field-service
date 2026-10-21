@@ -270,12 +270,45 @@ class FSMOrder(models.Model):
 
     # ── Stage transition actions ────────────────────────────────────────
 
+    def _stage(self, xmlid):
+        return self.env.ref(xmlid, raise_if_not_found=False)
+
     def action_assign(self):
         for order in self:
             if not order.requested_employee_ids:
                 raise ValidationError(
                     _("Cannot move to Assigned until 'Assigned To' is filled in")
                 )
-        return self.write({
-            'stage_id': self.env.ref('fieldservice_vrtl.fieldservice_stage_assigned').id,
-        })
+        stage = self._stage('fieldservice_vrtl.fieldservice_stage_assigned')
+        if not stage:
+            return False
+        return self.write({'stage_id': stage.id})
+
+    def action_schedule(self):
+        for order in self:
+            if not order.planned_start_datetime:
+                raise ValidationError(
+                    _("Cannot move to Planning until a planned start is set")
+                )
+        stage = self._stage('fieldservice_vrtl.fieldservice_stage_planning')
+        if not stage:
+            return False
+        return self.write({'stage_id': stage.id})
+
+    def action_start(self):
+        stage = self._stage('fieldservice_vrtl.fieldservice_stage_ongoing')
+        if not stage:
+            return False
+        return self.write({'stage_id': stage.id})
+
+    def action_complete(self):
+        stage = self._stage('fieldservice_vrtl.fieldservice_stage_completed')
+        if not stage:
+            return False
+        return self.write({'stage_id': stage.id})
+
+    def action_cancel(self):
+        stage = self._stage('fieldservice_vrtl.fieldservice_stage_cancelled')
+        if not stage:
+            return False
+        return self.write({'stage_id': stage.id})

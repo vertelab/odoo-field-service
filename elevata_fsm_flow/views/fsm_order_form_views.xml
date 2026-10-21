@@ -24,8 +24,7 @@
                                 groups="fieldservice_vrtl.fieldservice_group_user"
                                 invisible="is_closed"/>
                         <field name="stage_id" widget="statusbar"
-                               options="{'fold_field': 'fold'}"
-                               domain="[('stage_type', '=', 'order')]"/>
+                               options="{'fold_field': 'fold'}"/>
                         <button id="action_complete" name="action_complete" string="Complete"
                                 class="oe_highlight" type="object"
                                 invisible="is_closed"/>
