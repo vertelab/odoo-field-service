@@ -1,6 +1,6 @@
 {
     'name': 'Elevata FSM Key Management',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     'category': 'Field Service',
     'summary': 'Key and key position management for elevator field service',
     'author': 'Vertel Sverige AB',
@@ -22,6 +22,7 @@
         'data/sequence_data.xml',
         'views/key_position_views.xml',
         'views/key_views.xml',
+        'views/key_search_views.xml',
         'views/fsm_location_views.xml',
         'views/fsm_order_views.xml',
         'views/menu_views.xml',
