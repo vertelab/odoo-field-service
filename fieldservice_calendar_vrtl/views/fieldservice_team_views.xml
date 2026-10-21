@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Team -> department, so the owner chain can reach the department. -->
+    <record id="view_fieldservice_team_form_department" model="ir.ui.view">
+        <field name="name">fieldservice.team.form.department</field>
+        <field name="model">fieldservice.team</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.fieldservice_team_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='leader_id']" position="after">
+                <field name="department_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
