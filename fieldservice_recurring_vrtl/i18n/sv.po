@@ -1,0 +1,445 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fieldservice_recurring_vrtl
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20260701\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-21 12:26+0000\n"
+"PO-Revision-Date: 2026-10-21 12:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.actions.act_window,help:fieldservice_recurring_vrtl.fsm_recurring_action
+msgid ""
+"A recurring order generates field service orders on a schedule —\n"
+"               service visits, statutory inspections, maintenance intervals."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__message_needaction
+msgid "Action Needed"
+msgstr "Åtgärd krävs"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__active
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_search
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__activity_ids
+msgid "Activities"
+msgstr "Aktiviteter"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Dekoration för aktivitetsundantag"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__activity_state
+msgid "Activity State"
+msgstr "Aktivitetstillstånd"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Ikon för aktivitetstyp"
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_search
+msgid "Archived"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__requested_employee_ids
+msgid "Assigned technicians on generated orders."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__message_attachment_count
+msgid "Attachment Count"
+msgstr "Antal bilagor"
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.actions.act_window,help:fieldservice_recurring_vrtl.fsm_recurring_action
+msgid "Create a recurring order"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+msgid "Create the order if it has come due, then advance the schedule."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__create_date
+msgid "Created on"
+msgstr "Skapad"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__next_date
+msgid "Date of the next order to generate."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_recurring_vrtl.selection__fsm_recurring__unit__day
+msgid "Days"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__description
+msgid "Description"
+msgstr "Beskrivning av anmält fel / önskad åtgärd."
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__display_name
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_search
+msgid "Due Now"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__equipment_id
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_search
+msgid "Equipment"
+msgstr "Utrustning"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model,name:fieldservice_recurring_vrtl.model_fieldservice_order
+msgid "Field Service Order"
+msgstr "Ärende"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__message_follower_ids
+msgid "Followers"
+msgstr "Följare"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Följare (partners)"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font Awesome-ikon t.ex. fa-tasks"
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+msgid "Generate Due Orders"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#. odoo-python
+#: code:addons/fieldservice_recurring_vrtl/models/fsm_recurring.py:0
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__order_ids
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+msgid "Generated Orders"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#. odoo-python
+#: code:addons/fieldservice_recurring_vrtl/models/fsm_recurring.py:0
+msgid "Generated from recurring template %s."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_search
+msgid "Group By"
+msgstr "Gruppera efter"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__has_message
+msgid "Has Message"
+msgstr "Har meddelande"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__id
+msgid "ID"
+msgstr "Nummer"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__activity_exception_icon
+msgid "Icon"
+msgstr "Ikon"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Ikon för att indikera en undantagsaktivitet."
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Om markerad så finns det meddelanden som kräver din uppmärksamhet."
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__message_has_error
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Om markerad har det uppstått leveransfel för vissa meddelanden."
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+msgid "Instructions copied onto every generated order."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__interval
+msgid "Interval"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__message_is_follower
+msgid "Is Follower"
+msgstr "Är följare"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__last_date
+msgid "Last Generated"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad på"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__message_has_error
+msgid "Message Delivery error"
+msgstr "Fel vid leverans av meddelande"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__message_ids
+msgid "Messages"
+msgstr "Meddelanden"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_recurring_vrtl.selection__fsm_recurring__unit__month
+msgid "Months"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Mina aktiviteters deadline"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__name
+msgid "Name"
+msgstr "Namn"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Nästa aktivitetskalenderhändelse"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Nästa slutdatum för aktivitet"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__activity_summary
+msgid "Next Activity Summary"
+msgstr "Nästa aktivitetssummering"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__activity_type_id
+msgid "Next Activity Type"
+msgstr "Nästa aktivitetstyp"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__next_date
+msgid "Next Order Date"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#. odoo-python
+#: code:addons/fieldservice_recurring_vrtl/models/fsm_recurring.py:0
+msgid "No order is due. The next one is scheduled for %s."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+msgid "Notes"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Antal åtgärder"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__message_has_error_counter
+msgid "Number of errors"
+msgstr "Antal fel"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Antal meddelanden som kräver åtgärd"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Antal meddelanden med leveransfel"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__interval
+msgid "Number of units between two orders."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__order_count
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+msgid "Orders"
+msgstr "Arbetsorder"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__product_tmpl_id
+msgid "Product"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__product_tmpl_id
+msgid "Product whose order type is stamped on generated orders."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model,name:fieldservice_recurring_vrtl.model_fsm_recurring
+msgid "Recurring Field Service Order"
+msgstr "Återkommande arbetsorder"
+
+#. module: fieldservice_recurring_vrtl
+#. odoo-python
+#: code:addons/fieldservice_recurring_vrtl/models/fieldservice_order.py:0
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fieldservice_order__fsm_recurring_id
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+msgid "Recurring Order"
+msgstr "Serviceorder"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.actions.act_window,name:fieldservice_recurring_vrtl.fsm_recurring_action
+#: model:ir.ui.menu,name:fieldservice_recurring_vrtl.fsm_recurring_menu
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_list
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_search
+msgid "Recurring Orders"
+msgstr "Serviceordrar"
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+msgid "Repeat Every"
+msgstr "Upprepa varje"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__activity_user_id
+msgid "Responsible User"
+msgstr "Ansvarig användare"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+msgid "Schedule"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__requested_employee_ids
+msgid "Technicians"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fieldservice_order__fsm_recurring_id
+msgid "Template that generated this order, if any."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__equipment_id
+msgid "The elevator the recurring orders concern."
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Typ av undantagsaktivitet i posten."
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__unit
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_search
+msgid "Unit"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,field_description:fieldservice_recurring_vrtl.field_fsm_recurring__website_message_ids
+msgid "Website Messages"
+msgstr "Webbplatsmeddelanden"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields,help:fieldservice_recurring_vrtl.field_fsm_recurring__website_message_ids
+msgid "Website communication history"
+msgstr "Webbplatskommunikationshistorik"
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_recurring_vrtl.selection__fsm_recurring__unit__week
+msgid "Weeks"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+msgid "What to Generate"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model:ir.model.fields.selection,name:fieldservice_recurring_vrtl.selection__fsm_recurring__unit__year
+msgid "Years"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#. odoo-python
+#: code:addons/fieldservice_recurring_vrtl/models/fsm_recurring.py:0
+msgid "an unspecified date"
+msgstr ""
+
+#. module: fieldservice_recurring_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_recurring_vrtl.fsm_recurring_view_form
+msgid "e.g. Annual statutory inspection"
+msgstr ""
