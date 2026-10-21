@@ -124,11 +124,9 @@
                         <group string="Schemaläggning">
                             <field name="planned_start_datetime" string="Planerad start"/>
                             <field name="planned_duration" string="Planerad längd (timmar)" widget="float_time"/>
-                            <field name="planned_date_end" readonly="1" string="Planerat slut"/>
                         </group>
                         <group string="Önskat tidsfönster">
-                            <field name="planned_date_start" string="Önskad start"/>
-                            <field name="planned_date_end" string="Senaste start"/>
+                            <field name="deadline_datetime" string="Senast klar"/>
                         </group>
                     </group>
                     <group string="Begärda arbetare" name="request_workers">

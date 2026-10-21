@@ -78,7 +78,7 @@
                                 <div class="sr-info-box">
                                     <div class="sr-label">Completed Date</div>
                                     <div class="sr-value">
-                                        <t t-esc="doc.date_end or doc.planned_date_end or '—'"/>
+                                        <t t-esc="doc.date_end or doc.deadline_datetime or '—'"/>
                                     </div>
                                 </div>
                             </div>
