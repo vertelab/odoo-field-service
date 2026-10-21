@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_elevata_media_image_user,elevata.media.image.user,model_elevata_media_image,base.group_user,1,1,1,1
+access_elevata_media_image_portal,elevata.media.image.portal,model_elevata_media_image,base.group_portal,1,0,0,0

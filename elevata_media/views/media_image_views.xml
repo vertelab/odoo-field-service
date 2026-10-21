@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Odoo 18 renamed <templates>/<t t-name="kanban-box"> to <t t-name="card">.
+         The old form is silently accepted by the parser but renders nothing. -->
+    <record id="view_media_image_kanban" model="ir.ui.view">
+        <field name="name">elevata.media.image.kanban</field>
+        <field name="model">elevata.media.image</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="image"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click p-2">
+                            <img t-att-src="kanban_image('elevata.media.image', 'image', record.id.raw_value)"
+                                 class="w-100 rounded" alt="Image"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_media_image_form" model="ir.ui.view">
+        <field name="name">elevata.media.image.form</field>
+        <field name="model">elevata.media.image</field>
+        <field name="arch" type="xml">
+            <form string="Image" class="elevata-media-image-form">
+                <sheet>
+                    <field name="image" widget="image" nolabel="1" class="elevata-media-upload"
+                           options="{'size': [1200, 900], 'preview_image': 'image'}"/>
+                    <field name="equipment_id" invisible="1"/>
+                    <field name="order_id" invisible="1"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

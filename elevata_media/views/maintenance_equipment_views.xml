@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- The elevator form is extended by maintenance_elevator, which does
+         not have a pictures page. Anchoring on the existing Elevator page
+         and appending the archive keeps the two modules independent. -->
+    <record id="maintenance_equipment_form_media" model="ir.ui.view">
+        <field name="name">maintenance.equipment.form.media</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="elevata_fsm_flow.maintenance_equipment_view_form_inherit_fsm_flow"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Images" name="media_images">
+                    <field name="image_ids" mode="kanban" nolabel="1"
+                           context="{'default_equipment_id': id}"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

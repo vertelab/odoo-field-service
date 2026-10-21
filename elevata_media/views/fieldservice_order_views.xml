@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Adds a real image archive next to the ad-hoc attachment m2m that
+         elevata_fsm_flow puts on its (hidden) Pictures page. The archive
+         images are records: they can be filtered, counted, reused, and
+         they carry the elevator, so a picture taken on one order is
+         visible on the elevator too.
+
+         Anchored on the notebook rather than replacing pictures_page:
+         that page is invisible="1" in the flow module, and replacing it
+         would tie this module to a view we do not own. -->
+    <record id="fieldservice_order_form_media" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.media</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="elevata_fsm_flow.fsm_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Images" name="media_images" sequence="36">
+                    <field name="image_ids" mode="kanban" nolabel="1"
+                           context="{'default_order_id': id, 'default_equipment_id': equipment_id}"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
