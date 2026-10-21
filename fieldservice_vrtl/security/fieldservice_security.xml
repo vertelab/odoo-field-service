@@ -6,10 +6,39 @@
             <field name="category_id" ref="base.module_category_services_field_service"/>
         </record>
 
+        <!--
+            Sales and Technician mirror the roles the Elevata modules used to
+            carry (Elevata / Sales and Elevata / Technician). They exist so
+            that structure can be retired without losing a level: a salesperson
+            and a technician need different rights on offers, contracts and
+            price rules, and collapsing both into User would hand a technician
+            the price list.
+
+            Both imply User, so the base rights are granted once.
+        -->
+        <record id="fieldservice_group_sales" model="res.groups">
+            <field name="name">Field Service Sales</field>
+            <field name="category_id" ref="base.module_category_services_field_service"/>
+            <field name="implied_ids" eval="[(4, ref('fieldservice_group_user'))]"/>
+        </record>
+
+        <record id="fieldservice_group_technician" model="res.groups">
+            <field name="name">Field Service Technician</field>
+            <field name="category_id" ref="base.module_category_services_field_service"/>
+            <field name="implied_ids" eval="[(4, ref('fieldservice_group_user'))]"/>
+        </record>
+
+        <!--
+            Manager implies Sales and Technician, matching the Elevata chain
+            Administrator -> Manager -> { Sales, Technician } -> User. A
+            manager must be able to do what the people they manage do.
+        -->
         <record id="fieldservice_group_manager" model="res.groups">
             <field name="name">Field Service Manager</field>
             <field name="category_id" ref="base.module_category_services_field_service"/>
-            <field name="implied_ids" eval="[(4, ref('fieldservice_group_user'))]"/>
+            <field name="implied_ids" eval="[(4, ref('fieldservice_group_user')),
+                                            (4, ref('fieldservice_group_sales')),
+                                            (4, ref('fieldservice_group_technician'))]"/>
             <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
         </record>
 
