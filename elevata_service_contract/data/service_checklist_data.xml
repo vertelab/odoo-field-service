@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 1. LINHISS                                         -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <record id="checklist_linhiss" model="elevata.service.checklist">
+        <field name="name">Linhiss – Servicekontroll</field>
+        <field name="sequence">10</field>
+        <field name="elevator_type_ids" eval="[(4, ref('elevata_service_contract.elevator_type_traction'))]"/>
+    </record>
+    <record id="checklist_linhiss_01" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">10</field>
+        <field name="name">Kontrollera bärlinor – slitage, trådbrott</field>
+    </record>
+    <record id="checklist_linhiss_02" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">20</field>
+        <field name="name">Kontrollera bromsar – funktion och bromsbelägg</field>
+    </record>
+    <record id="checklist_linhiss_03" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">30</field>
+        <field name="name">Kontrollera fångapparat och hastighetsvakt</field>
+    </record>
+    <record id="checklist_linhiss_04" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">40</field>
+        <field name="name">Smörj styrskenor – glidskor/rullar</field>
+    </record>
+    <record id="checklist_linhiss_05" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">50</field>
+        <field name="name">Kontrollera dörrstängare och dörrmaskin – inställning och funktion</field>
+    </record>
+    <record id="checklist_linhiss_06" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">60</field>
+        <field name="name">Kontrollera dörrförregling och lås på schaktdörrar</field>
+    </record>
+    <record id="checklist_linhiss_07" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">70</field>
+        <field name="name">Kontrollera buffertar i grop</field>
+    </record>
+    <record id="checklist_linhiss_08" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">80</field>
+        <field name="name">Kontrollera maskinrum – rengöring, belysning, ventilation</field>
+    </record>
+    <record id="checklist_linhiss_09" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">90</field>
+        <field name="name">Kontrollera nödbelysning och nödstoppknapp i korg</field>
+    </record>
+    <record id="checklist_linhiss_10" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">100</field>
+        <field name="name">Kontrollera säkerhetskretsar och nödfrigöringsanordning</field>
+    </record>
+    <record id="checklist_linhiss_11" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">110</field>
+        <field name="name">Provkörning – bromsning, planering, dörrstängning</field>
+    </record>
+    <record id="checklist_linhiss_12" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_linhiss"/>
+        <field name="sequence">120</field>
+        <field name="name">Städning hissgrop</field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 2. HYDRAULHISS                                     -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <record id="checklist_hydralhiss" model="elevata.service.checklist">
+        <field name="name">Hydraulhiss – Servicekontroll</field>
+        <field name="sequence">20</field>
+        <field name="elevator_type_ids" eval="[(4, ref('elevata_service_contract.elevator_type_hydraulic'))]"/>
+    </record>
+    <record id="checklist_hydralhiss_01" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">10</field>
+        <field name="name">Kontrollera oljenivå i hydraultank</field>
+    </record>
+    <record id="checklist_hydralhiss_02" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">20</field>
+        <field name="name">Kontrollera hydraulslangar, rör och kopplingar – läckage</field>
+    </record>
+    <record id="checklist_hydralhiss_03" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">30</field>
+        <field name="name">Kontrollera hydraulcylinder och kolv – tätningar och läckage</field>
+    </record>
+    <record id="checklist_hydralhiss_04" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">40</field>
+        <field name="name">Kontrollera hydraulpump och motor – ljud, vibration</field>
+    </record>
+    <record id="checklist_hydralhiss_05" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">50</field>
+        <field name="name">Kontrollera och justera arbetstryck</field>
+    </record>
+    <record id="checklist_hydralhiss_06" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">60</field>
+        <field name="name">Smörj styrskenor</field>
+    </record>
+    <record id="checklist_hydralhiss_07" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">70</field>
+        <field name="name">Kontrollera dörrstängare och dörrmaskin</field>
+    </record>
+    <record id="checklist_hydralhiss_08" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">80</field>
+        <field name="name">Kontrollera dörrförregling och lås på schaktdörrar</field>
+    </record>
+    <record id="checklist_hydralhiss_09" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">90</field>
+        <field name="name">Kontrollera säkerhetskretsar och nödstoppknapp</field>
+    </record>
+    <record id="checklist_hydralhiss_10" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">100</field>
+        <field name="name">Kontrollera buffertar i grop</field>
+    </record>
+    <record id="checklist_hydralhiss_11" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">110</field>
+        <field name="name">Provkörning – hastighet upp/ned, planering, nödsänkning</field>
+    </record>
+    <record id="checklist_hydralhiss_12" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_hydralhiss"/>
+        <field name="sequence">120</field>
+        <field name="name">Städning hissgrop</field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 3. MASKINRUMSLÖS LINHISS (MRL)                    -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <record id="checklist_mrl" model="elevata.service.checklist">
+        <field name="name">Maskinrumslös linhiss – Servicekontroll</field>
+        <field name="sequence">30</field>
+        <field name="elevator_type_ids" eval="[(4, ref('elevata_service_contract.elevator_type_machine_room_less'))]"/>
+    </record>
+    <record id="checklist_mrl_01" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">10</field>
+        <field name="name">Kontrollera bärlinor – slitage, trådbrott</field>
+    </record>
+    <record id="checklist_mrl_02" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">20</field>
+        <field name="name">Kontrollera bromsar – funktion och bromsbelägg</field>
+    </record>
+    <record id="checklist_mrl_03" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">30</field>
+        <field name="name">Kontrollera frekvensomriktare – kylning, larm, parametrar</field>
+    </record>
+    <record id="checklist_mrl_04" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">40</field>
+        <field name="name">Kontrollera fångapparat och hastighetsvakt</field>
+    </record>
+    <record id="checklist_mrl_05" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">50</field>
+        <field name="name">Smörj styrskenor</field>
+    </record>
+    <record id="checklist_mrl_06" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">60</field>
+        <field name="name">Kontrollera dörrstängare och dörrmaskin</field>
+    </record>
+    <record id="checklist_mrl_07" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">70</field>
+        <field name="name">Kontrollera dörrförregling och lås på schaktdörrar</field>
+    </record>
+    <record id="checklist_mrl_08" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">80</field>
+        <field name="name">Kontrollera buffertar i grop</field>
+    </record>
+    <record id="checklist_mrl_09" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">90</field>
+        <field name="name">Kontrollera nödbelysning och nödstoppknapp i korg</field>
+    </record>
+    <record id="checklist_mrl_10" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">100</field>
+        <field name="name">Kontrollera säkerhetskretsar och nödfrigöringsanordning</field>
+    </record>
+    <record id="checklist_mrl_11" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">110</field>
+        <field name="name">Provkörning – bromsning, planering, dörrstängning</field>
+    </record>
+    <record id="checklist_mrl_12" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mrl"/>
+        <field name="sequence">120</field>
+        <field name="name">Städning hissgrop</field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 4. SKRUVHISS                                       -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <record id="checklist_skruvhiss" model="elevata.service.checklist">
+        <field name="name">Skruvhiss – Servicekontroll</field>
+        <field name="sequence">40</field>
+        <field name="elevator_type_ids" eval="[(4, ref('elevata_service_contract.elevator_type_screw_drive'))]"/>
+    </record>
+    <record id="checklist_skruvhiss_01" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss"/>
+        <field name="sequence">10</field>
+        <field name="name">Kontrollera skruv – ytskador, gängslitage</field>
+    </record>
+    <record id="checklist_skruvhiss_02" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss"/>
+        <field name="sequence">20</field>
+        <field name="name">Kontrollera drivmutter – slitage och spel</field>
+    </record>
+    <record id="checklist_skruvhiss_03" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss"/>
+        <field name="sequence">30</field>
+        <field name="name">Smörj skruv och mutter</field>
+    </record>
+    <record id="checklist_skruvhiss_04" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss"/>
+        <field name="sequence">40</field>
+        <field name="name">Kontrollera motor och drivlina – ljud, vibration</field>
+    </record>
+    <record id="checklist_skruvhiss_05" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss"/>
+        <field name="sequence">50</field>
+        <field name="name">Kontrollera dörrstängare och dörrmaskin</field>
+    </record>
+    <record id="checklist_skruvhiss_06" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss"/>
+        <field name="sequence">60</field>
+        <field name="name">Kontrollera dörrförregling och lås</field>
+    </record>
+    <record id="checklist_skruvhiss_07" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss"/>
+        <field name="sequence">70</field>
+        <field name="name">Kontrollera ändlägesbrytare (övre/undre stopp)</field>
+    </record>
+    <record id="checklist_skruvhiss_08" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss"/>
+        <field name="sequence">80</field>
+        <field name="name">Kontrollera säkerhetskretsar och nödstoppknapp</field>
+    </record>
+    <record id="checklist_skruvhiss_09" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss"/>
+        <field name="sequence">90</field>
+        <field name="name">Kontrollera nödbelysning i korg</field>
+    </record>
+    <record id="checklist_skruvhiss_10" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss"/>
+        <field name="sequence">100</field>
+        <field name="name">Provkörning – hastighet, planering, nödstopp</field>
+    </record>
+    <record id="checklist_skruvhiss_11" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss"/>
+        <field name="sequence">110</field>
+        <field name="name">Städning hissgrop</field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 5. SKRUVHISS HEMMA HOS                            -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <record id="checklist_skruvhiss_home" model="elevata.service.checklist">
+        <field name="name">Skruvhiss (hem) – Servicekontroll</field>
+        <field name="sequence">50</field>
+        <field name="elevator_type_ids" eval="[(4, ref('elevata_service_contract.elevator_type_screw_drive_home'))]"/>
+    </record>
+    <record id="checklist_skruvhiss_home_01" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss_home"/>
+        <field name="sequence">10</field>
+        <field name="name">Kontrollera skruv – ytskador, gängslitage</field>
+    </record>
+    <record id="checklist_skruvhiss_home_02" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss_home"/>
+        <field name="sequence">20</field>
+        <field name="name">Kontrollera drivmutter – slitage och spel</field>
+    </record>
+    <record id="checklist_skruvhiss_home_03" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss_home"/>
+        <field name="sequence">30</field>
+        <field name="name">Smörj skruv och mutter</field>
+    </record>
+    <record id="checklist_skruvhiss_home_04" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss_home"/>
+        <field name="sequence">40</field>
+        <field name="name">Kontrollera motor och drivlina</field>
+    </record>
+    <record id="checklist_skruvhiss_home_05" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss_home"/>
+        <field name="sequence">50</field>
+        <field name="name">Kontrollera dörrar/grindar och låsning</field>
+    </record>
+    <record id="checklist_skruvhiss_home_06" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss_home"/>
+        <field name="sequence">60</field>
+        <field name="name">Kontrollera ändlägesbrytare (övre/undre stopp)</field>
+    </record>
+    <record id="checklist_skruvhiss_home_07" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss_home"/>
+        <field name="sequence">70</field>
+        <field name="name">Kontrollera säkerhetskretsar och nödstoppknapp</field>
+    </record>
+    <record id="checklist_skruvhiss_home_08" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss_home"/>
+        <field name="sequence">80</field>
+        <field name="name">Provkörning – funktion, stopp, nödstopp</field>
+    </record>
+    <record id="checklist_skruvhiss_home_09" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_skruvhiss_home"/>
+        <field name="sequence">90</field>
+        <field name="name">Städning hissgrop</field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 6. TRAPPHISS                                       -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <record id="checklist_trapphiss" model="elevata.service.checklist">
+        <field name="name">Trapphiss – Servicekontroll</field>
+        <field name="sequence">60</field>
+        <field name="elevator_type_ids" eval="[(4, ref('elevata_service_contract.elevator_type_stair_lift'))]"/>
+    </record>
+    <record id="checklist_trapphiss_01" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss"/>
+        <field name="sequence">10</field>
+        <field name="name">Kontrollera skena – skarvar, infästning, rengöring</field>
+    </record>
+    <record id="checklist_trapphiss_02" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss"/>
+        <field name="sequence">20</field>
+        <field name="name">Smörj skena och drivlina/kuggstång</field>
+    </record>
+    <record id="checklist_trapphiss_03" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss"/>
+        <field name="sequence">30</field>
+        <field name="name">Kontrollera motor och drivlina – ljud, vibration</field>
+    </record>
+    <record id="checklist_trapphiss_04" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss"/>
+        <field name="sequence">40</field>
+        <field name="name">Kontrollera sits, fotstöd och armstöd – funktion och fällning</field>
+    </record>
+    <record id="checklist_trapphiss_05" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss"/>
+        <field name="sequence">50</field>
+        <field name="name">Kontrollera säkerhetsbälte</field>
+    </record>
+    <record id="checklist_trapphiss_06" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss"/>
+        <field name="sequence">60</field>
+        <field name="name">Kontrollera ändlägen/gränser på skena</field>
+    </record>
+    <record id="checklist_trapphiss_07" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss"/>
+        <field name="sequence">70</field>
+        <field name="name">Kontrollera hinderdetekteringslister (säkerhetskant)</field>
+    </record>
+    <record id="checklist_trapphiss_08" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss"/>
+        <field name="sequence">80</field>
+        <field name="name">Kontrollera fjärrkontroll och manöverpanel – batteri, funktion</field>
+    </record>
+    <record id="checklist_trapphiss_09" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss"/>
+        <field name="sequence">90</field>
+        <field name="name">Kontrollera batteriladdning (om batteridriven)</field>
+    </record>
+    <record id="checklist_trapphiss_10" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss"/>
+        <field name="sequence">100</field>
+        <field name="name">Provkörning – start, stopp, svängning, säkerhetsbrytare</field>
+    </record>
+    <record id="checklist_trapphiss_11" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss"/>
+        <field name="sequence">110</field>
+        <field name="name">Städning hissgrop</field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 7. TRAPPHISS HEMMA HOS                            -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <record id="checklist_trapphiss_home" model="elevata.service.checklist">
+        <field name="name">Trapphiss (hem) – Servicekontroll</field>
+        <field name="sequence">70</field>
+        <field name="elevator_type_ids" eval="[(4, ref('elevata_service_contract.elevator_type_stair_lift_home'))]"/>
+    </record>
+    <record id="checklist_trapphiss_home_01" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss_home"/>
+        <field name="sequence">10</field>
+        <field name="name">Kontrollera skena – skarvar, infästning, rengöring</field>
+    </record>
+    <record id="checklist_trapphiss_home_02" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss_home"/>
+        <field name="sequence">20</field>
+        <field name="name">Smörj skena och drivlina/kuggstång</field>
+    </record>
+    <record id="checklist_trapphiss_home_03" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss_home"/>
+        <field name="sequence">30</field>
+        <field name="name">Kontrollera motor och drivlina</field>
+    </record>
+    <record id="checklist_trapphiss_home_04" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss_home"/>
+        <field name="sequence">40</field>
+        <field name="name">Kontrollera sits, fotstöd och armstöd</field>
+    </record>
+    <record id="checklist_trapphiss_home_05" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss_home"/>
+        <field name="sequence">50</field>
+        <field name="name">Kontrollera säkerhetsbälte</field>
+    </record>
+    <record id="checklist_trapphiss_home_06" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss_home"/>
+        <field name="sequence">60</field>
+        <field name="name">Kontrollera ändlägen/gränser</field>
+    </record>
+    <record id="checklist_trapphiss_home_07" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss_home"/>
+        <field name="sequence">70</field>
+        <field name="name">Kontrollera hinderdetekteringslister (säkerhetskant)</field>
+    </record>
+    <record id="checklist_trapphiss_home_08" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss_home"/>
+        <field name="sequence">80</field>
+        <field name="name">Kontrollera fjärrkontroll – batteri, funktion</field>
+    </record>
+    <record id="checklist_trapphiss_home_09" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss_home"/>
+        <field name="sequence">90</field>
+        <field name="name">Kontrollera batteriladdning</field>
+    </record>
+    <record id="checklist_trapphiss_home_10" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss_home"/>
+        <field name="sequence">100</field>
+        <field name="name">Provkörning – start, stopp, säkerhetsbrytare</field>
+    </record>
+    <record id="checklist_trapphiss_home_11" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_trapphiss_home"/>
+        <field name="sequence">110</field>
+        <field name="name">Städning hissgrop</field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 8. MATHISS                                         -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <record id="checklist_mathiss" model="elevata.service.checklist">
+        <field name="name">Mathiss – Servicekontroll</field>
+        <field name="sequence">80</field>
+        <field name="elevator_type_ids" eval="[(4, ref('elevata_service_contract.elevator_type_small_goods'))]"/>
+    </record>
+    <record id="checklist_mathiss_01" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mathiss"/>
+        <field name="sequence">10</field>
+        <field name="name">Kontrollera bärlinor eller drivkedja – slitage</field>
+    </record>
+    <record id="checklist_mathiss_02" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mathiss"/>
+        <field name="sequence">20</field>
+        <field name="name">Kontrollera motor och bromsar</field>
+    </record>
+    <record id="checklist_mathiss_03" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mathiss"/>
+        <field name="sequence">30</field>
+        <field name="name">Smörj styrskenor</field>
+    </record>
+    <record id="checklist_mathiss_04" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mathiss"/>
+        <field name="sequence">40</field>
+        <field name="name">Kontrollera dörrar/luckor och låsanordning</field>
+    </record>
+    <record id="checklist_mathiss_05" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mathiss"/>
+        <field name="sequence">50</field>
+        <field name="name">Kontrollera elektriska dörrlås – alla plan</field>
+    </record>
+    <record id="checklist_mathiss_06" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mathiss"/>
+        <field name="sequence">60</field>
+        <field name="name">Kontrollera ändlägesbrytare (övre/undre stopp)</field>
+    </record>
+    <record id="checklist_mathiss_07" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mathiss"/>
+        <field name="sequence">70</field>
+        <field name="name">Kontrollera säkerhetskretsar</field>
+    </record>
+    <record id="checklist_mathiss_08" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mathiss"/>
+        <field name="sequence">80</field>
+        <field name="name">Provkörning – funktion, planering, stopp</field>
+    </record>
+    <record id="checklist_mathiss_09" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_mathiss"/>
+        <field name="sequence">90</field>
+        <field name="name">Städning hissgrop</field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 9. LYFTBORD                                        -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <record id="checklist_lyftbord" model="elevata.service.checklist">
+        <field name="name">Lyftbord – Servicekontroll</field>
+        <field name="sequence">90</field>
+        <field name="elevator_type_ids" eval="[(4, ref('elevata_service_contract.elevator_type_lifting_table'))]"/>
+    </record>
+    <record id="checklist_lyftbord_01" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_lyftbord"/>
+        <field name="sequence">10</field>
+        <field name="name">Kontrollera oljenivå i hydraultank</field>
+    </record>
+    <record id="checklist_lyftbord_02" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_lyftbord"/>
+        <field name="sequence">20</field>
+        <field name="name">Kontrollera hydraulslangar och kopplingar – läckage</field>
+    </record>
+    <record id="checklist_lyftbord_03" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_lyftbord"/>
+        <field name="sequence">30</field>
+        <field name="name">Kontrollera saxkonstruktion/stödben – slitage och smörjning</field>
+    </record>
+    <record id="checklist_lyftbord_04" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_lyftbord"/>
+        <field name="sequence">40</field>
+        <field name="name">Kontrollera mekanisk låsning i uppfällt läge</field>
+    </record>
+    <record id="checklist_lyftbord_05" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_lyftbord"/>
+        <field name="sequence">50</field>
+        <field name="name">Kontrollera tåskydd/klämskydd</field>
+    </record>
+    <record id="checklist_lyftbord_06" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_lyftbord"/>
+        <field name="sequence">60</field>
+        <field name="name">Kontrollera nödstoppknapp</field>
+    </record>
+    <record id="checklist_lyftbord_07" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_lyftbord"/>
+        <field name="sequence">70</field>
+        <field name="name">Kontrollera manöverpanel och styrning</field>
+    </record>
+    <record id="checklist_lyftbord_08" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_lyftbord"/>
+        <field name="sequence">80</field>
+        <field name="name">Provkörning – lyft, sänk, nödstopp</field>
+    </record>
+    <record id="checklist_lyftbord_09" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_lyftbord"/>
+        <field name="sequence">90</field>
+        <field name="name">Städning hissgrop</field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 10. DÖRRAUTOMATIK                                  -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <record id="checklist_dorrautomatic" model="elevata.service.checklist">
+        <field name="name">Dörrautomatik – Servicekontroll</field>
+        <field name="sequence">100</field>
+        <field name="elevator_type_ids" eval="[(4, ref('elevata_service_contract.elevator_type_door_automatic'))]"/>
+    </record>
+    <record id="checklist_dorrautomatic_01" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_dorrautomatic"/>
+        <field name="sequence">10</field>
+        <field name="name">Kontrollera dörröppnarmotor och drivlina</field>
+    </record>
+    <record id="checklist_dorrautomatic_02" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_dorrautomatic"/>
+        <field name="sequence">20</field>
+        <field name="name">Kontrollera dörrstängare – stängningstid och kraft</field>
+    </record>
+    <record id="checklist_dorrautomatic_03" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_dorrautomatic"/>
+        <field name="sequence">30</field>
+        <field name="name">Kontrollera fotocell/radardetektor – funktion</field>
+    </record>
+    <record id="checklist_dorrautomatic_04" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_dorrautomatic"/>
+        <field name="sequence">40</field>
+        <field name="name">Kontrollera dörrskena och vagnar – slitage och smörjning</field>
+    </record>
+    <record id="checklist_dorrautomatic_05" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_dorrautomatic"/>
+        <field name="sequence">50</field>
+        <field name="name">Kontrollera öppnings- och stängningstider</field>
+    </record>
+    <record id="checklist_dorrautomatic_06" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_dorrautomatic"/>
+        <field name="sequence">60</field>
+        <field name="name">Kontrollera nödfrigöring (manuell öppning vid strömavbrott)</field>
+    </record>
+    <record id="checklist_dorrautomatic_07" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_dorrautomatic"/>
+        <field name="sequence">70</field>
+        <field name="name">Kontrollera gångjärn och tätningar – täthet och skick</field>
+    </record>
+    <record id="checklist_dorrautomatic_08" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_dorrautomatic"/>
+        <field name="sequence">80</field>
+        <field name="name">Provkörning – automatisk öppning/stängning, hinderdetektering</field>
+    </record>
+    <record id="checklist_dorrautomatic_09" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_dorrautomatic"/>
+        <field name="sequence">90</field>
+        <field name="name">Städning hissgrop</field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- 11. PORT                                           -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <record id="checklist_port" model="elevata.service.checklist">
+        <field name="name">Port – Servicekontroll</field>
+        <field name="sequence">110</field>
+        <field name="elevator_type_ids" eval="[(4, ref('elevata_service_contract.elevator_type_gate'))]"/>
+    </record>
+    <record id="checklist_port_01" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_port"/>
+        <field name="sequence">10</field>
+        <field name="name">Kontrollera portblad – skador och ytskick</field>
+    </record>
+    <record id="checklist_port_02" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_port"/>
+        <field name="sequence">20</field>
+        <field name="name">Kontrollera motor och drivmekanism – ljud, vibration</field>
+    </record>
+    <record id="checklist_port_03" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_port"/>
+        <field name="sequence">30</field>
+        <field name="name">Smörj rörliga delar – gångjärn, skena, rulle</field>
+    </record>
+    <record id="checklist_port_04" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_port"/>
+        <field name="sequence">40</field>
+        <field name="name">Kontrollera fjärrstyrningssystem/manöverbox – funktion</field>
+    </record>
+    <record id="checklist_port_05" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_port"/>
+        <field name="sequence">50</field>
+        <field name="name">Kontrollera fotocell/tryckströmbrytare/rörelsedetektering</field>
+    </record>
+    <record id="checklist_port_06" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_port"/>
+        <field name="sequence">60</field>
+        <field name="name">Kontrollera ändlägesbrytare och stopp</field>
+    </record>
+    <record id="checklist_port_07" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_port"/>
+        <field name="sequence">70</field>
+        <field name="name">Kontrollera nödfrigöring (manuell manövrering)</field>
+    </record>
+    <record id="checklist_port_08" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_port"/>
+        <field name="sequence">80</field>
+        <field name="name">Provkörning – öppna, stäng, nödstopp, hinderdetektering</field>
+    </record>
+    <record id="checklist_port_09" model="elevata.service.checklist.line">
+        <field name="checklist_id" ref="checklist_port"/>
+        <field name="sequence">90</field>
+        <field name="name">Städning hissgrop</field>
+    </record>
+
+</odoo>

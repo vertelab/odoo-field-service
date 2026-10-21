@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Smart-button "Serviceavtal" på hisskortet -->
+    <record id="view_fsm_location_service_contract_ext" model="ir.ui.view">
+        <field name="name">fsm.location.service.contract.ext</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button class="oe_stat_button"
+                        type="object"
+                        name="action_view_service_contracts"
+                        icon="fa-file-text-o">
+                    <field name="service_contract_count" widget="statinfo" string="Contracts"/>
+                </button>
+                <button class="oe_stat_button"
+                        type="object"
+                        name="action_view_invoices"
+                        icon="fa-money">
+                    <field name="invoice_count" widget="statinfo" string="Invoices"/>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='elevator_type_id'][1]" position="before">
+                <field name="active_service_contract_id" invisible="1"/>
+                <label for="active_contract_type" string="Avtalstyp"
+                       invisible="not active_service_contract_id"/>
+                <div invisible="not active_service_contract_id">
+                    <button name="action_open_active_contract" type="object"
+                            class="btn btn-link p-0" style="font-weight:normal;">
+                        <field name="active_contract_type" readonly="1"/>
+                    </button>
+                </div>
+                <label for="active_service_contract_id" string="Serviceavtal"
+                       invisible="active_service_contract_id"/>
+                <div invisible="active_service_contract_id"
+                     style="font-weight:bold; color:#dc3545;">
+                    Ej skötselfirma
+                </div>
+                <field name="annual_visits" string="Antal besök/år" readonly="1"
+                       invisible="not active_service_contract_id"/>
+            </xpath>
+            <xpath expr="//page[@name='maintenance']" position="inside">
+                <group string="Serviceavtal">
+                    <field name="require_service_checklist"/>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='maintenance']" position="inside">
+                <group string="Anpassad servicechecklista" invisible="not require_service_checklist">
+                    <div colspan="2">
+                        <button name="action_populate_checklist" type="object"
+                                string="Hämta från mall" class="btn btn-secondary btn-sm mb-2"
+                                confirm="Detta ersätter befintliga rader med standardmallen. Fortsätt?"/>
+                    </div>
+                    <field name="custom_checklist_line_ids" nolabel="1" colspan="2">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="name" string="Uppgift"/>
+                        </list>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

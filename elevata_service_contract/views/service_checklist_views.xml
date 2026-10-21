@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Checklist Template Form View -->
+    <record id="view_service_checklist_form" model="ir.ui.view">
+        <field name="name">elevata.service.checklist.form</field>
+        <field name="model">elevata.service.checklist</field>
+        <field name="arch" type="xml">
+            <form string="Service Checklist Template">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Checklist Name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="elevator_type_ids" widget="many2many_tags"
+                                   placeholder="All types (leave empty for all)"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                            <field name="line_count"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Check Items">
+                            <field name="line_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="note"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Checklist Template Tree View -->
+    <record id="view_service_checklist_tree" model="ir.ui.view">
+        <field name="name">elevata.service.checklist.list</field>
+        <field name="model">elevata.service.checklist</field>
+        <field name="arch" type="xml">
+            <list string="Service Checklist Templates">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="elevator_type_ids" widget="many2many_tags"/>
+                <field name="line_count"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_service_checklist" model="ir.actions.act_window">
+        <field name="name">Checklist Templates</field>
+        <field name="res_model">elevata.service.checklist</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

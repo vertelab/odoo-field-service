@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Report Action -->
+        <record id="action_report_service_contract" model="ir.actions.report">
+            <field name="name">Service Contract</field>
+            <field name="model">elevata.service.contract</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">elevata_service_contract.report_service_contract</field>
+            <field name="report_file">elevata_service_contract.report_service_contract</field>
+            <field name="print_report_name">'Service Contract - %s' % object.name</field>
+            <field name="binding_model_id" ref="model_elevata_service_contract"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="base.paperformat_euro"/>
+        </record>
+
+        <!-- Report Template -->
+        <template id="report_service_contract">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <style>
+                                .sc-header { border-bottom: 2px solid #2c6fad; padding-bottom: 12px; margin-bottom: 24px; }
+                                .sc-title { font-size: 22px; font-weight: bold; color: #2c6fad; margin: 0; }
+                                .sc-ref { font-size: 13px; color: #666; margin-top: 4px; }
+                                .sc-parties { display: flex; gap: 40px; margin-bottom: 24px; }
+                                .sc-party { flex: 1; background: #f8f9fa; border-left: 3px solid #2c6fad; padding: 12px 16px; }
+                                .sc-party-label { font-size: 10px; text-transform: uppercase; color: #888; letter-spacing: 1px; }
+                                .sc-party-name { font-size: 14px; font-weight: bold; margin-top: 4px; }
+                                .sc-meta { display: flex; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+                                .sc-meta-item { background: #f0f4f8; padding: 8px 14px; border-radius: 4px; }
+                                .sc-meta-label { font-size: 10px; color: #888; text-transform: uppercase; }
+                                .sc-meta-value { font-size: 13px; font-weight: bold; }
+                                .sc-section-title { font-size: 13px; font-weight: bold; color: #2c6fad; border-bottom: 1px solid #dee2e6; padding-bottom: 4px; margin: 20px 0 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+                                .sc-content { font-size: 12px; line-height: 1.6; margin-bottom: 20px; }
+                                .sc-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 20px; }
+                                .sc-table th { background: #2c6fad; color: white; padding: 8px 10px; text-align: left; }
+                                .sc-table td { padding: 7px 10px; border-bottom: 1px solid #e9ecef; }
+                                .sc-table tr:nth-child(even) td { background: #f8f9fa; }
+                                .sc-table .text-right { text-align: right; }
+                                .sc-total { text-align: right; font-weight: bold; font-size: 13px; margin-bottom: 24px; padding-right: 10px; }
+                                .sc-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: bold; }
+                                .sc-badge-prepaid { background: #d4edda; color: #155724; }
+                                .sc-badge-postpaid { background: #fff3cd; color: #856404; }
+                                .sc-signatures { display: flex; gap: 40px; margin-top: 48px; }
+                                .sc-sig { flex: 1; }
+                                .sc-sig-line { border-top: 1px solid #333; margin-top: 50px; padding-top: 6px; font-size: 11px; color: #555; }
+                            </style>
+
+                            <!-- Header -->
+                            <div class="sc-header">
+                                <div class="sc-title">Service Contract</div>
+                                <div class="sc-ref" t-esc="doc.name"/>
+                            </div>
+
+                            <!-- Parties -->
+                            <div class="sc-parties">
+                                <div class="sc-party">
+                                    <div class="sc-party-label">Supplier</div>
+                                    <div class="sc-party-name" t-esc="doc.company_id.name"/>
+                                    <div t-esc="doc.company_id.street"/>
+                                    <div><t t-esc="doc.company_id.zip"/> <t t-esc="doc.company_id.city"/></div>
+                                </div>
+                                <div class="sc-party">
+                                    <div class="sc-party-label">Customer</div>
+                                    <div class="sc-party-name" t-esc="doc.partner_id.name"/>
+                                    <div t-esc="doc.partner_id.street"/>
+                                    <div><t t-esc="doc.partner_id.zip"/> <t t-esc="doc.partner_id.city"/></div>
+                                </div>
+                            </div>
+
+                            <!-- Meta -->
+                            <div class="sc-meta">
+                                <div class="sc-meta-item">
+                                    <div class="sc-meta-label">Start Date</div>
+                                    <div class="sc-meta-value"><span t-field="doc.date_start"/></div>
+                                </div>
+                                <div class="sc-meta-item">
+                                    <div class="sc-meta-label">End Date</div>
+                                    <div class="sc-meta-value"><span t-field="doc.date_end"/></div>
+                                </div>
+                                <div class="sc-meta-item">
+                                    <div class="sc-meta-label">Duration</div>
+                                    <div class="sc-meta-value"><t t-esc="doc.contract_years"/> year(s)</div>
+                                </div>
+                                <div class="sc-meta-item">
+                                    <div class="sc-meta-label">Annual Amount</div>
+                                    <div class="sc-meta-value">
+                                        <span t-field="doc.amount_total"
+                                              t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contract Content (rich text) -->
+                            <t t-if="doc.content">
+                                <div class="sc-section-title">Terms &amp; Conditions</div>
+                                <div class="sc-content" t-out="doc.content"/>
+                            </t>
+
+                            <!-- Contract Lines -->
+                            <t t-if="doc.line_ids">
+                                <div class="sc-section-title">Elevators Covered</div>
+                                <table class="sc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Elevator</th>
+                                            <th>Type</th>
+                                            <th>Visits/Year</th>
+                                            <th>Inspection</th>
+                                            <th>Billing</th>
+                                            <th class="text-right">Annual Price (SEK)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="doc.line_ids" t-as="line">
+                                            <td><strong t-esc="line.equipment_id.name"/></td>
+                                            <td t-esc="line.contract_type_selection"/>
+                                            <td t-esc="line.visits_per_year"/>
+                                            <td>
+                                                <t t-if="line.include_inspection">&#10003;</t>
+                                                <t t-else="">&#8212;</t>
+                                            </td>
+                                            <td>
+                                                <span t-if="line.billing_type == 'prepaid'" class="sc-badge sc-badge-prepaid">Prepaid</span>
+                                                <span t-else="" class="sc-badge sc-badge-postpaid">Post-paid</span>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="line.price_unit"
+                                                      t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="sc-total">
+                                    Total Annual Amount:
+                                    <span t-field="doc.amount_total"
+                                          t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                </div>
+                            </t>
+
+                            <!-- Signatures -->
+                            <div class="sc-signatures">
+                                <div class="sc-sig">
+                                    <div>For <strong t-esc="doc.company_id.name"/>:</div>
+                                    <div class="sc-sig-line">Date and Signature</div>
+                                </div>
+                                <div class="sc-sig">
+                                    <div>For <strong t-esc="doc.partner_id.name"/>:</div>
+                                    <div class="sc-sig-line">Date and Signature</div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

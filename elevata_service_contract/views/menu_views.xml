@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top-level menu -->
+    <menuitem id="menu_service_contract_root"
+              name="Service Contracts"
+              web_icon="elevata_service_contract,static/description/icon.png"
+              sequence="25"/>
+
+    <!-- Contracts -->
+    <menuitem id="menu_service_contracts"
+              name="Contracts"
+              parent="menu_service_contract_root"
+              action="action_service_contract"
+              sequence="10"/>
+
+    <!-- Configuration -->
+    <menuitem id="menu_service_contract_config"
+              name="Configuration"
+              parent="menu_service_contract_root"
+              sequence="100"/>
+
+    <menuitem id="menu_contract_templates"
+              name="Contract Templates"
+              parent="menu_service_contract_config"
+              action="action_contract_templates"
+              sequence="10"/>
+
+    <menuitem id="menu_service_checklists"
+              name="Checklist Templates"
+              parent="menu_service_contract_config"
+              action="action_service_checklist"
+              sequence="20"/>
+
+    <menuitem id="menu_template_modifications"
+              name="Template Modifications"
+              parent="menu_service_contract_config"
+              action="action_service_contract_template_modification"
+              sequence="30"/>
+</odoo>
