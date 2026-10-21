@@ -44,11 +44,6 @@
                                     invisible="not fsm_recurring_id">
                                 <span class="o_stat_text">Recurring Order</span>
                             </button>
-                            <button type="object" name="action_view_sales"
-                                    class="oe_stat_button" icon="fa-usd"
-                                    groups="sales_team.group_sale_salesman">
-                                <span class="o_stat_text">Sales Order</span>
-                            </button>
                         </div>
                         <div class="alert alert-danger" role="alert"
                              invisible="not equipment_id or location_operational_status == 'operational'"><strong>Observera:</strong><span class="ms-1">Hissen är</span><field name="location_operational_status_str" readonly="1" nolabel="1" class="d-inline-block ms-1"/></div>
