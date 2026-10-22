@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ════════════════════════════════════════════════════════════════
+         Verktyg för fieldservice-coworkern.
+
+         Mönster (samma som project_ai): ai.tool med `code` som körs i
+         run()-sandboxen och anropar bryggmetoderna på ai.coworker —
+         ingen ORM-logik i verktyget. Bryggan ägs av denna moduls
+         models/fieldservice_vrtl_ai.py.
+
+         Skrivverktyg har risk_level=write och passerar HITL-gaten.
+         ════════════════════════════════════════════════════════════════ -->
+
+    <record id="tool_order_get" model="ai.tool">
+        <field name="name">order_get</field>
+        <field name="description">Hämta en serviceorder (fieldservice.order) med all kontext som behövs för triage: ordernummer, beskrivning, utrustning, märke/modell/serienummer, arbetsinstruktioner, vägbeskrivning, etapp, prioritet, planerade datum och tilldelade tekniker.</field>
+        <field name="parameters">{"type": "object", "properties": {"order_id": {"type": "integer", "description": "ID för fieldservice.order"}}, "required": ["order_id"]}</field>
+        <field name="risk_level">read_only</field>
+        <field name="code"><![CDATA[
+async def execute(order_id):
+    """Hämta serviceorder via bryggan."""
+    res = env['ai.coworker'].fieldservice_order_get(int(order_id))
+    return json.dumps(res, ensure_ascii=False, default=str)
+]]></field>
+    </record>
+
+    <record id="tool_order_set_status" model="ai.tool">
+        <field name="name">order_set_status</field>
+        <field name="description">Ändra etapp på en serviceorder (fieldservice.order). Statusmappning: new, planned, ongoing, test, done, cancelled. Etappen hittas dynamiskt bland de etapper som finns i installationen.</field>
+        <field name="parameters">{"type": "object", "properties": {"order_id": {"type": "integer", "description": "ID för fieldservice.order"}, "status": {"type": "string", "description": "önskad status: new/planned/ongoing/test/done/cancelled"}}, "required": ["order_id", "status"]}</field>
+        <field name="risk_level">write</field>
+        <field name="code"><![CDATA[
+async def execute(order_id, status):
+    """Sätt etapp via bryggan."""
+    ok, msg = env['ai.coworker'].fieldservice_order_set_status(
+        int(order_id), str(status))
+    return msg
+]]></field>
+    </record>
+
+    <record id="tool_order_set_severity" model="ai.tool">
+        <field name="name">order_set_severity</field>
+        <field name="description">Sätt allvarlighetsgrad på en serviceorder. Skrivåtgärd — kräver godkännande. Giltiga värden: low, medium, high. Fältet styr vilka SLA:er som tillämpas.</field>
+        <field name="parameters">{"type": "object", "properties": {"order_id": {"type": "integer", "description": "ID för fieldservice.order"}, "severity": {"type": "string", "description": "low, medium eller high"}}, "required": ["order_id", "severity"]}</field>
+        <field name="risk_level">write</field>
+        <field name="code"><![CDATA[
+async def execute(order_id, severity):
+    """Sätt allvarlighetsgrad via bryggan."""
+    ok, msg = env['ai.coworker'].fieldservice_order_set_severity(
+        int(order_id), str(severity))
+    return msg
+]]></field>
+    </record>
+
+    <record id="tool_order_set_planning" model="ai.tool">
+        <field name="name">order_set_planning</field>
+        <field name="description">Sätt planerat start- och sluttid på en serviceorder. Skrivåtgärd — kräver godkännande. Datum i ISO-format (YYYY-MM-DD HH:MM:SS).</field>
+        <field name="parameters">{"type": "object", "properties": {"order_id": {"type": "integer", "description": "ID för fieldservice.order"}, "planned_start": {"type": "string", "description": "planerad start, ISO datetime"}, "planned_end": {"type": "string", "description": "planerat slut, ISO datetime"}}, "required": ["order_id", "planned_start", "planned_end"]}</field>
+        <field name="risk_level">write</field>
+        <field name="code"><![CDATA[
+async def execute(order_id, planned_start, planned_end):
+    """Sätt planerade datum via bryggan."""
+    ok, msg = env['ai.coworker'].fieldservice_order_set_planning(
+        int(order_id), planned_start, planned_end)
+    return msg
+]]></field>
+    </record>
+
+    <record id="tool_order_assign_technician" model="ai.tool">
+        <field name="name">order_assign_technician</field>
+        <field name="description">Tilldela en tekniker (hr.employee) till en serviceorder. Skrivåtgärd — kräver godkännande. Utelämna employee_id för att lista tillgängliga tekniker.</field>
+        <field name="parameters">{"type": "object", "properties": {"order_id": {"type": "integer", "description": "ID för fieldservice.order"}, "employee_id": {"type": "integer", "description": "ID för hr.employee (utelämna för att lista tekniker)"}}, "required": ["order_id"]}</field>
+        <field name="risk_level">write</field>
+        <field name="code"><![CDATA[
+async def execute(order_id, employee_id=None):
+    """Tilldela tekniker, eller lista valbara, via bryggan."""
+    ok, res = env['ai.coworker'].fieldservice_order_assign_technician(
+        int(order_id), int(employee_id) if employee_id else None)
+    if isinstance(res, list):
+        return json.dumps({'available_technicians': res}, ensure_ascii=False)
+    return res
+]]></field>
+    </record>
+
+</odoo>

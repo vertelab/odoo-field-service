@@ -1,70 +1,61 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Odoo SA, Open Source Management Solution, third party addon
-#    Copyright (C) 2025- Vertel Sverige AB (<https://vertel.se>).
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program. If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
-
 {
-    'name': 'Fieldservice: AI Coworkers',
-    'version': '18.0.2.0.0',
-    'summary': 'AI coworker for field service — dispatcher + specialist agents.',
-    'category': 'Fieldservice',
+    'name': 'Field Service: AI Coworkers',
+    'version': '18.0.2.0.1',
+    'summary': 'OKF-indexering och AI-coworkers for faltsserviceorder.',
     'description': '''
-Fieldservice: AI Coworkers
-==========================
+Field Service: AI Coworkers
+===========================
 
-AI coworker for field service orders (fieldservice.order).
+Samma monster som `project_ai`, men for faltsservice.
 
-Agents:
+    - OKF: `fieldservice.order` blir sokbar kunskap (okf_body, okf_summary,
+      okf_links, okf_dirty, okf_indexed_at) via `ai.okf.mixin`.
+    - Artefakttyp: `fieldservice_order` (okf-mixin D12).
+    - Brygga: `ai.coworker` far `fieldservice_order_get`,
+      `fieldservice_order_set_status`, `fieldservice_order_set_severity`,
+      `fieldservice_order_set_planning`,
+      `fieldservice_order_assign_technician`.
+    - Coworker: `Field Service` (supervisor) med fyra specialistagenter —
+      Severity Analyst, Time Estimator, Work Planner, Service Assistant.
+    - Verktyg: order_get, order_set_status, order_set_severity,
+      order_set_planning, order_assign_technician.
+    - Skills: Serviceorder-triage, Teknikerchatt.
 
-    - Servicedispatcher (supervisor) — triage, planering, delegering
-    - Severity Analyst — allvarlighetsgrad Low/Medium/Critical
-    - Time Estimator — tidsuppskattning 1-4 timmar
-    - Work Planner — planerat start/slut + tillgänglig tekniker
-    - Service Assistant — chatt som svarar teknikern om ordern
+NAMNET: modulen hette tidigare tva saker — `fieldservice_vrtl_ai` (gamla
+ai.agent-generationen) och `fieldservice_ai` (denna, ai.coworker). De var
+samma modul under olika namn. `fieldservice_vrtl_ai` ar namnet som behalls;
+innehållet ar det som byggdes for ai.coworker. Den gamla ai.agent-koden
+(ai.quest-bryggan, chatt-controllern, followup-widgeten) ar borta — den
+generationen ar pensionerad.
 
-Ported from the legacy ai.agent/ai.quest generation (18.0.1.0.4) to the
-ai.coworker architecture, matching project_ai.
+VARFOR egen modul och inte project_ai:
+    `fieldservice.order` anvander `_inherits = {'project.task': 'task_id'}`.
+    Det ar DELEGATION, inte arv — falt pa `project.task` kopieras inte till
+    `fieldservice_order`-tabellen och mixinen nar alltsa inte fram. Matt
+    2026-10-21: `project_task` hade okf_body/okf_summary/okf_links/okf_dirty/
+    okf_indexed_at, `fieldservice_order` hade inga. Mixinen maste laggas
+    explicit.
     ''',
+    'category': 'Field Service',
     'author': 'Vertel Sverige AB',
     'website': 'https://vertel.se/apps/odoo-field-service/fieldservice_vrtl_ai',
-    'images': ['static/description/banner.png'],  # 560x280 px.
     'license': 'AGPL-3',
-    'maintainer': 'Vertel Sverige AB',
-    'repository': 'https://github.com/vertelab/odoo-field-service',
     'depends': [
-        'ai_agent_core',
         'fieldservice_vrtl',
-        'fieldservice_hr',
+        'fieldservice_sla',   # ager severity_level (required, styr SLA-val)
+        'ai_agent_core',
     ],
     'data': [
         'security/ir.model.access.csv',
+        'data/okf_artifact_types_fieldservice.xml',
         'data/fieldservice_tools.xml',
         'data/fieldservice_skills.xml',
         'data/fieldservice_agents.xml',
         'data/fieldservice_coworkers.xml',
+        'views/fieldservice_order_views.xml',
     ],
-    # 2026-10-22: SUPERSEDED av fieldservice_ai.
-    # Agenterna, skillsen, verktygen och coworkern flyttades dit — den
-    # modulen ager redan fieldservice.order-AI:n (bryggmetoder + OKF-mixin)
-    # och ar installerad. Tva moduler med samma syfte ar en falla for
-    # nasta person; en modul gor allt.
-    'installable': False,
-    'auto_install': False,
+    'installable': True,
     'application': False,
+    'auto_install': False,
 }

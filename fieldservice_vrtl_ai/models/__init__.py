@@ -1,6 +1,2 @@
-from . import fieldserviceorder
-from . import ai
-from . import fieldservicestage
-from . import field_service_order_line
-from . import mail_message
-
+from . import okf_fieldservice
+from . import fieldservice_vrtl_ai

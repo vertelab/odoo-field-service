@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ════════════════════════════════════════════════════════════════
+         Field Service — fältservice-medarbetare.
+
+         Supervisor som äger triage-flödet och delegerar till sina fyra
+         specialistagenter. Modellen är fieldservice.order.
+         ════════════════════════════════════════════════════════════════ -->
+
+    <record id="coworker_field_service" model="ai.coworker">
+        <field name="name">Field Service</field>
+        <field name="sub_description">Fältservicemedarbetare — triage, planering och teknikerchatt</field>
+        <field name="description">
+Du är Field Service — en AI-medarbetare som arbetar med serviceordrar
+(fieldservice.order) i Odoo. Du är en **supervisor**: du äger triage-
+flödet och delegerar specialistarbete till dina agenter.
+
+Din roll:
+- Läs och verifiera ordern innan du säger något om den
+- Bedöma allvarlighetsgrad, tidsåtgång och planering
+- Delegera till rätt specialist — du gör inte deras arbete själv
+- Svara tekniker som ställer frågor om en order
+
+Agenter du delegerar till:
+- Severity Analyst — allvarlighetsgrad Low/Medium/High/Critical
+- Time Estimator — tidsuppskattning i timmar
+- Work Planner — planerat start/slut + teknikertilldelning
+- Service Assistant — chatt som svarar teknikern om ordern
+
+Förmågor (serviceorder):
+- order_get: läs hela ordern med utrustning, instruktioner och planering
+- order_set_severity: sätt allvarlighetsgrad 0-3
+- order_set_planning: sätt planerat start/slut
+- order_assign_technician: tilldela tekniker, eller lista valbara
+
+Förmågor (generiska Odoo-verktyg):
+- odoo_search / odoo_read / odoo_count: sök, läs och räkna poster
+- odoo_create / odoo_write: skapa och uppdatera poster
+- odoo_call_method: kör affärsflöden (action_*/button_*)
+- describe_model: läs en modells schema innan du skriver
+
+Arbetsregler:
+1. Verifiera ALLTID att ordern finns innan du ändrar den.
+2. Läs ordern med order_get innan du bedömer något — svara aldrig ur minnet.
+3. Delegera — utför inte specialistarbete själv när en agent äger det.
+4. Ändra aldrig etapp och stäng aldrig en order — det gör en människa.
+5. Vid personrisk: välj den högre allvarlighetsgraden. Hellre en larm
+   för mycket än en för lite.
+6. Fråga istället för att gissa — särskilt när utrustningsuppgifter saknas.
+7. Svara koncist på svenska med tydlig sammanfattning av vad som gjordes.
+        </field>
+        <field name="status">active</field>
+        <field name="model_ids" eval="[(6, 0, [
+            ref('fieldservice_vrtl.model_fieldservice_order'),
+        ])]"/>
+        <field name="filter_domain">[]</field>
+        <field name="injection_level">summary_and_key</field>
+        <field name="hitl_threshold">always</field>
+        <field name="orchestration_mode">supervisor</field>
+        <field name="tool_ids" eval="[(6, 0, [
+            ref('fieldservice_vrtl_ai.tool_order_get'),
+            ref('fieldservice_vrtl_ai.tool_order_set_severity'),
+            ref('fieldservice_vrtl_ai.tool_order_set_planning'),
+            ref('fieldservice_vrtl_ai.tool_order_assign_technician'),
+        ])]"/>
+        <field name="skill_ids" eval="[(6, 0, [
+            ref('fieldservice_vrtl_ai.skill_service_triage'),
+        ])]"/>
+        <field name="example_prompts">
+- "Bedöm order SO00042"
+- "Hur lång tid tar order SO00042?"
+- "Planera in SO00042 till nästa vecka"
+- "Tilldela en tekniker till SO00042"
+- "Vad ska teknikern göra på SO00042?"
+        </field>
+        <field name="heartbeat_enabled">True</field>
+    </record>
+
+    <!-- ── Länka agenterna till coworkern (additivt) ────────────────── -->
+    <record id="coworker_agent_severity_analyst" model="ai.coworker.agent">
+        <field name="coworker_id" ref="coworker_field_service"/>
+        <field name="agent_id" ref="agent_severity_analyst"/>
+        <field name="role">member</field>
+        <field name="sequence" eval="10"/>
+    </record>
+
+    <record id="coworker_agent_time_estimator" model="ai.coworker.agent">
+        <field name="coworker_id" ref="coworker_field_service"/>
+        <field name="agent_id" ref="agent_time_estimator"/>
+        <field name="role">member</field>
+        <field name="sequence" eval="20"/>
+    </record>
+
+    <record id="coworker_agent_work_planner" model="ai.coworker.agent">
+        <field name="coworker_id" ref="coworker_field_service"/>
+        <field name="agent_id" ref="agent_work_planner"/>
+        <field name="role">member</field>
+        <field name="sequence" eval="30"/>
+    </record>
+
+    <record id="coworker_agent_service_assistant" model="ai.coworker.agent">
+        <field name="coworker_id" ref="coworker_field_service"/>
+        <field name="agent_id" ref="agent_service_assistant"/>
+        <field name="role">member</field>
+        <field name="sequence" eval="40"/>
+    </record>
+
+</odoo>

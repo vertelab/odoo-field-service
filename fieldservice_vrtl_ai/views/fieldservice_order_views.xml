@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fieldservice_order_form_okf" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.okf</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Knowledge (OKF)" name="okf">
+                    <group>
+                        <group string="Indexering">
+                            <field name="okf_dirty" readonly="1"/>
+                            <field name="okf_indexed_at" readonly="1"/>
+                        </group>
+                        <group string="Taggar">
+                            <field name="okf_tags" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <field name="okf_summary" readonly="1"/>
+                    <field name="okf_body" readonly="1"/>
+                    <field name="okf_links" readonly="1" widget="json"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

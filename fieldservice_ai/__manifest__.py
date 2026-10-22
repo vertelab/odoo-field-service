@@ -41,7 +41,11 @@ VARFOR egen modul och inte project_ai:
         'data/fieldservice_coworkers.xml',
         'views/fieldservice_order_views.xml',
     ],
-    'installable': True,
+    # 2026-10-22: SUPERSEDED av fieldservice_vrtl_ai.
+    # Innehallet (OKF-mixin, brygga, coworker, agenter, verktyg, skills)
+    # flyttades dit — fieldservice_vrtl_ai ar namnet som behalls. Tva
+    # moduler med samma syfte ar en falla; en modul gor allt.
+    'installable': False,
     'application': False,
     'auto_install': False,
 }
