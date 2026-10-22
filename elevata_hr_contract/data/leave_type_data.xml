@@ -4,7 +4,7 @@
 
         <!-- Ledighetstyp: Semester (krävs för automatisk semestertilldelning) -->
         <record id="leave_type_semester" model="hr.leave.type">
-            <field name="name">Vacation</field>
+            <field name="name">Semester</field>
             <field name="requires_allocation">yes</field>
             <field name="employee_requests">no</field>
             <field name="allocation_validation_type">no_validation</field>
