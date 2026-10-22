@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/> 
         <field name="arch" type="xml">
             
-               <div class="oe_button_box" positon="inside">
+               <div class="oe_button_box" position="inside">
                 <button
                     type="object"
                     name="action_view_invoices"
@@ -29,7 +29,7 @@
                 type="object"
                 string="Create Invoices"
                 class="btn-primary"
-                attrs="{'invisible': [('invoice_line_ids', '=', False)]}"/>
+                invisible="not invoice_line_ids"/>
                 <page string="Invoice" name="invoice_line_ids">
                     <field name="invoice_line_ids">
                         <list editable="bottom">

@@ -82,6 +82,25 @@ class FieldServiceOrderAICoworker(models.Model):
             'date_start': order.date_start.isoformat() if order.date_start else None,
             'date_end': order.date_end.isoformat() if order.date_end else None,
             'description': (order.description or '')[:500],
+            # Triage-kontext: utrustningen och instruktionerna.
+            'order_number': order.order_number or '',
+            'equipment': order.equipment_id.display_name if order.equipment_id else '',
+            'brand': order.brand_id.display_name if order.brand_id else '',
+            'model': order.model or '',
+            'serial_number': order.serial_number or '',
+            'product_number': order.product_number or '',
+            'marking': order.marking or '',
+            'purchase_date': order.purchase_date.isoformat() if order.purchase_date else None,
+            'work_instructions': order.work_instructions or '',
+            'location_instructions': order.location_instructions or '',
+            'date_deadline': order.date_deadline.isoformat() if order.date_deadline else None,
+            'planned_date_start': (
+                order.planned_date_start.isoformat()
+                if order.planned_date_start else None),
+            'planned_date_end': (
+                order.planned_date_end.isoformat()
+                if order.planned_date_end else None),
+            'technicians': [e.name for e in order.employee_ids],
         }
 
     @api.model
@@ -98,3 +117,59 @@ class FieldServiceOrderAICoworker(models.Model):
             return False, 'No stage found for status %r' % status
         order.write({'stage_id': stage_id})
         return True, 'Order %s moved to stage %s' % (order.name, status)
+
+    # ── Triage-metoder (fieldservice-agenter) ─────────────────────────────
+
+    @api.model
+    def fieldservice_order_set_severity(self, order_id, severity):
+        """Satt allvarlighetsgrad pa ordern. Returnerar (ok, meddelande).
+
+        `severity_level` ags av fieldservice_sla och ar required — den
+        styr ocksa vilka SLA:er som valjs (_onchange_severity_level).
+        Tre nivaer: low / medium / high. Tar aven emot 0-3 for
+        bakåtkompatibilitet med den gamla agentens skala.
+        """
+        order = self.env['fieldservice.order'].sudo().browse(order_id)
+        if not order.exists():
+            return False, 'Order %s not found' % order_id
+        raw = str(severity).strip().lower()
+        legacy = {'0': 'low', '1': 'medium', '2': 'high', '3': 'high'}
+        level = legacy.get(raw, raw)
+        if level not in ('low', 'medium', 'high'):
+            return False, 'Severity must be low/medium/high, got %r' % (severity,)
+        order.write({'severity_level': level})
+        # Validera om SLA-valet sa det speglar den nya nivan.
+        order._onchange_severity_level()
+        return True, 'Order %s: severity set to %s' % (order.name, level)
+
+    @api.model
+    def fieldservice_order_set_planning(self, order_id, planned_start, planned_end):
+        """Satt planerat start/slut. Returnerar (ok, meddelande)."""
+        order = self.env['fieldservice.order'].sudo().browse(order_id)
+        if not order.exists():
+            return False, 'Order %s not found' % order_id
+        vals = {}
+        if planned_start:
+            vals['planned_date_start'] = planned_start
+        if planned_end:
+            vals['planned_date_end'] = planned_end
+        if not vals:
+            return False, 'No dates given'
+        order.write(vals)
+        return True, 'Order %s planned: %s -> %s' % (
+            order.name, order.planned_date_start, order.planned_date_end)
+
+    @api.model
+    def fieldservice_order_assign_technician(self, order_id, employee_id=None):
+        """Tilldela tekniker, eller lista valbara. Returnerar (ok, meddelande|lista)."""
+        order = self.env['fieldservice.order'].sudo().browse(order_id)
+        if not order.exists():
+            return False, 'Order %s not found' % order_id
+        if not employee_id:
+            techs = self.env['hr.employee'].sudo().search([], limit=30)
+            return True, [{'id': e.id, 'name': e.name} for e in techs]
+        emp = self.env['hr.employee'].sudo().browse(int(employee_id))
+        if not emp.exists():
+            return False, 'Technician %s not found' % employee_id
+        order.write({'employee_ids': [(4, emp.id)]})
+        return True, 'Order %s: %s assigned' % (order.name, emp.name)

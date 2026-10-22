@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Field Service: AI Coworkers',
-    'version': '18.0.1.0.0',
+    'version': '18.0.2.0.1',
     'summary': 'OKF-indexering och AI-coworkers for faltsserviceorder.',
     'description': '''
 Field Service: AI Coworkers
@@ -29,11 +29,16 @@ VARFOR egen modul och inte project_ai:
     'license': 'AGPL-3',
     'depends': [
         'fieldservice_vrtl',
+        'fieldservice_sla',   # ager severity_level (required, styr SLA-val)
         'ai_agent_core',
     ],
     'data': [
         'security/ir.model.access.csv',
         'data/okf_artifact_types_fieldservice.xml',
+        'data/fieldservice_tools.xml',
+        'data/fieldservice_skills.xml',
+        'data/fieldservice_agents.xml',
+        'data/fieldservice_coworkers.xml',
         'views/fieldservice_order_views.xml',
     ],
     'installable': True,

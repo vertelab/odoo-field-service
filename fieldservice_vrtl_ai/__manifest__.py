@@ -20,45 +20,51 @@
 ##############################################################################
 
 {
-    'name': 'Fieldservice: chat with orders',
-    'version': '18.0.1.0.4',
-    'summary': 'Mailbox for AI.',
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
+    'name': 'Fieldservice: AI Coworkers',
+    'version': '18.0.2.0.0',
+    'summary': 'AI coworker for field service — dispatcher + specialist agents.',
     'category': 'Fieldservice',
-    'description': """
-        Chat
-    """,
-    #'sequence': '1',
+    'description': '''
+Fieldservice: AI Coworkers
+==========================
+
+AI coworker for field service orders (fieldservice.order).
+
+Agents:
+
+    - Servicedispatcher (supervisor) — triage, planering, delegering
+    - Severity Analyst — allvarlighetsgrad Low/Medium/Critical
+    - Time Estimator — tidsuppskattning 1-4 timmar
+    - Work Planner — planerat start/slut + tillgänglig tekniker
+    - Service Assistant — chatt som svarar teknikern om ordern
+
+Ported from the legacy ai.agent/ai.quest generation (18.0.1.0.4) to the
+ai.coworker architecture, matching project_ai.
+    ''',
     'author': 'Vertel Sverige AB',
     'website': 'https://vertel.se/apps/odoo-field-service/fieldservice_vrtl_ai',
     'images': ['static/description/banner.png'],  # 560x280 px.
     'license': 'AGPL-3',
-    'contributor': '',
     'maintainer': 'Vertel Sverige AB',
     'repository': 'https://github.com/vertelab/odoo-field-service',
-    # Any module necessary for this one to work correctly
     'depends': [
-        'ai_agent',
+        'ai_agent_core',
         'fieldservice_vrtl',
         'fieldservice_hr',
     ],
     'data': [
         'security/ir.model.access.csv',
-        'data/ai_agent_data.xml',
-        'views/mail_message_view.xml',
+        'data/fieldservice_tools.xml',
+        'data/fieldservice_skills.xml',
+        'data/fieldservice_agents.xml',
+        'data/fieldservice_coworkers.xml',
     ],
-    'assets': {
-        'web.assets_backend': [
-            'fieldservice_vrtl_ai/static/src/js/thread_action.js',
-
-            'fieldservice_vrtl_ai/static/src/xml/mail_message_followup_questions.xml',
-            'fieldservice_vrtl_ai/static/src/js/mail_message_followup_questions.js',
-            'fieldservice_vrtl_ai/static/src/scss/style.scss',
-        ]
-    },
-    'installable': True,
+    # 2026-10-22: SUPERSEDED av fieldservice_ai.
+    # Agenterna, skillsen, verktygen och coworkern flyttades dit — den
+    # modulen ager redan fieldservice.order-AI:n (bryggmetoder + OKF-mixin)
+    # och ar installerad. Tva moduler med samma syfte ar en falla for
+    # nasta person; en modul gor allt.
+    'installable': False,
     'auto_install': False,
     'application': False,
 }
