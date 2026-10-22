@@ -3,7 +3,6 @@ from . import calendar_event
 from . import fsm_location
 from . import fsm_order
 from . import fsm_order_type
-from . import fsm_planning
 from . import res_config_settings
 from . import project_project
 from . import account_analytic_plan

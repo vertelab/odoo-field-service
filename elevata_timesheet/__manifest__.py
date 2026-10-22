@@ -1,6 +1,6 @@
 {
     'name': 'Elevata Timesheet',
-    'version': '18.0.1.0.11',
+    'version': '18.0.1.0.13',
     'category': 'Human Resources/Timesheets',
     'summary': 'Start/end time, rate types, contract prices, and calendar sync for timesheets',
     'author': 'Vertel Sverige AB',
@@ -26,6 +26,11 @@
         'fieldservice_order_type_color',
         'elevata_fsm_flow',
         'elevata_fsm_account',
+        # Planning lines and action_convert_to_timesheet live in the generic
+        # fieldservice_calendar_vrtl. elevata_timesheet used to carry its own
+        # elevata.fsm.planning copy; it was removed as a duplicate.
+        'fieldservice_calendar_vrtl',
+        'fieldservice_timesheet_vrtl',
     ],
     'data': [
         'security/ir.model.access.csv',

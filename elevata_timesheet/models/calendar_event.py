@@ -86,29 +86,6 @@ class CalendarEvent(models.Model):
         if 'start' not in vals and 'stop' not in vals:
             return res
         for event in self:
-            # Sync back to planning lines
-            planning_lines = self.env['elevata.fsm.planning'].search([
-                ('calendar_event_id', '=', event.id),
-            ])
-            if planning_lines:
-                planning_vals = {}
-                user_tz = pytz.timezone(self.env.user.tz or 'UTC')
-                if event.start:
-                    local_start = pytz.UTC.localize(event.start).astimezone(user_tz)
-                    planning_vals['planning_date'] = local_start.date()
-                    planning_vals['time_start'] = self._round_to_15min(
-                        local_start.hour + local_start.minute / 60.0
-                    )
-                if event.stop:
-                    local_stop = pytz.UTC.localize(event.stop).astimezone(user_tz)
-                    planning_vals['time_end'] = self._round_to_15min(
-                        local_stop.hour + local_stop.minute / 60.0
-                    )
-                if planning_vals:
-                    planning_lines.with_context(
-                        no_calendar_sync_back=True
-                    ).write(planning_vals)
-
             # Sync back to timesheets
             timesheets = self.env['account.analytic.line'].search([
                 ('calendar_event_id', '=', event.id),

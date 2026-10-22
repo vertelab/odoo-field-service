@@ -2,7 +2,6 @@ from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.addons.elevata_base.constants import RATE_TYPE
 
-from datetime import datetime, timedelta
 import pytz
 
 
@@ -10,24 +9,11 @@ class AccountAnalyticLine(models.Model):
     _inherit = 'account.analytic.line'
 
     name = fields.Char(required=False)
-    time_start = fields.Float(string="Start Time", copy=False)
-    # hr_timesheet_begin_end owns time_start/time_stop and hard-validates
-    # time_stop >= time_start. Elevata code and views use time_end, so make
-    # it a writable alias of time_stop instead of a second stored field.
-    time_end = fields.Float(string="End Time", copy=False)
 
-    datetime_start = fields.Datetime(
-        string="Start DateTime",
-        compute='_compute_datetime_fields',
-        inverse='_inverse_datetime_fields',
-        store=True,
-    )
-    datetime_end = fields.Datetime(
-        string="End DateTime",
-        compute='_compute_datetime_fields',
-        inverse='_inverse_datetime_fields',
-        store=True,
-    )
+    # time_start / time_end / datetime_start / datetime_end /
+    # calendar_event_id and the 15 minute grid validation live in
+    # fieldservice_timesheet_vrtl. This module only adds what is Elevata
+    # specific: the rate type and the price it resolves to.
 
     rate_type = fields.Selection(
         RATE_TYPE,
@@ -41,61 +27,8 @@ class AccountAnalyticLine(models.Model):
         store=True,
         digits=(16, 2),
     )
-    calendar_event_id = fields.Many2one(
-        'calendar.event',
-        string="Calendar Event",
-        ondelete='set null',
-        copy=False,
-    )
 
     # ── Computed fields ──
-
-    @api.depends('date', 'time_start', 'time_stop')
-    def _compute_datetime_fields(self):
-        for record in self:
-            if not record.date:
-                record.datetime_start = False
-                record.datetime_end = False
-                continue
-            user_tz = pytz.timezone(self.env.user.tz or 'UTC')
-            base_date = datetime.combine(record.date, datetime.min.time())
-            if record.time_start:
-                hours = int(record.time_start)
-                minutes = int((record.time_start % 1) * 60)
-                local_dt = base_date + timedelta(hours=hours, minutes=minutes)
-                utc_dt = user_tz.localize(local_dt).astimezone(pytz.UTC)
-                record.datetime_start = utc_dt.replace(tzinfo=None)
-            else:
-                record.datetime_start = False
-            if record.time_stop:
-                hours = int(record.time_stop)
-                minutes = int((record.time_stop % 1) * 60)
-                local_dt = base_date + timedelta(hours=hours, minutes=minutes)
-                utc_dt = user_tz.localize(local_dt).astimezone(pytz.UTC)
-                record.datetime_end = utc_dt.replace(tzinfo=None)
-            else:
-                record.datetime_end = False
-
-    def _inverse_datetime_fields(self):
-        # Write through super() in one batch. Assigning record.time_stop
-        # inside the loop re-entered write() and recomputed unit_amount on
-        # top of the existing value (2h became 4h), which hr_timesheet_begin_end
-        # then rejected.
-        for record in self:
-            if not (record.datetime_start or record.datetime_end):
-                continue
-            user_tz = pytz.timezone(self.env.user.tz or 'UTC')
-            vals = {}
-            if record.datetime_start:
-                local_dt = pytz.UTC.localize(record.datetime_start).astimezone(user_tz)
-                vals['date'] = local_dt.date()
-                vals['time_start'] = local_dt.hour + local_dt.minute / 60.0
-            if record.datetime_end:
-                local_dt = pytz.UTC.localize(record.datetime_end).astimezone(user_tz)
-                vals['time_stop'] = local_dt.hour + local_dt.minute / 60.0
-                vals['time_end'] = vals['time_stop']
-            if vals:
-                super(AccountAnalyticLine, record).write(vals)
 
     @api.depends('unit_amount', 'price_per_hour')
     def _compute_amount_elevata(self):
@@ -103,44 +36,6 @@ class AccountAnalyticLine(models.Model):
             line.amount_elevata = line.unit_amount * line.price_per_hour
 
     # ── Constraints ──
-
-    @api.constrains('time_start', 'time_stop')
-    def _check_time_validity(self):
-        for record in self:
-            # 0.0 is falsy, so a half-filled record (only time_start set)
-            # used to be validated against time_end = 0 and rejected with
-            # "beginning hour must precede ending hour". Validate only when
-            # both ends carry a real value.
-            if record.time_start > 0 and record.time_stop > 0:
-                if record.time_start >= record.time_stop:
-                    raise ValidationError(_("Starttid måste vara före sluttid"))
-                if record.time_start < 0 or record.time_start >= 24:
-                    raise ValidationError(_("Starttid måste vara mellan 0 och 24"))
-                if record.time_stop < 0 or record.time_stop > 24:
-                    raise ValidationError(_("Sluttid måste vara mellan 0 och 24"))
-
-    @api.constrains('time_start', 'time_stop')
-    def _check_15_min_interval(self):
-        for record in self:
-            if record.time_start:
-                minutes = (record.time_start % 1) * 60
-                if round(minutes) % 15 != 0:
-                    raise ValidationError(
-                        _("Starttid måste vara i 15-minutersintervall (00, 15, 30, 45).")
-                    )
-            if record.time_stop:
-                minutes = (record.time_stop % 1) * 60
-                if round(minutes) % 15 != 0:
-                    raise ValidationError(
-                        _("Sluttid måste vara i 15-minutersintervall (00, 15, 30, 45).")
-                    )
-
-    # ── Onchange ──
-
-    @api.onchange('time_start', 'time_stop')
-    def _onchange_times(self):
-        if self.time_start and self.time_end:
-            self.unit_amount = round(self.time_end - self.time_start, 2)
 
     def _get_rate_price(self):
         self.ensure_one()
@@ -328,19 +223,6 @@ class AccountAnalyticLine(models.Model):
         if orders:
             orders._auto_assign_stage()
         return records
-
-    def _sync_time_end_alias(self, vals):
-        """Mirror time_end <-> time_stop so Elevata and hr_timesheet_begin_end
-        agree on the end hour (they use different field names)."""
-        if 'time_end' in vals and 'time_stop' not in vals:
-            vals['time_stop'] = vals['time_end']
-        elif 'time_stop' in vals and 'time_end' not in vals:
-            vals['time_end'] = vals['time_stop']
-        return vals
-
-    @api.onchange('time_end')
-    def _onchange_time_end(self):
-        self.time_stop = self.time_end
 
     def write(self, vals):
         vals = self._sync_time_end_alias(dict(vals))

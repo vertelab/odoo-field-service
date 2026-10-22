@@ -5,76 +5,6 @@ from odoo.exceptions import ValidationError
 class FSMOrder(models.Model):
     _inherit = 'fieldservice.order'
 
-    planning_calendar_event_id = fields.Many2one(
-        'calendar.event',
-        string="Planning Calendar Event",
-        ondelete='set null',
-        copy=False,
-    )
-    planning_line_ids = fields.One2many(
-        'elevata.fsm.planning', 'fsm_order_id',
-        string="Planning Lines",
-    )
-
-    def _get_planning_calendar_tag(self):
-        if self.requested_employee_ids:
-            return self.env.ref(
-                'elevata_base.calendar_tag_planned_booked',
-                raise_if_not_found=False,
-            )
-        return self.env.ref(
-            'elevata_base.calendar_tag_planned_unbooked',
-            raise_if_not_found=False,
-        )
-
-    def _prepare_planning_event_vals(self):
-        self.ensure_one()
-        if not self.planned_start_datetime:
-            return False
-        location_name = self.equipment_id.name if self.equipment_id else ''
-        name_parts = [p for p in [self.name, location_name] if p]
-        event_name = ' — '.join(name_parts) or _('Planned Order')
-
-        partner_ids = []
-        if self.requested_employee_ids and self.requested_employee_ids.user_id and self.requested_employee_ids.user_id.partner_id:
-            partner_ids.append(self.requested_employee_ids.user_id.partner_id.id)
-
-        tag = self._get_planning_calendar_tag()
-        categ_ids = [(6, 0, [tag.id])] if tag else [(5, 0, 0)]
-        # planned_date_end does not exist in our fork; fall back to
-        # date_end, then to the start so the event has zero length.
-        stop = self.date_end or self.planned_start_datetime
-
-        return {
-            'name': event_name,
-            'start': self.planned_start_datetime,
-            'stop': stop,
-            'partner_ids': [(6, 0, partner_ids)],
-            'categ_ids': categ_ids,
-            'description': _("Type: %s\nWork Order: %s") % (
-                self.product_type.name if self.product_type else '',
-                self.name or '',
-            ),
-        }
-
-    def _sync_planning_to_calendar(self):
-        for order in self:
-            vals = order._prepare_planning_event_vals()
-            if not vals:
-                if order.planning_calendar_event_id:
-                    order.planning_calendar_event_id.unlink()
-                    order.planning_calendar_event_id = False
-                continue
-            if order.planning_calendar_event_id:
-                order.planning_calendar_event_id.with_context(
-                    no_calendar_sync_back=True
-                ).write(vals)
-            else:
-                event = self.env['calendar.event'].with_context(
-                    no_calendar_sync_back=True
-                ).create(vals)
-                order.planning_calendar_event_id = event.id
-
     def _update_timesheet_calendar_tags(self):
         for order in self:
             for ts in order.employee_timesheet_ids.filtered('calendar_event_id'):
@@ -86,12 +16,6 @@ class FSMOrder(models.Model):
 
     def write(self, vals):
         res = super().write(vals)
-        sync_fields = {
-            'planned_start_datetime', 'date_end',
-            'planned_duration', 'requested_employee_ids', 'equipment_id',
-        }
-        if sync_fields & set(vals.keys()):
-            self.filtered('planned_start_datetime')._sync_planning_to_calendar()
         if 'stage_id' in vals:
             self._update_timesheet_calendar_tags()
         return res

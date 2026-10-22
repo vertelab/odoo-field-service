@@ -64,24 +64,6 @@
                             <field name="deadline_datetime" string="Senast klar"/>
                         </group>
                     </group>
-                    <separator string="Planeringsrader"/>
-                    <field name="planning_line_ids" nolabel="1" colspan="2">
-                        <list editable="bottom" default_order="date_start">
-                            <field name="requested_employee_ids" string="Tekniker"/>
-                            <field name="planning_date" string="Datum" required="1"/>
-                            <field name="time_start" widget="timepicker_field" string="Start"/>
-                            <field name="time_end" widget="timepicker_field" string="Slut"/>
-                            <field name="is_confirmed" string="Bokad" help="Bokad med kund"/>
-                            <field name="note" string="Anteckning" optional="show"/>
-                            <field name="calendar_event_id" string="Kalender" readonly="1" optional="hide"/>
-                            <button name="action_convert_to_timesheet"
-                                    type="object"
-                                    string="→ Tidrapport"
-                                    class="btn-link"
-                                    icon="fa-clock-o"
-                                    confirm="Konvertera planeringsraden till tidrapport? Planeringsraden tas bort."/>
-                        </list>
-                    </field>
                 </page>
             </xpath>
 
