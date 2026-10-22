@@ -4,10 +4,10 @@ from odoo import api, fields, models
 class FSMLocation(models.Model):
     _inherit = 'maintenance.equipment'
 
-    fsm_order_ids = fields.One2many(
-        'fieldservice.order', 'equipment_id',
-        string="Order History",
-    )
+    # The one2many to fieldservice.order lives in fieldservice_maintenance_vrtl
+    # as fieldservice_order_ids. Declaring a second one2many on the same
+    # inverse field (equipment_id) breaks the registry load with
+    # KeyError: 'equipment_id'.
 
     active_order_count = fields.Integer(
         string="Active Orders",

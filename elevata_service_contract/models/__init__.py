@@ -8,6 +8,7 @@ from . import fsm_order
 from . import fsm_order_type
 from . import fsm_time_line
 from . import fsm_material_line
+from . import service_checklist
 from . import fsm_location
 from . import calendar_event
 from . import res_partner

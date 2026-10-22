@@ -37,8 +37,8 @@
         <field name="arch" type="xml">
             <notebook position="inside">
                 <page string="Order History" name="order_history"
-                      invisible="not fsm_order_ids">
-                    <field name="fsm_order_ids" readonly="1"
+                      invisible="not fieldservice_order_ids">
+                    <field name="fieldservice_order_ids" readonly="1"
                            options="{'no_create': True}">
                         <list>
                             <field name="create_date" optional="show" string="Created"/>

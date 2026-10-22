@@ -2,6 +2,8 @@ from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.addons.elevata_base.constants import RATE_TYPE
 
+from datetime import datetime, timedelta
+
 import pytz
 
 

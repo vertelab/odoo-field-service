@@ -1,6 +1,6 @@
 {
     'name': 'Elevata FSM Order History',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     'category': 'Field Service',
     'summary': 'Order history views for FSM orders and locations',
     'author': 'Vertel Sverige AB',
