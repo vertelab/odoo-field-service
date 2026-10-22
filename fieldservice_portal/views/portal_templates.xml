@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         Elevator list
+         ================================================================ -->
+    <template id="portal_my_equipment" name="My Elevators">
+        <t t-call="portal.portal_layout">
+            <t t-set="title">Mina tillgångar</t>
+            <div class="container">
+                <t t-if="not equipment_list">
+                    <div class="alert alert-info mt-3">
+                        Inga hissar är kopplade till ert konto ännu.
+                    </div>
+                </t>
+                <div class="row mt-3">
+                    <t t-foreach="equipment_list" t-as="equipment">
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">
+                                        <t t-esc="equipment.name"/>
+                                    </h5>
+                                    <span t-attf-class="badge bg-#{'success' if equipment.lifecycle_stage == 'ok' else 'warning' if equipment.lifecycle_stage in ('inspection_due', 'service_due') else 'danger'}">
+                                        <t t-esc="dict(equipment._fields['lifecycle_stage'].selection).get(equipment.lifecycle_stage)"/>
+                                    </span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-1">
+                                        <strong>Adress:</strong>
+                                        <t t-esc="equipment.partner_id.street or ''"/>
+                                        <t t-esc="equipment.partner_id.city or ''"/>
+                                    </p>
+                                    <p class="mb-1" t-if="equipment.operational_status == 'out_of_order'">
+                                        <span class="text-danger">
+                                            <i class="fa fa-exclamation-triangle"/> Ur drift sedan
+                                            <t t-esc="equipment.out_of_order_date"/>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="card-footer d-flex gap-2">
+                                    <a t-attf-href="/my/equipment/#{equipment.id}"
+                                       class="btn btn-sm btn-primary">Visa detaljer</a>
+                                    <a t-attf-href="/my/equipment/#{equipment.id}/report"
+                                       class="btn btn-sm btn-outline-danger">Felanmälan</a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+                <div t-if="pager" class="mt-3">
+                    <t t-call="portal.pager"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- ================================================================
+         Elevator detail
+         ================================================================ -->
+    <template id="portal_equipment_detail" name="Elevator Detail">
+        <t t-call="portal.portal_layout">
+            <t t-set="title">Tillgångsdetaljer</t>
+            <div class="container">
+                <nav aria-label="breadcrumb" class="mt-3">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/my/equipment">Mina tillgångar</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <t t-esc="equipment.name"/>
+                        </li>
+                    </ol>
+                </nav>
+
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4 class="mb-0">
+                            <t t-esc="equipment.name"/>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Kategori:</strong>
+                                    <t t-esc="equipment.category_id.name or '–'"/></p>
+                                <p><strong>Tillverkningsnummer:</strong>
+                                    <t t-esc="equipment.manufacturing_number or '–'"/></p>
+                                <p><strong>Driftstatus:</strong>
+                                    <t t-esc="dict(equipment._fields['operational_status'].selection).get(equipment.operational_status)"/></p>
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+                        </div>
+                        <a t-attf-href="/my/equipment/#{equipment.id}/report"
+                           class="btn btn-danger">
+                            <i class="fa fa-exclamation-triangle"/> Felanmälan
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+    <!-- ================================================================
+         Fault report form (logged in)
+         ================================================================ -->
+    <template id="portal_report_form" name="Report Fault">
+        <t t-call="portal.portal_layout">
+            <t t-set="title">Felanmälan</t>
+            <div class="container">
+                <h4 class="mt-3">Felanmälan —
+                    <t t-esc="equipment.name"/></h4>
+                <div t-if="error == 'missing'" class="alert alert-warning">
+                    Beskriv felet innan du skickar.
+                </div>
+                <form t-attf-action="/my/equipment/#{equipment.id}/report/submit"
+                      method="post" class="mt-3">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Vad har hänt?</label>
+                        <textarea name="description" id="description" rows="5"
+                                  class="form-control" required="required"
+                                  placeholder="Beskriv felet så noggrant du kan..."/>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Skicka felanmälan</button>
+                    <a t-attf-href="/my/equipment/#{equipment.id}"
+                       class="btn btn-link">Avbryt</a>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <!-- ================================================================
+         Fault report by QR token (no login)
+
+         A tenant has no account. The token identifies the asset and
+         nothing else — this page shows the asset's name and asks what
+         is wrong, no history, no contract, no address beyond what is on
+         the sticker.
+         ================================================================ -->
+    <template id="portal_report_token" name="Report Fault (QR)">
+        <t t-call="portal.portal_layout">
+            <t t-set="title">Felanmälan</t>
+            <div class="container">
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h4 class="mb-0">Felanmälan —
+                            <t t-esc="equipment.name"/></h4>
+                    </div>
+                    <div class="card-body">
+                        <div t-if="error == 'missing'" class="alert alert-warning">
+                            Beskriv felet innan du skickar.
+                        </div>
+                        <form t-attf-action="/my/equipment/report/#{token}/submit"
+                              method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Vad har hänt?</label>
+                                <textarea name="description" id="description" rows="5"
+                                          class="form-control" required="required"
+                                          placeholder="Beskriv felet så noggrant du kan..."/>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="reporter_name" class="form-label">Ditt namn (frivilligt)</label>
+                                    <input type="text" name="reporter_name" id="reporter_name"
+                                           class="form-control"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="reporter_phone" class="form-label">Telefon (frivilligt)</label>
+                                    <input type="tel" name="reporter_phone" id="reporter_phone"
+                                           class="form-control"/>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-danger btn-lg w-100">
+                                Skicka felanmälan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- ================================================================
+         Confirmation
+         ================================================================ -->
+    <template id="portal_report_done" name="Fault Reported">
+        <t t-call="portal.portal_layout">
+            <t t-set="title">Felanmälan skickad</t>
+            <div class="container">
+                <div class="alert alert-success mt-3">
+                    <h4 class="alert-heading">Tack — felanmälan är skickad.</h4>
+                    <p class="mb-0">
+                        Vi har tagit emot din anmälan för
+                        <strong><t t-esc="equipment.name"/></strong>
+                        och en tekniker kontaktar er.
+                    </p>
+                </div>
+                <a t-if="not from_token" href="/my/equipment" class="btn btn-primary">
+                    Tillbaka till mina hissar
+                </a>
+            </div>
+        </t>
+    </template>
+
+</odoo>
