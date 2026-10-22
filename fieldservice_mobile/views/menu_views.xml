@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         Action: the technician's order list.
+
+         Kanban first — a phone shows cards better than rows — with the
+         mobile list as the second view. "My Orders" is the default filter,
+         because a technician opening the app wants their own work, not the
+         whole company's.
+         ================================================================ -->
+    <record id="action_fsm_order_mobile" model="ir.actions.act_window">
+        <field name="name">Work Orders</field>
+        <field name="res_model">fieldservice.order</field>
+        <field name="view_mode">kanban,list,calendar,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{'search_default_my_orders': 1}</field>
+    </record>
+
+    <!-- ================================================================
+         Menu: the technician's app root.
+
+         Rooted in Field Service, not as a separate top-level app: on a
+         phone the technician should land in the same application as on
+         desktop, just with mobile views.
+         ================================================================ -->
+    <menuitem id="menu_fsm_mobile_root"
+              name="My Work"
+              parent="fieldservice_vrtl.menu_fieldservice_root"
+              action="action_fsm_order_mobile"
+              sequence="5"
+              groups="fieldservice_vrtl.fieldservice_group_technician"/>
+
+</odoo>

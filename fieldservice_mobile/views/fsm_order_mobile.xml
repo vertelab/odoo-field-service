@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         Mobile list — the technician's orders.
+
+         Sized for a phone: five columns, the ones a technician needs to
+         pick the next job. Everything else is in the form.
+         ================================================================ -->
+    <record id="view_fsm_order_mobile_list" model="ir.ui.view">
+        <field name="name">fieldservice.order.mobile.list</field>
+        <field name="model">fieldservice.order</field>
+        <field name="arch" type="xml">
+            <list string="My Orders" decoration-success="stage_id.is_closed"
+                  class="o_fsm_mobile_list">
+                <field name="name" string="Order" class="fw-bold"/>
+                <field name="equipment_id" string="Equipment"/>
+                <field name="product_tmpl_id" string="Type"/>
+                <field name="planned_start_datetime" string="Planned"
+                       widget="datetime"/>
+                <field name="stage_id" string="Status" widget="badge"
+                       decoration-success="stage_id.is_closed"
+                       decoration-warning="not stage_id.is_closed"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ================================================================
+         Mobile form — the technician's working view.
+
+         Header carries the two actions a technician takes on site:
+         navigate there, and mark it done. The stage bar is not clickable;
+         the buttons are the way through the lifecycle, because a phone
+         tap on a statusbar is too easy to hit by accident.
+         ================================================================ -->
+    <record id="view_fsm_order_mobile_form" model="ir.ui.view">
+        <field name="name">fieldservice.order.mobile.form</field>
+        <field name="model">fieldservice.order</field>
+        <field name="arch" type="xml">
+            <form string="Work Order" class="o_fsm_mobile_form">
+                <header>
+                    <button name="action_open_directions"
+                            string="Navigate"
+                            type="object"
+                            class="btn-primary o_fsm_mobile_btn_nav"
+                            icon="fa-location-arrow"/>
+                    <button name="action_complete"
+                            string="Mark as Done"
+                            type="object"
+                            class="btn-primary o_fsm_mobile_btn_complete"
+                            invisible="stage_id.is_closed"/>
+                    <field name="stage_id" widget="statusbar"
+                           options="{'clickable': '0'}"/>
+                </header>
+                <sheet>
+                    <div class="o_fsm_mobile_header">
+                        <h3 class="o_fsm_mobile_order_name">
+                            <field name="name" readonly="1" nolabel="1"/>
+                        </h3>
+                        <div class="o_fsm_mobile_equipment">
+                            <field name="equipment_id" readonly="1" nolabel="1"
+                                   options="{'no_open': True}"/>
+                        </div>
+                        <div class="o_fsm_mobile_type_row">
+                            <field name="product_tmpl_id" readonly="1" nolabel="1"/>
+                            <field name="planned_start_datetime" readonly="1"
+                                   nolabel="1" widget="datetime"/>
+                        </div>
+                        <div class="o_fsm_mobile_address">
+                            <i class="fa fa-map-marker text-primary"
+                               title="Directions"/>
+                            <field name="directions_address" readonly="1"
+                                   nolabel="1" class="ms-1"/>
+                        </div>
+                    </div>
+
+                    <separator/>
+
+                    <group string="Work" class="o_fsm_mobile_section">
+                        <field name="description" placeholder="What was done..."/>
+                    </group>
+
+                    <!-- The three photos are the evidence the technician
+                         brings back. Big touch targets, one per row. -->
+                    <group string="Photos" class="o_fsm_mobile_section">
+                        <field name="photo_before" widget="image" nolabel="1"/>
+                        <field name="photo_fault" widget="image" nolabel="1"/>
+                        <field name="photo_after" widget="image" nolabel="1"/>
+                    </group>
+
+                    <group string="Assignment" class="o_fsm_mobile_section">
+                        <field name="requested_employee_ids" widget="many2many_tags"
+                               readonly="1"/>
+                        <field name="partner_id" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ================================================================
+         Directions on the equipment form.
+
+         The office also needs to send someone to an asset, so the same
+         button belongs there.
+         ================================================================ -->
+    <record id="maintenance_equipment_form_directions" model="ir.ui.view">
+        <field name="name">maintenance.equipment.form.directions</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button name="action_open_directions" type="object"
+                            string="Navigate" class="btn-primary"
+                            icon="fa-location-arrow"
+                            invisible="not directions_address"/>
+                </header>
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <field name="directions_address" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
