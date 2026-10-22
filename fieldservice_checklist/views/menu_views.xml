@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_fieldservice_checklist"
+              name="Checklist Templates"
+              parent="fieldservice_vrtl.configurations"
+              action="action_fieldservice_checklist"
+              sequence="30"/>
+</odoo>

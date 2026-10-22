@@ -132,7 +132,7 @@ class FSMLocation(models.Model):
 
     def action_populate_checklist(self):
         self.ensure_one()
-        if 'elevata.service.checklist' not in self.env.registry:
+        if 'fieldservice.checklist' not in self.env.registry:
             return
         elevator_type = self.elevator_type_id
         if not elevator_type:
@@ -142,7 +142,7 @@ class FSMLocation(models.Model):
             ('elevator_type_ids', '=', False),
             ('elevator_type_ids', 'in', elevator_type.id),
         ]
-        checklists = self.env['elevata.service.checklist'].search(domain)
+        checklists = self.env['fieldservice.checklist'].search(domain)
         lines = []
         for checklist in checklists:
             for line in checklist.line_ids:

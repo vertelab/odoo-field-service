@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ════════════════════════════════════════════════════════════════
+         Checklistan på arbetsordern.
+         ════════════════════════════════════════════════════════════════ -->
+
+    <record id="fieldservice_order_view_form_checklist" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.checklist</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Checklist" name="checklist"
+                      invisible="not checklist_count">
+                    <group>
+                        <field name="checklist_count" invisible="1"/>
+                        <field name="checklist_done_count" invisible="1"/>
+                        <div class="o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="checklist_done_count"/> /
+                                <field name="checklist_count"/>
+                            </span>
+                            <span class="o_stat_text">performed</span>
+                        </div>
+                    </group>
+                    <field name="checklist_item_ids">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="done"/>
+                            <field name="note"/>
+                            <field name="remark"/>
+                            <field name="maintenance_request_id" readonly="1"
+                                   invisible="not maintenance_request_id"/>
+                            <button name="action_create_maintenance_request"
+                                    type="object" icon="fa-external-link"
+                                    title="Create Maintenance Request"
+                                    invisible="not remark or maintenance_request_id"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="action_generate_checklist"
+                        type="object"
+                        string="Generate Checklist"
+                        invisible="checklist_count"
+                        groups="fieldservice_vrtl.fieldservice_group_manager"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
