@@ -41,7 +41,9 @@ class FSMOrder(models.Model):
 
         tag = self._get_planning_calendar_tag()
         categ_ids = [(6, 0, [tag.id])] if tag else [(5, 0, 0)]
-        stop = self.planned_date_end or self.planned_start_datetime
+        # planned_date_end does not exist in our fork; fall back to
+        # date_end, then to the start so the event has zero length.
+        stop = self.date_end or self.planned_start_datetime
 
         return {
             'name': event_name,
@@ -50,7 +52,7 @@ class FSMOrder(models.Model):
             'partner_ids': [(6, 0, partner_ids)],
             'categ_ids': categ_ids,
             'description': _("Type: %s\nWork Order: %s") % (
-                self.type.name if self.type else '',
+                self.product_type.name if self.product_type else '',
                 self.name or '',
             ),
         }
@@ -85,7 +87,7 @@ class FSMOrder(models.Model):
     def write(self, vals):
         res = super().write(vals)
         sync_fields = {
-            'planned_start_datetime', 'planned_date_end',
+            'planned_start_datetime', 'date_end',
             'planned_duration', 'requested_employee_ids', 'equipment_id',
         }
         if sync_fields & set(vals.keys()):

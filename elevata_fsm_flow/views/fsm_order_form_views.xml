@@ -9,28 +9,7 @@
         <field name="arch" type="xml">
             <xpath expr="//form" position="replace">
                 <form string="Field Service Order">
-                    <header>
-                        <field name="is_closed" invisible="1"/>
-                        <button id="action_assign" name="action_assign" string="Assign"
-                                type="object" class="oe_highlight"
-                                groups="fieldservice_vrtl.fieldservice_group_manager"
-                                invisible="is_closed"/>
-                        <button id="action_schedule" name="action_schedule" string="Schedule"
-                                type="object" class="oe_highlight"
-                                groups="fieldservice_vrtl.fieldservice_group_manager"
-                                invisible="is_closed"/>
-                        <button id="action_start" name="action_start" string="Start"
-                                type="object" class="oe_highlight"
-                                groups="fieldservice_vrtl.fieldservice_group_user"
-                                invisible="is_closed"/>
-                        <field name="stage_id" widget="statusbar"
-                               options="{'fold_field': 'fold'}"/>
-                        <button id="action_complete" name="action_complete" string="Complete"
-                                class="oe_highlight" type="object"
-                                invisible="is_closed"/>
-                        <button id="action_cancel" name="action_cancel" string="Cancel Order"
-                                type="object" invisible="is_closed"/>
-                    </header>
+                    <!-- Header with lifecycle buttons lives in fieldservice_vrtl. -->
                     <sheet>
                         <div class="oe_button_box" name="button_box">
                             <button type="object" name="action_view_active_orders"

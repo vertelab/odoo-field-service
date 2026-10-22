@@ -8,7 +8,31 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
+                        <field name="is_closed" invisible="1"/>
+                        <!-- Lifecycle buttons. Generic: an order that can be
+                             assigned, scheduled, started and closed is field
+                             service, not any one customer's field service.
+                             Moved here from elevata_fsm_flow, which owned the
+                             only complete order form and forced every other
+                             module to depend on it. -->
+                        <button id="action_assign" name="action_assign" string="Assign"
+                                type="object" class="oe_highlight"
+                                groups="fieldservice_vrtl.fieldservice_group_manager"
+                                invisible="is_closed"/>
+                        <button id="action_schedule" name="action_schedule" string="Schedule"
+                                type="object" class="oe_highlight"
+                                groups="fieldservice_vrtl.fieldservice_group_manager"
+                                invisible="is_closed"/>
+                        <button id="action_start" name="action_start" string="Start"
+                                type="object" class="oe_highlight"
+                                groups="fieldservice_vrtl.fieldservice_group_user"
+                                invisible="is_closed"/>
                         <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
+                        <button id="action_complete" name="action_complete" string="Complete"
+                                class="oe_highlight" type="object"
+                                invisible="is_closed"/>
+                        <button id="action_cancel" name="action_cancel" string="Cancel Order"
+                                type="object" invisible="is_closed"/>
                         <button name="%(action_change_company_wizard)d" string="Change Company" type="action" class="btn-primary"/>
                     </header>
                     <sheet class="oe_form_sheet_width">

@@ -182,7 +182,7 @@ class FSMOrder(models.Model):
                 vals['priority'] = self._priority_for_type(
                     tmpl.product_type) or '2'
         orders = super().create(vals_list)
-        orders._auto_assign_stage()
+        # _auto_assign_stage runs in fieldservice_vrtl's create/write now.
         orders._maybe_shutdown_red_remark()
         return orders
 
@@ -191,38 +191,10 @@ class FSMOrder(models.Model):
             tmpl = self.env['product.template'].browse(vals['product_tmpl_id'])
             vals['priority'] = self._priority_for_type(tmpl.product_type) or '2'
         res = super().write(vals)
-        if (vals.get('requested_employee_ids') or vals.get('equipment_id')
-                or vals.get('planned_start_datetime')):
-            self._auto_assign_stage()
+        # _auto_assign_stage runs in fieldservice_vrtl's write now.
         if 'product_tmpl_id' in vals:
             self._maybe_shutdown_red_remark()
         return res
-
-    def _default_stage_id(self):
-        """The stage an order starts in: the first open one by sequence.
-
-        The fork has no _default_stage_id of its own, so it is derived from
-        fieldservice.stage rather than hard-coded.
-        """
-        return self.env['fieldservice.stage'].search(
-            [('is_closed', '=', False)], order='sequence', limit=1
-        )
-
-    def _auto_assign_stage(self):
-        new_stage = self._default_stage_id()
-        assigned_stage = self.env.ref(
-            'fieldservice_vrtl.fieldservice_stage_assigned', raise_if_not_found=False
-        )
-        scheduled_stage = self.env.ref(
-            'fieldservice_vrtl.fieldservice_stage_planning', raise_if_not_found=False
-        )
-        for order in self:
-            if order.stage_id != new_stage:
-                continue
-            if order.planned_start_datetime and scheduled_stage:
-                order.stage_id = scheduled_stage
-            elif order.requested_employee_ids and assigned_stage:
-                order.stage_id = assigned_stage
 
     @api.depends('equipment_id')
     def _compute_active_order_count(self):
@@ -267,48 +239,3 @@ class FSMOrder(models.Model):
             'out_of_order_reason': False,
         })
         return True
-
-    # ── Stage transition actions ────────────────────────────────────────
-
-    def _stage(self, xmlid):
-        return self.env.ref(xmlid, raise_if_not_found=False)
-
-    def action_assign(self):
-        for order in self:
-            if not order.requested_employee_ids:
-                raise ValidationError(
-                    _("Cannot move to Assigned until 'Assigned To' is filled in")
-                )
-        stage = self._stage('fieldservice_vrtl.fieldservice_stage_assigned')
-        if not stage:
-            return False
-        return self.write({'stage_id': stage.id})
-
-    def action_schedule(self):
-        for order in self:
-            if not order.planned_start_datetime:
-                raise ValidationError(
-                    _("Cannot move to Planning until a planned start is set")
-                )
-        stage = self._stage('fieldservice_vrtl.fieldservice_stage_planning')
-        if not stage:
-            return False
-        return self.write({'stage_id': stage.id})
-
-    def action_start(self):
-        stage = self._stage('fieldservice_vrtl.fieldservice_stage_ongoing')
-        if not stage:
-            return False
-        return self.write({'stage_id': stage.id})
-
-    def action_complete(self):
-        stage = self._stage('fieldservice_vrtl.fieldservice_stage_completed')
-        if not stage:
-            return False
-        return self.write({'stage_id': stage.id})
-
-    def action_cancel(self):
-        stage = self._stage('fieldservice_vrtl.fieldservice_stage_cancelled')
-        if not stage:
-            return False
-        return self.write({'stage_id': stage.id})
