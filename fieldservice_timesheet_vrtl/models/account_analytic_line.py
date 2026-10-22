@@ -235,7 +235,8 @@ class AccountAnalyticLine(models.Model):
         """
         res = super().write(vals)
         if any(f in vals for f in (
-            'time_start', 'time_end', 'date', 'fsm_order_id', 'employee_id'
+            'time_start', 'time_stop', 'time_end', 'date',
+            'fsm_order_id', 'employee_id',
         )):
             self._sync_to_calendar()
         return res
