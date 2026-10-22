@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         History on the order form.
+
+         Anchored on //notebook and //div[hasclass('oe_button_box')]:
+         the order form is extended by several modules, and anchoring on a
+         named page another module owns is how views break.
+         ================================================================ -->
+    <record id="fsm_order_form_history" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.history</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="action_view_orders" type="object"
+                        class="oe_stat_button" icon="fa-history"
+                        invisible="not equipment_id">
+                    <div class="o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="active_related_order_count"/>
+                        </span>
+                        <span class="o_stat_text">Order History</span>
+                    </div>
+                </button>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="History" name="history"
+                      invisible="not equipment_id">
+                    <group>
+                        <field name="date_completed"
+                               invisible="not date_completed"/>
+                    </group>
+                    <field name="related_order_ids" nolabel="1">
+                        <list string="Related Orders" create="0">
+                            <field name="name"/>
+                            <field name="stage_id" widget="badge"/>
+                            <field name="date_completed"/>
+                            <field name="product_tmpl_id"/>
+                            <field name="requested_employee_ids"
+                                   widget="many2many_tags"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- List: show when it was completed, so a history can be read without
+         opening each order. -->
+    <record id="fsm_order_list_history" model="ir.ui.view">
+        <field name="name">fieldservice.order.list.history</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="stage_id" position="after">
+                <field name="date_completed" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

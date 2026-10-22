@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         Order history on the asset form.
+
+         Anchored on //notebook, not on a named page: maintenance_elevator,
+         elevata_fsm_flow and elevator_base all extend this form.
+         ================================================================ -->
+    <record id="maintenance_equipment_form_order_history" model="ir.ui.view">
+        <field name="name">maintenance.equipment.form.order.history</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="action_view_orders" type="object"
+                        class="oe_stat_button" icon="fa-history">
+                    <div class="o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="active_order_count"/>
+                        </span>
+                        <span class="o_stat_text">Active Orders</span>
+                    </div>
+                </button>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Order History" name="order_history">
+                    <field name="fsm_order_ids" nolabel="1" readonly="1">
+                        <list create="0">
+                            <field name="name"/>
+                            <field name="stage_id" widget="badge"/>
+                            <field name="date_completed"/>
+                            <field name="product_tmpl_id"/>
+                            <field name="requested_employee_ids"
+                                   widget="many2many_tags"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
