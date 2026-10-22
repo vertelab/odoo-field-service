@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         Route fields on the work order form and list.
+
+         Anchored on //group and //notebook: the order form is extended by
+         many modules and anchoring on a named field is how views break.
+         ================================================================ -->
+    <record id="fsm_order_form_route" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.route</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Route" name="route">
+                    <group>
+                        <group string="Planning">
+                            <field name="route_date"/>
+                            <field name="routing_sequence"/>
+                            <field name="travel_time_minutes"/>
+                            <field name="service_time_minutes"/>
+                        </group>
+                        <group string="Timing">
+                            <field name="estimated_arrival"/>
+                            <field name="planned_start_datetime"/>
+                        </group>
+                    </group>
+                    <group string="Address">
+                        <field name="street"/>
+                        <field name="city"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- List: the route order, editable so a planner can drag. -->
+    <record id="fsm_order_list_route" model="ir.ui.view">
+        <field name="name">fieldservice.order.list.route</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="routing_sequence" optional="show" widget="handle"/>
+            </field>
+            <field name="name" position="after">
+                <field name="route_date" optional="show"/>
+                <field name="estimated_arrival" optional="show" widget="datetime"/>
+                <field name="travel_time_minutes" optional="hide"/>
+                <field name="city" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Search: the day's route, and unsequenced orders. -->
+    <record id="fsm_order_search_route" model="ir.ui.view">
+        <field name="name">fieldservice.order.search.route</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_search"/>
+        <field name="arch" type="xml">
+            <filter name="my_orders" position="after">
+                <filter name="filter_route_today" string="Today's Route"
+                        domain="[('route_date', '=', context_today().strftime('%Y-%m-%d')), ('routing_sequence', '&gt;', 0)]"/>
+                <filter name="filter_unsequenced" string="Not Sequenced"
+                        domain="[('routing_sequence', '=', 0)]"/>
+                <separator/>
+            </filter>
+            <filter name="group_by_stage" position="after">
+                <filter name="group_by_route_date" string="Route Date"
+                        context="{'group_by': 'route_date'}"/>
+            </filter>
+        </field>
+    </record>
+
+    <!-- Actions: plan and clear, in the list view's action menu. -->
+    <record id="action_plan_route" model="ir.actions.server">
+        <field name="name">Plan route from selection</field>
+        <field name="model_id" ref="fieldservice_vrtl.model_fieldservice_order"/>
+        <field name="binding_model_id" ref="fieldservice_vrtl.model_fieldservice_order"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_plan_route()</field>
+    </record>
+
+    <record id="action_clear_route" model="ir.actions.server">
+        <field name="name">Clear route sequence</field>
+        <field name="model_id" ref="fieldservice_vrtl.model_fieldservice_order"/>
+        <field name="binding_model_id" ref="fieldservice_vrtl.model_fieldservice_order"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_clear_route()</field>
+    </record>
+
+</odoo>

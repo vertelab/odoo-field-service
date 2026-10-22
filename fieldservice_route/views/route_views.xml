@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         Map view of the day's route.
+
+         The stops in sequence order, so the planner can see whether the
+         route doubles back. web_map_ce supplies the map view type; this
+         only declares the view and the action.
+         ================================================================ -->
+    <record id="view_fsm_order_route_map" model="ir.ui.view">
+        <field name="name">fieldservice.order.route.map</field>
+        <field name="model">fieldservice.order</field>
+        <field name="type">map</field>
+        <field name="arch" type="xml">
+            <map res_partner="partner_id" routing="1">
+                <field name="name" string="Order"/>
+                <field name="routing_sequence" string="Stop"/>
+                <field name="estimated_arrival" string="ETA"/>
+                <field name="city" string="City"/>
+            </map>
+        </field>
+    </record>
+
+    <record id="action_fsm_order_route_map" model="ir.actions.act_window">
+        <field name="name">Route Map</field>
+        <field name="res_model">fieldservice.order</field>
+        <field name="view_mode">map,list,form</field>
+        <field name="view_id" ref="view_fsm_order_route_map"/>
+        <field name="domain">[('routing_sequence', '&gt;', 0)]</field>
+        <field name="context">{'search_default_filter_route_today': 1}</field>
+    </record>
+
+</odoo>
