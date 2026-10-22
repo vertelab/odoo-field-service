@@ -1,6 +1,6 @@
 {
     'name': 'Elevata Timesheet',
-    'version': '18.0.1.0.15',
+    'version': '18.0.1.0.16',
     'category': 'Human Resources/Timesheets',
     'summary': 'Start/end time, rate types, contract prices, and calendar sync for timesheets',
     'author': 'Vertel Sverige AB',

@@ -147,3 +147,108 @@ class AccountAnalyticLine(models.Model):
     def _onchange_times(self):
         if self.time_start and self.time_end:
             self.unit_amount = round(self.time_end - self.time_start, 2)
+
+    # ── Calendar sync ──────────────────────────────────────────────────
+    # A timesheet line with a start and end time is an appointment: the
+    # technician was somewhere between those hours. Mirroring it into the
+    # calendar means the planner sees it next to everything else, and the
+    # technician sees it on their phone.
+    #
+    # The event is created and updated with no_calendar_sync_back so the
+    # calendar's own write() does not try to push the change back into the
+    # timesheet — that loop is how a simple edit turns into a recursion.
+
+    def _get_calendar_tag(self):
+        """The calendar tag for this line.
+
+        Base implementation returns nothing. A customer module can override
+        it to colour the event by order state.
+        """
+        return self.env['calendar.event.type']
+
+    def _prepare_calendar_event_vals(self):
+        """Build the calendar event values.
+
+        Only the generic parts: name from the order, the technician as
+        attendee, and the start/stop. A customer module extends this dict
+        with its own fields rather than replacing the method.
+        """
+        self.ensure_one()
+        if not self.datetime_start or not self.datetime_end:
+            return False
+
+        order = self.fsm_order_id
+        name_parts = [p for p in [order.name if order else ''] if p]
+        event_name = self.env._('Timesheet')
+        if name_parts:
+            event_name = '%s — %s' % (event_name, ' | '.join(name_parts))
+
+        partner_ids = []
+        if self.employee_id and self.employee_id.user_id:
+            partner = self.employee_id.user_id.partner_id
+            if partner:
+                partner_ids.append(partner.id)
+
+        tag = self._get_calendar_tag()
+        categ_ids = [(6, 0, [tag.id])] if tag else [(5, 0, 0)]
+
+        return {
+            'name': event_name,
+            'start': self.datetime_start,
+            'stop': self.datetime_end,
+            'partner_ids': [(6, 0, partner_ids)],
+            'categ_ids': categ_ids,
+            'description': order.name if order else '',
+        }
+
+    def _sync_to_calendar(self):
+        """Create, update or remove the calendar event for this line.
+
+        Called from write() when the times or the order change. A line
+        without a start and end has no event; if one exists it is removed,
+        because a timesheet that no longer describes an appointment should
+        not leave a ghost in the calendar.
+        """
+        for line in self:
+            vals = line._prepare_calendar_event_vals()
+            if not vals:
+                if line.calendar_event_id:
+                    line.calendar_event_id.unlink()
+                    line.calendar_event_id = False
+                continue
+            if line.calendar_event_id:
+                line.calendar_event_id.with_context(
+                    no_calendar_sync_back=True
+                ).write(vals)
+            else:
+                event = self.env['calendar.event'].with_context(
+                    no_calendar_sync_back=True
+                ).create(vals)
+                line.calendar_event_id = event.id
+
+    def write(self, vals):
+        """Keep the calendar event in step with the times.
+
+        Called on the fields that change what the event should say. The
+        order matters: super() first, so datetime_start/datetime_end are
+        recomputed before the event is built from them.
+        """
+        res = super().write(vals)
+        if any(f in vals for f in (
+            'time_start', 'time_end', 'date', 'fsm_order_id', 'employee_id'
+        )):
+            self._sync_to_calendar()
+        return res
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        lines = super().create(vals_list)
+        lines._sync_to_calendar()
+        return lines
+
+    def unlink(self):
+        """Remove the calendar event with the line."""
+        events = self.mapped('calendar_event_id')
+        res = super().unlink()
+        events.unlink()
+        return res

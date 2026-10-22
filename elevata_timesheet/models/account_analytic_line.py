@@ -67,6 +67,10 @@ class AccountAnalyticLine(models.Model):
 
     # ── Calendar sync ──
 
+    # Calendar sync lives in fieldservice_timesheet_vrtl. This module only
+    # supplies the Elevata-specific parts: the tag that colours the event by
+    # order state, and the extra fields in the event description.
+
     def _get_calendar_tag(self):
         order = self.fsm_order_id
         if order and order.stage_id and order.stage_id.is_closed:
@@ -80,61 +84,41 @@ class AccountAnalyticLine(models.Model):
         )
 
     def _prepare_calendar_event_vals(self):
-        self.ensure_one()
-        if not self.datetime_start or not self.datetime_end:
-            return False
-        order_name = self.fsm_order_id.name if self.fsm_order_id else ''
+        """Extend the generic event values with Elevata's fields."""
+        vals = super()._prepare_calendar_event_vals()
+        if not vals:
+            return vals
+
+        order = self.fsm_order_id
         location_name = ''
-        if self.fsm_order_id and self.fsm_order_id.equipment_id:
-            location_name = self.fsm_order_id.equipment_id.name
+        if order and order.equipment_id:
+            location_name = order.equipment_id.name
         order_type_str = ''
-        if self.fsm_order_id and self.fsm_order_id.type:
-            order_type_str = self.fsm_order_id.type.name or ''
-        name_parts = [p for p in [order_name, order_type_str, location_name] if p]
-        event_name = _('Timesheet') + ' — ' + ' | '.join(name_parts) if name_parts else _('Timesheet')
+        if order and order.product_type:
+            order_type_str = order.product_type.name or ''
 
-        partner_ids = []
-        if self.employee_id and self.employee_id.user_id and self.employee_id.user_id.partner_id:
-            partner_ids.append(self.employee_id.user_id.partner_id.id)
-
-        tag = self._get_calendar_tag()
-        categ_ids = [(6, 0, [tag.id])] if tag else [(5, 0, 0)]
-
-        customer_name = ''
-        if self.fsm_order_id and self.fsm_order_id.equipment_id and self.fsm_order_id.equipment_id.customer_id:
-            customer_name = self.fsm_order_id.equipment_id.customer_id.name or ''
+        name_parts = [
+            p for p in [
+                order.name if order else '',
+                order_type_str,
+                location_name,
+            ] if p
+        ]
+        if name_parts:
+            vals['name'] = self.env._('Timesheet') + ' — ' + ' | '.join(name_parts)
 
         rate_label = dict(
             self._fields['rate_type']._description_selection(self.env)
         ).get(self.rate_type, '')
-        desc_parts = [order_name, order_type_str, location_name, customer_name, rate_label]
-        description = ' | '.join(p for p in desc_parts if p)
-
-        return {
-            'name': event_name,
-            'start': self.datetime_start,
-            'stop': self.datetime_end,
-            'partner_ids': [(6, 0, partner_ids)],
-            'categ_ids': categ_ids,
-            'description': description,
-            'elevata_fsm_order_id': self.fsm_order_id.id if self.fsm_order_id else False,
-        }
-
-    def _sync_to_calendar(self):
-        for line in self:
-            vals = line._prepare_calendar_event_vals()
-            if not vals:
-                if line.calendar_event_id:
-                    line.calendar_event_id.unlink()
-                    line.calendar_event_id = False
-                continue
-            if line.calendar_event_id:
-                line.calendar_event_id.with_context(no_calendar_sync_back=True).write(vals)
-            else:
-                event = self.env['calendar.event'].with_context(
-                    no_calendar_sync_back=True
-                ).create(vals)
-                line.calendar_event_id = event.id
+        desc_parts = [
+            order.name if order else '',
+            order_type_str,
+            location_name,
+            rate_label,
+        ]
+        vals['description'] = ' | '.join(p for p in desc_parts if p)
+        vals['elevata_fsm_order_id'] = order.id if order else False
+        return vals
 
     # ── Analytic helpers ──
 
@@ -220,7 +204,7 @@ class AccountAnalyticLine(models.Model):
                 })
         records._fill_rate_price()
         records.filtered('fsm_order_id')._ensure_fsm_project()
-        records.filtered(lambda r: r.datetime_start and r.datetime_end)._sync_to_calendar()
+        # Calendar sync is handled by fieldservice_timesheet_vrtl's create().
         orders = records.filtered('fsm_order_id').mapped('fsm_order_id')
         if orders:
             orders._auto_assign_stage()
@@ -233,16 +217,13 @@ class AccountAnalyticLine(models.Model):
             self._fill_rate_price()
         if 'fsm_order_id' in vals:
             self._ensure_fsm_project()
-        sync_fields = {'date', 'time_start', 'time_stop', 'name', 'employee_id', 'rate_type', 'fsm_order_id'}
-        if sync_fields & set(vals.keys()):
-            self.filtered(lambda r: r.datetime_start and r.datetime_end)._sync_to_calendar()
+        # Calendar sync is handled by fieldservice_timesheet_vrtl's write().
         return res
 
     def unlink(self):
         orders = self.filtered('fsm_order_id').mapped('fsm_order_id')
-        events = self.mapped('calendar_event_id').filtered(lambda e: e.exists())
+        # The calendar event is removed by fieldservice_timesheet_vrtl.
         res = super().unlink()
-        events.unlink()
         if orders:
             orders._auto_assign_stage()
         return res
