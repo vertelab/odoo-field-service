@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- Hide the Location Workers menu.
+
+         Our field service fork replaced fsm.person with hr.employee, so
+         workers are no longer managed per location. The menu only exists on
+         databases that once ran the OCA fieldservice module — it is looked
+         up by name rather than by xmlid, because a <record> on a foreign
+         xmlid aborts the install when the menu is absent. -->
+    <function model="ir.ui.menu" name="_hide_location_workers_menu"/>
+
+</odoo>

@@ -1,6 +1,6 @@
 {
     'name': "Field service: Vertel",
-    'version': '18.0.1.0.4',
+    'version': '18.0.1.0.5',
     'depends': ['mail','base','hr','project', 'product_brand', 'maintenance'],
     'author': "Vertel Sverige AB",
     'category': 'Category',
@@ -25,6 +25,7 @@
         'data/fieldservice_stage_data.xml',
         'data/fieldservice_sequence_data.xml',
         'data/fieldservice_server_action.xml',
+        'data/ir_ui_menu_data.xml',
         #'demo/demo_employees.xml',
         #'demo/demo_work_orders.xml'
     ],

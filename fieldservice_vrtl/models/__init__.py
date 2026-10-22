@@ -10,3 +10,4 @@ from . import fieldservice_team
 from . import hr_employee
 from . import fieldservice_order_team
 from . import fieldservice_order_lifecycle
+from . import ir_ui_menu
