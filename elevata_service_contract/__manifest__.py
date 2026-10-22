@@ -1,6 +1,6 @@
 {
     'name': 'Elevata Service Contract',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     # Version ledger: 18.0 = Odoo version. 1 = Major. Non regressionable code.
     #                 0 = Feature. 1 = Bugfix. 0 = Cosmetic.
     # Ported from Elevata 17.0 (elevata_service_contract).
@@ -40,7 +40,9 @@
         'views/service_contract_views.xml',
         'views/contract_template_views.xml',
         'views/service_contract_template_modification_views.xml',
+        'views/service_checklist_views.xml',
         'views/fsm_order_views.xml',
+        'views/fsm_order_type_views.xml',
         'views/fsm_location_views.xml',
         'views/res_partner_views.xml',
         'views/portal_templates.xml',

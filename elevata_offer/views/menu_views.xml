@@ -97,7 +97,7 @@
     <menuitem id="menu_elevata_offer_project"
               name="Projektuppföljning"
               parent="menu_elevata_offer_root"
-              groups="elevata_base.group_sales,elevata_base.group_manager"
+              groups="fieldservice_vrtl.fieldservice_group_sales,fieldservice_vrtl.fieldservice_group_manager"
               sequence="15"/>
 
     <record id="action_elevata_offer_project" model="ir.actions.act_window">

@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_elevata_fsm_planning_technician,elevata.fsm.planning.technician,model_elevata_fsm_planning,elevata_base.group_technician,1,1,1,1
-access_elevata_fsm_planning_sales,elevata.fsm.planning.sales,model_elevata_fsm_planning,elevata_base.group_sales,1,0,0,0
-access_elevata_fsm_planning_manager,elevata.fsm.planning.manager,model_elevata_fsm_planning,elevata_base.group_manager,1,1,1,1
+access_elevata_fsm_planning_technician,elevata.fsm.planning.technician,model_elevata_fsm_planning,fieldservice_vrtl.fieldservice_group_technician,1,1,1,1
+access_elevata_fsm_planning_sales,elevata.fsm.planning.sales,model_elevata_fsm_planning,fieldservice_vrtl.fieldservice_group_sales,1,0,0,0
+access_elevata_fsm_planning_manager,elevata.fsm.planning.manager,model_elevata_fsm_planning,fieldservice_vrtl.fieldservice_group_manager,1,1,1,1

@@ -11,7 +11,7 @@
                         name="action_view_elevata_milestones"
                         icon="fa-money"
                         invisible="elevata_milestone_count == 0"
-                        groups="elevata_base.group_sales,elevata_base.group_manager">
+                        groups="fieldservice_vrtl.fieldservice_group_sales,fieldservice_vrtl.fieldservice_group_manager">
                     <field name="elevata_milestone_invoiced_pct" widget="percentpie" string="Fakturerat"/>
                 </button>
             </xpath>

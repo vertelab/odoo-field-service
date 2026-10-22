@@ -29,7 +29,7 @@
         <field name="parent_id" ref="fieldservice_vrtl.menu_fieldservice_root"/>
         <field name="action" ref="action_fsm_my_orders"/>
         <field name="sequence">1</field>
-        <field name="groups_id" eval="[(6, 0, [ref('elevata_base.group_technician')])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('fieldservice_vrtl.fieldservice_group_technician')])]"/>
         <field name="active" eval="False"/>
     </record>
 </odoo>

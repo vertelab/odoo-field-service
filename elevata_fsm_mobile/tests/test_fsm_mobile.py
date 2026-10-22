@@ -68,7 +68,7 @@ class TestFsmMobile(TransactionCase):
 
     def test_root_menu_has_children(self):
         root = self.env.ref('elevata_fsm_mobile.menu_mobile_root')
-        tech = self.env.ref('elevata_base.group_technician')
+        tech = self.env.ref('fieldservice_vrtl.fieldservice_group_technician')
         self.env.user.groups_id = [(4, tech.id)]
         children = self.env['ir.ui.menu'].search([('parent_id', '=', root.id)])
         self.assertEqual(len(children), 5)

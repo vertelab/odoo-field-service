@@ -7,7 +7,7 @@
         id="menu_mobile_root"
         name="Hisstekniker"
         sequence="5"
-        groups="elevata_base.group_technician"
+        groups="fieldservice_vrtl.fieldservice_group_technician"
         action="action_fsm_order_mobile"
         web_icon="elevata_fsm_mobile,static/description/icon.png"/>
 
@@ -18,7 +18,7 @@
         parent="menu_mobile_root"
         action="elevata_fsm_flow.action_fsm_tech_dashboard"
         sequence="5"
-        groups="elevata_base.group_technician"/>
+        groups="fieldservice_vrtl.fieldservice_group_technician"/>
 
     <!-- ═══ Arbetsordrar (kanban, "Mina ordrar" förvalt) ═══ -->
     <menuitem
@@ -27,7 +27,7 @@
         parent="menu_mobile_root"
         action="action_fsm_order_mobile"
         sequence="10"
-        groups="elevata_base.group_technician"/>
+        groups="fieldservice_vrtl.fieldservice_group_technician"/>
 
     <!-- ═══ Kalender ═══ -->
     <menuitem
@@ -36,7 +36,7 @@
         parent="menu_mobile_root"
         action="calendar.action_calendar_event"
         sequence="30"
-        groups="elevata_base.group_technician"/>
+        groups="fieldservice_vrtl.fieldservice_group_technician"/>
 
     <!-- ═══ Hissar (direkt efter Kalender, karta som standard) ═══ -->
     <record id="action_mobile_elevators" model="ir.actions.act_window">
@@ -58,7 +58,7 @@
         parent="menu_mobile_root"
         action="action_mobile_elevators"
         sequence="35"
-        groups="elevata_base.group_technician"/>
+        groups="fieldservice_vrtl.fieldservice_group_technician"/>
 
     <!-- ═══ Övrigt ═══ -->
     <menuitem
@@ -66,7 +66,7 @@
         name="Övrigt"
         parent="menu_mobile_root"
         sequence="50"
-        groups="elevata_base.group_technician"/>
+        groups="fieldservice_vrtl.fieldservice_group_technician"/>
 
     <!-- Tidrapporter -->
     <record id="action_my_timesheets_tech" model="ir.actions.act_window">
@@ -122,7 +122,7 @@
         name="Kartor"
         parent="menu_mobile_misc"
         sequence="50"
-        groups="elevata_base.group_technician"/>
+        groups="fieldservice_vrtl.fieldservice_group_technician"/>
 
     <!-- Karta: Arbetsorder -->
     <record id="action_map_orders_tech" model="ir.actions.act_window">

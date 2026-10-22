@@ -1,6 +1,6 @@
 {
     'name': 'Elevata FSM Mobile',
-    'version': '18.0.1.0.2',
+    'version': '18.0.1.0.3',
     'category': 'Field Service',
     'summary': 'Mobilanpassad vy för hisstekniker på fältet',
     'author': 'Vertel Sverige AB',

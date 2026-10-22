@@ -1,6 +1,6 @@
 {
     'name': 'Elevata Offer',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     # Version ledger: 18.0 = Odoo version. 1 = Major. Non regressionable code.
     #                 0 = Feature. 1 = Bugfix. 0 = Cosmetic.
     # Ported from Elevata 17.0 (elevata_offer).
