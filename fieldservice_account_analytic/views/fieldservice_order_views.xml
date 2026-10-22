@@ -4,7 +4,7 @@
     <record id="fieldservice_order_form_analytic" model="ir.ui.view">
         <field name="name">fieldservice.order.form.analytic</field>
         <field name="model">fieldservice.order</field>
-        <field name="inherit_id" ref="elevata_fsm_flow.fsm_order_form"/>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
                 <page string="Analytic" name="analytic_page" sequence="60">

@@ -1,6 +1,6 @@
 {
     'name': 'Field Service Account Analytic',
-    'version': '18.0.1.0.1',
+    'version': '18.0.1.0.2',
     'category': 'Field Service',
     'summary': 'Analytic accounting for field service orders and timesheets',
     'author': 'Vertel Sverige AB',
@@ -8,15 +8,13 @@
     'license': 'AGPL-3',
     'depends': [
         'fieldservice_vrtl',
+        # equipment_id on fieldservice.order comes from this bridge, not
+        # from elevata_fsm_flow. Depending on the generic bridge keeps a
+        # generic field-service module free of Elevata.
+        'fieldservice_maintenance',
         'hr_timesheet',
         'account',
         'property_mgmt',
-        # The inherited order form calls action_assign, action_schedule and
-        # action_start. Those methods live in elevata_fsm_flow, so without
-        # this dependency the view fails validation with
-        # "action_assign is not a valid action on fieldservice.order" as
-        # soon as fieldservice_vrtl is upgraded and the view is revalidated.
-        'elevata_fsm_flow',
     ],
     'data': [
         'views/fieldservice_order_views.xml',
