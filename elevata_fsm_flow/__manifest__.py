@@ -8,7 +8,7 @@
 #                           through product_tmpl_id.product_type.
 {
     'name': 'Elevata FSM Flow',
-    'version': '18.0.1.0.4',
+    'version': '18.0.1.0.5',
     'category': 'Field Service',
     'summary': 'Core FSM module: stages, elevator data, order workflow, views',
     'author': 'Vertel Sverige AB',
