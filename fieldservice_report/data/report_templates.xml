@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         Servicerapport — the document the technician leaves behind.
+
+         A work order lives in Odoo; the customer needs a piece of paper
+         saying what was done, when, by whom, and that they accepted it.
+         The signature is the point: it settles a later disagreement about
+         whether the work was done and accepted.
+
+         An industry module inherits this and adds what its trade needs — a
+         protocol number, a statutory reference, a second signature — without
+         touching this template.
+         ================================================================ -->
+    <template id="report_service_order" name="Service Report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="order">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row mb-4">
+                            <div class="col-8">
+                                <h2 class="mb-0">Servicerapport</h2>
+                                <p class="text-muted mb-0">
+                                    <t t-esc="order.name"/>
+                                </p>
+                            </div>
+                            <div class="col-4 text-end">
+                                <t t-esc="order.date_start or ''"/>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm table-borderless mb-4">
+                            <tr>
+                                <td style="width:25%"><strong>Utrustning</strong></td>
+                                <td>
+                                    <t t-esc="order.equipment_id.display_name or '–'"/>
+                                </td>
+                                <td style="width:25%"><strong>Kund</strong></td>
+                                <td><t t-esc="order.partner_id.name or '–'"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ordertyp</strong></td>
+                                <td><t t-esc="order.product_type.name or '–'"/></td>
+                                <td><strong>Tekniker</strong></td>
+                                <td>
+                                    <t t-esc="', '.join(order.requested_employee_ids.mapped('name')) or '–'"/>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <h5>Utfört arbete</h5>
+                        <div t-if="order.description" class="mb-4">
+                            <t t-esc="order.description"/>
+                        </div>
+                        <p t-else="" class="text-muted mb-4">Ingen beskrivning angiven.</p>
+
+                        <t t-if="'checklist_item_ids' in order._fields and order.checklist_item_ids">
+                            <h5>Servicechecklista</h5>
+                            <table class="table table-sm">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width:8%">Klar</th>
+                                        <th>Uppgift</th>
+                                        <th>Anteckning</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="order.checklist_item_ids.sorted('sequence')" t-as="item">
+                                        <tr>
+                                            <td>
+                                                <t t-if="item.done">✓</t>
+                                                <t t-else="">–</t>
+                                            </td>
+                                            <td><t t-esc="item.name"/></td>
+                                            <td><t t-esc="item.note or ''"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+
+                        <div class="row mt-5 pt-4">
+                            <div class="col-6">
+                                <div style="border-top:1px solid #000; padding-top:4px;">
+                                    Tekniker
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div style="border-top:1px solid #000; padding-top:4px;">
+                                    Kundens underskrift
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mt-4 text-muted small">
+                            Genom underskrift bekräftar kunden att arbetet är
+                            utfört och mottaget.
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_service_order" model="ir.actions.report">
+        <field name="name">Servicerapport</field>
+        <field name="model">fieldservice.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">fieldservice_report.report_service_order</field>
+        <field name="report_file">fieldservice_report.report_service_order</field>
+        <field name="print_report_name">'Servicerapport-%s' % (object.name.replace('/', '-'))</field>
+        <field name="binding_model_id" ref="fieldservice_vrtl.model_fieldservice_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

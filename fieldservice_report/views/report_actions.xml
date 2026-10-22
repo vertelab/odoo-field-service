@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Print button on the order form. The report is also bound to the
+         model (so it appears under Print in the list); this puts it where
+         the technician is when they need it. -->
+    <record id="fsm_order_form_report" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.report</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(action_report_service_order)d" type="action"
+                        string="Skriv ut servicerapport" icon="fa-print"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
