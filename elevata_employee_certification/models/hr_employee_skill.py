@@ -7,6 +7,10 @@ class HrEmployeeSkill(models.Model):
 
     date_issued = fields.Date(string='Date Issued')
     date_expiry = fields.Date(string='Valid Until')
+    # certificate_number lives on hr.resume.line (hr_skills_certificate).
+    # Kept here too because this module tracks certifications as skills,
+    # not as CV lines — the two models answer different questions and a
+    # certification is recorded in both.
     certificate_number = fields.Char(string='Certificate Number')
 
     cert_status = fields.Selection([

@@ -1,51 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data noupdate="1">
+<odoo noupdate="1">
 
-        <record id="skill_type_certifieringar" model="hr.skill.type">
-            <field name="name">Certifieringar</field>
-            <field name="is_certification">True</field>
-        </record>
+    <!-- ================================================================
+         Elevata does not seed certifications any more.
 
-        <record id="skill_level_certifierad" model="hr.skill.level">
-            <field name="name">Certifierad</field>
-            <field name="skill_type_id" ref="skill_type_certifieringar"/>
-            <field name="level_progress">100</field>
-            <field name="default_level">True</field>
-        </record>
+         The certifications live in odoo-hr as industry bridges, and this
+         module depends on the ones elevator service needs:
 
-        <record id="skill_heta_arbeten" model="hr.skill">
-            <field name="name">Heta arbeten</field>
-            <field name="skill_type_id" ref="skill_type_certifieringar"/>
-        </record>
-        <record id="skill_tunga_lyft" model="hr.skill">
-            <field name="name">Tunga lyft</field>
-            <field name="skill_type_id" ref="skill_type_certifieringar"/>
-        </record>
-        <record id="skill_fallskydd" model="hr.skill">
-            <field name="name">Fallskydd / Höjdarbete</field>
-            <field name="skill_type_id" ref="skill_type_certifieringar"/>
-        </record>
-        <record id="skill_elsaker" model="hr.skill">
-            <field name="name">Elsäkerhet</field>
-            <field name="skill_type_id" ref="skill_type_certifieringar"/>
-        </record>
-        <record id="skill_hissinstallation" model="hr.skill">
-            <field name="name">Hissinstallation</field>
-            <field name="skill_type_id" ref="skill_type_certifieringar"/>
-        </record>
-        <record id="skill_truckkort" model="hr.skill">
-            <field name="name">Truckkort</field>
-            <field name="skill_type_id" ref="skill_type_certifieringar"/>
-        </record>
-        <record id="skill_forsta_hjalpen" model="hr.skill">
-            <field name="name">Första hjälpen / HLR</field>
-            <field name="skill_type_id" ref="skill_type_certifieringar"/>
-        </record>
-        <record id="skill_sakerhetsutbildning" model="hr.skill">
-            <field name="name">Säkerhetsutbildning</field>
-            <field name="skill_type_id" ref="skill_type_certifieringar"/>
-        </record>
+             hr_certificate_hiss          Hissinstallation, Hissbesiktning,
+                                          Hisservice
+             hr_certificate_esa           Elsäkerhet, Arbete i elanläggning,
+                                          Elsäkerhet vid arbete i hiss
+             hr_certificate_arbetsmiljo   Heta arbeten, Fallskydd,
+                                          Säkerhetsutbildning, Tunga lyft, OSA
 
-    </data>
+         Seeding them here as well gave the same certification twice under
+         two skill types — Heta arbeten appeared under both "Certifieringar"
+         and "Arbetsmiljöcertifiering" — and the CV showed both.
+
+         The is_certification flag on hr.skill.type is set by the bridges
+         themselves, so nothing needs to be created here.
+         ================================================================ -->
+
 </odoo>
