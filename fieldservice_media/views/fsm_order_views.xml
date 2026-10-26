@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         Gallery on the work order.
+
+         Anchored on //notebook and //div[hasclass('oe_button_box')]: the
+         order form is extended by several modules.
+         ================================================================ -->
+    <record id="fsm_order_form_media" model="ir.ui.view">
+        <field name="name">fieldservice.order.form.media</field>
+        <field name="model">fieldservice.order</field>
+        <field name="inherit_id" ref="fieldservice_vrtl.view_fieldservice_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="%(action_media_image)d" type="action"
+                        class="oe_stat_button" icon="fa-picture-o"
+                        context="{'default_order_id': id, 'default_equipment_id': equipment_id}"
+                        invisible="not equipment_id">
+                    <field name="image_count" widget="statinfo" string="Images"/>
+                </button>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Images" name="media_images"
+                      invisible="not equipment_id">
+                    <field name="image_ids" nolabel="1"
+                           context="{'default_order_id': id, 'default_equipment_id': equipment_id}">
+                        <kanban>
+                            <field name="image"/>
+                            <field name="name"/>
+                            <templates>
+                                <t t-name="card">
+                                    <field name="image" widget="image"
+                                           options="{'img_class': 'w-100 object-fit-cover'}"/>
+                                    <div class="mt-1">
+                                        <field name="name"/>
+                                    </div>
+                                </t>
+                            </templates>
+                        </kanban>
+                    </field>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

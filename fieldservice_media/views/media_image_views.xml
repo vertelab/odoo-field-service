@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         Gallery
+         ================================================================ -->
+
+    <record id="media_image_list" model="ir.ui.view">
+        <field name="name">fieldservice.media.image.list</field>
+        <field name="model">fieldservice.media.image</field>
+        <field name="arch" type="xml">
+            <list string="Images">
+                <field name="image" widget="image" options="{'size': [80, 80]}"/>
+                <field name="name"/>
+                <field name="equipment_id"/>
+                <field name="order_id"/>
+                <field name="create_date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="media_image_kanban" model="ir.ui.view">
+        <field name="name">fieldservice.media.image.kanban</field>
+        <field name="model">fieldservice.media.image</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="image"/>
+                <field name="name"/>
+                <field name="equipment_id"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="o_kanban_image_wrapper">
+                            <field name="image" widget="image"
+                                   options="{'img_class': 'w-100 object-fit-cover'}"/>
+                        </div>
+                        <div class="mt-1">
+                            <field name="name" class="fw-bold"/>
+                        </div>
+                        <div class="text-muted small">
+                            <field name="equipment_id"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="media_image_form" model="ir.ui.view">
+        <field name="name">fieldservice.media.image.form</field>
+        <field name="model">fieldservice.media.image</field>
+        <field name="arch" type="xml">
+            <form string="Image">
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"
+                           options="{'preview_image': 'image'}"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="equipment_id"
+                                   options="{'no_create': True}"/>
+                        </group>
+                        <group>
+                            <field name="order_id"
+                                   options="{'no_create': True}"/>
+                            <field name="create_date" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="media_image_search" model="ir.ui.view">
+        <field name="name">fieldservice.media.image.search</field>
+        <field name="model">fieldservice.media.image</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="equipment_id"/>
+                <field name="order_id"/>
+                <filter name="filter_no_order" string="Not on an Order"
+                        domain="[('order_id', '=', False)]"/>
+                <separator/>
+                <filter name="group_by_equipment" string="Asset"
+                        context="{'group_by': 'equipment_id'}"/>
+                <filter name="group_by_order" string="Work Order"
+                        context="{'group_by': 'order_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_media_image" model="ir.actions.act_window">
+        <field name="name">Images</field>
+        <field name="res_model">fieldservice.media.image</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add your first image
+            </p>
+            <p>
+                An image belongs to an asset, and optionally to the work
+                order it was taken on. The three the office asks for —
+                before, after, fault — live on the order itself; this is
+                the gallery for everything else.
+            </p>
+        </field>
+    </record>
+
+</odoo>

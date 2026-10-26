@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         Gallery on the asset.
+
+         Anchored on //notebook: maintenance_elevator, elevata_fsm_flow,
+         elevator_base and fieldservice_history all extend this form.
+         ================================================================ -->
+    <record id="maintenance_equipment_form_media" model="ir.ui.view">
+        <field name="name">maintenance.equipment.form.media</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="%(action_media_image)d" type="action"
+                        class="oe_stat_button" icon="fa-picture-o"
+                        context="{'default_equipment_id': id}">
+                    <field name="image_count" widget="statinfo" string="Images"/>
+                </button>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Images" name="media_images">
+                    <field name="image_ids" nolabel="1"
+                           context="{'default_equipment_id': id}">
+                        <kanban>
+                            <field name="image"/>
+                            <field name="name"/>
+                            <templates>
+                                <t t-name="card">
+                                    <field name="image" widget="image"
+                                           options="{'img_class': 'w-100 object-fit-cover'}"/>
+                                    <div class="mt-1">
+                                        <field name="name"/>
+                                    </div>
+                                </t>
+                            </templates>
+                        </kanban>
+                    </field>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
