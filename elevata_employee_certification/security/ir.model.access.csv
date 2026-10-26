@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_hr_employee_skill_user,hr.employee.skill user,hr_skills.model_hr_employee_skill,base.group_user,1,1,1,0
-access_hr_employee_skill_manager,hr.employee.skill manager,hr_skills.model_hr_employee_skill,base.group_system,1,1,1,1

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="1">
-    <record id="fieldservice_order_type_color.fsm_order_type_service" model="fieldservice.order.type">
-        <field name="use_service_checklist">True</field>
-    </record>
-</odoo>

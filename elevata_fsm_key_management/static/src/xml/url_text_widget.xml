@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<templates xml:space="preserve">
-    <t t-name="elevata_fsm_key_management.UrlTextField" owl="1">
-        <span class="o_field_url_text cursor-pointer text-primary"
-              t-on-click="onClick" t-esc="displayValue"/>
-    </t>
-</templates>

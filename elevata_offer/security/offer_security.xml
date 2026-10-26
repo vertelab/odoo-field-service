@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data>
-        <record id="module_category_elevata_offer" model="ir.module.category">
-            <field name="name">Elevata Offer</field>
-            <field name="description">Modulkategori för Elevata Offert</field>
-        </record>
-    </data>
-</odoo>
