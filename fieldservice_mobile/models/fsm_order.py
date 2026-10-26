@@ -82,23 +82,45 @@ class FieldServiceOrder(models.Model):
 
     _inherit = 'fieldservice.order'
 
-    photo_before = fields.Image(
+    # The three photos the office asks for on every job. They are
+    # references into fieldservice.media.image rather than three image
+    # fields of their own: one image model, one place to store, one place
+    # to look. The gallery holds everything else.
+    photo_before_id = fields.Many2one(
+        'fieldservice.media.image',
         string='Photo Before',
-        max_width=1920,
-        max_height=1080,
+        ondelete='set null',
+        copy=False,
         help='Taken before work started.',
     )
-    photo_after = fields.Image(
+    photo_after_id = fields.Many2one(
+        'fieldservice.media.image',
         string='Photo After',
-        max_width=1920,
-        max_height=1080,
+        ondelete='set null',
+        copy=False,
         help='Taken when the work was finished.',
     )
-    photo_fault = fields.Image(
+    photo_fault_id = fields.Many2one(
+        'fieldservice.media.image',
         string='Photo of Fault',
-        max_width=1920,
-        max_height=1080,
+        ondelete='set null',
+        copy=False,
         help='Taken of the fault or damage found.',
+    )
+
+    # Read-only conveniences for the mobile views, so a template can show
+    # the image without walking the relation.
+    photo_before = fields.Image(
+        related='photo_before_id.image',
+        string='Photo Before',
+    )
+    photo_after = fields.Image(
+        related='photo_after_id.image',
+        string='Photo After',
+    )
+    photo_fault = fields.Image(
+        related='photo_fault_id.image',
+        string='Photo of Fault',
     )
     directions_address = fields.Char(
         string='Address',

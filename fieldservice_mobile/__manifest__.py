@@ -20,7 +20,7 @@
 
 {
     'name': 'Field Service: Mobile',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     # Version ledger: 18.0 = Odoo version. 1 = Major. Non regressionable code.
     # 0 = Minor. 1 = Bug fixes
     'summary': 'Technician mobile views: photos before/after/fault, directions.',
@@ -69,6 +69,8 @@ Field Service: Mobile
     'depends': [
         'fieldservice_vrtl',
         'fieldservice_maintenance',
+        # fieldservice.media.image — the photos are references into it
+        'fieldservice_media',
         'web_responsive',
     ],
     'data': [

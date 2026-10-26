@@ -83,9 +83,16 @@
                     <!-- The three photos are the evidence the technician
                          brings back. Big touch targets, one per row. -->
                     <group string="Photos" class="o_fsm_mobile_section">
-                        <field name="photo_before" widget="image" nolabel="1"/>
-                        <field name="photo_fault" widget="image" nolabel="1"/>
-                        <field name="photo_after" widget="image" nolabel="1"/>
+                        <!-- The three photos are references into the
+                             gallery; the technician picks or uploads an
+                             image and it lands in fieldservice.media.image
+                             like every other picture. -->
+                        <field name="photo_before_id" nolabel="1"
+                               context="{'default_order_id': id, 'default_equipment_id': equipment_id, 'default_name': 'Before'}"/>
+                        <field name="photo_fault_id" nolabel="1"
+                               context="{'default_order_id': id, 'default_equipment_id': equipment_id, 'default_name': 'Fault'}"/>
+                        <field name="photo_after_id" nolabel="1"
+                               context="{'default_order_id': id, 'default_equipment_id': equipment_id, 'default_name': 'After'}"/>
                     </group>
 
                     <group string="Assignment" class="o_fsm_mobile_section">
