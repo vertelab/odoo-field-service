@@ -1,6 +1,6 @@
 {
     'name': 'SLA Management',
-    'version': '18.0.1.0.1',
+    'version': '18.0.1.0.2',
     'summary': 'Manage SLA agreements and track service level compliance.',
     'description': '''
 SLA Management

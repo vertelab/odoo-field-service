@@ -1,7 +1,5 @@
 from odoo import models, fields, api, _
-import logging
 
-_logger = logging.getLogger(__name__)
 
 class FieldServiceOrder(models.Model):
     _inherit = 'fieldservice.order'
@@ -129,17 +127,12 @@ class FieldServiceOrder(models.Model):
             record.reaction_time_max = record.reaction_time
 
     def write(self, vals):
-        _logger.warning(f"WRITE CALLED ON ORDER {self.ids} with vals: {vals}")
         res = super().write(vals)
         if 'stage_id' in vals:
             for order in self:
-                _logger.warning(f"Order {order.id} stage_id is now {order.stage_id.id}")
                 for order_sla in order.order_sla_ids:
-                    _logger.warning(
-                        f"Checking SLA {order_sla.id}: sla.stage_id={order_sla.sla_id.stage_id.id if order_sla.sla_id.stage_id else None}, "
-                        f"order.stage_id={order.stage_id.id}, sla.sla_end_date={order_sla.sla_end_date}"
-                    )
-                    if order_sla.sla_id.stage_id and order_sla.sla_id.stage_id.id == order.stage_id.id and not order_sla.sla_end_date:
+                    if (order_sla.sla_id.stage_id
+                            and order_sla.sla_id.stage_id.id == order.stage_id.id
+                            and not order_sla.sla_end_date):
                         order_sla.write({'sla_end_date': fields.Datetime.now()})
-                        _logger.warning(f"SLA end date set for SLA {order_sla.id} on order {order.id}")
         return res
