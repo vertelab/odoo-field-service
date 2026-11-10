@@ -19,3 +19,8 @@ from . import fieldservice_team
 #   action_assign is not a valid action on fieldservice.order
 # Fixad 2026-11-10 (lantteknik).
 from . import fieldservice_order_lifecycle
+# ir_ui_menu.py definierar _hide_location_workers_menu, som
+# data/ir_ui_menu_data.xml anropar via <function>. Utan importen
+# faller installationen med ParseError pa den raden.
+# Fixad 2026-11-10 (lantteknik).
+from . import ir_ui_menu
