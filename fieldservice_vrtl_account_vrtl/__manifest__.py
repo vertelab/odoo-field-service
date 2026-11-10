@@ -1,0 +1,15 @@
+{
+    'name': "Field service: HR Vertel",
+    'version': '1.0',
+    'depends': ['fieldservice_vrtl','hr_timesheet','hr'],
+    'author': "Vertel Sverige AB",
+    'category': 'Category',
+    'license': 'AGPL-3',
+    'description': """
+    Fieldservice
+    """,
+    'data': [
+        'security/ir.model.access.csv',
+        'views/fieldservice_order_view.xml',
+    ],
+}
