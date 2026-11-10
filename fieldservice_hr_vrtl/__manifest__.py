@@ -1,6 +1,6 @@
 {
     'name': "Field service: HR Vertel",
-    'version': '18.0.1.0.1',
+    'version': '1.0',
     'depends': ['fieldservice_vrtl','hr_timesheet','hr'],
     'author': "Vertel Sverige AB",
     'category': 'Category',
