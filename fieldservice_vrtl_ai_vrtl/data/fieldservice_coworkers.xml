@@ -54,7 +54,9 @@ Arbetsregler:
             ref('fieldservice_vrtl.model_fieldservice_order'),
         ])]"/>
         <field name="filter_domain">[]</field>
-        <field name="injection_level">summary_and_key</field>
+        <!-- injection_level finns inte pa ai.coworker i denna
+             ai_agent_core-version -> ValueError: Invalid field.
+             Borttagen 2026-11-10 (lantteknik). -->
         <field name="hitl_threshold">always</field>
         <field name="orchestration_mode">supervisor</field>
         <field name="tool_ids" eval="[(6, 0, [
