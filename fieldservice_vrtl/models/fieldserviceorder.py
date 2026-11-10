@@ -55,6 +55,19 @@ class FieldServiceOrder(models.Model):
     # time_until_work_done_avg = fields.Float(group_operator='avg', string='Time until work done (AVG)', compute='_compute_time_until_work_done', store=True, help='Time in hours')
     partner_id = fields.Many2one('res.partner', string="Partner", )
 
+    # fieldservice.team.order_ids ar en One2many mot 'team_id'. Utan
+    # det har faltet kraschar registry-load med:
+    #   KeyError: 'team_id'
+    #   (fields.py setup_nonrelated -> comodel._fields[inverse_name])
+    # Fixad 2026-11-10 (lantteknik).
+    team_id = fields.Many2one(
+        'fieldservice.team',
+        string='Team',
+        ondelete='set null',
+        index=True,
+        help='Field service team responsible for this order.',
+    )
+
     @api.depends('stage_id')
     def compute_date_start_end(self):
 
