@@ -1,6 +1,6 @@
 {
     'name': 'Field Service: Stock Picking',
-    'version': '1.0',
+    'version': '18.0.1.0.0',
     'depends': ['fieldservice_vrtl', 'stock'],
     'license': 'AGPL-3',
     'data': [

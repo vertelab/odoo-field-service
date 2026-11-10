@@ -1,6 +1,6 @@
 {
     'name': "Field service: Demo Vertel",
-    'version': '1.0',
+    'version': '18.0.1.0.0',
     'depends': ['fieldservice_vrtl','fieldservice_hr_vrtl'],
     'author': "Vertel Sverige AB",
     'category': 'Category',
