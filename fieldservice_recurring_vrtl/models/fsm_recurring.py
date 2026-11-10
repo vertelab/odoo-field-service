@@ -103,7 +103,7 @@ class FsmRecurring(models.Model):
 
         Only fields that exist on fieldservice.order in the Vertel fork
         are set here. ``property_id`` is computed from
-        ``equipment_id.property_id`` by fieldservice_maintenance_vrtl and
+        ``equipment_id.property_id`` by fieldservice_maintenance_adapt_vrtl and
         must not be written.
         """
         self.ensure_one()

@@ -12,7 +12,7 @@ Den måste vara installerad i måldatabasen innan uppgraderingen, annars fallera
 ```bash
 # kontrollera först
 sudo -u odoo psql -d <db> -tAc \
-  "select name,state from ir_module_module where name in ('cron_tick','fieldservice_sla','l10n_se_resource_calendar_leaves_import')"
+  "select name,state from ir_module_module where name in ('cron_tick','fieldservice_sla_vrtl','l10n_se_resource_calendar_leaves_import')"
 
 # installera vid behov
 sudo checkmodule -d <db> -m cron_tick
@@ -22,15 +22,15 @@ sudo checkmodule -d <db> -m cron_tick
 
 ```bash
 sudo checkmodule -d <db> -u fieldservice_vrtl
-sudo checkmodule -d <db> -u fieldservice_hr
-sudo checkmodule -d <db> -u fieldservice_sla
-sudo checkmodule -d <db> -u fieldservice_vrtl_ai
+sudo checkmodule -d <db> -u fieldservice_hr_vrtl
+sudo checkmodule -d <db> -u fieldservice_sla_vrtl
+sudo checkmodule -d <db> -u fieldservice_vrtl_ai_vrtl
 sudo checkmodule -d <db> -u ics_import_holidays
 sudo checkmodule -d <db> -u l10n_se_resource_calendar_leaves_import
 ```
 
-Versioner efter bump: `fieldservice_vrtl` 18.0.1.0.1, `fieldservice_hr`
-18.0.1.0.1, `fieldservice_sla` 18.0.1.0.1, `fieldservice_vrtl_ai` 18.0.1.0.4,
+Versioner efter bump: `fieldservice_vrtl` 18.0.1.0.1, `fieldservice_hr_vrtl`
+18.0.1.0.1, `fieldservice_sla_vrtl` 18.0.1.0.1, `fieldservice_vrtl_ai_vrtl` 18.0.1.0.4,
 `ics_import_holidays` 18.0.1.0.1,
 `l10n_se_resource_calendar_leaves_import` 18.0.1.0.1.
 
@@ -52,7 +52,7 @@ sudo grep -c "cannot be found" /var/log/odoo/odoo-server.log
 ## 4. Första körningen av de nya cron.task-poster
 
 `sla_check_breach` (hour) och `sla_notify_breach` (hour) skapas av
-`fieldservice_sla/data/cron_tasks.xml`. `se_holiday_eves` (month) av
+`fieldservice_sla_vrtl/data/cron_tasks.xml`. `se_holiday_eves` (month) av
 `l10n_se_resource_calendar_leaves_import/data/cron_tasks.xml`.
 
 **Varning:** `breach_notified` defaultar till False, så första körningen
@@ -63,7 +63,7 @@ Kontrollera efter ett intervall:
 
 ```bash
 sudo -u odoo psql -d <db> -c \
-  "select technical_name, cadence, last_run, failure_count, left(last_error,80) from cron_task where module in ('fieldservice_sla','l10n_se_resource_calendar_leaves_import') order by technical_name"
+  "select technical_name, cadence, last_run, failure_count, left(last_error,80) from cron_task where module in ('fieldservice_sla_vrtl','l10n_se_resource_calendar_leaves_import') order by technical_name"
 ```
 
 `failure_count = 0` och `last_error` tom = grönt.

@@ -29,7 +29,7 @@ class FieldServiceOrderLifecycle(models.Model):
     order that can be assigned, scheduled, started and closed is generic
     field service, not elevator service. Keeping them in an Elevata module
     meant any other customer had to install the elevator module to get a
-    working order lifecycle, and it forced fieldservice_account_analytic to
+    working order lifecycle, and it forced fieldservice_account_analytic_vrtl to
     depend on Elevata for a view that called these buttons.
 
     The guards are deliberate: an order cannot be assigned without someone

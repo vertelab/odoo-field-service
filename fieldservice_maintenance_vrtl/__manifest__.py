@@ -1,33 +1,34 @@
 {
-    'name': "Field Service: Maintenance (Vertel)",
+    'name': "Field service: Maintenance",
     'version': '18.0.1.0.1',
-    'depends': ['fieldservice_maintenance', 'fieldservice_vrtl', 'maintenance'],
+    'depends': ['fieldservice_vrtl', 'maintenance'],
     'author': "Vertel Sverige AB",
     'category': 'Field Service',
     'license': 'AGPL-3',
     'description': """
-    Field service: Maintenance (Vertel)
-    ===================================
+    Field service: Maintenance
+    ==========================
 
-    Vertel adaptations on top of fieldservice_maintenance.
+    Bridges maintenance requests and field service orders.
 
-    The base module links a maintenance request to a field service order by
-    reference. This module adds what Vertel needs in daily operation:
+    A maintenance request and a field service order are two different
+    lifecycles that often concern the same physical work:
 
-    - Equipment is required on an order created from a maintenance request.
-      A technician cannot be dispatched to an unspecified asset.
-    - The order inherits the property from the equipment, so the dispatch
-      list can be grouped by property.
-    - A smart button on the equipment shows its open maintenance requests
-      and field service orders in one place.
-    - Cancelling a maintenance request does not cancel the order; the order
-      keeps its own lifecycle. The link is cleared only on unlink.
+    - maintenance.request: new, in progress, repaired, scrapped
+    - fieldservice.order: draft, scheduled, en route, in progress, done
 
-    Nothing here changes the two lifecycles. They still live their own lives.
+    They are linked by reference, never by inheritance. Both models carry
+    their own stage, description and user fields, and merging them would
+    force one lifecycle onto the other. This module keeps them independent
+    and lets a request spawn a dispatchable order when a technician has to
+    go on site.
+
+    Equipment is carried over so the technician sees which asset the work
+    concerns.
     """,
     'data': [
         'security/ir.model.access.csv',
-        'views/maintenance_equipment_views.xml',
+        'views/maintenance_request_views.xml',
         'views/fieldservice_order_views.xml',
     ],
     'installable': True,

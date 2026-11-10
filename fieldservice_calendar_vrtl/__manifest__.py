@@ -36,7 +36,7 @@ works on any field service installation.
     'depends': [
         'calendar',
         'fieldservice_vrtl',
-        'fieldservice_maintenance',
+        'fieldservice_maintenance_vrtl',
     ],
     'data': [
         'data/calendar_event_type_data.xml',

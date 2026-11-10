@@ -24,11 +24,11 @@ from odoo import _, api, fields, models
 class FieldserviceOrder(models.Model):
     _inherit = 'fieldservice.order'
 
-    # Defined here rather than in fieldservice_maintenance: the analytic
-    # compute in fieldservice_account_analytic depends on this field but
+    # Defined here rather than in fieldservice_maintenance_vrtl: the analytic
+    # compute in fieldservice_account_analytic_vrtl depends on this field but
     # that module does not declare the dependency that defines it, so the
     # registry fails to load unless the field exists before that module is
-    # loaded. fieldservice_maintenance inherits the same definition.
+    # loaded. fieldservice_maintenance_vrtl inherits the same definition.
     equipment_id = fields.Many2one(
         'maintenance.equipment',
         string='Equipment',

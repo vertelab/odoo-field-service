@@ -1,55 +1,74 @@
-# Swedish translation of Field Service: Maintenance (Vertel).
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fieldservice_maintenance_vrtl
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 23:00+0000\n"
-"PO-Revision-Date: 2026-10-20 23:00+0000\n"
+"POT-Creation-Date: 2026-10-20 22:55+0000\n"
+"PO-Revision-Date: 2026-10-20 22:55+0000\n"
 "Last-Translator: Vertel Sverige AB\n"
 "Language-Team: Swedish\n"
-"Language: sv_SE\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: fieldservice_maintenance_vrtl
-#: model:ir.model.fields,field_description:fieldservice_maintenance_vrtl.field_maintenance_equipment__fieldservice_order_ids
-#: model:ir.model.fields,field_description:fieldservice_maintenance_vrtl.field_maintenance_equipment__fieldservice_order_count
-msgid "Field Service Orders"
-msgstr "Fältarbetsorder"
+#: model_terms:ir.ui.view,arch_db:fieldservice_maintenance_vrtl.maintenance_request_views.xml.x
+msgid "Create Field Service Order"
+msgstr "Skapa arbetsorder"
 
 #. module: fieldservice_maintenance_vrtl
-#: model:ir.model.fields,field_description:fieldservice_maintenance_vrtl.field_maintenance_equipment__open_maintenance_request_count
-msgid "Open Maintenance Requests"
-msgstr "Öppna underhållsärenden"
+#: model:ir.model.fields,field_description:fieldservice_maintenance_vrtl.field_fieldservice_order__equipment_id
+msgid "Equipment"
+msgstr "Utrustning"
 
 #. module: fieldservice_maintenance_vrtl
-#: model:ir.model.fields,field_description:fieldservice_maintenance_vrtl.field_fieldservice_order__property_id
-msgid "Property"
-msgstr "Fastighet"
-
-#. module: fieldservice_maintenance_vrtl
-#: model:ir.model.fields,help:fieldservice_maintenance_vrtl.field_fieldservice_order__property_id
-msgid "Inherited from the equipment. A technician is dispatched to a property, so the dispatch list can be grouped by it."
-msgstr "Ärvs från utrustningen. En tekniker skickas till en fastighet, så utryckningslistan kan grupperas på den."
-
-#. module: fieldservice_maintenance_vrtl
-#: model:ir.model,name:fieldservice_maintenance_vrtl.model_maintenance_equipment
-msgid "Maintenance Equipment"
-msgstr "Underhållsutrustning"
-
-#. module: fieldservice_maintenance_vrtl
-#: model:ir.model,name:fieldservice_maintenance_vrtl.model_fieldservice_order
+#: code:addons/fieldservice_maintenance_vrtl/models/x.py:0
+#: model:ir.model.fields,field_description:fieldservice_maintenance_vrtl.field_maintenance_request__fieldservice_order_id
 msgid "Field Service Order"
-msgstr "Fältarbetsorder"
+msgstr "Arbetsorder"
 
 #. module: fieldservice_maintenance_vrtl
-#: code:addons/fieldservice_maintenance_vrtl/models/maintenance_equipment.py:0
-msgid "Orders"
-msgstr "Order"
+#: model:ir.model.fields,field_description:fieldservice_maintenance_vrtl.field_maintenance_request__fieldservice_order_count
+msgid "Field Service Orders"
+msgstr "Arbetsordrar"
 
 #. module: fieldservice_maintenance_vrtl
-#: code:addons/fieldservice_maintenance_vrtl/models/maintenance_equipment.py:0
-msgid "Open Requests"
-msgstr "Öppna ärenden"
+#: model_terms:ir.module.module,description:fieldservice_maintenance_vrtl.module_fieldservice_maintenance
+msgid "Field service: Maintenance"
+msgstr "Fältservice: Underhåll"
+
+#. module: fieldservice_maintenance_vrtl
+#: code:addons/fieldservice_maintenance_vrtl/models/x.py:0
+#: model:ir.model.fields,field_description:fieldservice_maintenance_vrtl.field_fieldservice_order__maintenance_request_id
+msgid "Maintenance Request"
+msgstr "Underhållsärende"
+
+#. module: fieldservice_maintenance_vrtl
+#: model:ir.model.fields,help:fieldservice_maintenance_vrtl.field_fieldservice_order__equipment_id
+msgid "The asset the technician is working on."
+msgstr "Tillgången som teknikern arbetar på."
+
+#. module: fieldservice_maintenance_vrtl
+#: model:ir.model.fields,help:fieldservice_maintenance_vrtl.field_maintenance_request__fieldservice_order_id
+msgid "The field service order that dispatches this work to a technician."
+msgstr "Arbetsordern som skickar ut arbetet till en tekniker."
+
+#. module: fieldservice_maintenance_vrtl
+#: model:ir.model.fields,help:fieldservice_maintenance_vrtl.field_fieldservice_order__maintenance_request_id
+msgid "The maintenance request this order was created from."
+msgstr "Underhållsärendet som arbetsordern skapades från."
+
+#. module: fieldservice_maintenance_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_maintenance_vrtl.maintenance_request_views.xml.x
+msgid "With Field Service Order"
+msgstr "Med arbetsorder"
+
+#. module: fieldservice_maintenance_vrtl
+#: model_terms:ir.ui.view,arch_db:fieldservice_maintenance_vrtl.maintenance_request_views.xml.x
+msgid "Without Field Service Order"
+msgstr "Utan arbetsorder"
