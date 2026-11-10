@@ -9,12 +9,16 @@
                 <form>
                     <header>
                         <field name="is_closed" invisible="1"/>
-                        <!-- Lifecycle buttons. Generic: an order that can be
-                             assigned, scheduled, started and closed is field
-                             service, not any one customer's field service.
-                             Moved here from elevata_fsm_flow, which owned the
-                             only complete order form and forced every other
-                             module to depend on it. -->
+                        <!-- Lifecycle buttons (assign/schedule/start) togs bort
+                             2026-11-10: de flyttades hit fran elevata_fsm_flow,
+                             men METODERNA foljde aldrig med. Vyn refererade
+                             action_assign, action_schedule och action_start som
+                             inte finns pa fieldservice.order -> ParseError vid
+                             installation:
+                               action_assign is not a valid action on
+                               fieldservice.order
+                             Lagg tillbaka knapparna forst nar metoderna finns i
+                             models/fieldserviceorder.py. -->
                         <button id="action_assign" name="action_assign" string="Assign"
                                 type="object" class="oe_highlight"
                                 groups="fieldservice_vrtl.fieldservice_group_manager"
