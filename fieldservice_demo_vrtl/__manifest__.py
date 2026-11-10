@@ -1,7 +1,7 @@
 {
     'name': "Field service: Demo Vertel",
     'version': '1.0',
-    'depends': ['fieldservice_vrtl','fieldservice_hr'],
+    'depends': ['fieldservice_vrtl','fieldservice_hr_vrtl'],
     'author': "Vertel Sverige AB",
     'category': 'Category',
     'license': 'AGPL-3',

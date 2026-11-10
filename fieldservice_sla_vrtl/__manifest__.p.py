@@ -1,0 +1,18 @@
+{
+    'name': 'SLA Management',
+    'version': '1.0',
+    'summary': 'Manage SLA agreements and track service level compliance',
+    'category': 'Services',
+    'author': 'Your Name or Company',
+    'license': 'AGPL-3',
+    'depends': ['base', 'cron_tick', 'fieldservice_vrtl', 'hr'],  
+    'data': [
+        'data/cron_tasks.xml',
+        'views/fieldservice_inherit_views.xml',
+        'security/ir.model.access.csv',
+        'views/fieldservice_sla_views.xml'
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}
