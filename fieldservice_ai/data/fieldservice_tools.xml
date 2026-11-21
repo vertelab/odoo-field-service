@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Field Service tools (fieldservice_ai).
+
+        Tunna skal: affärslogiken ligger i `fieldservice.ai`-modellen,
+        samma mönster som project_ai:s `project_ai.py`.
+
+        Alla anropar `_capture_session_from_order`, så sessionen får
+        fsm_order_id + fsm_location_id + partner_id när ett verktyg rör en
+        arbetsorder — det ger kostnadskontext, lineage och minne.
+    -->
+
+    <record id="tool_order_get" model="ai.tool">
+        <field name="name">order_get</field>
+        <field name="description">Hämta information om en arbetsorder (fsm.order) i fältservice. Returnerar JSON med id, namn, etapp, prioritet, team, plats (adress), kund, tekniker och beskrivning. Använd innan du ändrar ordern.</field>
+        <field name="parameters">{"type": "object", "properties": {"order_id": {"type": "integer", "description": "ID för fsm.order"}}, "required": ["order_id"]}</field>
+        <field name="risk_level">read_only</field>
+        <field name="code"><![CDATA[
+async def execute(order_id):
+    """Hämta arbetsorder."""
+    res = env['fieldservice.ai'].order_get(int(order_id))
+    return json.dumps(res, ensure_ascii=False, default=str)
+]]></field>
+    </record>
+
+    <record id="tool_order_set_stage" model="ai.tool">
+        <field name="name">order_set_stage</field>
+        <field name="description">Flytta en arbetsorder (fsm.order) till en annan etapp. Etappen anges med namn (t.ex. "En Route", "In Progress", "Completed"). Returnerar ett meddelande som säger om det lyckades.</field>
+        <field name="parameters">{"type": "object", "properties": {"order_id": {"type": "integer", "description": "ID för fsm.order"}, "stage": {"type": "string", "description": "Etappens namn"}}, "required": ["order_id", "stage"]}</field>
+        <field name="risk_level">write</field>
+        <field name="code"><![CDATA[
+async def execute(order_id, stage):
+    """Sätt etapp."""
+    ok, msg = env['fieldservice.ai'].order_set_stage(int(order_id), str(stage))
+    return msg
+]]></field>
+    </record>
+
+    <record id="tool_order_update_fields" model="ai.tool">
+        <field name="name">order_update_fields</field>
+        <field name="description">Uppdatera prioritet och/eller beskrivning på en arbetsorder (fsm.order). Endast dessa två fält — övriga förändringar kräver manuell hantering. Prioritetsvärden: 0 (låg), 1, 2, 3 (hög).</field>
+        <field name="parameters">{"type": "object", "properties": {"order_id": {"type": "integer", "description": "ID för fsm.order"}, "priority": {"type": "string", "description": "prioritet: 0-3"}, "description": {"type": "string", "description": "ny beskrivning (HTML)"}}, "required": ["order_id"]}</field>
+        <field name="risk_level">write</field>
+        <field name="code"><![CDATA[
+async def execute(order_id, priority=None, description=None):
+    """Uppdatera orderfält."""
+    ok, msg = env['fieldservice.ai'].order_update_fields(
+        int(order_id), priority=priority, description=description)
+    return msg
+]]></field>
+    </record>
+
+    <record id="tool_order_add_message" model="ai.tool">
+        <field name="name">order_add_message</field>
+        <field name="description">Posta ett meddelande i en arbetsorders chatter. Använd för att dokumentera vad som gjordes på plats, vad som behöver följas upp, eller en intern notering. Meddelandet syns i orderns historik.</field>
+        <field name="parameters">{"type": "object", "properties": {"order_id": {"type": "integer", "description": "ID för fsm.order"}, "body": {"type": "string", "description": "meddelandetext"}}, "required": ["order_id", "body"]}</field>
+        <field name="risk_level">write</field>
+        <field name="code"><![CDATA[
+async def execute(order_id, body):
+    """Posta meddelande."""
+    ok, msg = env['fieldservice.ai'].order_add_message(int(order_id), body)
+    return msg
+]]></field>
+    </record>
+</odoo>

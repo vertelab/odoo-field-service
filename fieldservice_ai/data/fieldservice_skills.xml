@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="skill_cost_context" model="ai.skill">
+        <field name="name">Cost Context — kostnadsbärande arbete</field>
+        <field name="description">Begär och bekräfta kostnadskontext (arbetsorder/kund) för sessionen — en gång per session, aldrig om igen efter bekräftelse.</field>
+        <field name="recipe_text">
+Alla sessioner är kostnadsbärande arbete. Följ detta flöde vid arbete i denna session:
+
+1. Kolla sessionens kostnadskontext med cost_context_get.
+2. Om arbetsorder/kund saknas OCH cost_context_confirmed är false:
+   - Fråga användaren vilken arbetsorder arbetet gäller — använd
+     coworkerns konfigurerade frågetext (cost_context_question).
+   - Kan ingen order anges: fråga efter kund (res.partner) istället.
+3. När användaren svarat: bekräfta att kostnaden belastar ordern/kunden
+   och anropa cost_context_set.
+4. Ställ ALDRIG om frågan när cost_context_confirmed är satt.
+
+Regler:
+- Fråga bara EN gång per session.
+- Bekräfta kort till användaren.
+- Vid osäkerhet — fråga användaren, gissa inte.
+        </field>
+    </record>
+
+    <record id="skill_order_handling" model="ai.skill">
+        <field name="name">Field Service — hantera arbetsorder</field>
+        <field name="description">Läs, uppdatera och flytta arbetsordrar på ett spårbart sätt: verifiera ordern först, dokumentera i chatter, ändra etapp medvetet.</field>
+        <field name="category">general</field>
+        <field name="source_type">odoo</field>
+        <field name="compatibility">any</field>
+        <field name="trigger_keywords">arbetsorder, fältservice, fieldservice, fsm, tekniker, utryckning, på plats, servicebil, plats, kundbesök</field>
+        <field name="recipe_text">
+# Field Service — hantera arbetsorder
+
+Du arbetar med en arbetsorder (fsm.order) i fältservice. En arbetsorder
+är en tekniker som ska göra något hos en kund — den ska utföras
+spårbart, inte bara stängas.
+
+## Innan du ändrar något
+
+1. Läs ordern med `order_get` — verifiera att den finns, var den är
+   (plats/adress) och vem kunden är.
+2. Läs kundens tidigare ordrar om det är relevant (`odoo_search` på
+   `fsm.order` med `location_id`).
+3. Sök kunskap: har vi gjort något liknande på den här platsen?
+   (`okf_search`)
+
+## När du ändrar
+
+- **Etapp** — `order_set_stage` med etappens NAMN. Flytta bara framåt om
+  du faktiskt gjort arbetet. Att stänga en order som inte är utförd är
+  värre än att lämna den öppen.
+- **Prioritet** — `order_update_fields` med 0–3. Höj bara vid verklig
+  brådska (kund utan värme, avbrott i drift).
+- **Beskrivning** — `order_update_fields`. Skriv vad som är gjort, inte
+  vad som ska göras.
+
+## Dokumentera ALLTID
+
+Efter varje åtgärd: `order_add_message` med vad du gjorde och varför.
+En arbetsorder utan spår i chatter är en order ingen kan fakturera
+eller följa upp.
+
+## Teknikerns verklighet
+
+Teknikern är inte i Odoo — hen är i en bil. Därför:
+- Skriv korta, konkreta meddelanden som går att läsa på en telefon.
+- Nämn alltid platsen när du refererar till ordern.
+- Om något saknas (del, verktyg, tillträde) — dokumentera det i
+  chatter, flytta inte ordern till "klar".
+
+## Eskalera istället för att gissa
+
+Om ordern kräver kompetens eller ett beslut du inte har: posta ett
+meddelande som säger vad som behövs och vem som bör ta det, och lämna
+ordern öppen.
+        </field>
+    </record>
+</odoo>
