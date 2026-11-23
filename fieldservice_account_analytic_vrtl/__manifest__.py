@@ -14,9 +14,9 @@
         'fieldservice_maintenance_vrtl',
         'hr_timesheet',
         'account',
-        'property_maintanance'  # inte 'property_mgmt': property_id pa
+        'property_maintenance'  # inte 'property_mgmt': property_id pa
                             # maintenance.equipment ags av
-                            # property_maintanance (fixat 2026-11-10),
+                            # property_maintenance (fixat 2026-11-10),
     ],
     'data': [
         'views/fieldservice_order_views.xml',
